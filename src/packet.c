@@ -38,7 +38,7 @@
 #include "runopts.h"
 
 static int read_packet_init(void);
-static void make_mac(unsigned int seqno, const struct key_context_directional * key_state,
+static void make_mac(uint32_t seqno, const struct key_context_directional * key_state,
 		buffer * clear_buf, unsigned int clear_len, 
 		unsigned char *output_mac);
 static int checkmac(void);
@@ -215,7 +215,8 @@ static int read_packet_init() {
 
 	unsigned int maxlen;
 	int slen;
-	unsigned int len, plen;
+	unsigned int plen;
+	uint32_t len;
 	unsigned int blocksize;
 	unsigned int macsize;
 
@@ -262,7 +263,7 @@ static int read_packet_init() {
 					&ses.keys->recv.cipher_state) != CRYPT_OK) {
 			dropbear_exit("Error decrypting");
 		}
-		len = plen + 4 + macsize;
+		len = (uint32_t)plen + 4 + macsize;
 	} else
 #endif
 	{
@@ -272,18 +273,22 @@ static int read_packet_init() {
 					&ses.keys->recv.cipher_state) != CRYPT_OK) {
 			dropbear_exit("Error decrypting");
 		}
-		plen = buf_getint(ses.readbuf) + 4;
-		len = plen + macsize;
+		plen = buf_getint(ses.readbuf);
+		if (plen > RECV_MAX_PACKET_LEN - 4) {
+			dropbear_exit("Integrity error (packet too large)");
+		}
+		plen += 4;
+		len = (uint32_t)plen + macsize;
 	}
 
-	TRACE2(("packet size is %u, block %u mac %u", len, blocksize, macsize))
+	TRACE2(("packet size is %lu, block %u mac %u", (unsigned long)len, blocksize, macsize))
 
 
 	/* check packet length */
 	if ((len > RECV_MAX_PACKET_LEN) ||
 		(plen < blocksize) ||
 		(plen % blocksize != 0)) {
-		dropbear_exit("Integrity error (bad packet size %u)", len);
+		dropbear_exit("Integrity error (bad packet size %lu)", (unsigned long)len);
 	}
 
 	if (len > ses.readbuf->size) {
@@ -682,7 +687,7 @@ void writebuf_enqueue(buffer * writebuf) {
 
 /* Create the packet mac, and append H(seqno|clearbuf) to the output */
 /* output_mac must have ses.keys->trans.algo_mac->hashsize bytes. */
-static void make_mac(unsigned int seqno, const struct key_context_directional * key_state,
+static void make_mac(uint32_t seqno, const struct key_context_directional * key_state,
 		buffer * clear_buf, unsigned int clear_len, 
 		unsigned char *output_mac) {
 	unsigned char seqbuf[4];

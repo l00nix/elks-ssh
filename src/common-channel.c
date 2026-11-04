@@ -36,7 +36,7 @@
 #include "runopts.h"
 #include "netio.h"
 
-static void send_msg_channel_open_failure(unsigned int remotechan, int reason,
+static void send_msg_channel_open_failure(uint32_t remotechan, int reason,
 		const char *text, const char *lang);
 static void send_msg_channel_open_confirmation(const struct Channel* channel,
 		unsigned int recvwindow, 
@@ -103,9 +103,9 @@ void chancleanup() {
 /* If remotechan, transwindow and transmaxpacket are not know (for a new
  * outgoing connection, with them to be filled on confirmation), they should
  * all be set to 0 */
-static struct Channel* newchannel(unsigned int remotechan, 
+static struct Channel* newchannel(uint32_t remotechan,
 		const struct ChanType *type, 
-		unsigned int transwindow, unsigned int transmaxpacket) {
+		uint32_t transwindow, unsigned int transmaxpacket) {
 
 	struct Channel * newchan;
 	unsigned int i, j;
@@ -858,19 +858,19 @@ void common_recv_msg_channel_data(struct Channel *channel, int fd,
 void recv_msg_channel_window_adjust() {
 
 	struct Channel * channel;
-	unsigned int incr, newwin;
+	uint32_t incr, newwin;
 	
 	channel = getchannel();
 	
-	incr = buf_getint(ses.payload);
-	TRACE(("received window increment %u", incr))
+	incr = buf_getuint32(ses.payload);
+	TRACE(("received window increment %lu", (unsigned long)incr))
 	
 	newwin = channel->transwindow + incr;
 	if (newwin < channel->transwindow) {
 		/* Integer overflow, clamp it at maximum.
 		 * Behaviour may be unexpected, senders MUST NOT overflow per rfc4254. */
-		TRACE(("overflow window, prev %u", channel->transwindow));
-		newwin = 0xffffffff;
+		TRACE(("overflow window, prev %lu", (unsigned long)channel->transwindow));
+		newwin = UINT32_MAX;
 	}
 	channel->transwindow = newwin;
 }
@@ -895,7 +895,7 @@ void recv_msg_channel_open() {
 
 	char *type;
 	unsigned int typelen;
-	unsigned int remotechan, transwindow, transmaxpacket;
+	uint32_t remotechan, transwindow, transmaxpacket;
 	struct Channel *channel;
 	const struct ChanType **cp;
 	const struct ChanType *chantype;
@@ -908,9 +908,9 @@ void recv_msg_channel_open() {
 	/* get the packet contents */
 	type = buf_getstring(ses.payload, &typelen);
 
-	remotechan = buf_getint(ses.payload);
-	transwindow = buf_getint(ses.payload);
-	transmaxpacket = buf_getint(ses.payload);
+	remotechan = buf_getuint32(ses.payload);
+	transwindow = buf_getuint32(ses.payload);
+	transmaxpacket = buf_getuint32(ses.payload);
 	transmaxpacket = MIN(transmaxpacket, TRANS_MAX_PAYLOAD_LEN);
 
 	/* figure what type of packet it is */
@@ -1013,7 +1013,7 @@ void send_msg_channel_success(const struct Channel *channel) {
 
 /* Send a channel open failure message, with a corresponding reason
  * code (usually resource shortage or unknown chan type) */
-static void send_msg_channel_open_failure(unsigned int remotechan, 
+static void send_msg_channel_open_failure(uint32_t remotechan,
 		int reason, const char *text, const char *lang) {
 
 	TRACE(("enter send_msg_channel_open_failure"))
@@ -1149,12 +1149,15 @@ void recv_msg_channel_open_confirmation() {
 	}
 	channel->await_open = 0;
 
-	channel->remotechan =  buf_getint(ses.payload);
-	channel->transwindow = buf_getint(ses.payload);
-	channel->transmaxpacket = buf_getint(ses.payload);
+	channel->remotechan = buf_getuint32(ses.payload);
+	channel->transwindow = buf_getuint32(ses.payload);
+	{
+		uint32_t packetmax = buf_getuint32(ses.payload);
+		channel->transmaxpacket = MIN(packetmax, TRANS_MAX_PAYLOAD_LEN);
+	}
 	
-	TRACE(("new chan remote %d local %d", 
-				channel->remotechan, channel->index))
+	TRACE(("new chan remote %lu local %d",
+				(unsigned long)channel->remotechan, channel->index))
 
 	/* Run the inithandler callback */
 	if (channel->type->inithandler) {

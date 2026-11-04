@@ -40,7 +40,7 @@
 /* Create (malloc) a new buffer of size */
 buffer* buf_new(unsigned int size) {
 	buffer* buf;
-	if (size > BUF_MAX_SIZE) {
+	if (size > BUF_MAX_SIZE || size > SIZE_T_MAX - sizeof(buffer)) {
 		dropbear_exit("buf->size too big");
 	}
 
@@ -65,7 +65,7 @@ void buf_burn_free(buffer* buf) {
 /* resize a buffer, pos and len will be repositioned if required when
  * downsizing */
 buffer* buf_resize(buffer *buf, unsigned int newsize) {
-	if (newsize > BUF_MAX_SIZE) {
+	if (newsize > BUF_MAX_SIZE || newsize > SIZE_T_MAX - sizeof(buffer)) {
 		dropbear_exit("buf->size too big");
 	}
 
@@ -102,7 +102,7 @@ void buf_setlen(buffer* buf, unsigned int len) {
 
 /* Increment the length of the buffer */
 void buf_incrlen(buffer* buf, unsigned int incr) {
-	if (incr > BUF_MAX_INCR || buf->len + incr > buf->size) {
+	if (incr > BUF_MAX_INCR || buf->len > buf->size || incr > buf->size - buf->len) {
 		dropbear_exit("Bad buf_incrlen");
 	}
 	buf->len += incr;
@@ -118,7 +118,7 @@ void buf_setpos(buffer* buf, unsigned int pos) {
 
 /* increment the position by incr, increasing the buffer length if required */
 void buf_incrwritepos(buffer* buf, unsigned int incr) {
-	if (incr > BUF_MAX_INCR || buf->pos + incr > buf->size) {
+	if (incr > BUF_MAX_INCR || buf->pos > buf->size || incr > buf->size - buf->pos) {
 		dropbear_exit("Bad buf_incrwritepos");
 	}
 	buf->pos += incr;
@@ -130,7 +130,7 @@ void buf_incrwritepos(buffer* buf, unsigned int incr) {
 /* increment the position by incr */
 void buf_incrpos(buffer* buf, unsigned int incr) {
 	if (incr > BUF_MAX_INCR 
-		|| (buf->pos + incr) > buf->len) {
+		|| buf->pos > buf->len || incr > buf->len - buf->pos) {
 		dropbear_exit("Bad buf_incrpos");
 	}
 	buf->pos += incr;
@@ -179,7 +179,7 @@ void buf_putbyte(buffer* buf, unsigned char val) {
  * the next len bytes from that position can be used */
 unsigned char* buf_getptr(const buffer* buf, unsigned int len) {
 
-	if (len > BUF_MAX_INCR || buf->pos + len > buf->len) {
+	if (len > BUF_MAX_INCR || buf->pos > buf->len || len > buf->len - buf->pos) {
 		dropbear_exit("Bad buf_getptr");
 	}
 	return &buf->data[buf->pos];
@@ -189,7 +189,7 @@ unsigned char* buf_getptr(const buffer* buf, unsigned int len) {
  * This allows writing past the used length, but not past the size */
 unsigned char* buf_getwriteptr(const buffer* buf, unsigned int len) {
 
-	if (len > BUF_MAX_INCR || buf->pos + len > buf->size) {
+	if (len > BUF_MAX_INCR || buf->pos > buf->size || len > buf->size - buf->pos) {
 		dropbear_exit("Bad buf_getwriteptr");
 	}
 	return &buf->data[buf->pos];
@@ -270,20 +270,22 @@ void buf_eatstring(buffer *buf) {
 
 /* Get an uint32 from the buffer and increment the pos */
 unsigned int buf_getint(buffer* buf) {
-	ulong32 val32;
-	unsigned int ret;
-
-	LOAD32H(val32, buf_getptr(buf, 4));
+	uint32_t val32 = buf_getuint32(buf);
 	if (val32 > UINT_MAX) {
 		dropbear_exit("Integer too large");
 	}
+	return (unsigned int)val32;
+}
+
+uint32_t buf_getuint32(buffer* buf) {
+	uint32_t val32;
+	LOAD32H(val32, buf_getptr(buf, 4));
 	buf_incrpos(buf, 4);
-	ret = (unsigned int)val32;
-	return ret;
+	return val32;
 }
 
 /* put a 32bit uint into the buffer, incr bufferlen & pos if required */
-void buf_putint(buffer* buf, int unsigned val) {
+void buf_putint(buffer* buf, uint32_t val) {
 
 	STORE32H(val, buf_getwriteptr(buf, 4));
 	buf_incrwritepos(buf, 4);

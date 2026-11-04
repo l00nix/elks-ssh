@@ -40,8 +40,9 @@ This change does not provide a new entropy source.
 The ELKS build also now explicitly selects `-march=i8086` at compilation and
 linking, in addition to `-mtune=i8086`. The client still requires its own complete
 linked-code and runtime audit; passing the standalone probes does not certify it.
-The reproduced build reports integer-truncation and incompatible-pointer
-warnings. These are recorded for investigation, not dismissed as harmless.
+The initial integer-truncation and incompatible-pointer warnings led to
+corrections in wire types, sequence/rekey counters and buffer arithmetic.
+See [server progress](SERVER-PROGRESS.md); full protocol/security review remains.
 
 Before enabling an ELKS daemon:
 

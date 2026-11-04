@@ -419,7 +419,17 @@ void send_msg_userauth_failure(int partial, int incrfail) {
 		if (!fuzz.fuzzing)
 #endif
 		{
+#ifdef __ia16__
+			/* ELKS usleep() uses select(). Round up and restart the whole
+			 * short delay on EINTR so interruption cannot shorten it. */
+			unsigned long usecs = delay.tv_sec * 1000000UL
+				+ (delay.tv_nsec + 999UL) / 1000UL;
+			int rc;
+			do { rc = usleep(usecs); } while (rc == -1 && errno == EINTR);
+			if (rc == -1) dropbear_exit("Authentication delay failed");
+#else
 			while (nanosleep(&delay, &delay) == -1 && errno == EINTR) { /* Go back to sleep */ }
+#endif
 		}
 
 		ses.authstate.failcount++;
@@ -501,6 +511,13 @@ static int utmp_gid(gid_t *ret_gid) {
 void svr_switch_user(void) {
 	assert(ses.authstate.authdone);
 
+#if !DROPBEAR_SVR_MULTIUSER
+	/* Single-user builds may only serve the identity they already run as.
+	 * Do not substitute a successful no-op for missing initgroups(). */
+	if (getuid() != ses.authstate.pw_uid || getgid() != ses.authstate.pw_gid) {
+		dropbear_exit("Single-user server cannot change identity");
+	}
+#else
 	/* We can only change uid/gid as root ... */
 	if (getuid() == 0) {
 
@@ -543,6 +560,7 @@ void svr_switch_user(void) {
 			dropbear_exit("Couldn't	change user as non-root");
 		}
 	}
+#endif
 }
 
 void svr_raise_gid_utmp(void) {

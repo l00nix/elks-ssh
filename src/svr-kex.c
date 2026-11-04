@@ -47,7 +47,9 @@ static void send_msg_ext_info(void);
  * are carried out by send_msg_kexdh_reply(). recv_msg_kexdh_init() calls
  * that function, then brings the new keys into use */
 void recv_msg_kexdh_init() {
+#if DROPBEAR_NORMAL_DH
 	DEF_MP_INT(dh_e);
+#endif
 	buffer *q_c = NULL;
 
 	TRACE(("enter recv_msg_kexdh_init"))
@@ -82,9 +84,12 @@ void recv_msg_kexdh_init() {
 		dropbear_exit("Bad kex value");
 	}
 
+#if DROPBEAR_NORMAL_DH
 	send_msg_kexdh_reply(&dh_e, q_c);
-
 	mp_clear(&dh_e);
+#else
+	send_msg_kexdh_reply(NULL, q_c);
+#endif
 	if (q_c) {
 		buf_free(q_c);
 		q_c = NULL;

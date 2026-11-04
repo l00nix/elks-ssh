@@ -3,7 +3,7 @@
 
 
 void * m_calloc(size_t nmemb, size_t size) {
-    if (SIZE_T_MAX / nmemb < size) {
+    if (nmemb == 0 || SIZE_T_MAX / nmemb < size) {
         dropbear_exit("m_calloc failed");
     }
     return m_malloc(nmemb*size);

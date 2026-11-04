@@ -109,7 +109,7 @@ static void printhelp(const char * progname) {
 #if INETD_MODE
 					"-i		Start for inetd\n"
 #endif
-					"-W <receive_window_buffer> (default %d, larger may be faster, max 10MB)\n"
+					"-W <receive_window_buffer> (default %d, max %lu bytes)\n"
 					"-K <keepalive>  (0 is never, default %d, in seconds)\n"
 					"-I <idle_timeout>  (0 is never, default %d, in seconds)\n"
 					"-M <max_duration>  (0 is off, default %d, in seconds)\n"
@@ -137,7 +137,7 @@ static void printhelp(const char * progname) {
 #endif
 					MAX_AUTH_TRIES,
 					DROPBEAR_MAX_PORTS, DROPBEAR_DEFPORT, DROPBEAR_PIDFILE,
-					DEFAULT_RECV_WINDOW, DEFAULT_KEEPALIVE, DEFAULT_IDLE_TIMEOUT,
+					DEFAULT_RECV_WINDOW, (unsigned long)MAX_RECV_WINDOW, DEFAULT_KEEPALIVE, DEFAULT_IDLE_TIMEOUT,
 					DEFAULT_MAX_DURATION);
 }
 

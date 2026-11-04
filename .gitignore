@@ -13,5 +13,6 @@ id_*
 /obj-elks/
 /dbclient
 /dropbear
+/wiretest
 /default_options_guard.h
 *.o

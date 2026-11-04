@@ -8,23 +8,24 @@ to bring SSH-2 login and secure file transfer to
 kernel and architecture changes are out of scope.
 
 **Development has started. This is a feasibility prototype, not a working or
-secure SSH server.** The first milestone measures existing cryptographic code
-and checks the ELKS interfaces required by a future port. No network login,
+secure SSH server.** Both client and server now compile for ELKS. Tests cover
+cryptographic code, 16-bit buffer/wire handling and startup refusal without
+secure randomness. No network login,
 key generation or file-transfer service is installed by these probes.
 
 ## Planned suite
 
 | Component | Purpose | Status |
 | --- | --- | --- |
-| SSH daemon | SSH-2 transport, public-key login, shell and remote commands | Design and feasibility |
+| SSH daemon | SSH-2 transport, public-key login, shell and remote commands | Compiles; startup checks only |
 | SFTP subsystem | Secure file transfers through native ELKS filesystem APIs | Planned |
 | Key utility | Public-key display, fingerprints, eventually key generation | Planned |
 | SSH/SFTP clients | Outbound connections from ELKS | Later feasibility work |
 
-The existing **Dropbear ELKS port is our starting point**. Its current ELKS
-deliverable is `dbclient`; the repository name does not establish a working
-ELKS daemon. The inherited source and Git history are preserved. TinySSH was
-considered as an alternative; isolated comparative crypto probes live under
+The existing **Dropbear ELKS port is our starting point**. Its inherited ELKS
+deliverable was `dbclient`; our new server build remains experimental and has
+not completed a successful SSH login. The inherited source and Git history are
+preserved. TinySSH was considered as an alternative; isolated comparative crypto probes live under
 `feasibility/` and do not replace the Dropbear protocol implementation.
 See [the architecture comparison](docs/DESIGN.md).
 
@@ -58,8 +59,15 @@ Initial results: the existing client builds with weak entropy disabled; ten
 standalone crypto checks and the OS probes pass in QEMU on 486 and Pentium CPU
 models. Both probe executables pass the static 8086 instruction audit. The
 daemon and real 8086/8088 execution remain unverified.
-An additional QEMU run confirms that the client stops when strong randomness
-is unavailable. No successful SSH connection is claimed.
+The next checkpoint adds a server build, 32-bit SSH sequence/channel handling
+and fifteen production-code regression checks with four independent cipher
+vectors. See [server progress](docs/SERVER-PROGRESS.md) and the unresolved
+[entropy strategy](docs/ENTROPY.md). No successful SSH connection is claimed.
+
+![ELKS wire regressions and server startup refusal in QEMU](docs/screenshots/qemu-server-startup.png)
+
+The server capture shows the expected refusal without secure randomness.
+[Current test evidence](docs/SERVER-PROGRESS.md) includes build logs and hashes.
 
 ![Crypto feasibility tests running in ELKS under QEMU](docs/screenshots/qemu-crypto.png)
 
@@ -85,6 +93,7 @@ a first viable release candidate is ready for independent testing.
 ## License and provenance
 
 Inherited code retains the upstream [LICENSE](LICENSE). New feasibility code is
-MIT licensed under [feasibility/LICENSE](feasibility/LICENSE). Other third-party
+MIT licensed under [feasibility/LICENSE](feasibility/LICENSE); new regression
+tests use [tests/LICENSE](tests/LICENSE). Other third-party
 licenses are described in [THIRD_PARTY](THIRD_PARTY.md). Development uses AI
 coding assistance. Test results distinguish host, emulator and real hardware.

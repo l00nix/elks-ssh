@@ -68,7 +68,7 @@ static int dropbear_chachapoly_start(int UNUSED(cipher), const unsigned char* UN
 	return CRYPT_OK;
 }
 
-static int dropbear_chachapoly_crypt(unsigned int seq,
+static int dropbear_chachapoly_crypt(uint32_t seq,
 			const unsigned char *in, unsigned char *out,
 			unsigned long len, unsigned long taglen,
 			dropbear_chachapoly_state *state, int direction) {
@@ -116,7 +116,7 @@ static int dropbear_chachapoly_crypt(unsigned int seq,
 	return CRYPT_OK;
 }
 
-static int dropbear_chachapoly_getlength(unsigned int seq,
+static int dropbear_chachapoly_getlength(uint32_t seq,
 			const unsigned char *in, unsigned int *outlen,
 			unsigned long len, dropbear_chachapoly_state *state) {
 	unsigned char seqbuf[8], buf[4];
@@ -150,13 +150,13 @@ static int dropbear_chachapoly_mode_start(int cipher, const unsigned char *iv,
 	return dropbear_chachapoly_start(cipher, iv, key, keylen, num_rounds, cipher_state);
 }
 
-static int dropbear_chachapoly_mode_crypt(unsigned int seq,
+static int dropbear_chachapoly_mode_crypt(uint32_t seq,
 		const unsigned char *in, unsigned char *out, unsigned long len,
 		unsigned long taglen, void *cipher_state, int direction) {
 	return dropbear_chachapoly_crypt(seq, in, out, len, taglen, cipher_state, direction);
 }
 
-static int dropbear_chachapoly_mode_getlength(unsigned int seq,
+static int dropbear_chachapoly_mode_getlength(uint32_t seq,
 		const unsigned char *in, unsigned int *outlen, unsigned long len,
 		void *cipher_state) {
 	return dropbear_chachapoly_getlength(seq, in, outlen, len, cipher_state);

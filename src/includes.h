@@ -284,7 +284,7 @@ typedef u_int32_t uint32_t;
 #endif /* HAVE_UINT32_T */
 
 #ifndef SIZE_T_MAX
-#define SIZE_T_MAX ULONG_MAX
+#define SIZE_T_MAX ((size_t)-1)
 #endif /* SIZE_T_MAX */
 
 #ifdef HAVE_LINUX_PKT_SCHED_H

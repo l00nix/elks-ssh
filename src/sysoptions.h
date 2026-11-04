@@ -245,7 +245,9 @@
 /* for channel code */
 #define RECV_WINDOWEXTEND (opts.recv_window / 3) /* We send a "window extend" every
 								RECV_WINDOWEXTEND bytes */
+#ifndef MAX_RECV_WINDOW
 #define MAX_RECV_WINDOW (10UL * 1024UL * 1024UL) /* 10 MB should be enough */
+#endif
 
 #define MAX_CHANNELS 1000 /* simple mem restriction, includes each tcp/x11
 							connection, so can't be _too_ small */

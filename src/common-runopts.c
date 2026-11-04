@@ -101,7 +101,7 @@ void print_version() {
 
 void parse_recv_window(const char* recv_window_arg) {
 	int ret;
-	unsigned int rw;
+	unsigned int rw = 0;
 
 	ret = m_str_to_uint(recv_window_arg, &rw);
 	if (ret == DROPBEAR_FAILURE || rw == 0 || rw > MAX_RECV_WINDOW) {

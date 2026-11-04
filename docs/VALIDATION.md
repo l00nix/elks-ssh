@@ -1,6 +1,8 @@
 # Initial validation — 2026-11-04
 
-Status: feasibility probes work; no SSH server or secure login is claimed.
+This records the initial probe/client baseline. See the subsequent
+[server checkpoint](SERVER-PROGRESS.md) for the new build and regression results.
+No secure login is claimed.
 
 ## Completed
 

@@ -1,0 +1,93 @@
+{
+  "compiler": "ia16-elf-gcc 6.3.0",
+  "elks_commit": "e1469b64c5809c44d5c822eaeebd0e97d5996289",
+  "code_model": "medium",
+  "march": "i8086",
+  "kernel_or_libc_changes": false,
+  "secure_interoperability": "not tested",
+  "linked_ISA_audit": "not yet performed for these executables",
+  "log_path_redaction": "Absolute prepared-toolchain path replaced with $ELKS",
+  "executables": {
+    "dbclient": {
+      "bytes": 99736,
+      "sha256": "fe11bf54353847cee5499abb83d5a15ef98c1ccc2b30cf49359f3a5abbb84a6a",
+      "memory": {
+        "header_bytes": 64,
+        "header_version": 1,
+        "text_bytes": 46416,
+        "data_bytes": 11920,
+        "bss_bytes": 4464,
+        "header_heap_bytes": 8192,
+        "header_stack_bytes": 8192,
+        "effective_heap_bytes": 8192,
+        "effective_stack_bytes": 8192,
+        "near_static_bytes": 16384,
+        "near_total_before_arguments_environment": 32768,
+        "remaining_before_arguments_environment": 32752,
+        "minimum_argument_environment_reserve": 1024,
+        "memory_gate_pass": true,
+        "note": "Zero header heap/stack fields select ELKS INIT_HEAP/INIT_STACK defaults of 4096 each. argv/envp also consume near space."
+      },
+      "warnings": [
+        "src/netio.c:467:6: warning: unused variable 'val' [-Wunused-variable]",
+        "src/netio.c:466:6: warning: unused variable 'rc' [-Wunused-variable]",
+        "src/cli-auth.c:363:22: warning: passing argument 1 of 'getpass' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]",
+        "src/cli-runopts.c:139:14: warning: unused variable 'proxycmd_arg' [-Wunused-variable]",
+        "src/cli-runopts.c:38:13: warning: 'parse_multihop_hostname' declared 'static' but never defined [-Wunused-function]",
+        "src/cli-chansession.c:350:12: warning: 'cli_init_netcat' defined but not used [-Wunused-function]"
+      ]
+    },
+    "dropbear": {
+      "bytes": 107448,
+      "sha256": "a8852d1d1a76def2bc212ff8961d15fea96b1c3b9572671fcf329dfc831a0f41",
+      "memory": {
+        "header_bytes": 64,
+        "header_version": 1,
+        "text_bytes": 52608,
+        "data_bytes": 13056,
+        "bss_bytes": 4528,
+        "header_heap_bytes": 8192,
+        "header_stack_bytes": 8192,
+        "effective_heap_bytes": 8192,
+        "effective_stack_bytes": 8192,
+        "near_static_bytes": 17584,
+        "near_total_before_arguments_environment": 33968,
+        "remaining_before_arguments_environment": 31552,
+        "minimum_argument_environment_reserve": 1024,
+        "memory_gate_pass": true,
+        "note": "Zero header heap/stack fields select ELKS INIT_HEAP/INIT_STACK defaults of 4096 each. argv/envp also consume near space."
+      },
+      "warnings": [
+        "src/netio.c:467:6: warning: unused variable 'val' [-Wunused-variable]",
+        "src/netio.c:466:6: warning: unused variable 'rc' [-Wunused-variable]",
+        "libtomcrypt/src/headers/tomcrypt_macros.h:421:37: warning: statement with no effect [-Wunused-value]",
+        "src/svr-authpubkey.c:489:8: warning: unused variable 'origgid' [-Wunused-variable]",
+        "src/svr-authpubkey.c:488:8: warning: unused variable 'origuid' [-Wunused-variable]",
+        "src/svr-tcpfwd.c:56:12: warning: 'svr_cancelremotetcp' declared 'static' but never defined [-Wunused-function]",
+        "src/svr-tcpfwd.c:57:12: warning: 'svr_remotetcpreq' declared 'static' but never defined [-Wunused-function]",
+        "src/svr-tcpfwd.c:58:12: warning: 'newtcpdirect' declared 'static' but never defined [-Wunused-function]"
+      ]
+    },
+    "wiretest": {
+      "bytes": 32176,
+      "sha256": "0b17951bc0dd34111cd5c30c1d1fbb8cd4c7f60c80c1999e65a179a8173a0200",
+      "memory": {
+        "header_bytes": 64,
+        "header_version": 1,
+        "text_bytes": 21056,
+        "data_bytes": 3696,
+        "bss_bytes": 3664,
+        "header_heap_bytes": 2048,
+        "header_stack_bytes": 4096,
+        "effective_heap_bytes": 2048,
+        "effective_stack_bytes": 4096,
+        "near_static_bytes": 7360,
+        "near_total_before_arguments_environment": 13504,
+        "remaining_before_arguments_environment": 52016,
+        "minimum_argument_environment_reserve": 1024,
+        "memory_gate_pass": true,
+        "note": "Zero header heap/stack fields select ELKS INIT_HEAP/INIT_STACK defaults of 4096 each. argv/envp also consume near space."
+      }
+    }
+  }
+}

@@ -117,7 +117,8 @@ void send_msg_kexdh_init() {
 void recv_msg_kexdh_reply() {
 
 	sign_key *hostkey = NULL;
-	unsigned int keytype, keybloblen;
+	enum signkey_type keytype;
+	unsigned int keybloblen;
 	unsigned char* keyblob = NULL;
 
 	TRACE(("enter recv_msg_kexdh_reply"))

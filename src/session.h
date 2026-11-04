@@ -150,7 +150,7 @@ struct sshsession {
 						passed to packet processing functions positioned past
 						that, see payload_beginning */
 	unsigned int payload_beginning;
-	unsigned int transseq, recvseq; /* Sequence IDs */
+	uint32_t transseq, recvseq; /* SSH sequence IDs must not wrap at 16 bits. */
 
 	/* Packet-handling flags */
 	const packettype * packettypes; /* Packet handler mappings for this

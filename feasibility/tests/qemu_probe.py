@@ -33,6 +33,10 @@ def run(args):
               'original_8086_execution': 'not tested'}
     if args.client:
         result['dbclient_sha256'] = sha(args.client)
+    if args.wiretest:
+        result['wiretest_sha256'] = sha(args.wiretest)
+    if args.server:
+        result['dropbear_sha256'] = sha(args.server)
     with tempfile.TemporaryDirectory(prefix='esh-') as directory:
         temp = Path(directory)
         disk = temp / 'disk.img'
@@ -50,6 +54,12 @@ def run(args):
         if args.client:
             subprocess.run(['mcopy', '-o', '-i', str(disk), str(args.client),
                             '::/bin/dbclient'], check=True)
+        if args.wiretest:
+            subprocess.run(['mcopy', '-o', '-i', str(disk), str(args.wiretest),
+                            '::/bin/wiretest'], check=True)
+        if args.server:
+            subprocess.run(['mcopy', '-o', '-i', str(disk), str(args.server),
+                            '::/bin/dropbear'], check=True)
         serial, qmp = temp / 'serial', temp / 'qmp'
         with (out / 'qemu.log').open('w') as log:
             proc = subprocess.Popen([
@@ -112,6 +122,19 @@ def run(args):
                         raise RuntimeError('PTY unavailable')
                     if b'Current account lookup: available' not in down:
                         raise RuntimeError('Account lookup unavailable')
+                    if args.wiretest:
+                        wire = command('wiretest')
+                        if b'RESULT PASS checks=15 failures=0' not in wire or b'FAIL' in wire:
+                            raise RuntimeError('Wire regression failed')
+                        if b'STACK USING' in wire or b'STACK OVERFLOW' in wire:
+                            raise RuntimeError('Wire regression exceeded reserved stack')
+                        vectors = json.loads((Path(__file__).resolve().parents[2] /
+                                              'tests/chachapoly-vectors.json').read_text())
+                        for sequence, ciphertext in vectors.items():
+                            if ('VECTOR ' + sequence + ' ' + ciphertext).encode() not in wire:
+                                raise RuntimeError('Cipher reference mismatch: ' + sequence)
+                        result['wire_regressions'] = 15
+                        result['independent_cipher_vectors'] = 4
                     if args.client:
                         # This inherited client seeds before parsing even -V.
                         # Confirm an unavailable RNG cannot enter a connection.
@@ -123,8 +146,20 @@ def run(args):
                         if b'STACK USING' in refusal or b'STACK OVERFLOW' in refusal:
                             raise RuntimeError('Client exceeded its stack reservation')
                         result['client_entropy_failure_closed'] = True
+                    if args.server:
+                        version = command('dropbear -V')
+                        if b'Dropbear v2025.89' not in version:
+                            raise RuntimeError('Unexpected server version output')
+                        refusal = command('dropbear -F', expected=1)
+                        if b'Failure reading random device' not in refusal:
+                            raise RuntimeError('Server did not fail for missing entropy')
+                        for text in (b'Weak entropy fallback', b'STACK USING', b'STACK OVERFLOW'):
+                            if text in refusal or text in version:
+                                raise RuntimeError('Unsafe server startup: ' + repr(text))
+                        result['server_version_passed'] = True
+                        result['server_entropy_failure_closed'] = True
                     start = time.monotonic()
-                    crypto = command('cryptest', 180)
+                    crypto = command('cryptest', 300)
                     result['crypto_host_elapsed_seconds'] = round(time.monotonic()-start, 3)
                     if b'RESULT PASS failures=0' not in crypto or b'FAIL' in crypto:
                         raise RuntimeError('Crypto known-answer test failed')
@@ -147,7 +182,12 @@ def run(args):
                     command('echo SHELL_STILL_WORKS')
                     if args.screenshot:
                         command("echo -e '\\033[2J\\033[H' > /dev/tty1")
-                        command('cryptest > /dev/tty1', 180)
+                        if args.server and args.wiretest:
+                            command('wiretest | grep -v VECTOR > /dev/tty1')
+                            command('dropbear -V > /dev/tty1 2>&1')
+                            command('dropbear -F > /dev/tty1 2>&1', expected=1)
+                        else:
+                            command('cryptest > /dev/tty1', 300)
                     command('sync')
                 with socket.socket(socket.AF_UNIX) as control:
                     control.connect(str(qmp))
@@ -167,7 +207,8 @@ def run(args):
 
                     qcommand('qmp_capabilities')
                     if args.screenshot:
-                        qcommand('screendump', {'filename': str(out / 'crypto.ppm')})
+                        filename = 'server.ppm' if args.server and args.wiretest else 'crypto.ppm'
+                        qcommand('screendump', {'filename': str(out / filename)})
                     qcommand('quit')
                     proc.wait(timeout=10)
                 result['status'] = 'passed'
@@ -198,4 +239,8 @@ if __name__ == '__main__':
     parser.add_argument('--screenshot', action='store_true')
     parser.add_argument('--client', type=Path,
                         help='Optional dbclient built with weak entropy disabled')
+    parser.add_argument('--wiretest', type=Path,
+                        help='Optional production-code 16-bit wire regression executable')
+    parser.add_argument('--server', type=Path,
+                        help='Optional server version and no-entropy startup checks only')
     run(parser.parse_args())

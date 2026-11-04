@@ -123,13 +123,13 @@ static int dropbear_gcm_mode_start(int cipher, const unsigned char *iv,
 	return dropbear_gcm_start(cipher, iv, key, keylen, num_rounds, cipher_state);
 }
 
-static int dropbear_gcm_mode_crypt(unsigned int seq,
+static int dropbear_gcm_mode_crypt(uint32_t seq,
 		const unsigned char *in, unsigned char *out, unsigned long len,
 		unsigned long taglen, void *cipher_state, int direction) {
 	return dropbear_gcm_crypt(seq, in, out, len, taglen, cipher_state, direction);
 }
 
-static int dropbear_gcm_mode_getlength(unsigned int seq,
+static int dropbear_gcm_mode_getlength(uint32_t seq,
 		const unsigned char *in, unsigned int *outlen, unsigned long len,
 		void *cipher_state) {
 	return dropbear_gcm_getlength(seq, in, outlen, len, cipher_state);

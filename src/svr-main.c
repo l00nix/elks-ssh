@@ -467,6 +467,12 @@ static void commonsetup() {
 
 	crypto_init();
 
+#ifdef __ia16__
+	/* Refuse startup before hostkey loading or bind/listen if ELKS has no
+	 * strong random source. Per-connection reseeding below remains required. */
+	seedrandom();
+#endif
+
 	/* Now we can setup the hostkeys - needs to be after logging is on,
 	 * otherwise we might end up blatting error messages to the socket */
 	load_all_hostkeys();

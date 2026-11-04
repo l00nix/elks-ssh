@@ -12,13 +12,34 @@ From the repository root:
 ELKSSH_ELKS=/absolute/path/to/elks sh toolchain/build-external.sh
 ```
 
-This builds `dbclient`, **not an ELKS sshd**. Strong random-device failure is
+This builds the experimental `dbclient`. Strong random-device failure is
 fatal. Do not re-enable the inherited weak-randomness option to make a login
 demonstration work. A successful build is not a secure interoperability result.
 
 The build script is suitable for a future `buildext.sh` entry. Image installation
 through `elkscmd/ExtApplications` is deferred until a viable candidate exists;
 no automatic startup service or package registration has been installed.
+
+## Experimental server and wire regression
+
+```sh
+ELKSSH_PROGRAM=dropbear ELKSSH_ELKS=/absolute/path/to/elks sh toolchain/build-external.sh
+```
+
+This builds `dropbear` with the existing ELKS APIs. It is not ready for deployment
+or automatic startup. The current image has no usable secure RNG; startup must
+fail before binding a port. The configuration is single-user and public-key-only;
+no authentication flow has passed an interoperability test yet.
+
+With the prepared toolchain on PATH, build the development-only test executable:
+
+```sh
+make -f Makefile.elks wiretest
+```
+
+Client and server object directories are separate, and header changes trigger
+recompilation. Integer-overflow, incompatible-pointer and implicit-declaration
+warnings are build errors. Other warnings are retained in the evidence.
 
 ## Standalone feasibility probes
 
@@ -78,7 +99,22 @@ the original image hash remains unchanged. Logs, binary hashes and a JSON result
 are retained. `--screenshot` captures actual guest console pixels through QMP.
 Do not use its wall-clock durations as 8086/8088 performance estimates.
 The optional client check expects an image without a usable random device and
-verifies that the client fails with an entropy error. It does not test a login.
+verifies that the client fails with an entropy error. The server check exercises
+`dropbear -V` and foreground startup (`-F`), requiring refusal for missing
+entropy. Syslog is disabled, so this build does not accept `-E`.
+
+From the repository root, run the combined suite:
+
+```sh
+python3 feasibility/tests/qemu_probe.py --image /path/to/hd32-fat.img \
+    --build feasibility/build --cpu 486 --out feasibility/test-output/server \
+    --wiretest ./wiretest --client ./dbclient --server ./dropbear
+```
+
+The checked-in cipher fixtures need no Python crypto dependency at test time.
+To reproduce them independently, run `python3 tests/reference_vectors.py` in a
+host environment with `cryptography` installed (validated with 50.0.2). This
+host tool is not part of the ELKS build or entropy provisioning.
 
 ## Remote compilation
 

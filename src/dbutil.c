@@ -107,6 +107,8 @@ void dropbear_exit(const char* format, ...) {
 	va_start(param, format);
 	_dropbear_exit(EXIT_FAILURE, format, param);
 	va_end(param);
+	/* Preserve the noreturn contract even if an exit hook returns. */
+	_exit(EXIT_FAILURE);
 }
 
 void generic_dropbear_exit(int exitcode, const char* format, 

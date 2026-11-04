@@ -45,8 +45,9 @@ struct ChanType;
 struct Channel {
 
 	unsigned int index; /* the local channel index */
-	unsigned int remotechan;
-	unsigned int recvwindow, transwindow;
+	uint32_t remotechan;
+	unsigned int recvwindow;
+	uint32_t transwindow;
 	unsigned int recvdonelen;
 	unsigned int recvmaxpacket, transmaxpacket;
 	void* typedata; /* a pointer to type specific data */

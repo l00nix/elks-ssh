@@ -26,3 +26,7 @@ The shim headers under `feasibility/tests/shim/` select upstream crypto features
 standalone feasibility test. They are not a substitute for a complete Dropbear
 configuration or port. Fixed RFC test vectors are public test data, never keys
 for a running service.
+
+New production-code regression harnesses in `tests/` use [tests/LICENSE](tests/LICENSE).
+The independent vector generator uses the host Python `cryptography` package
+(50.0.2 for recorded vectors); that package is not vendored or linked into ELKS.

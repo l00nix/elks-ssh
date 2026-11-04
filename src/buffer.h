@@ -62,7 +62,7 @@ buffer * buf_getstringbuf(buffer *buf);
 buffer * buf_getbuf(buffer *buf);
 buffer * buf_getptrcopy(const buffer* buf, unsigned int len);
 void buf_eatstring(buffer *buf);
-void buf_putint(buffer* buf, unsigned int val);
+void buf_putint(buffer* buf, uint32_t val);
 void buf_putstring(buffer* buf, const char* str, unsigned int len);
 void buf_putbufstring(buffer *buf, const buffer* buf_str);
 void buf_putbytes(buffer *buf, const unsigned char *bytes, unsigned int len);
@@ -71,5 +71,7 @@ void buf_putmpint(buffer* buf, const mp_int * mp);
 int buf_getmpint(buffer* buf, mp_int* mp);
 #endif
 unsigned int buf_getint(buffer* buf);
+/* Full SSH uint32; buf_getint remains checked for local allocation sizes. */
+uint32_t buf_getuint32(buffer* buf);
 
 #endif /* DROPBEAR_BUFFER_H_ */

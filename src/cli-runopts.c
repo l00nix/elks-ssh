@@ -81,7 +81,7 @@ static void printhelp() {
 #if DROPBEAR_CLI_REMOTETCPFWD
 					"-R <[listenaddress:]listenport:remotehost:remoteport> Remote port forwarding\n"
 #endif
-					"-W <receive_window_buffer> (default %d, larger may be faster, max 10MB)\n"
+					"-W <receive_window_buffer> (default %d, max %lu bytes)\n"
 					"-K <keepalive>  (0 is never, default %d)\n"
 					"-I <idle_timeout>  (0 is never, default %d)\n"
 					"-M <max_duration>  (0 is off, default %d, in seconds)\n"
@@ -105,7 +105,7 @@ static void printhelp() {
 #if DROPBEAR_CLI_PUBKEY_AUTH
 					DROPBEAR_DEFAULT_CLI_AUTHKEY,
 #endif
-					DEFAULT_RECV_WINDOW, DEFAULT_KEEPALIVE, DEFAULT_IDLE_TIMEOUT,
+					DEFAULT_RECV_WINDOW, (unsigned long)MAX_RECV_WINDOW, DEFAULT_KEEPALIVE, DEFAULT_IDLE_TIMEOUT,
 					DEFAULT_MAX_DURATION);
 
 }
