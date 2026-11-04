@@ -73,3 +73,44 @@ protocol for serial cables, networks or untrusted entropy devices. Hardware
 source qualification, transport protection, disconnect/recovery behavior and
 replay resistance remain release gates. No standalone security claim follows
 from a passing emulator test.
+
+## Hardware provider acceptance contract
+
+The first hardware design should use a fresh trusted-host source over a
+dedicated existing device interface. A qualified hardware RNG can later supply
+the same consumer contract. This remains a design target, not an implemented
+provider. On the HP, the known serial port is currently the console; extra
+device nodes do not prove extra hardware. A dedicated link or an explicit
+console handoff, plus a separate SSH client transport, must be established
+before installing a candidate.
+
+The provider must deliver a complete fresh 32-byte seed for initialization and
+each connection reseed. Output must come from the trusted host's OS random
+source or a qualified hardware source, never clock values or saved response
+bytes. Bound every request; reject timeout, EOF, partial input and source
+failure without opening a listener or continuing an affected handshake.
+Recovery must begin a new request with stale input discarded. Restrict device
+ownership and prevent console input or another process from sharing the stream.
+
+A physically controlled direct cable can define an explicit trusted transport
+boundary. An unauthenticated network relay cannot. A network source needs a
+reviewed authenticated protocol with freshness across disconnects and reboots;
+adding a MAC alone does not prevent replay. Neither this document nor the
+QEMU-only EGD framing supplies that protocol. The private socket test must not
+be relabeled as a hardware implementation.
+
+Qualification must cover these failures before hardware SSH deployment:
+
+- Missing source, zero through 31 response bytes, timeout and mid-response
+  disconnect all fail closed.
+- Restart, retry and reconnect cannot consume leftover or replayed responses.
+- Parent and child requests obtain distinct fresh input after fork; failure
+  cannot make a child reuse inherited generator state for a session.
+- Provider restart, host suspend and target reboot do not reuse cached output.
+- Failure leaves no unintended listener, blocked child or leaked descriptor;
+  successful recovery still requires a qualified source.
+
+These are acceptance requirements, not completed tests. Existing QEMU short
+and silent-source tests exercise only part of this contract. Secure standalone
+operation remains a separate milestone with the persistence and rollback
+requirements above.

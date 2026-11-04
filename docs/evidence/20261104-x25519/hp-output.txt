@@ -1,0 +1,15 @@
+X25519 comparative probe: m15-0
+ABI int=2 long=4 pointer=2; public vectors only
+PASS alice-public seconds=28
+PASS bob-public seconds=28
+PASS alice-shared seconds=28
+PASS bob-shared seconds=29
+PASS low-zero seconds=28
+PASS low-one seconds=28
+PASS noncanon-p seconds=28
+PASS noncanon-p1 seconds=28
+PASS noncanon-p9 seconds=28
+PASS point-highbit seconds=28
+PASS scalar-zero seconds=28
+PASS scalar-ff seconds=28
+RESULT PASS checks=12 failures=0 seconds=337

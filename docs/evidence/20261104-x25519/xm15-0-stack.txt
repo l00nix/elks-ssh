@@ -1,0 +1,12 @@
+ec_c25519_m15.c:1170:1:f255_add	18	static
+ec_c25519_m15.c:1195:1:f255_sub	18	static
+ec_c25519_m15.c:1259:1:api_generator	6	static
+ec_c25519_m15.c:1267:1:api_order	6	static
+ec_c25519_m15.c:1275:1:api_xoff	6	static
+ec_c25519_m15.c:1283:1:cswap	22	static
+ec_c25519_m15.c:1449:1:api_muladd	6	static
+ec_c25519_m15.c:144:1:norm13.constprop	14	static
+ec_c25519_m15.c:1066:1:f255_mulgen	538	dynamic,bounded
+ec_c25519_m15.c:1300:1:api_mul.part.0	1300	dynamic,bounded
+ec_c25519_m15.c:1300:1:api_mul	6	static
+ec_c25519_m15.c:1436:1:api_mulgen	26	dynamic,bounded

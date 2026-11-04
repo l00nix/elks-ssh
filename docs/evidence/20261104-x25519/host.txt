@@ -1,0 +1,46 @@
+X25519 comparative probe: m15-0
+ABI int=4 long=8 pointer=8; public vectors only
+PASS alice-public seconds=0
+PASS bob-public seconds=0
+PASS alice-shared seconds=0
+PASS bob-shared seconds=0
+PASS low-zero seconds=0
+PASS low-one seconds=0
+PASS noncanon-p seconds=0
+PASS noncanon-p1 seconds=0
+PASS noncanon-p9 seconds=0
+PASS point-highbit seconds=0
+PASS scalar-zero seconds=0
+PASS scalar-ff seconds=0
+RESULT PASS checks=12 failures=0 seconds=0
+X25519 comparative probe: m15-1
+ABI int=4 long=8 pointer=8; public vectors only
+PASS alice-public seconds=0
+PASS bob-public seconds=0
+PASS alice-shared seconds=0
+PASS bob-shared seconds=0
+PASS low-zero seconds=0
+PASS low-one seconds=0
+PASS noncanon-p seconds=0
+PASS noncanon-p1 seconds=0
+PASS noncanon-p9 seconds=0
+PASS point-highbit seconds=0
+PASS scalar-zero seconds=0
+PASS scalar-ff seconds=0
+RESULT PASS checks=12 failures=0 seconds=0
+X25519 comparative probe: dropbear
+ABI int=4 long=8 pointer=8; public vectors only
+PASS alice-public seconds=0
+PASS bob-public seconds=0
+PASS alice-shared seconds=0
+PASS bob-shared seconds=0
+PASS low-zero seconds=0
+PASS low-one seconds=0
+PASS noncanon-p seconds=0
+PASS noncanon-p1 seconds=0
+PASS noncanon-p9 seconds=0
+PASS point-highbit seconds=0
+PASS scalar-zero seconds=0
+PASS scalar-ff seconds=0
+RESULT PASS checks=12 failures=0 seconds=0
+PASS unchanged vendor files: 29

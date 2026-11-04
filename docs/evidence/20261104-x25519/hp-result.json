@@ -1,0 +1,70 @@
+{
+  "status": "passed",
+  "date": "2026-11-04",
+  "machine": "HP 200LX",
+  "serial_adapter": "BH00K9NP",
+  "baud": 9600,
+  "uname": "ELKS elks 0.9.2 hp200lx-4.0-local 2026-10-21 ibmpc i8086",
+  "real_hardware": true,
+  "original_8086_execution_proven": false,
+  "ssh_login": false,
+  "production_crypto_changed": false,
+  "hardware_candidates": [
+    "xbase",
+    "xm15-0"
+  ],
+  "excluded_after_qemu_failure": [
+    "xm15-1"
+  ],
+  "matched_quick_vector": {
+    "name": "alice-public",
+    "baseline_seconds": 235,
+    "unrolled_seconds": 28,
+    "ratio": 8.392857142857142,
+    "repetitions": 1,
+    "clock_resolution_seconds": 1
+  },
+  "unrolled_full": {
+    "checks": 12,
+    "failures": 0,
+    "seconds": 337,
+    "exit_status": 0,
+    "vector_seconds": {
+      "alice-public": 28,
+      "bob-public": 28,
+      "alice-shared": 28,
+      "bob-shared": 29,
+      "low-zero": 28,
+      "low-one": 28,
+      "noncanon-p": 28,
+      "noncanon-p1": 28,
+      "noncanon-p9": 28,
+      "point-highbit": 28,
+      "scalar-zero": 28,
+      "scalar-ff": 28
+    }
+  },
+  "cleanup": {
+    "probe_process_remaining": false,
+    "main_free_kib_after": 397,
+    "network_started": false
+  },
+  "output_sha256": "14462409022a090ffb0d71a82f2c147be69862459db2bd953279a65d9b0ebaac",
+  "artifacts": {
+    "xbase": {
+      "sha256": "e70840b2ef7e2bf8b6dc4ba0863a0c3b9904953fa2eae074ef9899a78f6275f6",
+      "md5": "1ce6c55c89b17a4697e0d7db9696a8a6"
+    },
+    "xm15-0": {
+      "sha256": "d4c1ec4d723f5d1c85597b3a7ad349e9a37ff7a25c9f19086486a9fee713781d",
+      "md5": "405ef73ecef51230b54ed93e253f0872"
+    }
+  },
+  "capture": {
+    "method": "ELXcap after displaying unedited saved probe output on /dev/tty1",
+    "bmp_sha256": "9af296788f0898c388be4bbb204e6929de8044a720824909e967c088a1106292",
+    "bmp_md5": "adcc246c6e08401c67feca81de3dbcac",
+    "png_sha256": "0f588359a0bf3f4397d8f3f90774715610294f5e9c0bbd0973cbbb47d153319e",
+    "png_conversion": "sips; format conversion only"
+  }
+}

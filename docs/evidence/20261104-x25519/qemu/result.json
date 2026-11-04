@@ -1,0 +1,47 @@
+{
+  "status": "failed",
+  "cpu": "486",
+  "image_sha256": "2302b8604974a0ace258f5a651cf04cad1b36c5b59fdf218f1024b254f18812d",
+  "real_hardware": false,
+  "production_crypto_selected": false,
+  "cases": {
+    "xbase": {
+      "passed": true,
+      "checks": 1,
+      "host_seconds": 7.263,
+      "vector_seconds": {
+        "alice-public": 7
+      }
+    },
+    "xm15-0": {
+      "passed": true,
+      "checks": 12,
+      "host_seconds": 13.233,
+      "vector_seconds": {
+        "alice-public": 1,
+        "bob-public": 1,
+        "alice-shared": 1,
+        "bob-shared": 1,
+        "low-zero": 2,
+        "low-one": 1,
+        "noncanon-p": 1,
+        "noncanon-p1": 1,
+        "noncanon-p9": 1,
+        "point-highbit": 1,
+        "scalar-zero": 1,
+        "scalar-ff": 1
+      }
+    },
+    "xm15-1": {
+      "passed": false,
+      "checks": 12,
+      "host_seconds": 474.417,
+      "vector_seconds": {}
+    }
+  },
+  "xbase_sha256": "e70840b2ef7e2bf8b6dc4ba0863a0c3b9904953fa2eae074ef9899a78f6275f6",
+  "xm15-0_sha256": "d4c1ec4d723f5d1c85597b3a7ad349e9a37ff7a25c9f19086486a9fee713781d",
+  "xm15-1_sha256": "567fd0e0396507763d4156e48414491ff8c3a6a753fea40580dc6a3e001848e2",
+  "error": "xm15-1 failed",
+  "original_image_unchanged": true
+}

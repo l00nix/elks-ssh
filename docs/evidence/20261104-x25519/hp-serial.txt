@@ -1,0 +1,542 @@
+
+--- 2026-11-04T13:39:14 ---
+
+TX: uname -a
+uname -a
+ELKS elks 0.9.2 hp200lx-4.0-local 2026-10-21 ibmpc i8086
+# 
+TX: ps
+ps
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     1    1 root    S   0   406 13962  66560 /bin/sh 
+    2     1    1 root    S   0  4988  9380  66560 /bin/sh 
+  139     1    1 root    R   0    50  2092   8912 ps 
+# 
+TX: elxstat
+elxstat
+ELXstat 0.1 - HP 200LX
+Main battery      2.613 V  Alkaline (configured)
+Backup battery    3.025 V
+Firmware alerts   main=clear backup=clear card=clear
+Power source      external
+Charging status   disabled
+Charging timer    00:00:00 (nominal 55 ms ticks)
+Battery interval  14.850 seconds
+Data source       firmware cache; sample age unknown
+# 
+--- 2026-11-04T13:40:00 ---
+stty -echo; uudecode; stty echo; echo XFER_DONE
+XFER_DONE
+# 
+TX: md5sum /root/sshprobe/xbase
+md5sum /root/sshprobe/xbase
+1ce6c55c89b17a4697e0d7db9696a8a6  /root/sshprobe/xbase
+# 
+--- 2026-11-04T13:40:29 ---
+
+TX: chmod 700 /root/sshprobe/xbase
+chmod 700 /root/sshprobe/xbase
+# 
+TX: /root/sshprobe/xbase quick
+/root/sshprobe/xbase quick
+X25519 comparative probe: dropbear
+ABI int=2 long=4 pointer=2; public vectors only
+PASS alice-public seconds=235
+RESULT PASS checks=1 failures=0 seconds=235
+# 
+TX: echo BENCH_EXIT=$?
+echo BENCH_EXIT=$?
+BENCH_EXIT=0
+# 
+--- 2026-11-04T13:44:24 ---
+stty -echo; uudecode; stty echo; echo XFER_DONE
+XFER_DONE
+# 
+TX: md5sum /root/sshprobe/xm15-0
+md5sum /root/sshprobe/xm15-0
+405ef73ecef51230b54ed93e253f0872  /root/sshprobe/xm15-0
+# 
+--- 2026-11-04T13:46:27 ---
+
+TX: chmod 700 /root/sshprobe/xm15-0
+chmod 700 /root/sshprobe/xm15-0
+# 
+TX: /root/sshprobe/xm15-0 quick
+/root/sshprobe/xm15-0 quick
+X25519 comparative probe: m15-0
+ABI int=2 long=4 pointer=2; public vectors only
+PASS alice-public seconds=28
+RESULT PASS checks=1 failures=0 seconds=29
+# 
+TX: echo BENCH_EXIT=$?
+echo BENCH_EXIT=$?
+BENCH_EXIT=0
+# 
+--- 2026-11-04T13:47:05 ---
+
+TX: /root/sshprobe/xm15-0 > /root/sshprobe/xm15.log 2>&1; echo FULL_EXIT=$?
+/root/sshprobe/xm15-0 > /root/sshprobe/xm15.log 2>&1; echo FULL_EXIT=$?
+FULL_EXIT=0
+# 
+TX: cat /root/sshprobe/xm15.log
+cat /root/sshprobe/xm15.log
+X25519 comparative probe: m15-0
+ABI int=2 long=4 pointer=2; public vectors only
+PASS alice-public seconds=28
+PASS bob-public seconds=28
+PASS alice-shared seconds=28
+PASS bob-shared seconds=29
+PASS low-zero seconds=28
+PASS low-one seconds=28
+PASS noncanon-p seconds=28
+PASS noncanon-p1 seconds=28
+PASS noncanon-p9 seconds=28
+PASS point-highbit seconds=28
+PASS scalar-zero seconds=28
+PASS scalar-ff seconds=28
+RESULT PASS checks=12 failures=0 seconds=337
+# 
+TX: ps
+ps
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     1    1 root    S   0   406 13962  66560 /bin/sh 
+    2     1    1 root    S   2  5242  9126  66560 /bin/sh 
+  155     1    1 root    R   2    50  2092   8912 ps 
+# 
+TX: meminfo
+meminfo
+  HEAP   TYPE   SIZE    ADDR    SEG   TYPE     SIZE  CNT  NAME
+  5A8E   MEM     20   024410   2441   free     1008    0  
+  5AAE   TASK 14534
+  9380   INOD  8256
+  B3CC   FILE   896
+  B758   CACH  8192
+  D764   BUFH   160
+  D810   MEM     20   026800   2680   CSEG    43936    2  /bin/sh 
+  D830   MEM     20   024800   2480   BUF      8192    1  
+  D850   MEM     20   012DE0   12DE   CSEG     3824    1  meminfo 
+  D870   TTY     80
+  D8CC   TTY     80
+  D928   TTY   1024
+  DD34   free  8908
+  2D04   MEM     20   000500   0050   free     1536    0  
+  2D24   MEM     20   0313A0   313A   DSEG    22624    1  /bin/sh 
+  2D44   MEM     20   036C00   36C0   DSEG    22624    1  /bin/sh 
+  2D64   MEM     20   03C460   3C46   free    22624    0  
+  2D84   MEM     20   041CC0   41CC   DSEG     2368    1  meminfo 
+  2DA4   TTY     80
+  2E00   MEM     20   013CD0   13CD   free     1856    0  
+  2E20   MEM     20   042600   4260   free   379392    0  
+  2E40   free   710
+  Heap 33/ 42K used, 9K free
+  Main 101/498K used, 397K free, XMS 0/0K used, 0K free, Total 498K
+# 
+--- 2026-11-04T13:52:51 ---
+
+TX: clear >/dev/tty1
+clear >/dev/tty1
+# 
+TX: echo 'ELKS SSH - HP 200LX public-vector probe; no SSH login' >/dev/tty1
+echo 'ELKS SSH - HP 200LX public-vector probe; no SSH login' >/dev/tty1
+# 
+TX: uname -a >/dev/tty1
+uname -a >/dev/tty1
+# 
+TX: cat /root/sshprobe/xm15.log >/dev/tty1
+cat /root/sshprobe/xm15.log >/dev/tty1
+# 
+TX: elxcap -q /root/sshprobe/xm15.bmp
+elxcap -q /root/sshprobe/xm15.bmp
+# 
+TX: md5sum /root/sshprobe/xm15.bmp
+md5sum /root/sshprobe/xm15.bmp
+adcc246c6e08401c67feca81de3dbcac  /root/sshprobe/xm15.bmp
+# 
+--- 2026-11-04T13:53:12 ---
+uuencode /root/sshprobe/xm15.bmp capture.bin
+begin 644 capture.bin
+M0DV^/@       #X    H    @ (  ,@    !  $      ( ^            
+M  (         ____                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                        >W\\
+M/'\\ 'AF/#P /#,\/'-^ 'Y^ #P[/#P[>#Q^ #P ?CP\/#,[?@ \/!@     
+M                                           S,69F,1@ ,&9F9@!F
+M,V!F-@< &&8 &&88&&8P8 < 9@ '8&9F,V8' &9F&                   
+M                             #8T#F8P&  P9@X. & S?F \/GX8,  8
+M/A@89C!^/GYV #Y^8&8S9CY^!@88                                
+M                /#P\9C 8 #Y^/#P 9C-F9C9P !@< #P&&!AF.V9P &X 
+M<&9F9C-F<  <' P                                             
+M   S-'!F,!@ ,V9P<  \/CP\,SY^> 8 &#PX&&9N/#Y^9@ ^/#P\;CX^?@8&
+M!@                                               #,Q9F8P6@ S
+M9F9F   P   P   X9@ ;   8      !F        !@  9F9F            
+M                                    ?G\\9GA^ 'X\/#P  '   '  
+M !@\  X &#@      #P        .   \/'X                         
+M                                                            
+M                                                            
+M         'AF/#P ?CP[/#MX #P\ 'X\/#PS.WX ?CP                 
+M                                                        ,&9F
+M9@ '9F889C  &!@ !V!F9C-F!P!F9@                              
+M                                           P9@X. #Y@/A@^,  8
+M&  ^?F!F,V8^?C!F                                            
+M                             #Y^/#P <&8&& 8[?CP\ '!F9F8S9G  
+M'#P                                                         
+M                ,V9P<  ^/#P8/&X &!@ /CP\/&X^/GX&9@          
+M                                                            
+M   S9F9F     !@    ;&P        8  &9F                        
+M                                                 'X\/#P     
+M.     X.        #@  /#P                                     
+M                                                            
+M                                                            
+M                      !X9CP\ 'X\.SP[> !^/'@\ 'X\/#PS.WX ?CP 
+M                                                            
+M         #!F9F8 !V9F&&8P #)@,&8 !V!F9C-F!P!F9@              
+M                                                        ,&8.
+M#@ ^8#X8/C  &'XP9@ ^?F!F,V8^?C!F                            
+M                                           ^?CP\ '!F!A@&.WY,
+M9CMF '!F9F8S9G  '#P                                         
+M                             #-F<'  /CP\&#QN 'X\;CP /CP\/&X^
+M/GX&9@                                                      
+M                ,V9F9@     8                  8  &9F        
+M                                                            
+M  !^/#P\     #@                 #@  /#P                     
+M                                                        >   
+M       \                                                    
+M                                    >&8\/  P/#PS'  S/ 8S;CP<
+M 'X\/#PS.WX ?CP                                             
+M                       P9F9F #YF&#,R #,8/C,S&#( !V!F9C-F!P!F
+M9@                                                          
+M         #!F#@X ,V88,S  ,QAF,S,8,  ^?F!F,V8^?C!F            
+M                                                        /GX\
+M/  S9A@S,'XS&&8S,Q@P '!F9F8S9G  '#P                         
+M                                           S9G!P &X\.&Y\ #XX
+M.SX^.'P /CP\/&X^/GX&9@                                      
+M                             #-F9F8      #  ,   ,#  ,       
+M  8  &9F                                                    
+M                ?CP\/    !@ $ !P& !P<!@0        #@  /#P     
+M                                                            
+M                     '@                                     
+M                                                 'AF/#P ,SPS
+M/#LS/#, ,#@ ?CP\/#,[?@!^/                                   
+M                                    ,&9F9@ S9C-F9C-F,P ^#  '
+M8&9F,V8' &9F                                                
+M                       P9@X. #-F,V ^,V8S #,& #Y^8&8S9CY^,&8 
+M                                                            
+M         #Y^/#P ,V8S9@8S9C-^,SX <&9F9C-F<  </               
+M                                                        ,V9P
+M< !N/&X\/&X\;@!N9@ ^/#P\;CX^?@9F                            
+M                                           S9F9F            
+M  !F        !@  9F8                                         
+M                             'X\/#P              #P        .
+M   \/                                                       
+M                                  !X                        
+M                                                            
+M  !X9CP\ #,\,SP[,SPS #!^ 'X\/#PS.WX ?CP                     
+M                                                 #!F9F8 ,V8S
+M9F8S9C, /A@ !V!F9C-F!P!F9@                                  
+M                                    ,&8.#@ S9C-@/C-F,P S&  ^
+M?F!F,V8^?C!F                                                
+M                       ^?CP\ #-F,V8&,V8S?C,8 '!F9F8S9G  '#P 
+M                                                            
+M         #-F<'  ;CQN/#QN/&X ;G@ /CP\/&X^/GX&9@              
+M                                                        ,V9F
+M9@              .         8  &9F                            
+M                                          !^/#P\            
+M   8        #@  /#P                                         
+M                                                >           
+M                                                            
+M                >&8\/  S/#,\.S,\,P P 'X\/#PS.WX ?CP         
+M                                                            
+M   P9F9F #-F,V9F,V8S #X !V!F9C-F!P!F9@                      
+M                                                 #!F#@X ,V8S
+M8#XS9C, ,P ^?F!F,V8^?C!F                                    
+M                                    /GX\/  S9C-F!C-F,WXS '!F
+M9F8S9G  '#P                                                 
+M                       S9G!P &X\;CP\;CQN &X /CP\/&X^/GX&9@  
+M                                                            
+M         #-F9F8                       8  &9F                
+M                                                        ?CP\
+M/                       #@  /#P                             
+M                                                            
+M                                                            
+M                             'AF/#P /#QC #PS/ !^/#P\,SM^ 'X\
+M                                                            
+M                ,&9F9@ 89G< 9C-@  =@9F8S9@< 9F8             
+M                                                            
+M   P9@X. !AF?P!F,WX /GY@9C-F/GXP9@                          
+M                                                 #Y^/#P &&9K
+M?F8S9@!P9F9F,V9P !P\                                        
+M                                    ,V9P<  8/&, /&X\ #X\/#QN
+M/CY^!F8                                                     
+M                       S9F9F !@                &  !F9@      
+M                                                            
+M         'X\/#P .                 X  #P\                    
+M                                                            
+M                                                            
+M                                          !X9CP\ #P\8P!^/'@\
+M 'X\/#PS.WX ?CP                                             
+M                             #!F9F8 &&9W #)@,&8 !V!F9C-F!P!F
+M9@                                                          
+M                ,&8.#@ 89G\ &'XP9@ ^?F!F,V8^?C!F            
+M                                                            
+M   ^?CP\ !AF:WY,9CMF '!F9F8S9G  '#P                         
+M                                                 #-F<'  &#QC
+M 'X\;CP /CP\/&X^/GX&9@                                      
+M                                    ,V9F9@ 8                
+M  8  &9F                                                    
+M                      !^/#P\ #@                 #@  /#P     
+M                                                            
+M                                                            
+M                                                        >&8\
+M/ !N/&X ?C,[>#P[ 'X\/#PS.WX ?C@                             
+M                                           P9F9F #-F,P ',V8P
+M8&8 !V!F9C-F!P!F#                                           
+M                             #!F#@X ,V8S #XS/C!^9@ ^?F!F,V8^
+M?C &                                                        
+M                /GX\/  S9C-^<#,&.V9F '!F9F8S9G  '#X         
+M                                                            
+M   S9G!P #X\/@ ^/CQN/#X /CP\/&X^/GX&9@                      
+M                                                 #-F9F8 ,  P
+M   P    !@        8  &9F                                    
+M                                    ?CP\/ !P '   '     .    
+M    #@  /#P                                                 
+M                                                            
+M                                                            
+M         'AF/#P .SP\/#P ?C,[>#P[ 'X\/#PS.WX ?CP             
+M                                                        ,&9F
+M9@!F&!AF8  ',V8P8&8 !V!F9C-F!P!F9@                          
+M                                           P9@X. #X8&&!^ #XS
+M/C!^9@ ^?F!F,V8^?C!F                                        
+M                             #Y^/#P !A@89F9^<#,&.V9F '!F9F8S
+M9G  '#P                                                     
+M                ,V9P<  \&#@\/  ^/CQN/#X /CP\/&X^/GX&9@      
+M                                                            
+M   S9F9F   8       P    !@        8  &9F                    
+M                                                 'X\/#P  #@8
+M     '     .        #@  /#P                                 
+M                                                >           
+M                                                            
+M                      !X9CP\ &X\;@ P.VX\/#P ?CP\/#,[?@!^/   
+M                                                            
+M         #!F9F8 ,V8S #YF,Q@89@ '8&9F,V8' &9F                
+M                                                        ,&8.
+M#@ S9C, ,V8S&!A@ #Y^8&8S9CY^,&8                             
+M                                           ^?CP\ #-F,WXS9C,8
+M&&8 <&9F9C-F<  </                                           
+M                             #-F<'  /CP^ &YF/A@X/  ^/#P\;CX^
+M?@9F                                                        
+M                ,V9F9@ P #     P&           !@  9F8         
+M                                                            
+M  !^/#P\ '  <    ' X&          .   \/                       
+M                                                            
+M    >                                                       
+M                                    >&8\/  [/#P\/  P.VX\/#P 
+M?CP\/#,[?@!^/                                               
+M                       P9F9F &88&&9@ #YF,Q@89@ '8&9F,V8' &9F
+M                                                            
+M         #!F#@X /A@88'X ,V8S&!A@ #Y^8&8S9CY^,&8             
+M                                                        /GX\
+M/  &&!AF9GXS9C,8&&8 <&9F9C-F<  </                           
+M                                           S9G!P #P8.#P\ &YF
+M/A@X/  ^/#P\;CX^?@9F                                        
+M                             #-F9F8  !@        P&           
+M!@  9F8                                                     
+M                ?CP\/   .!@      ' X&          .   \/       
+M                                                            
+M                    /    '@          !  >                   
+M    /                                            &9^/  \,QP 
+M?@ \/#,& !X ,#P\,QP\> !^"  P.VX\/#P &#P\'#QX?@ \,SP&        
+M                                    9C,8 !@S,@!F !AF,SX #  ^
+M9A@S,F P &88 #YF,Q@89@ \8&8R9C ' &8S&#X                     
+M                      !F,Q@ &#,P?C  &&8S9GY^ #-F&#,P?C!^,   
+M,V8S&!A@ &9^8#!F,#X 9C,89@                                  
+M         'X^&  8,S  '  89C-F &P ,V88,S!F.P <&  S9C,8&&8 9F9F
+M,&8[< !F,QAF                                            9C,8
+M #AN?'X& !@\;CM^/ !N/#AN?#QN?@88 &YF/A@X/ !F/#Q\/&X^ #QN&&8 
+M                                          !F,Q@    P &8 &   
+M   <       P    9@     P&        #         8                
+M                             #Q^/  8 !  /  X      P    8 !  
+M   \     ' X&       $        #@                             
+M                             '@          '@                 
+M                                                            
+M  !F?CP\?C@ /#QC,#MX.QP\&#P ,'@\;CP8 &-^/  \                
+M                                                 &9F1D88# !F
+M9FL^9C!F,A@\8  ^,&8S8!@ :QA& &8                             
+M                                    /# &!A@& &!F:S,^,#XP&&9^
+M #,P9C-^  !K& 8 =@                                          
+M                       8' 8&&#X 9F9_,P8[!C 89F8 ,SMF,V88 '\8
+M!GYN                                                        
+M         #P&?'QX9@ \/'9N/&X\?#AF/ !N;CP^/!@ =GA\ &8         
+M                                                        9F9@
+M8#AF           P         #      .&  9@                      
+M                                          !F/'Y^&#P         
+M ! 8        <      8?@ \                                    
+M                                                    >       
+M                                 '@                         
+M                ?W][/  \/'-^ #P8.!A^ #,P?CP\/&8 'A@\ #P\/#L\
+M 'X\?CP ?CP ?GX /&YC,#P /#P\/#P                             
+M   Q,3-F & 8-@< 9A@,&&8 ,SYF9F88/  ,&&8 &&9F9A@ 9F9F9@ 89@!F
+M&  8,VL^9@ 89F9F9@                               #0P-@X ?A@\
+M/@!V  8 ,  S,S!V=A@8 'X =@ 89F ^&  P=C!F !AV # 8 !@S:S-@ !AF
+M=F9F                                /# \/ !F&#9P &X /@ < #,S
+M'&YN&#Q^; !N?AAF9@88 !QN''Q^&&Y^'!@ &#-_,V8 &#QN/'P         
+M                       T,#9P #P8,SX 9@!F  8 /FX&9F889@ \ &8 
+M&#P\/!@ !F8&8 !X9@ &>  X/G9N/  X9F9F8                       
+M         #$P,V8  !@P  !F &8 9@ P &9F9A@  !P 9@ 8    & !F9F8P
+M #AF &8X   P      !F9F8P                                ?WA[
+M/   .'   #P /  \ '  /#P\.   #  \ #@    X #P\/!P &#P /!@ &'  
+M    &#P\/!P                                                 
+M         '@                 >      0             #P         
+M                             ']_>SP /#QF    9G@ ?CP\?V8 ,#MN
+M/#P\ !@\/!P\>  P>#QN/ @ ,SP /#QF #P\!CPS                    
+M                ,3$S9@!F9F8   !F, !F9F8Q9@ ^9C,8&&8 /&!F,F8P
+M #XP9C-@&  S9@!F9F8 &&8^&#,                                 
+M   T,#8.  X.9@   &8P #!V=C \ #-F,Q@88 !F?F P9C  ,S!F,WX  #-F
+M  X.9@ 89F88,P                                   #PP/#P /#Q^
+M 'X ?CX '&YN,!@ ,V8S&!AF?F9F9C!F.P S.V8S9A@ ,V8 /#Q^ !AF9A@S
+M                                    -# V< !P<&8   !F,P &9F8P
+M/ !N9CX8.#P 9CP\?#QN &YN/#X\& !N/ !P<&8 &#P[.&X             
+M                       Q,#-F &9F9@   &8S &9F9C!F    ,!@     
+M   P        ,        &9F9@ 8                                
+M         ']X>SP /#QF    9GX /#P\>&8   !P.!@      !        !P
+J        /#QF #@  !@                                     
+ 
+end
+# 
+TX: md5sum /root/sshprobe/xm15.bmp
+md5sum /root/sshprobe/xm15.bmp
+adcc246c6e08401c67feca81de3dbcac  /root/sshprobe/xm15.bmp
+# 
+--- 2026-11-04T13:53:39 ---
+uuencode /root/sshprobe/xm15.log capture.bin
+begin 666 capture.bin
+M6#(U-3$Y(&-O;7!A<F%T:79E('!R;V)E.B!M,34M, I!0DD@:6YT/3(@;&]N
+M9STT('!O:6YT97(],CL@<'5B;&EC('9E8W1O<G,@;VYL>0I005-3(&%L:6-E
+M+7!U8FQI8R!S96-O;F1S/3(X"E!!4U,@8F]B+7!U8FQI8R!S96-O;F1S/3(X
+M"E!!4U,@86QI8V4M<VAA<F5D('-E8V]N9',],C@*4$%34R!B;V(M<VAA<F5D
+M('-E8V]N9',],CD*4$%34R!L;W<M>F5R;R!S96-O;F1S/3(X"E!!4U,@;&]W
+M+6]N92!S96-O;F1S/3(X"E!!4U,@;F]N8V%N;VXM<"!S96-O;F1S/3(X"E!!
+M4U,@;F]N8V%N;VXM<#$@<V5C;VYD<STR. I005-3(&YO;F-A;F]N+7 Y('-E
+M8V]N9',],C@*4$%34R!P;VEN="UH:6=H8FET('-E8V]N9',],C@*4$%34R!S
+M8V%L87(M>F5R;R!S96-O;F1S/3(X"E!!4U,@<V-A;&%R+69F('-E8V]N9',]
+M,C@*4D5354Q4(%!!4U,@8VAE8VMS/3$R(&9A:6QU<F5S/3 @<V5C;VYD<STS
+#,S<*
+ 
+end
+# 
+TX: md5sum /root/sshprobe/xm15.log
+md5sum /root/sshprobe/xm15.log
+8716b2486dbf0795fd5983d935a17751  /root/sshprobe/xm15.log
+# 

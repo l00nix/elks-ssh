@@ -69,6 +69,11 @@ connect, log in, modify accounts or generate keys.
 The source uses 64-bit arithmetic implemented by the toolchain; it does not
 assume a CPU with 64-bit registers. The probes use small-model code and data.
 
+Separate medium-model X25519 comparisons, pinned BearSSL provenance and their
+host/QEMU reproduction commands are in [X25519-COMPARISON](X25519-COMPARISON.md).
+They do not change the daemon build. The smaller candidate currently fails its
+target vectors; the comparison harness deliberately reports that failure.
+
 ## Optional linked-code audit
 
 Python is required only for development tools, not for the minimal ELKS build:

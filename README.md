@@ -83,6 +83,17 @@ refuses startup without `/dev/urandom`. See the [controlled hardware comparison]
 Crypto performance and hardware entropy remain prerequisites for a usable
 hardware SSH service.
 
+A subsequent [matched X25519 comparison](docs/X25519-COMPARISON.md) reduced one
+HP scalar multiplication from 235 to 28 seconds using an isolated BearSSL m15
+probe, which then passed all 12 HP vectors in 337 seconds. The faster variant
+costs more code space; a smaller variant failed the
+16-bit tests. The daemon still uses Dropbear's existing crypto. This is progress
+toward practical hardware performance, not an SSH handshake measurement.
+
+![HP 200LX passing all 12 X25519 comparison vectors](docs/screenshots/hp200lx-x25519.png)
+
+Actual ELXcap capture of the completed probe's saved output on the HP console.
+
 ![HP 200LX signal tests and secure-randomness refusal](docs/screenshots/hp200lx-signal-fixed.png)
 
 Actual ELXcap console capture; this is a hardware probe, not an SSH login.

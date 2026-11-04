@@ -1,7 +1,8 @@
 # Session validation checkpoint — 2026-11-04
 
 Later on this date: [HP 200LX hardware and linked-daemon audit](HP200LX-PROGRESS.md),
-then the [signal-layout fix and repeated 11-case QEMU suite](SIGNAL-LAYOUT.md).
+then the [signal-layout fix and repeated 11-case QEMU suite](SIGNAL-LAYOUT.md),
+and the [isolated X25519 performance comparison](X25519-COMPARISON.md).
 The results below describe the earlier QEMU checkpoint.
 
 Modern macOS OpenSSH 10.3p1 completes stdin/EOF, automated PTY commands and

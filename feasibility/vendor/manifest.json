@@ -19,5 +19,31 @@
       "cryptoint/README": "384af287d5edb1babac9de894f221136ff9e3e035a6fc9f445a5887aaa37681d",
       "LICENSE.md": "216f62311707f543cee4e20842ff6c24b03df090f9337ec225382c400cfc3d1e"
     }
+  },
+  "bearssl": {
+    "release": "0.6",
+    "url": "https://bearssl.org/bearssl-0.6.tar.gz",
+    "archive_sha256": "6705bba1714961b41a728dfc5debbe348d2966c117649392f8c8139efc83ff14",
+    "scope": "Unchanged m15 source and build headers for comparative probes only",
+    "files": {
+      "LICENSE.txt": "771bf18c8633ea69ec9b07d2e604c4b99b7bef41b0f5ce6385d24df4448f61ca",
+      "src/ec/ec_c25519_m15.c": "1cad1e8ec560cf5e27c8b64f1c80ac944f5839b6014702e62af4cd24b6cba3b2",
+      "src/codec/ccopy.c": "5163871149faa35a4ba026a915743065238fc94cc4312f02867a4f50ff2631f8",
+      "src/inner.h": "05a4c5b30599a00deda2648fbb842c07eb783bc5a62589ba90c3fada36ad732a",
+      "src/config.h": "785d0cea25a7bbcb2b6d32e096072ac00b12f4d0b4819aa95ca28816a0e484d0",
+      "inc/bearssl_x509.h": "92a1674630209ee2a35d078990f7d8a1bf98753b4ec97db9aa9c288f7c294ab1",
+      "inc/bearssl_block.h": "a00b4a48c42c824f2ec4ee775672df9cec86ad455b08cb8ae7eb8c89e63d082a",
+      "inc/bearssl_pem.h": "ef36260e8568e5927178e92c2aab849be71bc07414c01baeb1d12a3a51a82c3e",
+      "inc/bearssl_kdf.h": "dee68113a97743febd0fee22d545c9548d81a6448e5b28311fa8ce384ee48bd8",
+      "inc/bearssl_hash.h": "adfe3039fe48962c7fd74a1031f6d9dde951fb12a6acdae65a39f4d8537d2ef9",
+      "inc/bearssl.h": "5e73cb64005a5efd5082932bb9b7a3301a748969841c45d7f61123006e9ca5fe",
+      "inc/bearssl_rsa.h": "1d9538cb78269cd02ca9ec118f67930ba88730eece4427f973fda2cb7122f9ff",
+      "inc/bearssl_prf.h": "0162e674d6c49425bfa0e8e9c79b3d850530e7928288930284fb7ac940a12b17",
+      "inc/bearssl_aead.h": "9d90afbc65535335517c028817ac0704af6b58971f2c262a65eb26e0b4099201",
+      "inc/bearssl_rand.h": "968335e8a2957e5bf64cb0b6b1f916e53bc330e8c66d5f2d2f658f415a56dd44",
+      "inc/bearssl_ec.h": "3ee566b317361828cce70a96ce22d34d865b8dea73e65de55a6f511076bab766",
+      "inc/bearssl_ssl.h": "52ea66d52eac903661865d99a05b5621e743a4acb227d7faf154bb5ce1ea48f3",
+      "inc/bearssl_hmac.h": "a40c14a7a71d5b4fa21f8485d7ad3975d3a37b9cd8b9f72cd0fa032af8105614"
+    }
   }
 }

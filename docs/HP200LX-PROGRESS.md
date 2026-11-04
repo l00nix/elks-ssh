@@ -140,12 +140,19 @@ backend, compare an established implementation designed for smaller arithmetic
 words, preserve known-answer and low-order rejection tests, and check generated
 instructions, timing behavior, memory and licensing.
 
-For a comparative probe, BearSSL documents a specialised Curve25519 `m15`
-implementation using 13-bit words and a generic `i15` variant. Those are research
-candidates, not selected or ported code, and their performance on the HP is
-unknown. See the project's [change log](https://bearssl.org/changelog.html) and
-[big-integer design](https://bearssl.org/bigint.html). Replacing X25519 alone would
-not establish acceptable Ed25519 signing or verification performance.
+The subsequent [matched medium-model comparison](X25519-COMPARISON.md) uses
+unchanged BearSSL m15 source in an isolated probe. One HP scalar multiplication
+takes 235 seconds with the baseline and 28 with the unrolled candidate, about
+8.4× faster in this single-vector comparison. The smaller Karatsuba candidate
+fails all 12 target QEMU cases and was not transferred to the HP. The faster
+candidate is substantially larger; it is not selected for production.
+Replacing X25519 alone would not establish acceptable Ed25519 signing or
+verification performance.
+
+The unrolled candidate subsequently passes all 12 public-vector cases on the
+HP in 337 seconds, exit 0. Its [ELXcap capture and raw evidence](X25519-COMPARISON.md)
+are retained. No probe process remains afterward and main free memory returns
+to about 397 KiB. The normal daemon and network configuration remain unchanged.
 
 The current source sets `AUTH_TIMEOUT` to 300 seconds. X25519 key exchange
 computes both an ephemeral public key and a shared secret; signature work is

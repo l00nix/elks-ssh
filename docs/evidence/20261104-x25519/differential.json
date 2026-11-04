@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "public_input_pairs": 256,
+  "backend_comparisons": 768,
+  "reference": "cryptography X25519",
+  "checks": "deterministic public inputs, scalar clamping, ignored point bit",
+  "hardware": false
+}

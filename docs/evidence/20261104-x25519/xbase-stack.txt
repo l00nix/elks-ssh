@@ -1,0 +1,6 @@
+curve25519.c:85:4:car25519	72	dynamic,bounded
+curve25519.c:97:4:sel25519	26	static
+curve25519.c:158:4:A	24	static
+curve25519.c:164:4:Z	24	static
+curve25519.c:170:4:M	312	dynamic,bounded
+curve25519.c:213:6:dropbear_curve25519_scalarmult	1766	dynamic,bounded

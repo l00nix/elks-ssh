@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-04",
+  "base_commit": "3caeee6193d041ebb5845449287f2dff7b17575c",
+  "elks_commit": "e1469b64c5809c44d5c822eaeebd0e97d5996289",
+  "compiler": "ia16-elf-gcc (GCC) 6.3.0",
+  "memory_model": "medium",
+  "stack_reservation_bytes": 8192,
+  "heap_reservation_bytes": 1024,
+  "production_crypto_changed": false,
+  "source_sha256": {
+    "feasibility/src/xbench.c": "e6bd19c16fa58c5d54e4347639b4bbc08bd598a06d3b9c895eb2d8c9335531b0",
+    "feasibility/src/x25519-vectors.h": "010511762393466025c4424339dc9bafa335811355453f5504039526f2bb2ebe",
+    "feasibility/toolchain/build-x25519.sh": "ba8183bf47828c1a759c60084bafaa01c9b3855ebef27821daeffdb7b797c745",
+    "feasibility/tests/qemu_x25519.py": "f2dc9208d5c6dfad08720f51983b04f21223d9c5262d0d2e364554822dbf496b",
+    "feasibility/vendor/manifest.json": "1054e20ea105476dc39ecfc5497b03fd2d736edcc2100316514396d8669ae8a7"
+  },
+  "host": {
+    "system": "Darwin",
+    "machine": "arm64",
+    "compiler": "Apple clang version 21.0.0 (clang-2100.1.1.101)",
+    "cryptography": "50.0.2",
+    "reference_openssl": "OpenSSL 4.0.3 29 Sep 2026"
+  }
+}

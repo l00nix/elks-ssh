@@ -34,8 +34,12 @@ a release candidate.
 
 ## Next development order
 
-1. Compare established implementations suited to 16-bit arithmetic to improve
-   the slow Curve25519 baseline. The HP signal-callback rejection is resolved
+1. Follow up the [X25519 comparison](X25519-COMPARISON.md): the unrolled probe
+   improves the matched HP scalar test from 235 to 28 seconds, but its code
+   footprint, target timing behavior and complete-daemon fit still need review.
+   Keep the smaller variant excluded after its 16-bit vector failures. Measure
+   Ed25519 and full-login cost before selecting a production crypto backend.
+   The HP signal-callback rejection is resolved
    for the measured build by [linking the unchanged libc callback first](SIGNAL-LAYOUT.md).
 2. Extend disposable QEMU tests for interactive shell input, terminal
    resize/control keys and abrupt disconnects; retain stdin/EOF and rekey checks.
