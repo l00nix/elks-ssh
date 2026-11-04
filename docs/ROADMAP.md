@@ -16,9 +16,12 @@
    matrix, installation/rollback instructions and honest limitations. Revisit
    inviting ghaerr only at this milestone. No invitation has been sent.
 
-Current checkpoint: milestone 1 established; milestone 2 has a compiling server
-and wire regressions. Secure entropy, runtime memory and interoperability remain
-open. See [server progress](SERVER-PROGRESS.md).
+Current checkpoint: milestones 1 and 2 have probe/build/regression evidence;
+milestone 3 now has QEMU public-key login, remote commands, output integrity,
+repeated connection cleanup and negative authentication tests. Interactive
+sessions, stdin, rekeying and broader failure handling remain open. Runtime
+memory sampling is preliminary; production entropy and the linked server's
+8086 audit remain release gates. See [login progress](LOGIN-PROGRESS.md).
 
 The public fork is authorized. Publication of a secure release still requires
 evidence that these criteria are met; the current feasibility milestone is not

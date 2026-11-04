@@ -63,19 +63,25 @@ def run(args):
     out = args.out.resolve(); out.mkdir(parents=True, exist_ok=True)
     result = {'status':'failed', 'entropy_mode':args.entropy,
               'server_sha256':sha(args.server), 'image_sha256':sha(args.image),
-              'cpu':args.cpu, 'real_hardware':False, 'production_entropy':False,
+              'filesystem':args.filesystem, 'cpu':args.cpu, 'real_hardware':False, 'production_entropy':False,
               'ssh_client':subprocess.run(['ssh','-V'],capture_output=True,text=True).stderr.strip()}
     transcript = bytearray()
     with tempfile.TemporaryDirectory(prefix='esh-ssh-') as directory:
         temp = Path(directory)
         disk = temp/'disk.img'; shutil.copyfile(args.image,disk)
         def put(source, target):
-            subprocess.run(['mcopy','-o','-i',str(disk),str(source),'::'+target],check=True)
-        opts = subprocess.check_output(['mtype','-i',str(disk),'::/bootopts'])
+            if args.filesystem == 'minix':
+                subprocess.run([str(args.mfs),str(disk),'cp',str(source),target],check=True)
+            else:
+                subprocess.run(['mcopy','-o','-i',str(disk),str(source),'::'+target],check=True)
+        opts = subprocess.check_output([str(args.mfs),str(disk),'cat','/bootopts']
+            if args.filesystem == 'minix' else ['mtype','-i',str(disk),'::/bootopts'])
         opts += b'\nconsole=ttyS0,19200 3\n'
         assert len(opts)<=1023
         (temp/'bootopts').write_bytes(opts); put(temp/'bootopts','/bootopts')
-        put(args.server,'/bin/sshtest')
+        shutil.copyfile(args.server,temp/'sshtest');os.chmod(temp/'sshtest',0o700)
+        put(temp/'sshtest','/bin/sshtest')
+        authdir = '/root' if args.filesystem == 'minix' else '/etc'
         # Dropbear's private Ed25519 format: SSH string algorithm, then
         # a 64-byte string containing the fresh seed followed by its public key.
         host = Ed25519PrivateKey.generate()
@@ -83,13 +89,17 @@ def run(args):
         public = host.public_key().public_bytes(serialization.Encoding.Raw,serialization.PublicFormat.Raw)
         def string(value): return struct.pack('>I',len(value))+value
         (temp/'hostkey').write_bytes(string(b'ssh-ed25519')+string(seed+public))
-        os.chmod(temp/'hostkey',0o600); put(temp/'hostkey','/etc/hostkey')
+        os.chmod(temp/'hostkey',0o600); put(temp/'hostkey',authdir+'/hostkey')
         client = Ed25519PrivateKey.generate()
         (temp/'clientkey').write_bytes(client.private_bytes(serialization.Encoding.PEM,serialization.PrivateFormat.OpenSSH,serialization.NoEncryption()))
         os.chmod(temp/'clientkey',0o600)
         clientpub=client.public_key().public_bytes(serialization.Encoding.OpenSSH,serialization.PublicFormat.OpenSSH)
         (temp/'authorized_keys').write_bytes(clientpub+b' test-only\n')
-        put(temp/'authorized_keys','/etc/authorized_keys')
+        os.chmod(temp/'authorized_keys',0o600)
+        put(temp/'authorized_keys',authdir+'/authkeys')
+        payload=('0123456789abcdef'*63+'\n')*16
+        (temp/'payload').write_text(payload);os.chmod(temp/'payload',0o600)
+        if args.filesystem=='minix': put(temp/'payload','/root/payload')
         with socket.socket() as reserve:
             reserve.bind(('127.0.0.1',0)); port=reserve.getsockname()[1]
         hostpub=host.public_key().public_bytes(serialization.Encoding.OpenSSH,serialization.PublicFormat.OpenSSH)
@@ -135,12 +145,13 @@ def run(args):
                         return data
                     command('uname -a')
                     if args.entropy!='healthy':
-                        refusal=command('sshtest -F -r /etc/hostkey',expected=1,timeout=60)
+                        refusal=command('sshtest -F -r '+authdir+'/hostkey',expected=1,timeout=60)
                         if b'Failure reading random device' not in refusal:raise RuntimeError('Expected entropy refusal')
                         result['entropy_failure_closed']=True
                     else:
                         command('ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0')
-                        command('sshtest -F -r /etc/hostkey -D /etc > /tmp/sshd.log 2>&1 &')
+                        command('ls -ld / /root '+authdir+'/authkeys')
+                        command('sshtest -F -r '+authdir+'/hostkey -D '+authdir+' > /tmp/sshd.log 2>&1 &')
                         # The private host-forward only listens on loopback. Probe
                         # once with the actual authenticated client after startup.
                         time.sleep(2)
@@ -149,24 +160,108 @@ def run(args):
                              '-oBatchMode=yes','-oIdentitiesOnly=yes','-oIdentityAgent=none','-oStrictHostKeyChecking=yes',
                              '-oUserKnownHostsFile='+str(temp/'known_hosts'),'-oGlobalKnownHostsFile=/dev/null',
                              '-oConnectTimeout='+str(args.connect_timeout),'-oConnectionAttempts=1','-oPreferredAuthentications=publickey',
-                             'root@127.0.0.1','echo ELKSSH_LOGIN_OK']
-                        # Redirect output so no secret fixture paths or keys are
-                        # printed in tool output. Logs get temp-path redaction.
-                        try:
-                            attempt=subprocess.run(ssh,capture_output=True,text=True,timeout=600)
-                            sshlog=attempt.stderr.replace(str(temp),'$TEST')
-                            (out/'ssh.txt').write_text(sshlog)
-                            (out/'command.txt').write_text(attempt.stdout)
-                            result['ssh_exit']=attempt.returncode
-                            result['host_key_verified']='known and matches the ED25519 host key' in sshlog
-                            result['newkeys_received']='SSH2_MSG_NEWKEYS received' in sshlog
-                            result['encrypted_auth_service']='SSH2_MSG_SERVICE_ACCEPT received' in sshlog
-                            result['publickey_login']=attempt.returncode==0 and 'ELKSSH_LOGIN_OK' in attempt.stdout
-                        except subprocess.TimeoutExpired as exc:
-                            result['ssh_timeout']=True
-                            (out/'ssh.txt').write_text((exc.stderr or b'').decode(errors='replace').replace(str(temp),'$TEST'))
-                        command('cat /tmp/sshd.log')
-                        command('ps')
+                             'root@127.0.0.1','echo ELKSSH_LOGIN_OK; ps; sleep 5']
+                        if args.suite:
+                            # Hold one unauthenticated connection. The second
+                            # must close without a banner, preserving the slot.
+                            with socket.create_connection(('127.0.0.1',port),timeout=10) as held:
+                                held.settimeout(20)
+                                banner=held.recv(512)
+                                if not banner.startswith(b'SSH-2.0-'): raise RuntimeError('Held connection has no SSH banner')
+                                with socket.create_connection(('127.0.0.1',port),timeout=10) as excess:
+                                    excess.settimeout(10)
+                                    try: reply=excess.recv(512)
+                                    except ConnectionResetError: reply=b''
+                                    result['preauth_limit']=reply==b''
+                                    if reply: raise RuntimeError('Unauthenticated slot released prematurely')
+                            for _ in range(10):
+                                state=command('ps').decode('latin1')
+                                active=[line for line in state.splitlines() if re.match(r'\s*\d+\s',line) and 'sshtest ' in line]
+                                if len(active)==1: break
+                                time.sleep(1)
+                            if len(active)!=1: raise RuntimeError('Held connection child was not reaped')
+                        snapshots=[]
+                        cases={}
+                        def attempt_case(name, argv, expected_exit=0, expected_output=None, rejection=None):
+                            start=time.monotonic()
+                            timed_out=False
+                            stdout_path=temp/(name+'.stdout');stderr_path=temp/(name+'.stderr')
+                            with stdout_path.open('w') as stdout, stderr_path.open('w') as stderr:
+                                attempt=subprocess.Popen(argv,stdin=subprocess.DEVNULL,stdout=stdout,stderr=stderr)
+                                try:
+                                    while attempt.poll() is None:
+                                        if time.monotonic()-start>600:
+                                            timed_out=True
+                                            break
+                                        snapshots.append({'case':name,'host_elapsed_seconds':round(time.monotonic()-start,3),
+                                                          'ps':command('ps').decode('latin1')})
+                                        time.sleep(2)
+                                finally:
+                                    if attempt.poll() is None: attempt.kill();attempt.wait()
+                                    (out/'memory.json').write_text(json.dumps(snapshots,indent=2)+'\n')
+                            sshlog=stderr_path.read_text().replace(str(temp),'$TEST')
+                            sshstdout=stdout_path.read_text()
+                            (out/('ssh-'+name+'.txt')).write_text(sshlog)
+                            (out/('command-'+name+'.txt')).write_text(sshstdout)
+                            authenticated='using "publickey"' in sshlog and 'Authenticated to ' in sshlog
+                            case={'ssh_exit':attempt.returncode,'timeout':timed_out,
+                                  'host_key_verified':'known and matches the ED25519 host key' in sshlog,
+                                  'newkeys_received':'SSH2_MSG_NEWKEYS received' in sshlog,
+                                  'encrypted_auth_service':'SSH2_MSG_SERVICE_ACCEPT received' in sshlog,
+                                  'authenticated':authenticated,
+                                  'host_elapsed_seconds':round(time.monotonic()-start,3)}
+                            case['passed']=(not timed_out and attempt.returncode==expected_exit
+                                and (expected_output is None or sshstdout==expected_output)
+                                and (rejection is None or (rejection in sshlog and not authenticated)))
+                            if expected_exit != 255: case['passed'] &= authenticated and case['host_key_verified']
+                            cases[name]=case
+                            result['cases']=cases
+                            # Verify that the connection child was reaped, including
+                            # negative tests that close during key exchange.
+                            for _ in range(5):
+                                state=command('ps').decode('latin1')
+                                server_rows=[line for line in state.splitlines() if re.match(r'\s*\d+\s',line) and 'sshtest ' in line]
+                                if len(server_rows)==1: break
+                                time.sleep(1)
+                            case['connection_child_reaped']=len(server_rows)==1
+                            case['passed'] &= case['connection_child_reaped']
+                            command('cat /tmp/sshd.log')
+                            return case
+                        # Delayed output catches premature EOF on a temporarily
+                        # empty pipe. Compare the entire stdout, not just a marker.
+                        ssh[-1]='echo ELKSSH_LOGIN_OK; sleep 2; echo ELKSSH_DONE'
+                        first=attempt_case('login',ssh,expected_output='ELKSSH_LOGIN_OK\nELKSSH_DONE\n')
+                        result.update({key:first[key] for key in ['ssh_exit','host_key_verified','newkeys_received','encrypted_auth_service']})
+                        result['publickey_login']=first['passed']
+                        if args.suite and first['passed']:
+                            wrong=Ed25519PrivateKey.generate()
+                            (temp/'wrongkey').write_bytes(wrong.private_bytes(serialization.Encoding.PEM,serialization.PrivateFormat.OpenSSH,serialization.NoEncryption()))
+                            os.chmod(temp/'wrongkey',0o600)
+                            badkey=ssh.copy();badkey[badkey.index('-i')+1]=str(temp/'wrongkey')
+                            attempt_case('wrong-key',badkey,expected_exit=255,rejection='Permission denied (publickey)')
+                            badhost=Ed25519PrivateKey.generate().public_key().public_bytes(serialization.Encoding.OpenSSH,serialization.PublicFormat.OpenSSH)
+                            (temp/'wrong_hosts').write_bytes(('[127.0.0.1]:%d '%port).encode()+badhost+b'\n')
+                            badpin=[('-oUserKnownHostsFile='+str(temp/'wrong_hosts')) if a.startswith('-oUserKnownHostsFile=') else a for a in ssh]
+                            attempt_case('wrong-host',badpin,expected_exit=255,rejection='Host key verification failed')
+                            for name,target,unsafe,safe in [('unsafe-dir',authdir,'777','700'),('unsafe-key',authdir+'/authkeys','666','600')]:
+                                command('chmod '+unsafe+' '+target)
+                                try: attempt_case(name,ssh,expected_exit=255,rejection='Permission denied (publickey)')
+                                finally: command('chmod '+safe+' '+target)
+                            stream=ssh.copy();stream[-1]='cat /root/payload; sleep 2; echo STREAM_DONE'
+                            attempt_case('stream',stream,expected_output=payload+'STREAM_DONE\n')
+                            repeat=ssh.copy();repeat[-1]='echo ELKSSH_REPEAT_OK; exit 7'
+                            attempt_case('repeat-exit',repeat,expected_exit=7,expected_output='ELKSSH_REPEAT_OK\n')
+                        result['suite_passed']=all(case['passed'] for case in cases.values()) and result.get('preauth_limit',True)
+                        rows=[]
+                        for sample in snapshots:
+                            for line in sample['ps'].splitlines():
+                                if re.match(r'\s*\d+\s',line) and 'sshtest ' in line:
+                                    fields=line.split('sshtest ',1)[0].split()
+                                    rows.append(tuple(map(int,fields[-3:])))
+                        if rows:
+                            result['sampled_memory']={'samples':len(snapshots),'max_heap_brk_bytes':max(r[0] for r in rows),
+                                'min_sp_minus_brk_bytes':min(r[1] for r in rows),'process_size_bytes':sorted(set(r[2] for r in rows)),
+                                'peak_bound':False}
                     command('echo SHELL_STILL_WORKS')
                     if b'STACK USING' in transcript or b'STACK OVERFLOW' in transcript:
                         raise RuntimeError('Guest stack reservation exceeded')
@@ -186,7 +281,7 @@ def run(args):
                                     response=json.loads(stream.readline())
                                     if 'error' in response: raise RuntimeError(response)
                                     if 'return' in response: break
-                    result['status']='passed' if args.entropy!='healthy' or result.get('publickey_login') else 'blocked'
+                    result['status']='passed' if args.entropy!='healthy' or (result.get('publickey_login') and result.get('suite_passed')) else 'blocked'
         except Exception as exc:
             result['error']=str(exc)
         finally:
@@ -209,8 +304,17 @@ if __name__=='__main__':
     p.add_argument('--image',type=Path,required=True)
     p.add_argument('--server',type=Path,required=True)
     p.add_argument('--out',type=Path,required=True)
+    p.add_argument('--filesystem',choices=['fat','minix'],default='fat')
+    p.add_argument('--mfs',type=lambda s:Path(s).resolve())
     p.add_argument('--cpu',choices=['486','pentium'],default='486')
+    p.add_argument('--suite',action='store_true',help='Also test rejected keys/permissions, host mismatch and repeated login')
     p.add_argument('--screenshot',action='store_true')
     p.add_argument('--connect-timeout',type=int,default=300)
     p.add_argument('--entropy',choices=['healthy','short','silent'],default='healthy')
-    raise SystemExit(run(p.parse_args()))
+    args=p.parse_args()
+    if args.filesystem=='minix' and args.mfs is None: p.error('--mfs is required for MINIX')
+    if args.suite and (args.filesystem!='minix' or args.entropy!='healthy'):
+        p.error('--suite requires --filesystem minix and healthy entropy')
+    if args.screenshot and args.entropy!='healthy':
+        p.error('--screenshot requires healthy entropy')
+    raise SystemExit(run(args))

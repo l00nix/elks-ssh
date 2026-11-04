@@ -459,7 +459,7 @@ out:
 static char *authorized_keys_filepath() {
 	size_t len = 0;
 	char *pathname = NULL, *dir = NULL;
-	const char *filename = "authorized_keys";
+	const char *filename = DROPBEAR_AUTHKEYS_FILENAME;
 
 	dir = expand_homedir_path_home(svr_opts.authorized_keys_dir,
 				       ses.authstate.pw_dir);
@@ -509,10 +509,20 @@ static int checkpubkey(const char* keyalgo, unsigned int keyalgolen,
 		filename = authorized_keys_filepath();
 		fd = open(filename, O_RDONLY | O_NONBLOCK);
 		if (fd >= 0) {
-			authfile = fdopen(fd, "r");
-			if (!authfile) {
-				/* fdopen could fail with ENOMEM */
+			struct stat key_stat;
+			/* Check the opened file as well as its parent directories.
+			 * A trusted directory can contain a writable or unsafe key file. */
+			if (fstat(fd, &key_stat) < 0 || !S_ISREG(key_stat.st_mode)
+					|| (key_stat.st_uid != ses.authstate.pw_uid && key_stat.st_uid != 0)
+					|| (key_stat.st_mode & (S_IWGRP | S_IWOTH))) {
+				dropbear_log(LOG_INFO, "Unsafe authorized-key file: %s", filename);
 				m_close(fd);
+			} else {
+				authfile = fdopen(fd, "r");
+				if (!authfile) {
+					/* fdopen could fail with ENOMEM */
+					m_close(fd);
+				}
 			}
 		}
 		if (!authfile) {

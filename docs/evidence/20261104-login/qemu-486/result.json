@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "entropy_mode": "healthy",
+  "server_sha256": "5cbda7382e240764ba68c553f41031bc364219384180ab164e7207854ccdc59d",
+  "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+  "filesystem": "minix",
+  "cpu": "486",
+  "real_hardware": false,
+  "production_entropy": false,
+  "ssh_client": "OpenSSH_10.3p1, LibreSSL 3.3.6",
+  "cases": {
+    "login": {
+      "ssh_exit": 0,
+      "timeout": false,
+      "host_key_verified": true,
+      "newkeys_received": true,
+      "encrypted_auth_service": true,
+      "authenticated": true,
+      "host_elapsed_seconds": 60.518,
+      "passed": true,
+      "connection_child_reaped": true
+    }
+  },
+  "ssh_exit": 0,
+  "host_key_verified": true,
+  "newkeys_received": true,
+  "encrypted_auth_service": true,
+  "publickey_login": true,
+  "suite_passed": true,
+  "sampled_memory": {
+    "samples": 18,
+    "max_heap_brk_bytes": 13154,
+    "min_sp_minus_brk_bytes": 6828,
+    "process_size_bytes": [
+      122624
+    ],
+    "peak_bound": false
+  },
+  "entropy_requests": 3,
+  "entropy_bytes_sent": 96,
+  "entropy_provider_error": null,
+  "original_image_unchanged": true
+}

@@ -1,5 +1,8 @@
 # Socket and SSH transport checkpoint — 2026-11-04
 
+Historical transport checkpoint: the subsequent [login checkpoint](LOGIN-PROGRESS.md)
+resolves the filesystem blocker in disposable MINIX images.
+
 This continues the public fork of ghaerr/ssh-daemon-elks. A QEMU-only build now
 completes SSH-2 key exchange with OpenSSH 10.3 and passes strict verification
 against a pre-pinned Ed25519 host key. Encrypted authentication messages work.

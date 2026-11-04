@@ -206,6 +206,10 @@ static void main_noinetd(int argc, char ** argv, const char* multipath) {
 
 	/* incoming connection select loop */
 	for(;;) {
+#ifdef __ia16__
+		struct timeval child_poll = {0, 10000};
+		struct timeval *poll_timeout = NULL;
+#endif
 
 		DROPBEAR_FD_ZERO(&fds);
 
@@ -217,12 +221,32 @@ static void main_noinetd(int argc, char ** argv, const char* multipath) {
 		/* pre-authentication clients */
 		for (i = 0; i < MAX_UNAUTH_CLIENTS; i++) {
 			if (childpipes[i] >= 0) {
+#ifdef __ia16__
+				/* ELKS select reports empty pipes ready. Only actual EOF
+				 * releases the unauthenticated connection's slot. */
+				char unused;
+				int n = read(childpipes[i], &unused, 1);
+				if (n == 0) {
+					m_close(childpipes[i]);
+					childpipes[i] = -1;
+					m_free(preauth_addrs[i]);
+				} else {
+					if (n < 0 && errno != EAGAIN && errno != EINTR)
+						dropbear_exit("Pre-authentication pipe failed");
+					poll_timeout = &child_poll;
+				}
+#else
 				FD_SET(childpipes[i], &fds);
 				maxsock = MAX(maxsock, childpipes[i]);
+#endif
 			}
 		}
 
+#ifdef __ia16__
+		val = select(maxsock+1, &fds, NULL, NULL, poll_timeout);
+#else
 		val = select(maxsock+1, &fds, NULL, NULL, NULL);
+#endif
 
 		if (ses.exitflag) {
 			unlink(svr_opts.pidfile);
@@ -241,6 +265,7 @@ static void main_noinetd(int argc, char ** argv, const char* multipath) {
 			dropbear_exit("Listening socket error");
 		}
 
+#ifndef __ia16__
 		/* close fds which have been authed or closed - svr-auth.c handles
 		 * closing the auth sockets on success */
 		for (i = 0; i < MAX_UNAUTH_CLIENTS; i++) {
@@ -251,6 +276,7 @@ static void main_noinetd(int argc, char ** argv, const char* multipath) {
 			}
 		}
 
+#endif
 		/* handle each socket which has something to say */
 		for (i = 0; i < listensockcount; i++) {
 			size_t num_unauthed_for_addr = 0;
@@ -318,6 +344,9 @@ static void main_noinetd(int argc, char ** argv, const char* multipath) {
 
 				/* parent */
 				childpipes[conn_idx] = childpipe[0];
+#ifdef __ia16__
+				setnonblocking(childpipe[0]);
+#endif
 				m_close(childpipe[1]);
 				preauth_addrs[conn_idx] = remote_host;
 				remote_host = NULL;

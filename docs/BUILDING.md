@@ -30,7 +30,12 @@ This builds `dropbear` with the existing ELKS APIs. It is not ready for deployme
 or automatic startup. The current image has no usable secure RNG; startup must
 fail before binding a port. The configuration is single-user and public-key-only;
 the normal build has no secure entropy source on the test image. The separate
-QEMU test build reaches encrypted authentication but does not yet log in.
+QEMU test build completes public-key login and remote commands on a disposable
+MINIX filesystem with host-fed entropy. It is not a production configuration.
+The ELKS key-list basename is `authkeys` (default `~/.ssh/authkeys`); `-D`
+changes its directory. Keep the directory owned by root/the intended user and
+not group/other writable, with the key list a regular file owned by root/the
+intended user and not group/other writable. The fixture uses modes 0700/0600.
 
 With the prepared toolchain on PATH, build the development-only test executable:
 
@@ -136,8 +141,6 @@ python3 tests/qemu_ssh.py --image /path/to/hd32-fat.img \
     --server ./dropbear-qemu --entropy short --out feasibility/test-output/short
 python3 tests/qemu_ssh.py --image /path/to/hd32-fat.img \
     --server ./dropbear-qemu --entropy silent --out feasibility/test-output/silent
-python3 tests/qemu_ssh.py --image /path/to/hd32-fat.img \
-    --server ./dropbear-qemu --entropy healthy --out feasibility/test-output/ssh
 ```
 
 The host needs OpenSSH and Python `cryptography` (tested with 50.0.2), plus QEMU
@@ -152,9 +155,49 @@ mock callback returns EOF without accessing the buffer. A second case transfers
 2048 bytes through interrupted and partial reads. Both use production `atomicio`
 on the signed 16-bit ABI; neither measures whole-session memory usage.
 
-The QEMU command above explicitly reserves 16 KiB of heap for investigation;
-the normal default remains 8 KiB, with an 8 KiB stack. `HEAP_SIZE` and
-`STACK_SIZE` override link-time reservations and the main executable is relinked
-on each build. The observed 8 KiB key-exchange allocation failure motivated the
-larger experiment; this is not a measured upper bound for authenticated sessions.
+Both normal and QEMU server builds now reserve 16 KiB of heap by default; the
+client retains 8 KiB. Both reserve an 8 KiB stack. `HEAP_SIZE` and `STACK_SIZE`
+override link-time reservations and the main executable is relinked on each
+build. Sampled server heap break grew to 13,154 bytes; these reservations and
+samples are not a proven upper bound for authenticated sessions.
 The I/O test also checks production address formatting for port 65535.
+
+## Disposable MINIX login fixture
+
+The FAT fixture cannot supply the ownership/modes required for public-key
+authentication. Create a separate MINIX v1 image with 14-character names using
+unmodified tools from the prepared ELKS checkout. Its existing kernel must have
+MINIX support enabled; no kernel, libc or installed image is rebuilt or edited.
+The conversion script is specific to this 32 MiB test fixture, not a general
+filesystem migration tool. It assigns controlled root ownership/modes and
+recreates device nodes from upstream `Make.devices`.
+
+For example, build the host tools (not the target OS) and prepare the image:
+
+```sh
+export ELKSSH_TREE=/absolute/path/to/prepared/elks
+mkdir -p feasibility/build feasibility/test-output/images
+cc -O2 -o feasibility/build/mfs "$ELKSSH_TREE"/elks/tools/mfs/*.c
+cc -O2 -o feasibility/build/setboot "$ELKSSH_TREE"/elks/tools/setboot/setboot.c
+python3 tests/prepare_minix.py --fat-image /path/to/hd32-fat.img \
+    --mfs feasibility/build/mfs --setboot feasibility/build/setboot \
+    --devices "$ELKSSH_TREE/image/Make.devices" \
+    --boot "$ELKSSH_TREE/bootblocks/minix.bin" \
+    --out feasibility/test-output/images/hd32-minix.img
+python3 tests/qemu_ssh.py --image feasibility/test-output/images/hd32-minix.img \
+    --filesystem minix --mfs feasibility/build/mfs --server ./dropbear-qemu \
+    --cpu pentium --suite --screenshot --out feasibility/test-output/login-suite
+```
+
+Use the paths to `Make.devices` and the prebuilt MINIX boot block in your prepared
+tree; see the recorded hashes in [login evidence](LOGIN-PROGRESS.md). Each login
+run copies the fixture, generates new keys, pins the host key, uses `/root/authkeys`
+with `-D /root`, and destroys the temporary disk and private keys on completion.
+The full suite additionally tests an occupied preauthentication slot, incorrect
+keys, unsafe permissions, 16,144 bytes of output followed by a delayed marker,
+repeat login, exit status 7 and connection-child cleanup. Omit `--suite` for the
+basic login/delayed-output test. Run with `--entropy short` or `silent`, without
+`--suite`/`--screenshot`, to test startup refusal on the same MINIX fixture.
+
+Guest `ps` samples are retained in `memory.json`; they do not measure true peak
+stack use or total system memory. QEMU wall time is not an 8088 benchmark.

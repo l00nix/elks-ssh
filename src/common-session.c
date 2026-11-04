@@ -166,6 +166,10 @@ void session_loop(void(*loophandler)(void)) {
 	/* main loop, select()s for all sockets in use */
 	for(;;) {
 		const int writequeue_has_space = (ses.writequeue_len <= 2*TRANS_MAX_PAYLOAD_LEN);
+#ifdef __ia16__
+		uint32_t previous_recvseq = ses.recvseq, previous_transseq = ses.transseq;
+		size_t previous_queued = ses.writequeue_len;
+#endif
 
 		timeout.tv_sec = select_timeout();
 		timeout.tv_usec = 0;
@@ -233,8 +237,9 @@ void session_loop(void(*loophandler)(void)) {
 		if (FD_ISSET(ses.signal_pipe[0], &readfd)) {
 			char x;
 			TRACE(("signal pipe set"))
-			while (read(ses.signal_pipe[0], &x, 1) > 0) {}
-			ses.channel_signal_pending = 1;
+			while (read(ses.signal_pipe[0], &x, 1) > 0) {
+				ses.channel_signal_pending = 1;
+			}
 		}
 
 		/* check for auth timeout, rekeying required etc */
@@ -279,6 +284,16 @@ void session_loop(void(*loophandler)(void)) {
 			}
 		}
 
+#ifdef __ia16__
+		/* Stock ELKS pipes have no select hook and appear always ready.
+		 * Cooperate when this iteration made no protocol/output progress.
+		 * A signal interrupts this wait; the next iteration drains its pipe.
+		 * Partial packet reads can incur one additional 10 ms poll interval. */
+		if (previous_recvseq == ses.recvseq && previous_transseq == ses.transseq
+				&& previous_queued == ses.writequeue_len && !ses.channel_signal_pending) {
+			usleep(10000);
+		}
+#endif
 	} /* for(;;) */
 	
 	/* Not reached */

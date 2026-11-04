@@ -397,4 +397,8 @@ runtime with -M. 0 disables this feature. */
 #define DEFAULT_PATH "/usr/bin:/bin"
 #define DEFAULT_ROOT_PATH "/usr/sbin:/usr/bin:/sbin:/bin"
 
+
+/* Server public-key file basename, relative to the configured -D directory. */
+#define DROPBEAR_AUTHKEYS_FILENAME "authorized_keys"
+
 #endif /* DROPBEAR_DEFAULT_OPTIONS_H_ */

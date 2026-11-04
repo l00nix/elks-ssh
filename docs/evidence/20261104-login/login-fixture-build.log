@@ -1,0 +1,16 @@
+Updating BPB to 63 sectors, 16 heads, 63 tracks
+/:
+drwxr-xr-x 12   1   0,  0     224 Nov 04 2026 09:11:13 /
+/root:
+drwx------  2 219   0,  0      80 Nov 04 2026 09:11:13 /root
+/etc:
+drwxr-xr-x  2 201   0,  0     224 Nov 04 2026 09:11:13 /etc
+{
+  "source_fat_sha256": "2302b8604974a0ace258f5a651cf04cad1b36c5b59fdf218f1024b254f18812d",
+  "minix_sha256": "cd8572343ebd14c3cae1516a0c9e8d80ee2fea4e1774c9229c5c084a1d94ffcf",
+  "boot_sha256": "bf91a0c4aa6ebc0046f2c6f83ac057a02641c63d3df58cbd11043d782655c94d",
+  "device_manifest_sha256": "2542e2885bf4ff88997c973fb60acd28b4e40ef6fdb425113b7ec2b25cc3ab08",
+  "kernel_rebuilt": false,
+  "source_unchanged": true,
+  "minix_name_length": 14
+}

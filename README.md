@@ -7,28 +7,27 @@ to bring SSH-2 login and secure file transfer to
 8088** instruction set. The project builds on existing ELKS user-space APIs;
 kernel and architecture changes are out of scope.
 
-**Development has started. This is a feasibility prototype, not a working or
-secure SSH server.** Both client and server now compile for ELKS. Tests cover
-cryptographic code, 16-bit buffer/wire handling and startup refusal without
-secure randomness. A separate QEMU-only build completes modern OpenSSH key
-exchange and strict host verification; login remains blocked by filesystem
-permissions. No network login,
-key generation or file-transfer service is installed by these probes.
+**Experimental: public-key login and remote commands work in QEMU with
+test-only host entropy. This is not deployment-ready or a release candidate.**
+Modern OpenSSH connects with strict host verification and no legacy algorithm
+overrides. The normal server refuses startup without secure randomness;
+production entropy, interactive sessions and original 8086/8088 execution
+remain unvalidated. No service is installed on physical machines.
 
 ## Planned suite
 
 | Component | Purpose | Status |
 | --- | --- | --- |
-| SSH daemon | SSH-2 transport, public-key login, shell and remote commands | QEMU transport verified; login blocked |
+| SSH daemon | SSH-2 transport, public-key login, shell and remote commands | QEMU public-key login and commands pass; interactive shell pending |
 | SFTP subsystem | Secure file transfers through native ELKS filesystem APIs | Planned |
 | Key utility | Public-key display, fingerprints, eventually key generation | Planned |
 | SSH/SFTP clients | Outbound connections from ELKS | Later feasibility work |
 
 The existing **Dropbear ELKS port is our starting point**. Its inherited ELKS
-deliverable was `dbclient`; our new server build remains experimental and has
-not completed a successful SSH login. The inherited source and Git history are
-preserved. TinySSH was considered as an alternative; isolated comparative crypto probes live under
-`feasibility/` and do not replace the Dropbear protocol implementation.
+deliverable was `dbclient`; our new server build remains experimental. The
+inherited source and Git history are preserved. TinySSH was considered as an
+alternative; isolated comparative crypto probes live under `feasibility/` and
+do not replace the Dropbear protocol implementation.
 See [the architecture comparison](docs/DESIGN.md).
 
 ## Compatibility commitment
@@ -54,23 +53,32 @@ external build path. The proposed integration follows ELKS's `buildext.sh` and
 `elkscmd/ExtApplications` conventions; probes are not automatically installed
 as a login service.
 
-See [VALIDATION](docs/VALIDATION.md) for measured results and limitations, and
+See [LOGIN-PROGRESS](docs/LOGIN-PROGRESS.md) for current results and limitations, and
 [ROADMAP](docs/ROADMAP.md) for the staged development plan.
 
-Initial results: the existing client builds with weak entropy disabled; ten
-standalone crypto checks and the OS probes pass in QEMU on 486 and Pentium CPU
-models. Both probe executables pass the static 8086 instruction audit. The
-daemon and real 8086/8088 execution remain unverified.
-The next checkpoint adds a server build, 32-bit SSH sequence/channel handling
-and fifteen production-code regression checks with four independent cipher
-vectors. The latest [socket and entropy checkpoint](docs/SOCKET-PROGRESS.md) adds
-signed I/O and process-error fixes. Its isolated QEMU build completes OpenSSH
-key exchange and host verification; FAT permissions block authentication. See [server progress](docs/SERVER-PROGRESS.md) and the unresolved
-[entropy strategy](docs/ENTROPY.md). No successful SSH login is claimed.
+The latest checkpoint uses MINIX filesystem permissions with the unchanged ELKS
+kernel. Login and delayed output pass on QEMU's 486 model. The Pentium suite
+also checks larger output, repeated login, exit status, child cleanup, rejection
+of incorrect client/host keys and unsafe key-file permissions, and the single
+unauthenticated connection limit. ELKS uses `authkeys` because its MINIX
+filesystem limits names to 14 characters. See [reproduction instructions](docs/BUILDING.md).
+
+![ELKS SSH public-key authentication succeeding in QEMU](docs/screenshots/qemu-ssh-login.png)
+
+Actual QEMU guest console showing successful public-key authentication and
+disconnect. Fresh host/client keys and host-fed session entropy are confined to
+the disposable test. See [results, memory samples and limitations](docs/LOGIN-PROGRESS.md)
+and the unresolved [production entropy strategy](docs/ENTROPY.md).
+
+Earlier checkpoints established [crypto/OS probes](docs/VALIDATION.md),
+[16-bit wire handling](docs/SERVER-PROGRESS.md) and
+[SSH transport](docs/SOCKET-PROGRESS.md). Both standalone probes pass the static
+8086 instruction audit; the linked daemon and real 8086/8088 execution remain
+unverified.
 
 ![ELKS SSH transport test reaching the filesystem permission check](docs/screenshots/qemu-ssh-transport.png)
 
-The latest capture shows the authorization-path permission rejection after
+This earlier capture shows the authorization-path permission rejection after
 successful key exchange and host verification, using test-only host entropy.
 See [transport evidence and limitations](docs/SOCKET-PROGRESS.md).
 

@@ -1,0 +1,9 @@
+{
+  "source_fat_sha256": "2302b8604974a0ace258f5a651cf04cad1b36c5b59fdf218f1024b254f18812d",
+  "minix_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+  "boot_sha256": "bf91a0c4aa6ebc0046f2c6f83ac057a02641c63d3df58cbd11043d782655c94d",
+  "device_manifest_sha256": "2542e2885bf4ff88997c973fb60acd28b4e40ef6fdb425113b7ec2b25cc3ab08",
+  "kernel_rebuilt": false,
+  "source_unchanged": true,
+  "minix_name_length": 14
+}

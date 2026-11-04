@@ -738,10 +738,11 @@ static void send_msg_channel_data(struct Channel *channel, int isextended) {
 	len = read(fd, buf_getwriteptr(ses.writepayload, maxlen), maxlen);
 
 	if (len <= 0) {
-		if (len == 0 || errno != EINTR) {
-			/* This will also get hit in the case of EAGAIN. The only
-			time we expect to receive EAGAIN is when we're flushing a FD,
-			in which case it can be treated the same as EOF */
+		if (len == 0 || (errno != EINTR &&
+				(errno != EAGAIN || channel->flushing))) {
+			/* ELKS may report a pipe ready before bytes are available.
+			 * EAGAIN is only EOF when deliberately flushing an exited
+			 * child's channel; otherwise keep it open for later output. */
 			close_chan_fd(channel, fd, SHUT_RD);
 		}
 		buf_setpos(ses.writepayload, 0);

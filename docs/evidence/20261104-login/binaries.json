@@ -1,0 +1,7 @@
+{
+  "dropbear-qemu-login": "5cbda7382e240764ba68c553f41031bc364219384180ab164e7207854ccdc59d",
+  "dropbear-login": "bef770cab59e1198145bfe40e566da54af989e2fa37cd02ea182a784d8c200de",
+  "dbclient-login": "d037da95583d06d6676da7a3cb0f87fa1f89fb5af0b651a80a8e6a76ff2ecb8a",
+  "wiretest-login": "0b17951bc0dd34111cd5c30c1d1fbb8cd4c7f60c80c1999e65a179a8173a0200",
+  "iotest-login": "6c9814cbdceda6359a7ee227f9c8984b0ef2096e03a76033d161f6e61d2295ff"
+}

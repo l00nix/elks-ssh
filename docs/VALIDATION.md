@@ -1,8 +1,8 @@
 # Initial validation — 2026-11-04
 
-This records the initial probe/client baseline. See the subsequent
-[server checkpoint](SERVER-PROGRESS.md) for the new build and regression results.
-No secure login is claimed.
+This records the historical probe/client baseline. The latest
+[login checkpoint](LOGIN-PROGRESS.md) validates QEMU public-key login with
+test-only host entropy. Deployment security remains unverified.
 
 ## Completed
 

@@ -12,5 +12,5 @@ program=${ELKSSH_PROGRAM:-dbclient}
 case "$program" in dbclient|dropbear) ;; *) echo 'Use ELKSSH_PROGRAM=dbclient or dropbear' >&2; exit 2;; esac
 make -f Makefile.elks PROGRAM="$program" clean
 make -f Makefile.elks PROGRAM="$program"
-printf '%s\n' "Built experimental $program; no successful SSH login has been validated."
+printf '%s\n' "Built experimental $program; QEMU test login is validated, deployment is not."
 printf '%s\n' 'Connections must fail if the configured strong random source is unavailable.'

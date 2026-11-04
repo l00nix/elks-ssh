@@ -52,3 +52,10 @@
 #define DEFAULT_RECV_WINDOW 4096
 #define MAX_RECV_WINDOW 4096
 #define TRANS_MAX_PAYLOAD_LEN 2048
+
+/* Stock ELKS MINIX supports only 14-character filenames. */
+#define DROPBEAR_AUTHKEYS_FILENAME "authkeys"
+
+/* Serialize unauthenticated handshakes on the initial memory-limited port. */
+#define MAX_UNAUTH_CLIENTS 1
+#define MAX_UNAUTH_PER_IP 1

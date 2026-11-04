@@ -4,7 +4,7 @@ CC = ia16-elf-gcc
 PROGRAM ?= dbclient
 OBJDIR = obj-elks/$(PROGRAM)
 OUTPUT = $(PROGRAM)
-HEAP_SIZE ?= 8192
+HEAP_SIZE ?= $(if $(filter dropbear,$(PROGRAM)),16384,8192)
 STACK_SIZE ?= 8192
 
 # Missing strong randomness must stop a connection, never use the old fallback.

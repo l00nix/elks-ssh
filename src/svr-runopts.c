@@ -62,7 +62,7 @@ static void printhelp(const char * progname) {
 					"		- ed25519 %s\n"
 #endif
 #if DROPBEAR_SVR_PUBKEY_AUTH
-					"-D		Directory containing authorized_keys file\n"
+					"-D		Directory containing " DROPBEAR_AUTHKEYS_FILENAME " file\n"
 #endif
 #if DROPBEAR_DELAY_HOSTKEY
 					"-R		Create hostkeys as required\n" 
