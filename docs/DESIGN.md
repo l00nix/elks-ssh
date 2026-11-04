@@ -51,7 +51,9 @@ Before enabling an ELKS daemon:
    Predictable clocks/configuration, repeated fixed seeds, and key material
    copied into emulator snapshots are not production entropy solutions.
 3. Measure total memory, call-chain stack depth and Ed25519/X25519 runtime.
-   The inherited client stack reservation is 2048 bytes; it is not yet validated.
+   The inherited 2048-byte client stack encroached 660 bytes into unused heap
+   during the QEMU entropy-refusal path. We raised the reservation to 8192 bytes;
+   this is not a validated whole-session high-water bound.
 4. Port server PTY/session handling and account checks using existing APIs.
    The inherited configuration disables server multiuser/privilege dropping;
    simply enabling server compilation would not establish correct isolation.

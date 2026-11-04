@@ -7,7 +7,7 @@
   "weak_random": false,
   "build": "passed",
   "bytes": 99040,
-  "sha256": "37fbf09e7c9f793c551364707f99584aead21a1724f6f6c4ef5ea0d0decc37aa",
+  "sha256": "2893b97ef607bb81bc16758756930adbaf8c034d9c5c2b32adbede86ada08905",
   "warnings": [
     "src/dbutil.c:110:1: warning: 'noreturn' function does return",
     "src/common-channel.c:873:12: warning: large integer implicitly truncated to unsigned type [-Woverflow]",
@@ -22,5 +22,7 @@
   ],
   "secure_interoperability": "not tested",
   "linked_ISA_audit": "not yet performed for client",
-  "kernel_changes": false
+  "kernel_changes": false,
+  "heap_reservation": 8192,
+  "stack_reservation": 8192
 }

@@ -120,6 +120,8 @@ def run(args):
                             raise RuntimeError('Client did not fail for missing entropy')
                         if b'Weak entropy fallback' in refusal:
                             raise RuntimeError('Weak entropy fallback was used')
+                        if b'STACK USING' in refusal or b'STACK OVERFLOW' in refusal:
+                            raise RuntimeError('Client exceeded its stack reservation')
                         result['client_entropy_failure_closed'] = True
                     start = time.monotonic()
                     crypto = command('cryptest', 180)

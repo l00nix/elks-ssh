@@ -19,7 +19,7 @@ FAT: me=f0,csz=2,#f=2,floc=1,fsz=124,rloc=249,#d=512,dloc=281,#s=63,504,ts=0
 FAT: total 31M, fat16 format
 VFS: Mounted root device /dev/hda (0300) msdos filesystem.
 Running /etc/rc.sys script
-Wed Nov  4 11:55:59 2026
+Wed Nov  4 11:57:58 2026
 
 ELKS 0.9.2
 
@@ -39,7 +39,6 @@ Survey complete; no login, identity change or network traffic.
 PROBE2=0
 # dbclient -V; echo PROBE3=$?
 
-(10)STACK USING 660 UNUSED HEAP
 dbclient: Exited: Failure reading random device /dev/urandom
 PROBE3=1
 # cryptest; echo PROBE4=$?

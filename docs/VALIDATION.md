@@ -60,3 +60,8 @@ its linked ISA, stack budget or secure runtime. Those require separate tests.
 The executable is 99,040 bytes. [Build evidence](evidence/20261104/client-build.json)
 records its hash and warnings. Integer truncation and an incompatible pointer
 warning in particular require investigation before any interoperability claim.
+
+The first client refusal test also reported `STACK USING 660 UNUSED HEAP` with
+the inherited 2048-byte stack reservation. The client now reserves 8192 bytes;
+the QEMU test explicitly rejects that diagnostic. This change addresses the
+observed initialization path, not a measured bound for a full SSH session.

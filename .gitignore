@@ -10,8 +10,8 @@ id_*
 *_host_key
 *.key
 *.su
-obj-elks/
-dbclient
-dropbear
-default_options_guard.h
+/obj-elks/
+/dbclient
+/dropbear
+/default_options_guard.h
 *.o
