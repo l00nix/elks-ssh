@@ -58,6 +58,12 @@ LTC_SRCS = \
 PROGRAM_OBJS = $(addprefix $(OBJDIR)/,$(addsuffix .o,$(PROGRAM_SRCS)))
 LTC_OBJS = $(addprefix $(OBJDIR)/ltc/,$(addsuffix .o,$(LTC_SRCS)))
 
+# Older ELKS kernels validate signal callbacks against a 16-bit byte count
+# of the combined code allocation. Place the matching libc's unchanged
+# callback before application text, rather than near the end of a large image.
+# This changes only the executable's link order, not the installed libc.
+SIGNAL_CB = $(OBJDIR)/elks-signalcb.o
+
 .PHONY: all clean FORCE
 
 all: $(OUTPUT)
@@ -65,8 +71,16 @@ all: $(OUTPUT)
 # Relink so explicit heap/stack overrides cannot reuse an older reservation.
 FORCE:
 
-$(OUTPUT): FORCE default_options_guard.h $(PROGRAM_OBJS) $(LTC_OBJS) $(EXTRA_OBJS)
-	$(CC) -mcmodel=medium -melks-libc -march=i8086 -mtune=i8086 -maout-heap=$(HEAP_SIZE) -maout-stack=$(STACK_SIZE) -o $@ $(PROGRAM_OBJS) $(LTC_OBJS) $(EXTRA_OBJS)
+$(OUTPUT): FORCE default_options_guard.h $(SIGNAL_CB) $(PROGRAM_OBJS) $(LTC_OBJS) $(EXTRA_OBJS)
+	$(CC) -mcmodel=medium -melks-libc -march=i8086 -mtune=i8086 -maout-heap=$(HEAP_SIZE) -maout-stack=$(STACK_SIZE) -o $@ $(SIGNAL_CB) $(PROGRAM_OBJS) $(LTC_OBJS) $(EXTRA_OBJS)
+
+$(SIGNAL_CB): FORCE
+	@mkdir -p $(dir $@)
+	@set -eu; \
+	libc="$$($(CC) -mcmodel=medium -melks-libc -print-file-name=libc.a)"; \
+	ar="$$($(CC) -print-prog-name=ar)"; \
+	"$$ar" p "$$libc" signalcb.o > $@.tmp; \
+	test -s $@.tmp; mv $@.tmp $@
 
 $(OBJDIR)/qemu-entropy.o: tests/qemu-entropy.c tests/qemu-entropy.h default_options_guard.h $(HEADERS)
 	@mkdir -p $(dir $@)

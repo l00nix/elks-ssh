@@ -1,0 +1,65 @@
+{
+  "status": "hardware_signal_startup_fixed_entropy_absent",
+  "date": "2026-11-04",
+  "hardware": "HP 200LX",
+  "serial_adapter": "BH00K9NP",
+  "baud": 9600,
+  "uname": "ELKS elks 0.9.2 hp200lx-4.0-local 2026-10-21 ibmpc i8086",
+  "registration_probes": {
+    "sig-near": {
+      "exit": 0,
+      "failures": 0
+    },
+    "sig-large": {
+      "exit": 1,
+      "failures": 5,
+      "expected_failure": true,
+      "errno": 22
+    },
+    "sig-early": {
+      "exit": 0,
+      "failures": 0
+    }
+  },
+  "delivery_probe": {
+    "binary": "sig-life",
+    "exit": 0,
+    "delivered": 8,
+    "child_notifications": 8,
+    "reaped": 8,
+    "failures": 0
+  },
+  "normal_daemon": {
+    "sha256": "6613bdd3e73c1502d8ee45f0dc18b1cdb1b0a87a58147a528cb008eaa4abdabb",
+    "version": "Dropbear v2025.89",
+    "startup_exit": 1,
+    "signal_setup_passed": true,
+    "secure_entropy_refusal": "Failure reading random device /dev/urandom",
+    "listener_started": false
+  },
+  "kernel_modified": false,
+  "libc_modified": false,
+  "network_configuration_modified": false,
+  "test_entropy_deployed": false,
+  "hardware_ssh_login": false,
+  "original_8086_execution": false,
+  "main_memory_free_kib_after_probes": 397,
+  "qemu_combined_ssh_cases_passed": 11,
+  "qemu_original_images_unchanged": true,
+  "remaining": [
+    "practical cryptographic performance",
+    "qualified production entropy",
+    "hardware transport and authenticated SSH testing",
+    "native Windows SSH interoperability"
+  ],
+  "capture": {
+    "source": "physical HP logical text console via ELXcap",
+    "target_file": "/root/sshprobe/sshnew.bmp",
+    "format_conversion": "sips BMP to PNG, no content edits",
+    "width": 640,
+    "height": 200,
+    "bmp_md5": "6ac9168d6a7babfc6c1937d6fb148bb4",
+    "bmp_sha256": "7cd5bb10605d99b95cb931fc94b54547bfd39ee2c0f47b8c8737c9b8565c22b0",
+    "png_sha256": "bd14a5b914d70b047161ab6cde07c67786799e80ba386479ffcffccbd5dfe3b6"
+  }
+}

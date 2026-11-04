@@ -50,7 +50,7 @@ This establishes execution of these probes on this HP configuration. It does
 not establish every ELKS platform, original 8086/8088 execution, a full SSH
 login, key isolation or constant-time cryptography.
 
-## Full-daemon startup blocker
+## Initial full-daemon startup blocker (resolved below)
 
 The exact normal daemon was transferred as `/root/sshprobe/sshdcheck` and
 checksum-verified. `sshdcheck -V` prints `Dropbear v2025.89` and exits 0.
@@ -63,17 +63,42 @@ A focused registration-only probe then tested SIGINT, SIGTERM, SIGPIPE, SIGCHLD
 and SIGSEGV, using both ignore dispositions and custom handlers, restoring each
 afterward. Both small- and medium-model binaries passed all registrations in
 QEMU and on the HP. They send no signals and do not validate delivery, signal
-frames or child-reaping behavior. The full daemon's failure is unresolved;
-these results rule out simply claiming that the HP lacks the signal interface.
+frames or child-reaping behavior. At that initial checkpoint, the full daemon's
+failure was unresolved; these results rule out simply claiming that the HP lacks the signal interface.
 The actual console capture additionally shows `sys_signal bad handler addr`: the
 kernel rejects the full daemon's callback address. Callback placement and
-address validation are therefore specific leads, not yet a proven root cause.
-Full-binary initialization, layout and the exact kernel/libc combination need
-further diagnosis. No error check was bypassed and no kernel/libc change was made.
+address validation were the next diagnostic leads. The follow-up below
+identifies the size-dependent range check and validates an application link fix. No error check was bypassed and no kernel/libc change was made.
 
 Afterward the shell remained usable, no daemon remained in `ps`, and `meminfo`
 again reported approximately 397 KiB free main memory. The test files are left
 under `/root/sshprobe`; `/bin`, boot files and network settings were not replaced.
+
+## Follow-up: daemon reaches the secure-randomness check
+
+The [controlled layout comparison](SIGNAL-LAYOUT.md) reproduced the failure
+with a large medium-model probe. Linking the selected libc's unchanged signal
+callback first made the same-sized probe pass. The normal daemon now uses this
+link order and passes signal setup on the HP:
+
+```text
+Dropbear v2025.89
+Early exit: Failure reading random device /dev/urandom
+DAEMON_EXIT=1
+```
+
+This is the intended refusal before host-key loading or listening. No fallback
+entropy, keys or network service was installed. The new normal daemon SHA-256 is
+`6613bdd3e73c1502d8ee45f0dc18b1cdb1b0a87a58147a528cb008eaa4abdabb`.
+It remains a prototype; crypto performance and production entropy are unresolved.
+The larger signal-delivery probe also passes on the HP: eight self-directed
+signals, eight child notifications and eight reaped children, exit 0. `ps`
+shows no remaining daemon/test child and `meminfo` reports about 397 KiB free.
+The earlier screenshot and daemon hash describe the original failing build.
+
+![HP signal delivery and expected secure-randomness refusal](screenshots/hp200lx-signal-fixed.png)
+
+Actual ELXcap capture from this HP; no SSH login or network listener is shown.
 
 ## Linked daemon audit
 
@@ -99,8 +124,7 @@ is a different binary and is not covered by this normal-daemon hash.
 
 ## Remaining SSH prerequisites
 
-Hardware SSH login still needs resolution of the full-daemon signal failure,
-practical crypto performance, a qualified fresh entropy source and a network
+Hardware SSH login still needs practical crypto performance, a qualified fresh entropy source and a network
 or other protected client transport. The console currently occupies the serial
 connection. A QEMU-only entropy adapter must not be installed here. A static
 seed file is not a substitute, and no weak RNG or authentication bypass is used.

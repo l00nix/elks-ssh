@@ -1,0 +1,937 @@
+[
+  {
+    "case": "login",
+    "host_elapsed_seconds": 0.002,
+    "ps": "# ps; echo STEP7=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   3  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   3  1308 13062  66640 -/bin/sh \r\n   12     7   S0 root    S   6   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    R   0 13422 23374  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   16    16      root    S   0  4352 19842 122704 sshtest -F -r /root/hostkey -D /root \r\n   17     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP7=0\r\n"
+  },
+  {
+    "case": "login",
+    "host_elapsed_seconds": 2.162,
+    "ps": "# ps; echo STEP8=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   1  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   2  1308 13062  66640 -/bin/sh \r\n   12     7   S0 root    S   3   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   2 13422 23370  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   16    16      root    R  41  9220 13124 122704 sshtest -F -r /root/hostkey -D /root \r\n   18     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP8=0\r\n"
+  },
+  {
+    "case": "login",
+    "host_elapsed_seconds": 5.657,
+    "ps": "# ps; echo STEP9=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  1308 13062  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   16    16      root    R  92  9220 13014 122704 sshtest -F -r /root/hostkey -D /root \r\n   19     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP9=0\r\n"
+  },
+  {
+    "case": "login",
+    "host_elapsed_seconds": 9.147,
+    "ps": "# ps; echo STEP10=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  1308 13062  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   16    16      root    R  98  9220 13098 122704 sshtest -F -r /root/hostkey -D /root \r\n   20     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP10=0\r\n"
+  },
+  {
+    "case": "login",
+    "host_elapsed_seconds": 12.656,
+    "ps": "# ps; echo STEP11=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  1308 13062  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   16    16      root    R  99  9220 13044 122704 sshtest -F -r /root/hostkey -D /root \r\n   21     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP11=0\r\n"
+  },
+  {
+    "case": "login",
+    "host_elapsed_seconds": 16.162,
+    "ps": "# ps; echo STEP12=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  1308 13062  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   16    16      root    R  99  6036 14438 122704 sshtest -F -r /root/hostkey -D /root \r\n   22     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP12=0\r\n"
+  },
+  {
+    "case": "login",
+    "host_elapsed_seconds": 19.677,
+    "ps": "# ps; echo STEP13=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  1308 13062  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   16    16      root    R  99  6036 14486 122704 sshtest -F -r /root/hostkey -D /root \r\n   23     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP13=0\r\n"
+  },
+  {
+    "case": "login",
+    "host_elapsed_seconds": 23.184,
+    "ps": "# ps; echo STEP14=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  1340 13030  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   16    16      root    R  99  6036 14432 122704 sshtest -F -r /root/hostkey -D /root \r\n   24     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP14=0\r\n"
+  },
+  {
+    "case": "login",
+    "host_elapsed_seconds": 26.694,
+    "ps": "# ps; echo STEP15=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  1330 13040  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   16    16      root    R  99  6036 15656 122704 sshtest -F -r /root/hostkey -D /root \r\n   25     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP15=0\r\n"
+  },
+  {
+    "case": "login",
+    "host_elapsed_seconds": 30.208,
+    "ps": "# ps; echo STEP16=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2336 12034  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   16    16      root    R  97 13154  7442 122704 sshtest -F -r /root/hostkey -D /root \r\n   26     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP16=0\r\n"
+  },
+  {
+    "case": "login",
+    "host_elapsed_seconds": 33.715,
+    "ps": "# ps; echo STEP17=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2358 12012  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   16    16      root    R  99 13154  7376 122704 sshtest -F -r /root/hostkey -D /root \r\n   27     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP17=0\r\n"
+  },
+  {
+    "case": "login",
+    "host_elapsed_seconds": 37.228,
+    "ps": "# ps; echo STEP18=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2380 11990  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   16    16      root    R  99 13154  7380 122704 sshtest -F -r /root/hostkey -D /root \r\n   28     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP18=0\r\n"
+  },
+  {
+    "case": "login",
+    "host_elapsed_seconds": 40.733,
+    "ps": "# ps; echo STEP19=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2402 11968  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   16    16      root    R  99 13154  6834 122704 sshtest -F -r /root/hostkey -D /root \r\n   29     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP19=0\r\n"
+  },
+  {
+    "case": "login",
+    "host_elapsed_seconds": 44.249,
+    "ps": "# ps; echo STEP20=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2424 11946  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   16    16      root    R  99 13154  7066 122704 sshtest -F -r /root/hostkey -D /root \r\n   30     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP20=0\r\n"
+  },
+  {
+    "case": "login",
+    "host_elapsed_seconds": 47.757,
+    "ps": "# ps; echo STEP21=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2446 11924  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   16    16      root    R  99 13154  6848 122704 sshtest -F -r /root/hostkey -D /root \r\n   31     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP21=0\r\n"
+  },
+  {
+    "case": "login",
+    "host_elapsed_seconds": 51.268,
+    "ps": "# ps; echo STEP22=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2468 11902  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   16    16      root    R  99 13154  6838 122704 sshtest -F -r /root/hostkey -D /root \r\n   32     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP22=0\r\n"
+  },
+  {
+    "case": "login",
+    "host_elapsed_seconds": 54.777,
+    "ps": "# ps; echo STEP23=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2490 11880  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   16    16      root    S  99  3506 20688 122704 sshtest -F -r /root/hostkey -D /root \r\n   33     7   S0 root    R   0    50  2100   8992 ps \r\n   34    16      root    S   0   176 14176  66768 sh -c echo ELKSSH_LOGIN_OK; sleep 2; echo ELKSSH_DONE \r\n   35    16      root    S   0     0  8136   8944 sleep 2 \r\nSTEP23=0\r\n"
+  },
+  {
+    "case": "wrong-key",
+    "host_elapsed_seconds": 0.002,
+    "ps": "# ps; echo STEP26=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  1692 12678  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    R   0  8948 27848  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   38    38      root    S   0  4352 19842 122704 sshtest -F -r /root/hostkey -D /root \r\n   39     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP26=0\r\n"
+  },
+  {
+    "case": "wrong-key",
+    "host_elapsed_seconds": 2.199,
+    "ps": "# ps; echo STEP27=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  1670 12700  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   38    38      root    R  65  9220 13084 122704 sshtest -F -r /root/hostkey -D /root \r\n   40     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP27=0\r\n"
+  },
+  {
+    "case": "wrong-key",
+    "host_elapsed_seconds": 5.712,
+    "ps": "# ps; echo STEP28=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  1670 12700  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   38    38      root    R  93  9220 12902 122704 sshtest -F -r /root/hostkey -D /root \r\n   41     7   S0 root    R   1    50  2100   8992 ps \r\nSTEP28=0\r\n"
+  },
+  {
+    "case": "wrong-key",
+    "host_elapsed_seconds": 9.259,
+    "ps": "# ps; echo STEP29=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  1714 12656  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   38    38      root    R  98  9220 13042 122704 sshtest -F -r /root/hostkey -D /root \r\n   42     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP29=0\r\n"
+  },
+  {
+    "case": "wrong-key",
+    "host_elapsed_seconds": 12.769,
+    "ps": "# ps; echo STEP30=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  1746 12624  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   38    38      root    R  99  9220 12998 122704 sshtest -F -r /root/hostkey -D /root \r\n   43     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP30=0\r\n"
+  },
+  {
+    "case": "wrong-key",
+    "host_elapsed_seconds": 16.283,
+    "ps": "# ps; echo STEP31=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  1768 12602  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   38    38      root    R  99  6036 14712 122704 sshtest -F -r /root/hostkey -D /root \r\n   44     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP31=0\r\n"
+  },
+  {
+    "case": "wrong-key",
+    "host_elapsed_seconds": 19.793,
+    "ps": "# ps; echo STEP32=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  1790 12580  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   38    38      root    R  99  6036 14536 122704 sshtest -F -r /root/hostkey -D /root \r\n   45     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP32=0\r\n"
+  },
+  {
+    "case": "wrong-key",
+    "host_elapsed_seconds": 23.304,
+    "ps": "# ps; echo STEP33=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  1812 12558  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   38    38      root    R  99  6036 14474 122704 sshtest -F -r /root/hostkey -D /root \r\n   46     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP33=0\r\n"
+  },
+  {
+    "case": "wrong-key",
+    "host_elapsed_seconds": 26.809,
+    "ps": "# ps; echo STEP34=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  1834 12536  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   38    38      root    R  99  6036 15656 122704 sshtest -F -r /root/hostkey -D /root \r\n   47     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP34=0\r\n"
+  },
+  {
+    "case": "wrong-host",
+    "host_elapsed_seconds": 0.002,
+    "ps": "# ps; echo STEP37=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2016 12354  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    R   0  8948 27848  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   50     7   S0 root    R   0    50  2100   8992 ps \r\n   51    51      root    S   0  4352 19586 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP37=0\r\n"
+  },
+  {
+    "case": "wrong-host",
+    "host_elapsed_seconds": 2.191,
+    "ps": "# ps; echo STEP38=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  1992 12378  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   2  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   52     7   S0 root    R   0    50  2100   8992 ps \r\n   51    51      root    R  53  9220 13138 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP38=0\r\n"
+  },
+  {
+    "case": "wrong-host",
+    "host_elapsed_seconds": 5.7,
+    "ps": "# ps; echo STEP39=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  1992 12378  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   53     7   S0 root    R   0    50  2100   8992 ps \r\n   51    51      root    R  93  9220 12954 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP39=0\r\n"
+  },
+  {
+    "case": "wrong-host",
+    "host_elapsed_seconds": 9.208,
+    "ps": "# ps; echo STEP40=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  1992 12378  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   54     7   S0 root    R   0    50  2100   8992 ps \r\n   51    51      root    R  98  9220 13114 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP40=0\r\n"
+  },
+  {
+    "case": "wrong-host",
+    "host_elapsed_seconds": 12.721,
+    "ps": "# ps; echo STEP41=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  1992 12378  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   55     7   S0 root    R   0    50  2100   8992 ps \r\n   51    51      root    R  99  9220 13038 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP41=0\r\n"
+  },
+  {
+    "case": "wrong-host",
+    "host_elapsed_seconds": 16.23,
+    "ps": "# ps; echo STEP42=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2036 12334  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   56     7   S0 root    R   0    50  2100   8992 ps \r\n   51    51      root    R  99  6036 14468 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP42=0\r\n"
+  },
+  {
+    "case": "wrong-host",
+    "host_elapsed_seconds": 19.736,
+    "ps": "# ps; echo STEP43=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2068 12302  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   57     7   S0 root    R   0    50  2100   8992 ps \r\n   51    51      root    R  99  6036 14730 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP43=0\r\n"
+  },
+  {
+    "case": "wrong-host",
+    "host_elapsed_seconds": 23.25,
+    "ps": "# ps; echo STEP44=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2090 12280  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   58     7   S0 root    R   0    50  2100   8992 ps \r\n   51    51      root    R  99  6036 14534 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP44=0\r\n"
+  },
+  {
+    "case": "wrong-host",
+    "host_elapsed_seconds": 26.758,
+    "ps": "# ps; echo STEP45=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2112 12258  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   59     7   S0 root    R   0    50  2100   8992 ps \r\n   51    51      root    R  99  6036 14744 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP45=0\r\n"
+  },
+  {
+    "case": "unsafe-dir",
+    "host_elapsed_seconds": 0.002,
+    "ps": "# ps; echo STEP49=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2340 12030  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    R   0  8948 27848  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   63    63      root    S   0  4352 19842 122704 sshtest -F -r /root/hostkey -D /root \r\n   64     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP49=0\r\n"
+  },
+  {
+    "case": "unsafe-dir",
+    "host_elapsed_seconds": 2.204,
+    "ps": "# ps; echo STEP50=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2364 12006  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   2  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   63    63      root    R  41  9220 13396 122704 sshtest -F -r /root/hostkey -D /root \r\n   65     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP50=0\r\n"
+  },
+  {
+    "case": "unsafe-dir",
+    "host_elapsed_seconds": 5.712,
+    "ps": "# ps; echo STEP51=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2336 12034  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   63    63      root    R  92  9220 12944 122704 sshtest -F -r /root/hostkey -D /root \r\n   66     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP51=0\r\n"
+  },
+  {
+    "case": "unsafe-dir",
+    "host_elapsed_seconds": 9.224,
+    "ps": "# ps; echo STEP52=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2338 12032  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   63    63      root    R  98  9220 13290 122704 sshtest -F -r /root/hostkey -D /root \r\n   67     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP52=0\r\n"
+  },
+  {
+    "case": "unsafe-dir",
+    "host_elapsed_seconds": 12.737,
+    "ps": "# ps; echo STEP53=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2338 12032  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   63    63      root    R  99  9220 13294 122704 sshtest -F -r /root/hostkey -D /root \r\n   68     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP53=0\r\n"
+  },
+  {
+    "case": "unsafe-dir",
+    "host_elapsed_seconds": 16.243,
+    "ps": "# ps; echo STEP54=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2370 12000  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   63    63      root    R  99  6036 14442 122704 sshtest -F -r /root/hostkey -D /root \r\n   69     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP54=0\r\n"
+  },
+  {
+    "case": "unsafe-dir",
+    "host_elapsed_seconds": 19.754,
+    "ps": "# ps; echo STEP55=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2392 11978  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   63    63      root    R  99  6036 14690 122704 sshtest -F -r /root/hostkey -D /root \r\n   70     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP55=0\r\n"
+  },
+  {
+    "case": "unsafe-dir",
+    "host_elapsed_seconds": 23.267,
+    "ps": "# ps; echo STEP56=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2414 11956  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   63    63      root    R  99  6036 14518 122704 sshtest -F -r /root/hostkey -D /root \r\n   71     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP56=0\r\n"
+  },
+  {
+    "case": "unsafe-dir",
+    "host_elapsed_seconds": 26.777,
+    "ps": "# ps; echo STEP57=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2436 11934  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   63    63      root    R  99  6036 14458 122704 sshtest -F -r /root/hostkey -D /root \r\n   72     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP57=0\r\n"
+  },
+  {
+    "case": "unsafe-key",
+    "host_elapsed_seconds": 0.002,
+    "ps": "# ps; echo STEP62=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2818 11552  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    R   0  8948 27834  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   77    77      root    S   0  4352 19842 122704 sshtest -F -r /root/hostkey -D /root \r\n   78     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP62=0\r\n"
+  },
+  {
+    "case": "unsafe-key",
+    "host_elapsed_seconds": 2.208,
+    "ps": "# ps; echo STEP63=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   1  2764 11606  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   77    77      root    R  72  9220 13070 122704 sshtest -F -r /root/hostkey -D /root \r\n   79     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP63=0\r\n"
+  },
+  {
+    "case": "unsafe-key",
+    "host_elapsed_seconds": 5.715,
+    "ps": "# ps; echo STEP64=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2764 11606  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   77    77      root    R  90  9220 12944 122704 sshtest -F -r /root/hostkey -D /root \r\n   80     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP64=0\r\n"
+  },
+  {
+    "case": "unsafe-key",
+    "host_elapsed_seconds": 9.221,
+    "ps": "# ps; echo STEP65=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2764 11606  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   77    77      root    R  98  9220 13046 122704 sshtest -F -r /root/hostkey -D /root \r\n   81     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP65=0\r\n"
+  },
+  {
+    "case": "unsafe-key",
+    "host_elapsed_seconds": 12.735,
+    "ps": "# ps; echo STEP66=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2764 11606  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   77    77      root    R  99  9220 13080 122704 sshtest -F -r /root/hostkey -D /root \r\n   82     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP66=0\r\n"
+  },
+  {
+    "case": "unsafe-key",
+    "host_elapsed_seconds": 16.245,
+    "ps": "# ps; echo STEP67=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2764 11606  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   77    77      root    R  99  6036 14512 122704 sshtest -F -r /root/hostkey -D /root \r\n   83     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP67=0\r\n"
+  },
+  {
+    "case": "unsafe-key",
+    "host_elapsed_seconds": 19.755,
+    "ps": "# ps; echo STEP68=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2764 11606  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   77    77      root    R  99  6036 14454 122704 sshtest -F -r /root/hostkey -D /root \r\n   84     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP68=0\r\n"
+  },
+  {
+    "case": "unsafe-key",
+    "host_elapsed_seconds": 23.266,
+    "ps": "# ps; echo STEP69=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2796 11574  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   77    77      root    R  99  6036 14738 122704 sshtest -F -r /root/hostkey -D /root \r\n   85     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP69=0\r\n"
+  },
+  {
+    "case": "unsafe-key",
+    "host_elapsed_seconds": 26.775,
+    "ps": "# ps; echo STEP70=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  2818 11552  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   77    77      root    R  99  6036 15884 122704 sshtest -F -r /root/hostkey -D /root \r\n   86     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP70=0\r\n"
+  },
+  {
+    "case": "stream",
+    "host_elapsed_seconds": 0.002,
+    "ps": "# ps; echo STEP74=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3100 11270  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    R   0  8948 27848  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   90    90      root    S   0  4352 19842 122704 sshtest -F -r /root/hostkey -D /root \r\n   91     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP74=0\r\n"
+  },
+  {
+    "case": "stream",
+    "host_elapsed_seconds": 2.2,
+    "ps": "# ps; echo STEP75=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3116 11254  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   90    90      root    R  68  9220 13090 122704 sshtest -F -r /root/hostkey -D /root \r\n   92     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP75=0\r\n"
+  },
+  {
+    "case": "stream",
+    "host_elapsed_seconds": 5.703,
+    "ps": "# ps; echo STEP76=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3116 11254  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   90    90      root    R  95  9220 12998 122704 sshtest -F -r /root/hostkey -D /root \r\n   93     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP76=0\r\n"
+  },
+  {
+    "case": "stream",
+    "host_elapsed_seconds": 9.219,
+    "ps": "# ps; echo STEP77=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3116 11254  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   90    90      root    R  98  9220 13038 122704 sshtest -F -r /root/hostkey -D /root \r\n   94     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP77=0\r\n"
+  },
+  {
+    "case": "stream",
+    "host_elapsed_seconds": 12.728,
+    "ps": "# ps; echo STEP78=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3116 11254  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   90    90      root    R  99  9220 13294 122704 sshtest -F -r /root/hostkey -D /root \r\n   95     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP78=0\r\n"
+  },
+  {
+    "case": "stream",
+    "host_elapsed_seconds": 16.239,
+    "ps": "# ps; echo STEP79=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3116 11254  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   90    90      root    R  99  6036 14522 122704 sshtest -F -r /root/hostkey -D /root \r\n   96     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP79=0\r\n"
+  },
+  {
+    "case": "stream",
+    "host_elapsed_seconds": 19.746,
+    "ps": "# ps; echo STEP80=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3116 11254  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   90    90      root    R  99  6036 14528 122704 sshtest -F -r /root/hostkey -D /root \r\n   97     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP80=0\r\n"
+  },
+  {
+    "case": "stream",
+    "host_elapsed_seconds": 23.259,
+    "ps": "# ps; echo STEP81=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3116 11254  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   90    90      root    R  99  6036 14422 122704 sshtest -F -r /root/hostkey -D /root \r\n   98     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP81=0\r\n"
+  },
+  {
+    "case": "stream",
+    "host_elapsed_seconds": 26.769,
+    "ps": "# ps; echo STEP82=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3148 11222  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   90    90      root    R  99  6036 15954 122704 sshtest -F -r /root/hostkey -D /root \r\n   99     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP82=0\r\n"
+  },
+  {
+    "case": "stream",
+    "host_elapsed_seconds": 30.278,
+    "ps": "# ps; echo STEP83=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3170 11200  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   90    90      root    R  96 13154  7402 122704 sshtest -F -r /root/hostkey -D /root \r\n  100     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP83=0\r\n"
+  },
+  {
+    "case": "stream",
+    "host_elapsed_seconds": 33.787,
+    "ps": "# ps; echo STEP84=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3192 11178  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   90    90      root    R  98 13154  7408 122704 sshtest -F -r /root/hostkey -D /root \r\n  101     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP84=0\r\n"
+  },
+  {
+    "case": "stream",
+    "host_elapsed_seconds": 37.295,
+    "ps": "# ps; echo STEP85=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3214 11156  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   90    90      root    R  99 13154  7444 122704 sshtest -F -r /root/hostkey -D /root \r\n  102     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP85=0\r\n"
+  },
+  {
+    "case": "stream",
+    "host_elapsed_seconds": 40.805,
+    "ps": "# ps; echo STEP86=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3236 11134  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   90    90      root    R  99 13154  7398 122704 sshtest -F -r /root/hostkey -D /root \r\n  103     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP86=0\r\n"
+  },
+  {
+    "case": "stream",
+    "host_elapsed_seconds": 44.318,
+    "ps": "# ps; echo STEP87=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3258 11112  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   90    90      root    R  99 13154  6904 122704 sshtest -F -r /root/hostkey -D /root \r\n  104     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP87=0\r\n"
+  },
+  {
+    "case": "stream",
+    "host_elapsed_seconds": 47.826,
+    "ps": "# ps; echo STEP88=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3280 11090  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   90    90      root    R  99 13154  6888 122704 sshtest -F -r /root/hostkey -D /root \r\n  105     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP88=0\r\n"
+  },
+  {
+    "case": "stream",
+    "host_elapsed_seconds": 51.336,
+    "ps": "# ps; echo STEP89=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3302 11068  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   90    90      root    R  99 13154  6850 122704 sshtest -F -r /root/hostkey -D /root \r\n  106     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP89=0\r\n"
+  },
+  {
+    "case": "stream",
+    "host_elapsed_seconds": 54.85,
+    "ps": "# ps; echo STEP90=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3324 11046  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  9118 27674  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   90    90      root    S  99  3506 20706 122704 sshtest -F -r /root/hostkey -D /root \r\n  107     7   S0 root    R   0    50  2100   8992 ps \r\n  108    90      root    S   0   148 14208  66768 sh -c cat /root/payload; sleep 2; echo STREAM_DONE \r\n  109    90      root    R   0     0  8158  10400 cat /root/payload \r\nSTEP90=0\r\n"
+  },
+  {
+    "case": "stream",
+    "host_elapsed_seconds": 57.411,
+    "ps": "# ps; echo STEP91=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3346 11024  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S  18  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n   90    90      root    R  75  3506 20666 122704 sshtest -F -r /root/hostkey -D /root \r\n  108    90      root    S   0   180 14176  66768 sh -c cat /root/payload; sleep 2; echo STREAM_DONE \r\n  110    90      root    S   0     0  8136   8944 sleep 2 \r\n  111     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP91=0\r\n"
+  },
+  {
+    "case": "repeat-exit",
+    "host_elapsed_seconds": 0.002,
+    "ps": "# ps; echo STEP94=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3528 10842  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    R  12  8948 27848  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  114     7   S0 root    R   0    50  2100   8992 ps \r\n  115   115      root    S   0  4352 19586 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP94=0\r\n"
+  },
+  {
+    "case": "repeat-exit",
+    "host_elapsed_seconds": 2.189,
+    "ps": "# ps; echo STEP95=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3504 10866  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   3  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  116     7   S0 root    R   0    50  2100   8992 ps \r\n  115   115      root    R  72  9220 13084 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP95=0\r\n"
+  },
+  {
+    "case": "repeat-exit",
+    "host_elapsed_seconds": 5.697,
+    "ps": "# ps; echo STEP96=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3504 10866  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  117     7   S0 root    R   0    50  2100   8992 ps \r\n  115   115      root    R  90  9220 13008 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP96=0\r\n"
+  },
+  {
+    "case": "repeat-exit",
+    "host_elapsed_seconds": 9.21,
+    "ps": "# ps; echo STEP97=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3504 10866  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  118     7   S0 root    R   0    50  2100   8992 ps \r\n  115   115      root    R  98  9220 13044 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP97=0\r\n"
+  },
+  {
+    "case": "repeat-exit",
+    "host_elapsed_seconds": 12.72,
+    "ps": "# ps; echo STEP98=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3536 10834  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  119     7   S0 root    R   0    50  2100   8992 ps \r\n  115   115      root    R  99  9220 12988 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP98=0\r\n"
+  },
+  {
+    "case": "repeat-exit",
+    "host_elapsed_seconds": 16.23,
+    "ps": "# ps; echo STEP99=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3558 10812  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  120     7   S0 root    R   0    50  2100   8992 ps \r\n  115   115      root    R  99  6036 14516 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP99=0\r\n"
+  },
+  {
+    "case": "repeat-exit",
+    "host_elapsed_seconds": 19.743,
+    "ps": "# ps; echo STEP100=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3580 10790  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  121     7   S0 root    R   0    50  2100   8992 ps \r\n  115   115      root    R  99  6036 14690 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP100=0\r\n"
+  },
+  {
+    "case": "repeat-exit",
+    "host_elapsed_seconds": 23.268,
+    "ps": "# ps; echo STEP101=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3570 10800  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  122     7   S0 root    R   0    50  2100   8992 ps \r\n  115   115      root    R  99  6036 14456 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP101=0\r\n"
+  },
+  {
+    "case": "repeat-exit",
+    "host_elapsed_seconds": 26.799,
+    "ps": "# ps; echo STEP102=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  123     7   S0 root    R   0    50  2100   8992 ps \r\n  115   115      root    R  99  6036 15604 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP102=0\r\n"
+  },
+  {
+    "case": "repeat-exit",
+    "host_elapsed_seconds": 30.327,
+    "ps": "# ps; echo STEP103=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  124     7   S0 root    R   0    50  2100   8992 ps \r\n  115   115      root    R  98 13154  7450 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP103=0\r\n"
+  },
+  {
+    "case": "repeat-exit",
+    "host_elapsed_seconds": 33.862,
+    "ps": "# ps; echo STEP104=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  125     7   S0 root    R   0    50  2100   8992 ps \r\n  115   115      root    R  99 13154  7384 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP104=0\r\n"
+  },
+  {
+    "case": "repeat-exit",
+    "host_elapsed_seconds": 37.389,
+    "ps": "# ps; echo STEP105=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  126     7   S0 root    R   0    50  2100   8992 ps \r\n  115   115      root    R  99 13154  7396 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP105=0\r\n"
+  },
+  {
+    "case": "repeat-exit",
+    "host_elapsed_seconds": 40.92,
+    "ps": "# ps; echo STEP106=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  127     7   S0 root    R   0    50  2100   8992 ps \r\n  115   115      root    R  99 13154  6910 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP106=0\r\n"
+  },
+  {
+    "case": "repeat-exit",
+    "host_elapsed_seconds": 44.452,
+    "ps": "# ps; echo STEP107=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  128     7   S0 root    R   0    50  2100   8992 ps \r\n  115   115      root    R  99 13154  6850 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP107=0\r\n"
+  },
+  {
+    "case": "repeat-exit",
+    "host_elapsed_seconds": 47.983,
+    "ps": "# ps; echo STEP108=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  129     7   S0 root    R   0    50  2100   8992 ps \r\n  115   115      root    R  99 13154  6828 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP108=0\r\n"
+  },
+  {
+    "case": "repeat-exit",
+    "host_elapsed_seconds": 51.512,
+    "ps": "# ps; echo STEP109=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  130     7   S0 root    R   0    50  2100   8992 ps \r\n  115   115      root    R  99 13154  6844 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP109=0\r\n"
+  },
+  {
+    "case": "stdin-eof",
+    "host_elapsed_seconds": 0.002,
+    "ps": "# ps; echo STEP112=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3610 10760  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    R   1  8948 27856  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  134     7   S0 root    R   0    50  2100   8992 ps \r\n  135   135      root    R   0  4352 19586 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP112=0\r\n"
+  },
+  {
+    "case": "stdin-eof",
+    "host_elapsed_seconds": 2.182,
+    "ps": "# ps; echo STEP113=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3588 10782  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   3  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  136     7   S0 root    R   0    50  2100   8992 ps \r\n  135   135      root    R  52  9220 13320 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP113=0\r\n"
+  },
+  {
+    "case": "stdin-eof",
+    "host_elapsed_seconds": 5.707,
+    "ps": "# ps; echo STEP114=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3642 10728  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  137     7   S0 root    R   0    50  2100   8992 ps \r\n  135   135      root    R  93  9220 12954 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP114=0\r\n"
+  },
+  {
+    "case": "stdin-eof",
+    "host_elapsed_seconds": 9.241,
+    "ps": "# ps; echo STEP115=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3642 10728  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  138     7   S0 root    R   0    50  2100   8992 ps \r\n  135   135      root    R  98  9220 13100 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP115=0\r\n"
+  },
+  {
+    "case": "stdin-eof",
+    "host_elapsed_seconds": 12.771,
+    "ps": "# ps; echo STEP116=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3642 10728  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  139     7   S0 root    R   0    50  2100   8992 ps \r\n  135   135      root    R  99  9220 13040 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP116=0\r\n"
+  },
+  {
+    "case": "stdin-eof",
+    "host_elapsed_seconds": 16.299,
+    "ps": "# ps; echo STEP117=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3570 10800  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  140     7   S0 root    R   0    50  2100   8992 ps \r\n  135   135      root    R  99  6036 14480 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP117=0\r\n"
+  },
+  {
+    "case": "stdin-eof",
+    "host_elapsed_seconds": 19.831,
+    "ps": "# ps; echo STEP118=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3570 10800  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  141     7   S0 root    R   0    50  2100   8992 ps \r\n  135   135      root    R  99  6036 14452 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP118=0\r\n"
+  },
+  {
+    "case": "stdin-eof",
+    "host_elapsed_seconds": 23.36,
+    "ps": "# ps; echo STEP119=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3570 10800  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  142     7   S0 root    R   0    50  2100   8992 ps \r\n  135   135      root    R  99  6036 14426 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP119=0\r\n"
+  },
+  {
+    "case": "stdin-eof",
+    "host_elapsed_seconds": 26.89,
+    "ps": "# ps; echo STEP120=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  143     7   S0 root    R   0    50  2100   8992 ps \r\n  135   135      root    R  99  6036 15706 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP120=0\r\n"
+  },
+  {
+    "case": "stdin-eof",
+    "host_elapsed_seconds": 30.42,
+    "ps": "# ps; echo STEP121=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  144     7   S0 root    R   0    50  2100   8992 ps \r\n  135   135      root    R  96 13154  7678 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP121=0\r\n"
+  },
+  {
+    "case": "stdin-eof",
+    "host_elapsed_seconds": 33.949,
+    "ps": "# ps; echo STEP122=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  145     7   S0 root    R   0    50  2100   8992 ps \r\n  135   135      root    R  99 13154  7402 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP122=0\r\n"
+  },
+  {
+    "case": "stdin-eof",
+    "host_elapsed_seconds": 37.481,
+    "ps": "# ps; echo STEP123=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  146     7   S0 root    R   0    50  2100   8992 ps \r\n  135   135      root    R  99 13154  7392 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP123=0\r\n"
+  },
+  {
+    "case": "stdin-eof",
+    "host_elapsed_seconds": 41.011,
+    "ps": "# ps; echo STEP124=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  147     7   S0 root    R   0    50  2100   8992 ps \r\n  135   135      root    R  99 13154  7440 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP124=0\r\n"
+  },
+  {
+    "case": "stdin-eof",
+    "host_elapsed_seconds": 44.539,
+    "ps": "# ps; echo STEP125=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  148     7   S0 root    R   0    50  2100   8992 ps \r\n  135   135      root    R  99 13154  6774 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP125=0\r\n"
+  },
+  {
+    "case": "stdin-eof",
+    "host_elapsed_seconds": 48.072,
+    "ps": "# ps; echo STEP126=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  149     7   S0 root    R   0    50  2100   8992 ps \r\n  135   135      root    R  99 13154  6814 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP126=0\r\n"
+  },
+  {
+    "case": "stdin-eof",
+    "host_elapsed_seconds": 51.599,
+    "ps": "# ps; echo STEP127=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  150     7   S0 root    R   0    50  2100   8992 ps \r\n  135   135      root    R  99 13154  7066 122704 sshtest -F -r /root/hostkey -D /root \r\nSTEP127=0\r\n"
+  },
+  {
+    "case": "stdin-eof",
+    "host_elapsed_seconds": 55.132,
+    "ps": "# ps; echo STEP128=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  151     7   S0 root    R   0    50  2100   8992 ps \r\n  135   135      root    S  97  3506 20688 122704 sshtest -F -r /root/hostkey -D /root \r\n  152   135      root    R   0  3506 19872 122704 sshtest -F -r /root/hostkey -D /root \r\n  153   135      root    R   0     0  8158  12464 cat \r\nSTEP128=0\r\n"
+  },
+  {
+    "case": "pty-commands",
+    "host_elapsed_seconds": 0.005,
+    "ps": "# ps; echo STEP131=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3610 10760  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    R   1  8948 27834  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  156   156      root    S   0  4352 19842 122704 sshtest -F -r /root/hostkey -D /root \r\n  157     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP131=0\r\n"
+  },
+  {
+    "case": "pty-commands",
+    "host_elapsed_seconds": 2.186,
+    "ps": "# ps; echo STEP132=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3570 10800  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   3  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  156   156      root    R  50  9220 13098 122704 sshtest -F -r /root/hostkey -D /root \r\n  158     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP132=0\r\n"
+  },
+  {
+    "case": "pty-commands",
+    "host_elapsed_seconds": 5.719,
+    "ps": "# ps; echo STEP133=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3570 10800  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  156   156      root    R  93  9220 13004 122704 sshtest -F -r /root/hostkey -D /root \r\n  159     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP133=0\r\n"
+  },
+  {
+    "case": "pty-commands",
+    "host_elapsed_seconds": 9.244,
+    "ps": "# ps; echo STEP134=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  156   156      root    R  98  9220 13026 122704 sshtest -F -r /root/hostkey -D /root \r\n  160     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP134=0\r\n"
+  },
+  {
+    "case": "pty-commands",
+    "host_elapsed_seconds": 12.778,
+    "ps": "# ps; echo STEP135=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  156   156      root    R  99  9220 13296 122704 sshtest -F -r /root/hostkey -D /root \r\n  161     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP135=0\r\n"
+  },
+  {
+    "case": "pty-commands",
+    "host_elapsed_seconds": 16.308,
+    "ps": "# ps; echo STEP136=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  156   156      root    R  99  6036 14406 122704 sshtest -F -r /root/hostkey -D /root \r\n  162     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP136=0\r\n"
+  },
+  {
+    "case": "pty-commands",
+    "host_elapsed_seconds": 19.838,
+    "ps": "# ps; echo STEP137=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  156   156      root    R  99  6036 14398 122704 sshtest -F -r /root/hostkey -D /root \r\n  163     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP137=0\r\n"
+  },
+  {
+    "case": "pty-commands",
+    "host_elapsed_seconds": 23.369,
+    "ps": "# ps; echo STEP138=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  156   156      root    R  99  6036 14502 122704 sshtest -F -r /root/hostkey -D /root \r\n  164     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP138=0\r\n"
+  },
+  {
+    "case": "pty-commands",
+    "host_elapsed_seconds": 26.898,
+    "ps": "# ps; echo STEP139=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3570 10800  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  156   156      root    R  99  6036 15884 122704 sshtest -F -r /root/hostkey -D /root \r\n  165     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP139=0\r\n"
+  },
+  {
+    "case": "pty-commands",
+    "host_elapsed_seconds": 30.427,
+    "ps": "# ps; echo STEP140=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  156   156      root    R  97 13154  7676 122704 sshtest -F -r /root/hostkey -D /root \r\n  166     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP140=0\r\n"
+  },
+  {
+    "case": "pty-commands",
+    "host_elapsed_seconds": 33.958,
+    "ps": "# ps; echo STEP141=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  156   156      root    R  99 13154  7722 122704 sshtest -F -r /root/hostkey -D /root \r\n  167     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP141=0\r\n"
+  },
+  {
+    "case": "pty-commands",
+    "host_elapsed_seconds": 37.488,
+    "ps": "# ps; echo STEP142=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  156   156      root    R  99 13154  7390 122704 sshtest -F -r /root/hostkey -D /root \r\n  168     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP142=0\r\n"
+  },
+  {
+    "case": "pty-commands",
+    "host_elapsed_seconds": 41.017,
+    "ps": "# ps; echo STEP143=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  156   156      root    R  99 13154  6804 122704 sshtest -F -r /root/hostkey -D /root \r\n  169     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP143=0\r\n"
+  },
+  {
+    "case": "pty-commands",
+    "host_elapsed_seconds": 44.545,
+    "ps": "# ps; echo STEP144=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3570 10800  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  156   156      root    R  99 13154  6910 122704 sshtest -F -r /root/hostkey -D /root \r\n  170     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP144=0\r\n"
+  },
+  {
+    "case": "pty-commands",
+    "host_elapsed_seconds": 48.078,
+    "ps": "# ps; echo STEP145=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3570 10800  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  156   156      root    R  99 13154  6850 122704 sshtest -F -r /root/hostkey -D /root \r\n  171     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP145=0\r\n"
+  },
+  {
+    "case": "pty-commands",
+    "host_elapsed_seconds": 51.607,
+    "ps": "# ps; echo STEP146=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  156   156      root    R  99 13154  6902 122704 sshtest -F -r /root/hostkey -D /root \r\n  172     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP146=0\r\n"
+  },
+  {
+    "case": "pty-commands",
+    "host_elapsed_seconds": 55.138,
+    "ps": "# ps; echo STEP147=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3570 10800  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  156   156      root    S  99  3506 20688 122704 sshtest -F -r /root/hostkey -D /root \r\n  173   173   p0 root    S   0   184 14164  66816 sh -c echo PTY_BEGIN; tty; ps; cat /etc/issue; echo PTY_DONE \r\n  176   173   p0 root    R   0    50  1968   9088 ps \r\n  175     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP147=0\r\n"
+  },
+  {
+    "case": "pty-input-eof",
+    "host_elapsed_seconds": 0.002,
+    "ps": "# ps; echo STEP150=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    R   1  8948 27834  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  180   180      root    S   0  4352 19842 122704 sshtest -F -r /root/hostkey -D /root \r\n  181     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP150=0\r\n"
+  },
+  {
+    "case": "pty-input-eof",
+    "host_elapsed_seconds": 2.187,
+    "ps": "# ps; echo STEP151=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3570 10800  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   3  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  180   180      root    R  58  9220 13082 122704 sshtest -F -r /root/hostkey -D /root \r\n  182     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP151=0\r\n"
+  },
+  {
+    "case": "pty-input-eof",
+    "host_elapsed_seconds": 5.715,
+    "ps": "# ps; echo STEP152=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  180   180      root    R  94  9220 13208 122704 sshtest -F -r /root/hostkey -D /root \r\n  183     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP152=0\r\n"
+  },
+  {
+    "case": "pty-input-eof",
+    "host_elapsed_seconds": 9.244,
+    "ps": "# ps; echo STEP153=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  180   180      root    R  98  9220 13300 122704 sshtest -F -r /root/hostkey -D /root \r\n  184     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP153=0\r\n"
+  },
+  {
+    "case": "pty-input-eof",
+    "host_elapsed_seconds": 12.777,
+    "ps": "# ps; echo STEP154=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3570 10800  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  180   180      root    R  99  9220 13018 122704 sshtest -F -r /root/hostkey -D /root \r\n  185     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP154=0\r\n"
+  },
+  {
+    "case": "pty-input-eof",
+    "host_elapsed_seconds": 16.308,
+    "ps": "# ps; echo STEP155=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3570 10800  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  180   180      root    R  99  6036 14520 122704 sshtest -F -r /root/hostkey -D /root \r\n  186     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP155=0\r\n"
+  },
+  {
+    "case": "pty-input-eof",
+    "host_elapsed_seconds": 19.838,
+    "ps": "# ps; echo STEP156=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  180   180      root    R  99  6036 14760 122704 sshtest -F -r /root/hostkey -D /root \r\n  187     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP156=0\r\n"
+  },
+  {
+    "case": "pty-input-eof",
+    "host_elapsed_seconds": 23.372,
+    "ps": "# ps; echo STEP157=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  180   180      root    R  99  6036 14726 122704 sshtest -F -r /root/hostkey -D /root \r\n  188     7   S0 root    R   1    50  2100   8992 ps \r\nSTEP157=0\r\n"
+  },
+  {
+    "case": "pty-input-eof",
+    "host_elapsed_seconds": 26.917,
+    "ps": "# ps; echo STEP158=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  180   180      root    R  99  6036 14424 122704 sshtest -F -r /root/hostkey -D /root \r\n  189     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP158=0\r\n"
+  },
+  {
+    "case": "pty-input-eof",
+    "host_elapsed_seconds": 30.444,
+    "ps": "# ps; echo STEP159=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  180   180      root    R  96 13154  7404 122704 sshtest -F -r /root/hostkey -D /root \r\n  190     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP159=0\r\n"
+  },
+  {
+    "case": "pty-input-eof",
+    "host_elapsed_seconds": 33.977,
+    "ps": "# ps; echo STEP160=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  180   180      root    R  99 13154  7364 122704 sshtest -F -r /root/hostkey -D /root \r\n  191     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP160=0\r\n"
+  },
+  {
+    "case": "pty-input-eof",
+    "host_elapsed_seconds": 37.508,
+    "ps": "# ps; echo STEP161=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  180   180      root    R  99 13154  7398 122704 sshtest -F -r /root/hostkey -D /root \r\n  192     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP161=0\r\n"
+  },
+  {
+    "case": "pty-input-eof",
+    "host_elapsed_seconds": 41.038,
+    "ps": "# ps; echo STEP162=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  180   180      root    R  99 13154  7672 122704 sshtest -F -r /root/hostkey -D /root \r\n  193     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP162=0\r\n"
+  },
+  {
+    "case": "pty-input-eof",
+    "host_elapsed_seconds": 44.565,
+    "ps": "# ps; echo STEP163=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3570 10800  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  180   180      root    R  99 13154  6828 122704 sshtest -F -r /root/hostkey -D /root \r\n  194     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP163=0\r\n"
+  },
+  {
+    "case": "pty-input-eof",
+    "host_elapsed_seconds": 48.098,
+    "ps": "# ps; echo STEP164=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  180   180      root    R  99 13154  6880 122704 sshtest -F -r /root/hostkey -D /root \r\n  195     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP164=0\r\n"
+  },
+  {
+    "case": "pty-input-eof",
+    "host_elapsed_seconds": 51.627,
+    "ps": "# ps; echo STEP165=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  180   180      root    R  99 13154  7144 122704 sshtest -F -r /root/hostkey -D /root \r\n  196     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP165=0\r\n"
+  },
+  {
+    "case": "pty-input-eof",
+    "host_elapsed_seconds": 55.158,
+    "ps": "# ps; echo STEP166=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  180   180      root    S  99  3506 20688 122704 sshtest -F -r /root/hostkey -D /root \r\n  197     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP166=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 0.002,
+    "ps": "# ps; echo STEP169=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3610 10760  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    R   4  8948 27834  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    S   0  4352 19842 122704 sshtest -F -r /root/hostkey -D /root \r\n  205     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP169=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 2.186,
+    "ps": "# ps; echo STEP170=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3570 10800  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   3  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  44  9220 13088 122704 sshtest -F -r /root/hostkey -D /root \r\n  206     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP170=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 5.718,
+    "ps": "# ps; echo STEP171=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  92  9220 12954 122704 sshtest -F -r /root/hostkey -D /root \r\n  207     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP171=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 9.248,
+    "ps": "# ps; echo STEP172=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  98  9220 13036 122704 sshtest -F -r /root/hostkey -D /root \r\n  208     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP172=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 12.777,
+    "ps": "# ps; echo STEP173=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99  9220 13044 122704 sshtest -F -r /root/hostkey -D /root \r\n  209     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP173=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 16.308,
+    "ps": "# ps; echo STEP174=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99  6036 14508 122704 sshtest -F -r /root/hostkey -D /root \r\n  210     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP174=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 19.834,
+    "ps": "# ps; echo STEP175=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99  6036 14470 122704 sshtest -F -r /root/hostkey -D /root \r\n  211     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP175=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 23.368,
+    "ps": "# ps; echo STEP176=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99  6036 14530 122704 sshtest -F -r /root/hostkey -D /root \r\n  212     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP176=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 26.898,
+    "ps": "# ps; echo STEP177=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99  6036 15656 122704 sshtest -F -r /root/hostkey -D /root \r\n  213     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP177=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 30.424,
+    "ps": "# ps; echo STEP178=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  98 13154  7344 122704 sshtest -F -r /root/hostkey -D /root \r\n  214     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP178=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 33.958,
+    "ps": "# ps; echo STEP179=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99 13154  7440 122704 sshtest -F -r /root/hostkey -D /root \r\n  215     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP179=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 37.488,
+    "ps": "# ps; echo STEP180=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99 13154  7382 122704 sshtest -F -r /root/hostkey -D /root \r\n  216     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP180=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 41.019,
+    "ps": "# ps; echo STEP181=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99 13154  7448 122704 sshtest -F -r /root/hostkey -D /root \r\n  217     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP181=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 44.549,
+    "ps": "# ps; echo STEP182=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99 13154  6840 122704 sshtest -F -r /root/hostkey -D /root \r\n  218     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP182=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 48.08,
+    "ps": "# ps; echo STEP183=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99 13154  6836 122704 sshtest -F -r /root/hostkey -D /root \r\n  219     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP183=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 51.603,
+    "ps": "# ps; echo STEP184=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99 13154  6906 122704 sshtest -F -r /root/hostkey -D /root \r\n  220     7   S0 root    R   0    50  2100   8992 ps \r\nSTEP184=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 55.139,
+    "ps": "# ps; echo STEP185=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    S  99  3506 20688 122704 sshtest -F -r /root/hostkey -D /root \r\n  221     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP185=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 57.849,
+    "ps": "# ps; echo STEP186=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S  10  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  85  9554 13002 122704 sshtest -F -r /root/hostkey -D /root \r\n  224     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   1     0  8158  10400 cat /root/payload \r\nSTEP186=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 61.587,
+    "ps": "# ps; echo STEP187=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  98  9554 12980 122704 sshtest -F -r /root/hostkey -D /root \r\n  225     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP187=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 65.328,
+    "ps": "# ps; echo STEP188=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99  9554 12652 122704 sshtest -F -r /root/hostkey -D /root \r\n  226     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP188=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 69.064,
+    "ps": "# ps; echo STEP189=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99  9554 12944 122704 sshtest -F -r /root/hostkey -D /root \r\n  227     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP189=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 72.809,
+    "ps": "# ps; echo STEP190=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99  6410 14100 122704 sshtest -F -r /root/hostkey -D /root \r\n  228     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP190=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 76.55,
+    "ps": "# ps; echo STEP191=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99  6410 14038 122704 sshtest -F -r /root/hostkey -D /root \r\n  229     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP191=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 80.289,
+    "ps": "# ps; echo STEP192=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99  6410 14146 122704 sshtest -F -r /root/hostkey -D /root \r\n  230     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP192=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 84.029,
+    "ps": "# ps; echo STEP193=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99  6410 15522 122704 sshtest -F -r /root/hostkey -D /root \r\n  231     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP193=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 87.769,
+    "ps": "# ps; echo STEP194=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S  11  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  87  9812 12490 122704 sshtest -F -r /root/hostkey -D /root \r\n  232     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP194=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 91.508,
+    "ps": "# ps; echo STEP195=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  98  9812 12498 122704 sshtest -F -r /root/hostkey -D /root \r\n  233     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP195=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 95.248,
+    "ps": "# ps; echo STEP196=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99  9812 12452 122704 sshtest -F -r /root/hostkey -D /root \r\n  234     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP196=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 98.987,
+    "ps": "# ps; echo STEP197=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99  9812 12394 122704 sshtest -F -r /root/hostkey -D /root \r\n  235     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP197=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 102.73,
+    "ps": "# ps; echo STEP198=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99  6668 13780 122704 sshtest -F -r /root/hostkey -D /root \r\n  236     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP198=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 106.469,
+    "ps": "# ps; echo STEP199=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3516 10854  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99  6668 13838 122704 sshtest -F -r /root/hostkey -D /root \r\n  237     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP199=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 110.208,
+    "ps": "# ps; echo STEP200=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3494 10876  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99  6668 13880 122704 sshtest -F -r /root/hostkey -D /root \r\n  238     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP200=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 113.95,
+    "ps": "# ps; echo STEP201=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3500 10870  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99  6668 15074 122704 sshtest -F -r /root/hostkey -D /root \r\n  239     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP201=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 117.69,
+    "ps": "# ps; echo STEP202=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3500 10870  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   8  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  90  9812 12490 122704 sshtest -F -r /root/hostkey -D /root \r\n  240     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP202=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 121.429,
+    "ps": "# ps; echo STEP203=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3500 10870  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  98  9812 12528 122704 sshtest -F -r /root/hostkey -D /root \r\n  241     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP203=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 125.17,
+    "ps": "# ps; echo STEP204=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3500 10870  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99  9812 12746 122704 sshtest -F -r /root/hostkey -D /root \r\n  242     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP204=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 128.905,
+    "ps": "# ps; echo STEP205=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3500 10870  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99  9812 12440 122704 sshtest -F -r /root/hostkey -D /root \r\n  243     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP205=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 132.65,
+    "ps": "# ps; echo STEP206=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3500 10870  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99  6668 13836 122704 sshtest -F -r /root/hostkey -D /root \r\n  244     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP206=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 136.39,
+    "ps": "# ps; echo STEP207=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3500 10870  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99  6668 13902 122704 sshtest -F -r /root/hostkey -D /root \r\n  245     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP207=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 140.129,
+    "ps": "# ps; echo STEP208=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3500 10870  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99  6668 13842 122704 sshtest -F -r /root/hostkey -D /root \r\n  246     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP208=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 143.87,
+    "ps": "# ps; echo STEP209=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3500 10870  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99  6668 15312 122704 sshtest -F -r /root/hostkey -D /root \r\n  247     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP209=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 147.61,
+    "ps": "# ps; echo STEP210=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3446 10924  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   9  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  89  9812 12496 122704 sshtest -F -r /root/hostkey -D /root \r\n  248     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   1     0  8158  10400 cat /root/payload \r\nSTEP210=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 151.35,
+    "ps": "# ps; echo STEP211=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3446 10924  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  98  9812 12546 122704 sshtest -F -r /root/hostkey -D /root \r\n  249     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP211=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 155.09,
+    "ps": "# ps; echo STEP212=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3500 10870  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99  9812 12448 122704 sshtest -F -r /root/hostkey -D /root \r\n  250     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP212=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 158.83,
+    "ps": "# ps; echo STEP213=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3446 10924  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99  9812 12420 122704 sshtest -F -r /root/hostkey -D /root \r\n  251     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP213=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 162.57,
+    "ps": "# ps; echo STEP214=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3446 10924  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99  6668 13838 122704 sshtest -F -r /root/hostkey -D /root \r\n  252     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP214=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 166.31,
+    "ps": "# ps; echo STEP215=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3446 10924  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99  6668 13786 122704 sshtest -F -r /root/hostkey -D /root \r\n  253     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP215=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 170.049,
+    "ps": "# ps; echo STEP216=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3446 10924  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99  6668 13842 122704 sshtest -F -r /root/hostkey -D /root \r\n  254     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP216=0\r\n"
+  },
+  {
+    "case": "rekey-output",
+    "host_elapsed_seconds": 173.787,
+    "ps": "# ps; echo STEP217=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4016  12944 /bin/init 3 \r\n    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 \r\n    7     7   S0 root    S   0  3446 10924  66640 -/bin/sh \r\n   12     7   S0 root    S   0   410 23908 122704 sshtest -F -r /root/hostkey -D /root \r\n   10    10   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 \r\n  204   204      root    R  99  6668 15014 122704 sshtest -F -r /root/hostkey -D /root \r\n  255     7   S0 root    R   0    50  2100   8992 ps \r\n  222   204      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE \r\n  223   204      root    S   0     0  8158  10400 cat /root/payload \r\nSTEP217=0\r\n"
+  }
+]

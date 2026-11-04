@@ -1,0 +1,8 @@
+ISA audit: PASS; near memory 7584/65520 before argv/env; report: sig-near-audit.json
+ISA audit: PASS; near memory 7584/65520 before argv/env; report: sig-large-audit.json
+ISA audit: PASS; near memory 7584/65520 before argv/env; report: sig-early-audit.json
+ISA audit: PASS; near memory 7520/65520 before argv/env; report: sig-life-audit.json
+c9f76d395b55cee7b8b93d44afdaa7a50bef6703e22e1bfe14cca658b94673a4  sig-near
+e3511c715ceaec0d06991402591bdd10e94b63202541e2304f39548b1318a575  sig-large
+68922496e3899f97a96e2f80c9df3b7046b10e99816cd800f688c3016cda8c40  sig-early
+2a1a155eec8762e4e5439d9ad0db2c58948a467f4d62b8b0d54d89f1bf735964  sig-life

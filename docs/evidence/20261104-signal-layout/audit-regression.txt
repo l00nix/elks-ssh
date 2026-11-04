@@ -1,0 +1,6 @@
+PASS exact near/far code matches and passes ISA audit
+PASS changed near-code byte rejected
+PASS changed far-code byte rejected despite unchanged ELF/disassembly
+PASS missing far-code header length rejected
+PASS truncated far-code payload rejected
+PASS truncated supplemental header rejected

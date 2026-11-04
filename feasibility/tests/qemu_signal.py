@@ -15,6 +15,7 @@ p = argparse.ArgumentParser()
 p.add_argument('--image', type=Path, required=True)
 p.add_argument('--build', type=Path, required=True)
 p.add_argument('--out', type=Path, required=True)
+p.add_argument('--names', nargs='+', default=['sig-small', 'sig-medium'])
 a = p.parse_args()
 a.out.mkdir(parents=True, exist_ok=True)
 sha = lambda f: hashlib.sha256(f.read_bytes()).hexdigest()
@@ -32,7 +33,9 @@ try:
         assert len(opts) <= 1023
         (temp/'bootopts').write_bytes(opts)
         subprocess.run(['mcopy', '-o', '-i', str(disk), str(temp/'bootopts'), '::/bootopts'], check=True)
-        for name in ('sig-small', 'sig-medium'):
+        for name in a.names:
+            if not re.fullmatch(r'[a-zA-Z0-9_-]{1,14}', name):
+                raise ValueError('Probe name must be a short basename')
             result[name+'_sha256'] = sha(a.build/name)
             subprocess.run(['mcopy', '-o', '-i', str(disk), str(a.build/name), '::/bin/'+name], check=True)
         serial = temp/'serial'
@@ -62,11 +65,14 @@ try:
                             if re.search(pattern, data): return bytes(data)
                         raise RuntimeError('Guest response timed out')
                     receive(rb'login:'); conn.sendall(b'root\r'); receive(rb'# ')
-                    for i, name in enumerate(('sig-small', 'sig-medium')):
+                    for i, name in enumerate(a.names):
                         marker = 'SIGNAL%d' % i
                         conn.sendall((name+'; echo '+marker+'=$?\r').encode())
                         data = receive(rb'\r?\n'+marker.encode()+rb'=(\d+)\r?\n')
                         passed = b'RESULT failures=0' in data and marker.encode()+b'=0' in data
+                        if name == 'sig-life':
+                            passed = passed and b'delivered=8 child_notifications=8 reaped=8' in data
+                            result['signal_delivery_tested'] = passed
                         result[name] = passed
                         if not passed: raise RuntimeError(name+' failed')
                     result['status'] = 'passed'

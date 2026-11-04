@@ -43,6 +43,12 @@ With the prepared toolchain on PATH, build the development-only test executable:
 make -f Makefile.elks wiretest iotest
 ```
 
+Client and server links place the selected medium-model libc's unchanged
+`signalcb.o` before application code. This avoids the HP 4.0 kernel's overflowing
+signal-address range check for the measured layouts, without changing libc or
+the kernel. Code-size and callback-position checks remain candidate-specific;
+see [the signal-layout investigation and reproducer](SIGNAL-LAYOUT.md).
+
 Client and server object directories are separate, and header changes trigger
 recompilation. Integer-overflow, incompatible-pointer and implicit-declaration
 warnings are build errors. Other warnings are retained in the evidence.

@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "cpu": "486",
+  "image_sha256": "2302b8604974a0ace258f5a651cf04cad1b36c5b59fdf218f1024b254f18812d",
+  "real_hardware": false,
+  "signal_delivery_tested": true,
+  "sig-life_sha256": "2a1a155eec8762e4e5439d9ad0db2c58948a467f4d62b8b0d54d89f1bf735964",
+  "sig-life": true,
+  "original_image_unchanged": true
+}

@@ -78,11 +78,12 @@ and the unresolved [production entropy strategy](docs/ENTROPY.md).
 
 The [physical HP 200LX checkpoint](docs/HP200LX-PROGRESS.md) passed all ten crypto
 probe checks, but the batch took 19 minutes 19 seconds. The normal daemon loads
-and prints its version, then hits a signal-setup error on startup. Resolving
-that failure, crypto performance and hardware entropy remain prerequisites
-for a usable hardware SSH service.
+and now passes signal setup after an application link-order fix, then correctly
+refuses startup without `/dev/urandom`. See the [controlled hardware comparison](docs/SIGNAL-LAYOUT.md).
+Crypto performance and hardware entropy remain prerequisites for a usable
+hardware SSH service.
 
-![HP 200LX hardware probe and blocked daemon startup](docs/screenshots/hp200lx-probe.png)
+![HP 200LX signal tests and secure-randomness refusal](docs/screenshots/hp200lx-signal-fixed.png)
 
 Actual ELXcap console capture; this is a hardware probe, not an SSH login.
 

@@ -1,0 +1,19 @@
+{
+  "hp_kernel_bootkit_sha256": "55a2259accfaad7ff5a51fff9ec85127d1d10f94ae6ac0cfd3e22f0b93fceb56",
+  "hp_retained_build_kernel_matches_bootkit": true,
+  "running_kernel_dumped": false,
+  "hp_kernel_signal_source_sha256": "bb0f9052a7f195d2c1a8df74247ce93a3796d30da1375bcb96b95bae39b5fada",
+  "hp_kernel_exec_source_sha256": "ea0fe5fb1e654fa5b942509d70571b52a1dd0eaf3d76f4d2679e2762fc1cec28",
+  "prepared_elks_commit": "e1469b64c5809c44d5c822eaeebd0e97d5996289",
+  "upstream_signal_range_fix": "7da0f265c9dafb9eed87963dd4eae3180b0eeae2",
+  "compiler": "ia16-elf-gcc 6.3.0",
+  "kernel_modified": false,
+  "libc_modified": false,
+  "source_sha256": {
+    "Makefile.elks": "c56ca9dae949e034a80554af268f0292b640f286fac40ec44d8ee1d93e4b9fc8",
+    "feasibility/src/sigprobe.c": "c4d8f6238992730350b61fea153269514a15c68fde01758dd18cbc4c4f51c4ed",
+    "feasibility/src/sigpad.S": "97a30f500221bac585f9ca400d0d4d37e40b426df7b3463e15b98f1efaecb9ad",
+    "feasibility/src/siglife.c": "d9945f36bae1ee67dfb891a4ade0a2848b5834e6b8bbb51f50da02c93b64b880",
+    "feasibility/toolchain/build-signal-layout.sh": "45e09ba0523e47f2bfe18e213bddfea0a59974f4eb03b9054ccfc7869cb8c361"
+  }
+}

@@ -34,8 +34,9 @@ a release candidate.
 
 ## Next development order
 
-1. Diagnose the HP full-daemon signal-callback rejection and compare ways to
-   improve the slow Curve25519 baseline using established implementations.
+1. Compare established implementations suited to 16-bit arithmetic to improve
+   the slow Curve25519 baseline. The HP signal-callback rejection is resolved
+   for the measured build by [linking the unchanged libc callback first](SIGNAL-LAYOUT.md).
 2. Extend disposable QEMU tests for interactive shell input, terminal
    resize/control keys and abrupt disconnects; retain stdin/EOF and rekey checks.
 3. Run the [Windows 11 client matrix](WINDOWS-TESTING.md) against that fixture.

@@ -1,0 +1,25 @@
+{
+  "cpu": "486",
+  "status": "passed",
+  "image_sha256": "2302b8604974a0ace258f5a651cf04cad1b36c5b59fdf218f1024b254f18812d",
+  "cryptest_sha256": "877486f6e82e0d3a707d40f2a7a8fb170dcd3d5857717acc4ae563efedc6fba9",
+  "osprobe_sha256": "1048adc83d45817fb723b39e3eda7f04bb0ae5cb3af7c1944b09fb2658ed0772",
+  "qemu": "QEMU emulator version 11.1.0",
+  "original_8086_execution": "not tested",
+  "dbclient_sha256": "bfecc273f71306d8e910bc2f5c5862662a19c4ad1d0cce211a2fe46d967d4ef3",
+  "dropbear_sha256": "6613bdd3e73c1502d8ee45f0dc18b1cdb1b0a87a58147a528cb008eaa4abdabb",
+  "uname": "uname -a; echo PROBE1=$?\r\r\nELKS elks 0.9.2 commit e1469b64 20 Oct 2026 14:22:02 +0000 ibmpc i8086\r\nPROBE1=0\r\n",
+  "client_entropy_failure_closed": true,
+  "server_version_passed": true,
+  "server_entropy_failure_closed": true,
+  "crypto_host_elapsed_seconds": 165.969,
+  "checks": [
+    "10 crypto checks",
+    "16-bit ABI",
+    "PTY allocation",
+    "account lookup",
+    "TCP down/start/stop",
+    "shell survives"
+  ],
+  "original_image_unchanged": true
+}

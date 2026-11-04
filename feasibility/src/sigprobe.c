@@ -3,6 +3,14 @@
 #include <signal.h>
 #include <errno.h>
 
+#ifdef __ia16__
+#if defined(__TINY__) || defined(__SMALL__) || defined(__COMPACT__)
+extern __attribute__((near_section, __stdcall__)) __far void _signal_cbhandler(int);
+#else
+extern __far void __attribute__((__stdcall__)) _signal_cbhandler(int);
+#endif
+#endif
+
 static void handler(int sig) { (void)sig; }
 
 int main(void)
@@ -13,6 +21,13 @@ int main(void)
     int mode, failures = 0;
     sighandler_t old;
     puts("ELKS SSH signal registration probe (no signals sent)");
+#ifdef __ia16__
+    {
+        unsigned long address = (unsigned long)_signal_cbhandler;
+        printf("libc callback=%04x:%04x\n", (unsigned)(address >> 16),
+               (unsigned)address);
+    }
+#endif
     for (i = 0; i < sizeof(signals)/sizeof(signals[0]); i++) {
         for (mode = 0; mode < 2; mode++) {
             errno = 0;
