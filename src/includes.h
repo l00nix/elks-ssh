@@ -83,12 +83,6 @@ struct iovec {
 #define SHUT_RD   0
 #define SHUT_WR   1
 #define SHUT_RDWR 2
-static inline int shutdown(int fd, int how)
-{
-	(void)fd;
-	(void)how;
-	return 0;
-}
 #endif
 
 #ifndef SIGBUS
@@ -112,21 +106,6 @@ static inline int shutdown(int fd, int how)
 #endif
 #ifndef AF_MAX
 #define AF_MAX 255
-#endif
-
-#ifndef SO_ERROR
-#define SO_ERROR 0
-static inline int getsockopt(int sock, int level, int option_name,
-	void *option_value, socklen_t *option_len)
-{
-	(void)sock;
-	(void)level;
-	(void)option_name;
-	if (option_value && option_len && *option_len >= sizeof(int)) {
-		*(int *)option_value = 0;
-	}
-	return 0;
-}
 #endif
 
 #ifndef UIO_MAXIOV

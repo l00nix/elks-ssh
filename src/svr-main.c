@@ -307,7 +307,7 @@ static void main_noinetd(int argc, char ** argv, const char* multipath) {
 #else
 			fork_ret = fork();
 #endif
-			if (fork_ret < 0) {
+			if (fork_ret == (pid_t)-1) {
 				dropbear_log(LOG_WARNING, "Error forking: %s", strerror(errno));
 				goto out;
 			}
@@ -407,7 +407,11 @@ static void sigchld_handler(int UNUSED(unused)) {
 
 	const int saved_errno = errno;
 
-	while(waitpid(-1, NULL, WNOHANG) > 0) {}
+	/* ELKS pid_t is unsigned: the error sentinel is not a child PID. */
+	{
+		pid_t pid;
+		while ((pid = waitpid(-1, NULL, WNOHANG)) != (pid_t)-1 && pid != 0) {}
+	}
 
 	sa_chld.sa_handler = sigchld_handler;
 	sa_chld.sa_flags = SA_NOCLDSTOP;

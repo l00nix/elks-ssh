@@ -128,7 +128,7 @@ int getnameinfo(const struct sockaddr *sa, size_t salen, char *host,
 	if (sa->sa_family != AF_UNSPEC && sa->sa_family != AF_INET)
 		return (EAI_FAMILY);
 	if (serv != NULL) {
-		snprintf(tmpserv, sizeof(tmpserv), "%d", ntohs(sin->sin_port));
+		snprintf(tmpserv, sizeof(tmpserv), "%u", (unsigned int)ntohs(sin->sin_port));
 		if (strlcpy(serv, tmpserv, servlen) >= servlen)
 			return (EAI_MEMORY);
 	}

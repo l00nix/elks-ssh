@@ -35,6 +35,8 @@ def run(args):
         result['dbclient_sha256'] = sha(args.client)
     if args.wiretest:
         result['wiretest_sha256'] = sha(args.wiretest)
+    if args.iotest:
+        result['iotest_sha256'] = sha(args.iotest)
     if args.server:
         result['dropbear_sha256'] = sha(args.server)
     with tempfile.TemporaryDirectory(prefix='esh-') as directory:
@@ -57,6 +59,9 @@ def run(args):
         if args.wiretest:
             subprocess.run(['mcopy', '-o', '-i', str(disk), str(args.wiretest),
                             '::/bin/wiretest'], check=True)
+        if args.iotest:
+            subprocess.run(['mcopy', '-o', '-i', str(disk), str(args.iotest),
+                            '::/bin/iotest'], check=True)
         if args.server:
             subprocess.run(['mcopy', '-o', '-i', str(disk), str(args.server),
                             '::/bin/dropbear'], check=True)
@@ -135,6 +140,16 @@ def run(args):
                                 raise RuntimeError('Cipher reference mismatch: ' + sequence)
                         result['wire_regressions'] = 15
                         result['independent_cipher_vectors'] = 4
+                    if args.iotest:
+                        io = command('iotest')
+                        if b'RESULT PASS I/O' not in io or b'FAIL' in io:
+                            raise RuntimeError('Signed I/O regression failed')
+                        if b'STACK USING' in io or b'STACK OVERFLOW' in io:
+                            raise RuntimeError('I/O regression exceeded reserved stack')
+                        result['io_regressions'] = 2
+                        if b'PASS unsigned peer port 65535' not in io:
+                            raise RuntimeError('Unsigned peer-port regression failed')
+                        result['peer_port_regressions'] = 1
                     if args.client:
                         # This inherited client seeds before parsing even -V.
                         # Confirm an unavailable RNG cannot enter a connection.
@@ -243,4 +258,6 @@ if __name__ == '__main__':
                         help='Optional production-code 16-bit wire regression executable')
     parser.add_argument('--server', type=Path,
                         help='Optional server version and no-entropy startup checks only')
+    parser.add_argument('--iotest', type=Path,
+                        help='Optional production atomicio signed-size regression')
     run(parser.parse_args())

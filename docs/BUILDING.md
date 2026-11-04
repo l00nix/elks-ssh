@@ -29,12 +29,13 @@ ELKSSH_PROGRAM=dropbear ELKSSH_ELKS=/absolute/path/to/elks sh toolchain/build-ex
 This builds `dropbear` with the existing ELKS APIs. It is not ready for deployment
 or automatic startup. The current image has no usable secure RNG; startup must
 fail before binding a port. The configuration is single-user and public-key-only;
-no authentication flow has passed an interoperability test yet.
+the normal build has no secure entropy source on the test image. The separate
+QEMU test build reaches encrypted authentication but does not yet log in.
 
 With the prepared toolchain on PATH, build the development-only test executable:
 
 ```sh
-make -f Makefile.elks wiretest
+make -f Makefile.elks wiretest iotest
 ```
 
 Client and server object directories are separate, and header changes trigger
@@ -108,7 +109,7 @@ From the repository root, run the combined suite:
 ```sh
 python3 feasibility/tests/qemu_probe.py --image /path/to/hd32-fat.img \
     --build feasibility/build --cpu 486 --out feasibility/test-output/server \
-    --wiretest ./wiretest --client ./dbclient --server ./dropbear
+    --wiretest ./wiretest --client ./dbclient --server ./dropbear --iotest ./iotest
 ```
 
 The checked-in cipher fixtures need no Python crypto dependency at test time.
@@ -123,3 +124,37 @@ project directory, using the prepared ELKS checkout read-only. Transfer source
 and retrieve binaries, linked ELF/map/disassembly and logs. Keep credentials and
 host-specific transport helpers outside this repository. Remote compilation and
 the upstream build system's fetching of remote repositories are distinct steps.
+
+## QEMU-only entropy and SSH interoperability harness
+
+This is development infrastructure, not a hardware installation procedure.
+With the prepared toolchain on PATH:
+
+```sh
+make -f Makefile.elks PROGRAM=dropbear TEST_ENTROPY=1 HEAP_SIZE=16384
+python3 tests/qemu_ssh.py --image /path/to/hd32-fat.img \
+    --server ./dropbear-qemu --entropy short --out feasibility/test-output/short
+python3 tests/qemu_ssh.py --image /path/to/hd32-fat.img \
+    --server ./dropbear-qemu --entropy silent --out feasibility/test-output/silent
+python3 tests/qemu_ssh.py --image /path/to/hd32-fat.img \
+    --server ./dropbear-qemu --entropy healthy --out feasibility/test-output/ssh
+```
+
+The host needs OpenSSH and Python `cryptography` (tested with 50.0.2), plus QEMU
+and mtools. A healthy entropy source does not imply a successful SSH test:
+`status: blocked` and nonzero exit mean that login did not complete. The harness
+records the client diagnostics and guest log without retaining secret keys or
+entropy bytes. Its known-hosts file is pre-pinned and strict checking stays on.
+See [the adapter's trust limits](ENTROPY.md#development-only-qemu-adapter).
+
+`iotest` checks that a 40,000-byte request is capped at `INT_MAX` before a
+mock callback returns EOF without accessing the buffer. A second case transfers
+2048 bytes through interrupted and partial reads. Both use production `atomicio`
+on the signed 16-bit ABI; neither measures whole-session memory usage.
+
+The QEMU command above explicitly reserves 16 KiB of heap for investigation;
+the normal default remains 8 KiB, with an 8 KiB stack. `HEAP_SIZE` and
+`STACK_SIZE` override link-time reservations and the main executable is relinked
+on each build. The observed 8 KiB key-exchange allocation failure motivated the
+larger experiment; this is not a measured upper bound for authenticated sessions.
+The I/O test also checks production address formatting for port 65535.

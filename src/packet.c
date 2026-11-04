@@ -63,7 +63,7 @@ void write_packet() {
 	unsigned int iov_count = 50;
 	struct iovec iov[50];
 #else
-	int len;
+	size_t len;
 	buffer* writebuf;
 #endif
 	
@@ -112,6 +112,7 @@ void write_packet() {
 
 	len = writebuf->len - writebuf->pos;
 	dropbear_assert(len > 0);
+	len = MIN(len, INT_MAX);
 	/* Try to write as much as possible */
 	written = write(ses.sock_out, buf_getptr(writebuf, len), len);
 
@@ -130,7 +131,7 @@ void write_packet() {
 
 	ses.writequeue_len -= written;
 
-	if (written == len) {
+	if ((size_t)written == writebuf->len - writebuf->pos) {
 		/* We've finished with the packet, free it */
 		dequeue(&ses.writequeue);
 		buf_free(writebuf);
@@ -174,6 +175,7 @@ void read_packet() {
 	/* Attempt to read the remainder of the packet, note that there
 	 * mightn't be any available (EAGAIN) */
 	maxlen = ses.readbuf->len - ses.readbuf->pos;
+	maxlen = MIN(maxlen, INT_MAX);
 	if (maxlen == 0) {
 		/* Occurs when the packet is only a single block long and has all
 		 * been read in read_packet_init().  Usually means that MAC is disabled

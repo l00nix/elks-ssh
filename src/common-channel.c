@@ -1055,7 +1055,13 @@ static void close_chan_fd(struct Channel *channel, int fd, int how) {
 
 	if (channel->bidir_fd) {
 		TRACE(("SHUTDOWN(%d, %d)", fd, how))
+#ifdef __ia16__
+		/* Forwarding is disabled in the ELKS build. Do not claim a socket
+		 * half-close succeeded if a new caller enables a bidirectional fd. */
+		dropbear_exit("Socket half-close is unavailable on ELKS");
+#else
 		shutdown(fd, how);
+#endif
 		if (how == 0) {
 			closeout = 1;
 		} else {

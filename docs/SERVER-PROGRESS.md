@@ -103,6 +103,10 @@ with `$ELKS` to avoid publishing local account names.
 
 ## Next gates
 
+The subsequent [socket and entropy checkpoint](SOCKET-PROGRESS.md) records
+application socket fixes, signed-I/O tests and the first network attempt.
+
+
 1. Review inherited socket shims, including `shutdown()` and `getsockopt()`
    implementations that report success without providing the normal semantics.
 2. Validate a fresh entropy provider in an isolated test environment, including

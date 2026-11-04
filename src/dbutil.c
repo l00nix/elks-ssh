@@ -304,7 +304,7 @@ int spawn_command(void(*exec_fn)(const void *user_data), const void *exec_data,
 	pid = fork();
 #endif
 
-	if (pid < 0) {
+	if (pid == (pid_t)-1) {
 		return DROPBEAR_FAILURE;
 	}
 

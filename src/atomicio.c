@@ -42,7 +42,8 @@ atomicio(ssize_t (*f) (int, void *, size_t), int fd, void *_s, size_t n)
 	ssize_t res;
 
 	while (n > pos) {
-		res = (f) (fd, s + pos, n - pos);
+		/* ssize_t is signed 16-bit on ELKS, while size_t is unsigned. */
+		res = (f) (fd, s + pos, MIN(n - pos, INT_MAX));
 		switch (res) {
 		case -1:
 			if (errno == EINTR || errno == EAGAIN)

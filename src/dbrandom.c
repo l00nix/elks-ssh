@@ -137,7 +137,7 @@ static void write_urandom()
 		return;
 	}
 #endif
-#if !DROPBEAR_USE_PRNGD
+#if !DROPBEAR_USE_PRNGD && !defined(ELKSSH_QEMU_ENTROPY)
 	/* This is opportunistic, don't worry about failure */
 	unsigned char buf[INIT_SEED_SIZE];
 	FILE *f = fopen(DROPBEAR_URANDOM_DEV, "w");

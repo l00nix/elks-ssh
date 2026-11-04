@@ -1,0 +1,19 @@
+{
+  "status": "blocked",
+  "entropy_mode": "healthy",
+  "server_sha256": "4ad1fa86f7feefc137ed1f801b199323592ae0cd7ebaecbd5d2d505828dae772",
+  "image_sha256": "2302b8604974a0ace258f5a651cf04cad1b36c5b59fdf218f1024b254f18812d",
+  "cpu": "pentium",
+  "real_hardware": false,
+  "production_entropy": false,
+  "ssh_client": "OpenSSH_10.3p1, LibreSSL 3.3.6",
+  "ssh_exit": 255,
+  "host_key_verified": true,
+  "newkeys_received": true,
+  "encrypted_auth_service": true,
+  "publickey_login": false,
+  "entropy_requests": 2,
+  "entropy_bytes_sent": 64,
+  "entropy_provider_error": null,
+  "original_image_unchanged": true
+}

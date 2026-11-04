@@ -68,7 +68,7 @@ static char *gui_getpass(const char *prompt) {
 
 	pid = fork();
 
-	if (pid < 0) {
+	if (pid == (pid_t)-1) {
 		TRACE(("fork error"))
 		return NULL;
 	}
@@ -100,8 +100,12 @@ static char *gui_getpass(const char *prompt) {
 
 	close(p[0]);
 
-	while (waitpid(pid, &status, 0) < 0 && errno == EINTR)
-		;
+	{
+		pid_t waited;
+		do { waited = waitpid(pid, &status, 0); }
+		while (waited == (pid_t)-1 && errno == EINTR);
+		if (waited == (pid_t)-1) return NULL;
+	}
 	if (!WIFEXITED(status) || WEXITSTATUS(status) != 0)
 		return(NULL);
 

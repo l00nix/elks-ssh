@@ -64,7 +64,9 @@ static void connect_try_next(struct dropbear_progress_connection *c) {
 	int err;
 	int res = 0;
 	int fastopen = 0;
+#ifndef __ia16__
 	int retry_errno = EINPROGRESS;
+#endif
 #if DROPBEAR_CLIENT_TCP_FAST_OPEN
 	struct msghdr message;
 #endif
@@ -81,7 +83,9 @@ static void connect_try_next(struct dropbear_progress_connection *c) {
 		/* According to the connect(2) manpage it should be testing EAGAIN
 		 * rather than EINPROGRESS for unix sockets.
 		 */
+#ifndef __ia16__
 		retry_errno = r->ai_family == AF_UNIX ? EAGAIN : EINPROGRESS;
+#endif
 
 		if (c->bind_address || c->bind_port) {
 			/* bind to a source port/address */
@@ -198,7 +202,13 @@ static void connect_try_next(struct dropbear_progress_connection *c) {
 			setnonblocking(c->sock);
 		}
 #endif
+#ifdef __ia16__
+		/* Native ELKS connect() completes synchronously. EINPROGRESS is
+		 * not evidence of success and there is no SO_ERROR query. */
+		if (res < 0) {
+#else
 		if (res < 0 && errno != retry_errno) {
+#endif
 			/* failure */
 			m_free(c->errstring);
 			c->errstring = m_strdup(strerror(errno));
@@ -358,7 +368,9 @@ void handle_connect_fds(const fd_set *writefd) {
 	m_list_elem *iter;
 	for (iter = ses.conn_pending.first; iter; iter = iter->next) {
 		int val;
+#ifndef __ia16__
 		socklen_t vallen = sizeof(val);
+#endif
 		struct dropbear_progress_connection *c = iter->item;
 
 		if (c->sock < 0 || !FD_ISSET(c->sock, writefd)) {
@@ -367,12 +379,19 @@ void handle_connect_fds(const fd_set *writefd) {
 
 		TRACE(("handling %s port %s socket %d", c->remotehost, c->remoteport, c->sock));
 
+#ifdef __ia16__
+		/* Only a successful synchronous connect() leaves c->sock open. */
+		val = 0;
+#else
 		if (getsockopt(c->sock, SOL_SOCKET, SO_ERROR, &val, &vallen) != 0) {
 			TRACE(("handle_connect_fds getsockopt(%d) SO_ERROR failed: %s", c->sock, strerror(errno)))
 			/* This isn't expected to happen - Unix has surprises though, continue gracefully. */
 			m_close(c->sock);
 			c->sock = -1;
-		} else if (val != 0) {
+			continue;
+		}
+#endif
+		if (val != 0) {
 			/* Connect failed */
 			TRACE(("connect to %s port %s failed.", c->remotehost, c->remoteport))
 			m_close(c->sock);
@@ -444,11 +463,16 @@ void packet_queue_consume(struct Queue *queue, ssize_t written) {
 }
 
 void set_sock_nodelay(int sock) {
+#ifdef __ia16__
+	/* ELKS has no TCP_NODELAY option. Do not alias another socket option. */
+	(void)sock;
+#else
 	int val;
 
 	/* disable nagle */
 	val = 1;
 	setsockopt(sock, IPPROTO_TCP, TCP_NODELAY, (void*)&val, sizeof(val));
+#endif
 }
 
 #if DROPBEAR_SERVER_TCP_FAST_OPEN

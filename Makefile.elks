@@ -3,7 +3,9 @@ TOPDIR ?= ../..
 CC = ia16-elf-gcc
 PROGRAM ?= dbclient
 OBJDIR = obj-elks/$(PROGRAM)
-DBCLIENT = dbclient
+OUTPUT = $(PROGRAM)
+HEAP_SIZE ?= 8192
+STACK_SIZE ?= 8192
 
 # Missing strong randomness must stop a connection, never use the old fallback.
 CPPFLAGS = -I. -I src -I libtomcrypt/src/headers -DLOCALOPTIONS_H_EXISTS -DDROPBEAR_ELKS_WEAK_RANDOM=0
@@ -34,6 +36,15 @@ else
 $(error Unsupported PROGRAM $(PROGRAM))
 endif
 
+# Explicit emulator-only target. Never overwrite the ordinary binaries.
+ifeq ($(TEST_ENTROPY),1)
+OBJDIR = obj-elks/qemu-$(PROGRAM)
+OUTPUT = $(PROGRAM)-qemu
+CPPFLAGS += -DELKSSH_QEMU_ENTROPY -DHAVE_GETRANDOM -DGRND_NONBLOCK=1 \
+	-Dgetrandom=elkssh_qemu_getrandom -include tests/qemu-entropy.h
+EXTRA_OBJS = $(OBJDIR)/qemu-entropy.o
+endif
+
 LTC_SRCS = \
 	hashes/sha2/sha256 hashes/sha2/sha512 hashes/helper/hash_memory \
 	mac/hmac/hmac_init mac/hmac/hmac_process mac/hmac/hmac_done \
@@ -47,16 +58,30 @@ LTC_SRCS = \
 PROGRAM_OBJS = $(addprefix $(OBJDIR)/,$(addsuffix .o,$(PROGRAM_SRCS)))
 LTC_OBJS = $(addprefix $(OBJDIR)/ltc/,$(addsuffix .o,$(LTC_SRCS)))
 
-.PHONY: all clean
+.PHONY: all clean FORCE
 
-all: $(PROGRAM)
+all: $(OUTPUT)
 
-$(PROGRAM): default_options_guard.h $(PROGRAM_OBJS) $(LTC_OBJS)
-	$(CC) -mcmodel=medium -melks-libc -march=i8086 -mtune=i8086 -maout-heap=8192 -maout-stack=8192 -o $@ $(PROGRAM_OBJS) $(LTC_OBJS)
+# Relink so explicit heap/stack overrides cannot reuse an older reservation.
+FORCE:
+
+$(OUTPUT): FORCE default_options_guard.h $(PROGRAM_OBJS) $(LTC_OBJS) $(EXTRA_OBJS)
+	$(CC) -mcmodel=medium -melks-libc -march=i8086 -mtune=i8086 -maout-heap=$(HEAP_SIZE) -maout-stack=$(STACK_SIZE) -o $@ $(PROGRAM_OBJS) $(LTC_OBJS) $(EXTRA_OBJS)
+
+$(OBJDIR)/qemu-entropy.o: tests/qemu-entropy.c tests/qemu-entropy.h default_options_guard.h $(HEADERS)
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 # Development-only regression executable; never installed as a service.
 wiretest: $(OBJDIR)/wiretest.o $(OBJDIR)/buffer.o $(OBJDIR)/dbmalloc.o $(OBJDIR)/chachapoly.o $(LTC_OBJS)
 	$(CC) -mcmodel=medium -melks-libc -march=i8086 -mtune=i8086 -maout-heap=2048 -maout-stack=4096 -o $@ $^
+
+iotest: $(OBJDIR)/iotest.o $(OBJDIR)/atomicio.o $(OBJDIR)/fake-rfc2553.o $(OBJDIR)/compat.o
+	$(CC) -mcmodel=medium -melks-libc -march=i8086 -mtune=i8086 -maout-heap=2048 -maout-stack=2048 -o $@ $^
+
+$(OBJDIR)/iotest.o: tests/iotest.c default_options_guard.h $(HEADERS)
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 $(OBJDIR)/wiretest.o: tests/wiretest.c default_options_guard.h $(HEADERS)
 	@mkdir -p $(dir $@)
@@ -76,4 +101,4 @@ $(OBJDIR)/ltc/%.o: libtomcrypt/src/%.c default_options_guard.h $(HEADERS)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(OBJDIR) $(PROGRAM)
+	rm -rf $(OBJDIR) $(OUTPUT)

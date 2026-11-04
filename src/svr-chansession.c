@@ -100,7 +100,8 @@ void svr_chansess_checksignal(void) {
 		return;
 	}
 
-	while ((pid = waitpid(-1, &status, WNOHANG)) > 0) {
+	/* ELKS pid_t is unsigned; test the error sentinel before a child PID. */
+	while ((pid = waitpid(-1, &status, WNOHANG)) != (pid_t)-1 && pid != 0) {
 		unsigned int i;
 		struct exitinfo *ex = NULL;
 		TRACE(("svr_chansess_checksignal : pid %d", pid))
@@ -834,7 +835,7 @@ static int ptycommand(struct Channel *channel, struct ChanSess *chansess) {
 #else
 	pid = fork();
 #endif
-	if (pid < 0)
+	if (pid == (pid_t)-1)
 		return DROPBEAR_FAILURE;
 
 	if (pid == 0) {

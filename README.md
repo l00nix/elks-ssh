@@ -10,14 +10,16 @@ kernel and architecture changes are out of scope.
 **Development has started. This is a feasibility prototype, not a working or
 secure SSH server.** Both client and server now compile for ELKS. Tests cover
 cryptographic code, 16-bit buffer/wire handling and startup refusal without
-secure randomness. No network login,
+secure randomness. A separate QEMU-only build completes modern OpenSSH key
+exchange and strict host verification; login remains blocked by filesystem
+permissions. No network login,
 key generation or file-transfer service is installed by these probes.
 
 ## Planned suite
 
 | Component | Purpose | Status |
 | --- | --- | --- |
-| SSH daemon | SSH-2 transport, public-key login, shell and remote commands | Compiles; startup checks only |
+| SSH daemon | SSH-2 transport, public-key login, shell and remote commands | QEMU transport verified; login blocked |
 | SFTP subsystem | Secure file transfers through native ELKS filesystem APIs | Planned |
 | Key utility | Public-key display, fingerprints, eventually key generation | Planned |
 | SSH/SFTP clients | Outbound connections from ELKS | Later feasibility work |
@@ -61,8 +63,16 @@ models. Both probe executables pass the static 8086 instruction audit. The
 daemon and real 8086/8088 execution remain unverified.
 The next checkpoint adds a server build, 32-bit SSH sequence/channel handling
 and fifteen production-code regression checks with four independent cipher
-vectors. See [server progress](docs/SERVER-PROGRESS.md) and the unresolved
-[entropy strategy](docs/ENTROPY.md). No successful SSH connection is claimed.
+vectors. The latest [socket and entropy checkpoint](docs/SOCKET-PROGRESS.md) adds
+signed I/O and process-error fixes. Its isolated QEMU build completes OpenSSH
+key exchange and host verification; FAT permissions block authentication. See [server progress](docs/SERVER-PROGRESS.md) and the unresolved
+[entropy strategy](docs/ENTROPY.md). No successful SSH login is claimed.
+
+![ELKS SSH transport test reaching the filesystem permission check](docs/screenshots/qemu-ssh-transport.png)
+
+The latest capture shows the authorization-path permission rejection after
+successful key exchange and host verification, using test-only host entropy.
+See [transport evidence and limitations](docs/SOCKET-PROGRESS.md).
 
 ![ELKS wire regressions and server startup refusal in QEMU](docs/screenshots/qemu-server-startup.png)
 
