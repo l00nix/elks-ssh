@@ -1,5 +1,8 @@
 # Session validation checkpoint — 2026-11-04
 
+Later on this date: [HP 200LX hardware and linked-daemon audit](HP200LX-PROGRESS.md).
+The results below describe the earlier QEMU checkpoint.
+
 Modern macOS OpenSSH 10.3p1 completes stdin/EOF, automated PTY commands and
 forced rekeying against the ELKS server in disposable QEMU. The normal server
 still refuses startup without secure randomness. This is emulator evidence

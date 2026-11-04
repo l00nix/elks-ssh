@@ -14,8 +14,10 @@
 - The user authorized PPC SSH testing and Mac/Windows client screenshots on
   2026-11-04. Preserve other projects' kernel/firmware and running tests; this
   authorization does not make the QEMU-only entropy adapter hardware-ready.
-  HP 200LX access still requires scheduling. Use disposable emulator images
-  for development and failure testing.
+  The user made the HP 200LX available on BH00K9NP serial on 2026-11-04;
+  hardware capability/crypto testing is authorized. Leave PPC testing to the
+  owner while they finish PicoMEM work. Use disposable emulator images for
+  development and failure testing.
 - Preserve known-answer tests and run meaningful failure/regression tests.
 - Never present a probe or partial handshake as a usable SSH service.
 - No weak fallback RNG, embedded secret keys, or authentication bypass.

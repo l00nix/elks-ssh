@@ -76,4 +76,6 @@ machine support. Record each verified combination; do not equate a CPU flag
 with universal backward/forward compatibility or support for future ELKS APIs.
 
 Hardware tests will be scheduled with the owner after an emulator-tested
-candidate exists. No PPC or HP 200LX connection is authorized at this stage.
+candidate exists. The owner subsequently authorized hardware checks. The HP 200LX is available
+for serial testing as of 2026-11-04; PPC work is currently left to the owner
+while they finish PicoMEM changes. See [HP progress](HP200LX-PROGRESS.md).

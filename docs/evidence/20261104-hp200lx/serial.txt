@@ -1,0 +1,816 @@
+
+--- 2026-11-04T12:22:07 ---
+
+
+# 
+--- 2026-11-04T12:22:24 ---
+
+TX: uname -a
+uname -a
+
+ELKS elks 0.9.2 hp200lx-4.0-local 2026-10-21 ibmpc i8086
+# 
+TX: cat /etc/issue
+cat /etc/issue
+
+HP 200LX 4 MB lean image / ELKS 0.9.2 / ELKSWeb 0.35dev
+# 
+TX: uptime
+uptime
+
+up for 0 days, 0 hours, and 1 minute
+# 
+TX: free
+free
+
+free: not found
+# 
+TX: ps
+ps
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     1    1 root    S   0   406 13962  66560 /bin/sh 
+    2     1    1 root    S   1   636 13732  66560 /bin/sh 
+    7     1    1 root    R   0    50  2092   8912 ps 
+# 
+TX: mount
+mount
+
+/dev/ssd  (minix) blocks   3072 free   2010 mount /
+# 
+TX: df
+df
+
+Filesystem    1K-blocks     Free     Used    %  FUsed%  Mounted on
+/dev/ssd           3072     2010     1062  35%    21%   /
+# 
+TX: ls -l /dev/ttyS*
+ls -l /dev/ttyS*
+
+crw-r--r--  1 root     root       4,  64  Sep  6  2026 ttyS0
+crw-r--r--  1 root     root       4,  65  Sep  6  2026 ttyS1
+crw-r--r--  1 root     root       4,  66  Sep  6  2026 ttyS2
+crw-r--r--  1 root     root       4,  67  Sep  6  2026 ttyS3
+# 
+TX: ls -l /dev/urandom
+ls -l /dev/urandom
+
+/dev/urandom: No such file or directory 
+# 
+TX: ls -l /dev/random
+ls -l /dev/random
+
+/dev/random: No such file or directory 
+# 
+TX: ls /bin
+ls /bin
+
+arp         basename    beep        cat         chgrp       chmem       
+chmod       chown       clear       clock       cmp         compress    
+cp          cut         date        dd          decomp      df          
+dirname     dmesg       du          echo        edit        ekermit     
+elksweb     elxbat      elxcap      elxcmd      elxctl      elxdash     
+elxstat     env         file        find        fsck        fsck-dos    
+ftp         ftpd        getty       grep        hd          head        
+ifconfig    init        kill        ktcp        ln          login       
+ls          md5sum      meminfo     miniterm    mkdir       more        
+mount       mv          nc          net         netcat      netstat     
+nslookup    od          passwd      ping        printenv    ps          
+pwd         ramdisk     rm          rmdir       sed         sercat      
+sh          shutdown    sleep       sort        stty        sum         
+sync        sysctl      tail        tar         tcpdump     telnet      
+telnetd     touch       tr          traceroute  tty         umount      
+uname       uniq        uptime      urlget      uudecode    uuencode    
+wc          web         webfrog     webnews     xargs       
+# 
+TX: ls /root
+ls /root
+
+ELX.txt         LEAN.txt        LICENSE1.txt    LICENSE2.txt    
+LICENSES.txt    elksweb.gif     logo-src.txt    netfix          
+netold          ser             startweb        web_mouse       
+weblicense.txt  welcome.htm     
+# 
+--- 2026-11-04T12:22:42 ---
+
+TX: meminfo
+meminfo
+
+  HEAP   TYPE   SIZE    ADDR    SEG   TYPE     SIZE  CNT  NAME
+  5A8E   MEM     20   024410   2441   free     1008    0  
+  5AAE   TASK 14534
+  9380   INOD  8256
+  B3CC   FILE   896
+  B758   CACH  8192
+  D764   BUFH   160
+  D810   MEM     20   026800   2680   CSEG    43936    2  /bin/sh 
+  D830   MEM     20   024800   2480   BUF      8192    1  
+  D850   MEM     20   012DE0   12DE   CSEG     3824    1  meminfo 
+  D870   TTY     80
+  D8CC   TTY     80
+  D928   TTY   1024
+  DD34   free  8908
+  2D04   MEM     20   000500   0050   free     1536    0  
+  2D24   MEM     20   0313A0   313A   DSEG    22624    1  /bin/sh 
+  2D44   MEM     20   036C00   36C0   DSEG    22624    1  /bin/sh 
+  2D64   MEM     20   03C460   3C46   free    22624    0  
+  2D84   MEM     20   041CC0   41CC   DSEG     2368    1  meminfo 
+  2DA4   TTY     80
+  2E00   MEM     20   013CD0   13CD   free     1856    0  
+  2E20   MEM     20   042600   4260   free   379392    0  
+  2E40   free   710
+  Heap 33/ 42K used, 9K free
+  Main 101/498K used, 397K free, XMS 0/0K used, 0K free, Total 498K
+# 
+TX: elxstat
+elxstat
+
+ELXstat 0.1 - HP 200LX
+Main battery      2.613 V  Alkaline (configured)
+Backup battery    3.025 V
+Firmware alerts   main=clear backup=clear card=clear
+Power source      external
+Charging status   disabled
+Charging timer    00:00:00 (nominal 55 ms ticks)
+Battery interval  14.850 seconds
+Data source       firmware cache; sample age unknown
+# 
+TX: ifconfig
+ifconfig
+
+ifconfig: ktcp not running
+# 
+TX: netstat
+netstat
+
+netstat: Network is down
+# 
+TX: cat /root/ser
+cat /root/ser
+
+#!/bin/sh
+stty sane 9600 < /dev/ttyS0 || exit 1
+exec /bin/sh < /dev/ttyS0 > /dev/ttyS0 2>&1
+# 
+TX: ls -l /dev/ptyp*
+ls -l /dev/ptyp*
+
+crw-rw-rw-  1 root     root       2,   8  Sep  6  2026 ptyp0
+crw-rw-rw-  1 root     root       2,   9  Sep  6  2026 ptyp1
+crw-rw-rw-  1 root     root       2,  10  Sep  6  2026 ptyp2
+crw-rw-rw-  1 root     root       2,  11  Sep  6  2026 ptyp3
+# 
+TX: ls /root/sshprobe
+ls /root/sshprobe
+
+/root/sshprobe: No such file or directory 
+# 
+TX: stty -a
+stty -a
+
+speed 9600 baud; cs8 -parenb -parodd -hupcl -cstopb cread -clocal
+-ignbrk brkint -ignpar -parmrk -inpck -istrip -inlcr -igncr icrnl -ixon
+-ixoff -ixany
+opost onlcr -xtabs
+isig icanon iexten echo echoe -echok -echonl -noflsh
+eof = ^D eol = <undef> erase = ^H intr = ^C kill = ^U quit = ^\ susp = ^Z
+start = ^Q stop = ^S erase2 = ^? min = 1 time = 0
+# 
+--- 2026-11-04T12:23:07 ---
+
+TX: mkdir /root/sshprobe
+mkdir /root/sshprobe
+
+# 
+--- 2026-11-04T12:23:08 ---
+stty -echo; uudecode; stty echo; echo XFER_DONE
+
+XFER_DONE
+# 
+TX: md5sum /root/sshprobe/osprobe
+md5sum /root/sshprobe/osprobe
+
+7c3f0ca94948e90ae08de7e593a43ca4  /root/sshprobe/osprobe
+# 
+--- 2026-11-04T12:23:21 ---
+stty -echo; uudecode; stty echo; echo XFER_DONE
+
+XFER_DONE
+# 
+TX: md5sum /root/sshprobe/cryptest
+md5sum /root/sshprobe/cryptest
+
+82fab917ae4932ada5a213efcd510555  /root/sshprobe/cryptest
+# 
+--- 2026-11-04T12:25:51 ---
+
+TX: chmod 755 /root/sshprobe/osprobe
+chmod 755 /root/sshprobe/osprobe
+
+# 
+TX: chmod 755 /root/sshprobe/cryptest
+chmod 755 /root/sshprobe/cryptest
+
+# 
+TX: /root/sshprobe/osprobe; echo OSPROBE=$?
+/root/sshprobe/osprobe; echo OSPROBE=$?
+
+ELKS SSH OS feasibility 0.0.1 (not a server)
+Kernel: ELKS 0.9.2 hp200lx-4.0-local 2026-10-21 ibmpc i8086
+TCP socket: unavailable errno=100 (Network is down )
+PTY: /dev/ptyp0 allocated and closed
+Terminal settings: available
+Current account lookup: available
+Entropy device: absent/unavailable; secure RNG unresolved
+Survey complete; no login, identity change or network traffic.
+OSPROBE=0
+# 
+--- 2026-11-04T12:25:53 ---
+
+TX: /root/sshprobe/cryptest; echo CRYPTO=$?
+/root/sshprobe/cryptest; echo CRYPTO=$?
+
+ELKS SSH crypto feasibility 0.0.1
+ABI int=2 long=4 pointer=2 longlong=8
+Public test vectors only; no RNG, keys or listening service.
+PASS SHA256 empty
+PASS SHA256 abc
+PASS SHA256 two padding blocks
+PASS ChaCha20 zero block
+PASS ChaCha20 multi-block roundtrip
+PASS X25519 Alice public
+PASS X25519 Bob public
+PASS X25519 Alice shared
+PASS X25519 Bob shared
+PASS X25519 low-order result (must reject in SSH)
+RESULT PASS failures=0 elapsed_seconds=1159
+CRYPTO=0
+# 
+--- 2026-11-04T12:45:20 ---
+stty -echo; uudecode; stty echo; echo XFER_DONE
+
+XFER_DONE
+# 
+TX: md5sum /root/sshprobe/sshdcheck
+md5sum /root/sshprobe/sshdcheck
+
+5935baa66311e57aca60fcc8d901fc7c  /root/sshprobe/sshdcheck
+# 
+--- 2026-11-04T12:50:30 ---
+
+TX: chmod 755 /root/sshprobe/sshdcheck
+chmod 755 /root/sshprobe/sshdcheck
+
+# 
+TX: /root/sshprobe/sshdcheck -V; echo SSH_VERSION=$?
+/root/sshprobe/sshdcheck -V; echo SSH_VERSION=$?
+
+Dropbear v2025.89
+SSH_VERSION=0
+# 
+TX: /root/sshprobe/sshdcheck -F; echo SSH_START=$?
+/root/sshprobe/sshdcheck -F; echo SSH_START=$?
+
+[42] Jan 01 00:29:31 Early exit: signal() error
+SSH_START=1
+# 
+TX: ps
+ps
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     1    1 root    S   0   406 13962  66560 /bin/sh 
+    2     1    1 root    S   3  2118 12250  66560 /bin/sh 
+   43     1    1 root    R   0    50  2092   8912 ps 
+# 
+TX: meminfo
+meminfo
+
+  HEAP   TYPE   SIZE    ADDR    SEG   TYPE     SIZE  CNT  NAME
+  5A8E   MEM     20   024410   2441   free     1008    0  
+  5AAE   TASK 14534
+  9380   INOD  8256
+  B3CC   FILE   896
+  B758   CACH  8192
+  D764   BUFH   160
+  D810   MEM     20   026800   2680   CSEG    43936    2  /bin/sh 
+  D830   MEM     20   024800   2480   BUF      8192    1  
+  D850   MEM     20   012DE0   12DE   CSEG     3824    1  meminfo 
+  D870   TTY     80
+  D8CC   TTY     80
+  D928   TTY   1024
+  DD34   free  8908
+  2D04   MEM     20   000500   0050   free     1536    0  
+  2D24   MEM     20   0313A0   313A   DSEG    22624    1  /bin/sh 
+  2D44   MEM     20   036C00   36C0   DSEG    22624    1  /bin/sh 
+  2D64   MEM     20   03C460   3C46   free    22624    0  
+  2D84   MEM     20   041CC0   41CC   DSEG     2368    1  meminfo 
+  2DA4   TTY     80
+  2E00   MEM     20   013CD0   13CD   free     1856    0  
+  2E20   MEM     20   042600   4260   free   379392    0  
+  2E40   free   710
+  Heap 33/ 42K used, 9K free
+  Main 101/498K used, 397K free, XMS 0/0K used, 0K free, Total 498K
+# 
+TX: dmesg
+dmesg
+
+dmesg not configured
+# 
+TX: cat /root/netold
+cat /root/netold
+
+/root/netold: Is a directory 
+# 
+TX: cat /root/netfix
+cat /root/netfix
+
+/root/netfix: Is a directory 
+# 
+TX: ls -l /dev/urandom
+ls -l /dev/urandom
+
+/dev/urandom: No such file or directory 
+# 
+TX: echo SHELL_STILL_WORKS
+echo SHELL_STILL_WORKS
+
+SHELL_STILL_WORKS
+# 
+--- 2026-11-04T12:53:53 ---
+stty -echo; uudecode; stty echo; echo XFER_DONE
+
+XFER_DONE
+# 
+TX: md5sum /root/sshprobe/sigsmall
+md5sum /root/sshprobe/sigsmall
+
+f746787e55cea83a6dd055747b2deaad  /root/sshprobe/sigsmall
+# 
+--- 2026-11-04T12:54:03 ---
+stty -echo; uudecode; stty echo; echo XFER_DONE
+
+XFER_DONE
+# 
+TX: md5sum /root/sshprobe/sigmedium
+md5sum /root/sshprobe/sigmedium
+
+69a6b97ff4fb46f6683bf2e006cc2794  /root/sshprobe/sigmedium
+# 
+--- 2026-11-04T12:54:13 ---
+
+TX: chmod 755 /root/sshprobe/sigsmall
+chmod 755 /root/sshprobe/sigsmall
+
+# 
+TX: chmod 755 /root/sshprobe/sigmedium
+chmod 755 /root/sshprobe/sigmedium
+
+# 
+TX: /root/sshprobe/sigsmall; echo SIG_SMALL=$?
+/root/sshprobe/sigsmall; echo SIG_SMALL=$?
+
+ELKS SSH signal registration probe (no signals sent)
+SIGINT ignore: OK
+SIGINT handler: OK
+SIGTERM ignore: OK
+SIGTERM handler: OK
+SIGPIPE ignore: OK
+SIGPIPE handler: OK
+SIGCHLD ignore: OK
+SIGCHLD handler: OK
+SIGSEGV ignore: OK
+SIGSEGV handler: OK
+RESULT failures=0
+SIG_SMALL=0
+# 
+TX: /root/sshprobe/sigmedium; echo SIG_MEDIUM=$?
+/root/sshprobe/sigmedium; echo SIG_MEDIUM=$?
+
+ELKS SSH signal registration probe (no signals sent)
+SIGINT ignore: OK
+SIGINT handler: OK
+SIGTERM ignore: OK
+SIGTERM handler: OK
+SIGPIPE ignore: OK
+SIGPIPE handler: OK
+SIGCHLD ignore: OK
+SIGCHLD handler: OK
+SIGSEGV ignore: OK
+SIGSEGV handler: OK
+RESULT failures=0
+SIG_MEDIUM=0
+# 
+--- 2026-11-04T12:55:16 ---
+
+TX: clear > /dev/tty1
+clear > /dev/tty1
+
+# 
+TX: echo 'ELKS SSH - HP hardware probe, not an SSH login' > /dev/tty1
+echo 'ELKS SSH - HP hardware probe, not an SSH login' > /dev/tty1
+
+# 
+TX: /root/sshprobe/osprobe > /dev/tty1
+/root/sshprobe/osprobe > /dev/tty1
+
+# 
+TX: /root/sshprobe/sshdcheck -V > /dev/tty1 2>&1
+/root/sshprobe/sshdcheck -V > /dev/tty1 2>&1
+
+# 
+TX: /root/sshprobe/sshdcheck -F > /dev/tty1 2>&1
+/root/sshprobe/sshdcheck -F > /dev/tty1 2>&1
+
+# 
+TX: echo 'Startup blocked; no SSH service running' > /dev/tty1
+echo 'Startup blocked; no SSH service running' > /dev/tty1
+
+# 
+TX: elxcap -q /root/sshprobe/hpcheck.bmp; echo CAPTURE=$?
+elxcap -q /root/sshprobe/hpcheck.bmp; echo CAPTURE=$?
+
+CAPTURE=0
+# 
+TX: ls -l /root/sshprobe/hpcheck.bmp
+ls -l /root/sshprobe/hpcheck.bmp
+
+-rw-r--r--  1 root     root        16062  Jan  1  1970 hpcheck.bmp
+# 
+TX: md5sum /root/sshprobe/hpcheck.bmp
+md5sum /root/sshprobe/hpcheck.bmp
+
+3d22b00cd1267fef07c2d5fb56ac5ae1  /root/sshprobe/hpcheck.bmp
+# 
+TX: sync
+sync
+
+# 
+--- 2026-11-04T12:55:26 ---
+uuencode /root/sshprobe/hpcheck.bmp capture.bin
+
+begin 644 capture.bin
+M0DV^/@       #X    H    @ (  ,@    !  $      ( ^            
+M  (         ____                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M                                                            
+M          !X           0                             #P     
+M                                                 #P<.W@<.S  
+M;CP\/',\.P@ ,SP /#QF 'X\>!@\/#P >#LS,SPS!@                  
+M                                    9C)F,#)F/@ S&&9F-F!F&  S
+M9@!F9F8 !V P/!AF8  P9C,S&#,^                                
+M                       .,#XP,&8S #,89F \?F8  #-F  X.9@ ^?C!F
+M&&!^ #!F,S,8,V8                                             
+M         #PP!CLP9C, ,QAF9C9F9A@ ,V8 /#Q^ '!F.V889F8 .V8S,Q@S
+M9@                                                      <'P\
+M;GQF;@ ^&#P\,SP^& !N/ !P<&8 /CQN9C@\/ !N9FYN.&X[            
+M                                          !F,   ,    # 8   P
+M  8      &9F9@                                              
+M                             #P0   0    <#@  '  #@      /#QF
+M       8         !@                                         
+M                                                 #P         
+M   \                                                        
+M   \/!X\ '@[,P \?@ \/!@\'AA^/ !_.W@\!@ \9CP<& !^/ 8S.SP,,  \
+M>'@\>                                            #!F# P S&8S
+M &88 &9F&&8,&!AF #%F,!@^ & \&#(8  <8/C-F&!@8 & P,&8P        
+M                                    ,&9^# #,/C, =A@ =G8 !GX 
+M&&8 -#XP&&8 ?A@8,   /AAF,SX8, P ?C P9C                      
+M                       P?&P,  P&,P!N& !N;A@<;!@8/  \!CL89@!F
+M/!@P& !P&&8S!A@P# !F.SMF.P                                  
+M         #!@/ P ##QN &9X &9F& 8\&'AF #0\;AAF #QF.'P8 #XX.VX\
+M&# , #QN;CQN                                            ,# <
+M#  ,    9C@ 9F8 9AP .&8 ,0  &       ,          8&!@         
+M                                           \' P\ !X    \&  \
+M/  \#  8/ !_   X     !@0    &    #@,,                       
+M                                             #P _P  /       
+M                                                            
+M                /#P_9F9_##P>, !^!GX ?CP&,SL\ &X[.P S.S,[/#QX
+M #L[.W@                                                     
+M  !F&&-N9C$89@P8  <^!P '&#XS9A@ ,V9F #-F,V888#  9F9F,       
+M                                                  X89VYF,#!F
+M?@P /F8^ #X89C,^&  S/F8 ,SXS9AA^,  ^9F8P                    
+M                                    /!A@?GXP,'QL# !P9G  <!AF
+M,P88 #,&9@ S!C-F&&8[  9F9CL                                 
+M                      !P&&!V9C P8#P, #YF/@ ^.#MN/!@ /CP^ #X\
+M;CX8/&X /#X^;@                                              
+M         &888W9F,!@P'!@             &  P  8 ,   !A@     !@8 
+M                                                        /#P^
+M9CQX#!P,,        !@    X '  #@!P   ..      .#@              
+M                                              !X            
+M                                                            
+M                             'YX/#!N/#MX !A^/'X\&#PX        
+M                                                            
+M                ,S!F/C-@9C  /&9F9D889@P                     
+M                                                            
+M   S,&8S,WX^, !F,'8P!@!F!@                                  
+M                                                 #,[9C,S9@8[
+M &8<;AP& #P^                                                
+M                                    ,VX\;CX\/&X 9@9F!GP 9F8 
+M                                                            
+M                       S    ,       9F9F8 !F9@              
+M                                                            
+M         'X   !P       \/#Q^ #P\                            
+M                                                            
+M   \     '@     $        #P  !           #P      #P         
+M                                           \.W@8/ 8 /#QC,#P\
+M'#P( #,\ #P\!CPS"  \.SPS'#P<!@ \,SLS!CP /'@ ,SP<8SQX<P <>#L\
+M/#P\&                        &9F,#Q@/@!F9FL^&& R8!@ ,V8 &&8^
+M&#,8 !AF8#,R&#(^ &8S9C,^8 !F,  S8#)W9C V #(P9A@8&&88        
+M                #F8P9GYF &!F:S,8?C!^   S9@ 89F88,P  &&9^,S 8
+M,&8 8#,^,V9^ &8P #-^,']F,#P ,# ^&!@88                       
+M   \9CMF9F8 9F9_,QAF,&88 #-F !AF9A@S   89F8S,!@P9@!F,P8S9F8 
+M9CL ,V8P:V8[-@ P.P8\/!AF                         '!F;F8\9@ \
+M/'9N&#Q\/!@ ;CP &#P[.&X  #@^/&Y\.'QF #P^/&X[/  \;@!N/'QC/&XS
+M 'QN/!@8.#P                         9@             8 #      
+M   8          8  #  ,    #              ,    #  ,   &QL     
+M                       \             #@ $        #@  !@    8
+M#@  $!@0    <              0    <  0   .#A@                 
+M                >#P                                    0    
+M                                                        ?S,<
+M>#PP!@ [/!@\/#P8 #MN?CPS'$ [,SL8.SP\.VX\/ @ ?CP\.W@\ 'MF/P [
+M,W@\?CP\&#P[                               Q,S(P9CX^ &9@/!AF
+M8!@ 9C,'8#,R8&8S9CQF&!AF,QA@&  '8&9F,&  ,VYC &8S,& '9A@\8&8 
+M                             #0S,#!F,V8 9GYF&&!^   ^,SY^,S P
+M9C,^9CX8&#XS&'X  #Y^8&8P?@ V;F< 9C,P?CYF&&9^9@              
+M                /#,P.V8S9@!F9F889F88  8S<&8S,!AF,P9F!A@8!C,8
+M9A@ <&9F9CMF #Q^8 !F,SMF<&889F9F                            
+M   T;GQN/&YF #X\9C@\/!@ /#X^/&Y\#&9N/&8\.!@\/A@\&  ^/#QF;CP 
+M,W9@ &9N;CP^/!AF/#X                              #$ ,       
+M!@          ,    # &        &  P&              S=F,         
+M&   !@                              ?P 0       .   8      !P
+M    $ ,      !@X ' X             'YF/@         X   .        
+M                                                  !X        
+M                                                            
+M         #X[>'@\,QP .SP\/#LS'  \/#QS.S 8 #L8.SP\.VX\/       
+M                                                        8V8P
+M,& S,@!F9F9F9C,R !AF9C9F/A@ 9CQF&!AF,QA@                    
+M                                          !@9C P?C,P #Y@8&9F
+M,S  &&9F/&8S   ^9CX8&#XS&'X                                 
+M                             &!F.SMF,S  !F9F9F8S,  89F8V9C,8
+M  9F!A@8!C,89@                                              
+M                8&9N;CQN?  \/#P\9FY\ !@\/#-F;A@ /&8\.!@\/A@\
+M                                                            
+M  !C       P         #  &   ,           &  P&               
+M                                                 #X      !  
+M        $  X  !P         !@X ' X                            
+M                                                        /   
+M                                                            
+M                       \/'AC/#,[/ !^/!P</#,&?A@ .Q@[/#P[;CP\
+M                                                            
+M         !A@,&L8,V88  =@,C(8,SX'& !F/&88&&8S&&              
+M                                                        &'XP
+M:Q@S/A@ /GXP,!@S9CX  #YF/A@8/C,8?@                          
+M                                           89CM_&#,&& !P9C P
+M&#-F<!@ !F8&&!@&,QAF                                        
+M                             !@\;G8X;CP8 #X\?'PX;CL^&  \9CPX
+M&#P^&#P                                                     
+M                6@       !@    P,              8 # 8        
+M                                                            
+M  !^    &   .    ! 0&           &#@ <#@                     
+M                                                            
+M  !X #QX                                                    
+M                                    >#P\& ! .SP80# <!C \ #L\
+M/#P\.QP\.P [,SL /#P\?CP[                                    
+M                       P&!@8 &!F8#Q@/C(^/F8 9A@89F9F,F!F &8S
+M9@!F&&8'8&8                                                 
+M         # 8&   ,&9^9C S,&8S=@ ^&!AF8#XP?F8 /C-F & 89CY^9@  
+M                                                        /A@\
+M&  89F9F&#,P9C-N  88&&9F!C!F9@ &,V8 9AAF<&9F                
+M                                           S&&88  P^/&8,;GQF
+M;F8 /!@8/#P\?#P^ #QN/@ \&#P^/#X                             
+M                             #-:9@  !@8   8 ,   9@  &!@    P
+M  8    &   8    !@                                          
+M                ?GYF   ##@   P 0   \   X.    !  #@    X  #@ 
+M   .                                                        
+M                                                            
+M                                                 #P^> !^/#QS
+M/!P8 #LS.Q@[/#P[;CP\ #QX>#,\ 'X\/  ,9CP<8SQX<P \?@ [/&,S #  
+M                                    &&,P  =F9C9@,A@ 9C-F/&88
+M&&8S&&  8# P,V8 &&9F !AN8#)W9C V !@' &9F=S, &               
+M                       88#  /F9@/'XP  !F,SYF/A@8/C,8?@!^,# S
+M9GX8=G8 ,&Y^,']F,#P &#X 9F9_,P ,                            
+M         !A@/@!P9F8V9C 8 &8S!F8&&!@&,QAF &8[.S-F !AN;@ P?F8P
+M:V8[-@ 8< !F9FLS  P                                     && S
+M #X\/#,\?!@ 9FX\9CPX&#P^&#P /&YN;CQ^>&9F #!V/'QC/&XS #@^ #X\
+M8VX #                                     !:8S,     ,  P    
+M       8 # 8           X9F8 &'8 ,    #      !@     8        
+M                             'X^?@    !P !          &#@ <#@ 
+M         !@\/  ,9@ 0    <  8   .     #                      
+M                                          !X                
+M                        >                                   
+M  ![/'@S/#P8 ']_>SP /!@X&'X ,S!^/#P\9@ >&#P /#P\.SP ?CQ^/ !^
+M/ !^?@ \;F,P/  \/#P\/                            #-@,#-@&!@ 
+M,3$S9@!F& P89@ S/F9F9A@\  P89@ 89F9F& !F9F9F !AF &88 !@S:SYF
+M !AF9F9F                            -GXP,WX8   T,#8. '8 !@ P
+M #,S,'9V&!@ ?@!V !AF8#X8 #!V,&8 &'8 ,!@ &#-K,V  &&9V9F8     
+M                       \9CLS9A@8 #PP/#P ;@ ^ !P ,S,<;FX8/'YL
+M &Y^&&9F!A@ '&X<?'X8;GX<&  8,W\S9@ 8/&X\?                   
+M         #8\;FX\&!@ -# V< !F &8 !@ ^;@9F9AAF #P 9@ 8/#P\&  &
+M9@9@ 'AF  9X #@^=FX\ #AF9F9@                            ,P  
+M   8   Q,#-F &8 9@!F #  9F9F&   ' !F !@    8 &9F9C  .&8 9C@ 
+M #       &9F9C                            ![     #@  ']X>SP 
+M/  \ #P <  \/#PX   , #P .    #@ /#P\'  8/  \&  8<      8/#P\
+M'                                                          \
+M                                                            
+M                ?W][/  \/&8 /CP /#P[?CQN/#P\' 8 /!@\&'X ##,\
+M'  [ 'X\>!@\>#                                              
+M   Q,3-F &9F9@!C9@ 88&8'&#,8&!@R/@!F&&88&  8,V8R &8 !V P/& P
+M&                                                #0P-@X #@YF
+M &,. !A^/CX8,Q@8&#!F '8 =@ 8 # S9C  /@ ^?C!F?C ,            
+M                                    /# \/  \/'X 8SP /&8&<!@S
+M&!@8,&8 ;@!N !@ ,#-F,  & '!F.V9F.PP                         
+M                       T,#9P '!P9@!C<  8/#P^.#XX&#A\9@!F &8 
+M>  P;CQ\ #P /CQN9CQN#                                       
+M         #$P,V8 9F9F &-F !L     ,  8 #   &8 9@ X !@  #      
+M       8                                                ?WA[
+M/  \/&8 /CP #@   !AP&#@8$   /  \ !@ #   $            #      
+M                                                            
+M             '@     $                   /                   
+M                             ']_>SP /#QF    9G@ ,SMX.V,[>#P 
+M,'@\;CP( #,\'  [,P \/&8 /#P&/#,                             
+M                ,3$S9@!F9F8   !F,  S9C!F=V8P8  ^,&8S8!@ ,V8R
+M &8S &9F9@ 89CX8,P                                          
+M   T,#8.  X.9@   &8P #,^,&9_/C!^ #,P9C-^   S9C  /C, #@YF !AF
+M9A@S                                             #PP/#P /#Q^
+M 'X ?CX ,P8[9FL&.V8 ,SMF,V8  #-F,  &,P \/'X &&9F&#,         
+M                                    -# V< !P<&8   !F,P ^/&X^
+M8SQN/ !N;CP^/   ;CQ\ #QN '!P9@ 8/#LX;@                      
+M                       Q,#-F &9F9@   &8S #    8          #  
+M     #      9F9F !@                                         
+M         ']X>SP /#QF    9GX <   #@          <       $      \
+J/&8 .   &                                               
+ 
+end
+# 
+TX: md5sum /root/sshprobe/hpcheck.bmp
+md5sum /root/sshprobe/hpcheck.bmp
+
+3d22b00cd1267fef07c2d5fb56ac5ae1  /root/sshprobe/hpcheck.bmp
+# 

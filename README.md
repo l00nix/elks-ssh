@@ -14,7 +14,7 @@ test-only host entropy. This is not deployment-ready or a release candidate.**
 Modern OpenSSH connects with strict host verification and no legacy algorithm
 overrides. The normal server refuses startup without secure randomness;
 production entropy, interactive sessions and original 8086/8088 execution
-remain unvalidated. No service is installed on physical machines.
+remain unvalidated. No SSH listener is running on physical machines.
 
 ## Planned suite
 
@@ -46,8 +46,9 @@ See [the architecture comparison](docs/DESIGN.md).
 
 The owner has authorized PPC SSH testing and client screenshots. Hardware
 deployment still depends on an appropriate entropy source and a validated
-candidate. Preserve other projects' tests and kernel/firmware. **HP 200LX access
-still requires scheduling.**
+candidate. Preserve other projects' tests and kernel/firmware. The owner has
+now made the HP 200LX available for serial testing while they finish PicoMEM
+work on the PPC. See [HP hardware progress](docs/HP200LX-PROGRESS.md).
 
 ## Build and test
 
@@ -75,6 +76,16 @@ disconnect. Fresh host/client keys and host-fed session entropy are confined to
 the disposable test. See [results, memory samples and limitations](docs/LOGIN-PROGRESS.md)
 and the unresolved [production entropy strategy](docs/ENTROPY.md).
 
+The [physical HP 200LX checkpoint](docs/HP200LX-PROGRESS.md) passed all ten crypto
+probe checks, but the batch took 19 minutes 19 seconds. The normal daemon loads
+and prints its version, then hits a signal-setup error on startup. Resolving
+that failure, crypto performance and hardware entropy remain prerequisites
+for a usable hardware SSH service.
+
+![HP 200LX hardware probe and blocked daemon startup](docs/screenshots/hp200lx-probe.png)
+
+Actual ELXcap console capture; this is a hardware probe, not an SSH login.
+
 The [native Windows client preflight](docs/WINDOWS-TESTING.md) confirms OpenSSH
 9.5p2 and the required algorithm support on the Surface. A Windows-to-ELKS
 connection and the [requested physical PPC screenshots](docs/PPC-CAPTURE.md)
@@ -83,8 +94,9 @@ remain pending.
 Earlier checkpoints established [crypto/OS probes](docs/VALIDATION.md),
 [16-bit wire handling](docs/SERVER-PROGRESS.md) and
 [SSH transport](docs/SOCKET-PROGRESS.md). Both standalone probes pass the static
-8086 instruction audit; the linked daemon and real 8086/8088 execution remain
-unverified.
+8086 instruction audit. The normal daemon now also passes the static audit
+for its recorded binary hash; actual original 8086/8088 execution and full
+hardware SSH operation remain unverified. See [the HP checkpoint](docs/HP200LX-PROGRESS.md).
 
 ![ELKS SSH transport test reaching the filesystem permission check](docs/screenshots/qemu-ssh-transport.png)
 

@@ -1,0 +1,36 @@
+{
+  "executable_sha256": "1048adc83d45817fb723b39e3eda7f04bb0ae5cb3af7c1944b09fb2658ed0772",
+  "elf_sha256": "9e38df143e6fc732f6c4398d2c5c009861fd1edea15aaed74513b70f25033f1f",
+  "instructions": 1480,
+  "code_sections": {
+    ".text": {
+      "bytes": 3504,
+      "decoded_bytes": 3504,
+      "linker_zero_padding_bytes": 12,
+      "uncovered_bytes": 0
+    }
+  },
+  "isa_static_pass": true,
+  "forbidden_instructions": [],
+  "ambiguities": [],
+  "memory": {
+    "header_bytes": 32,
+    "header_version": 1,
+    "text_bytes": 3504,
+    "far_text_bytes": 0,
+    "data_bytes": 672,
+    "bss_bytes": 3232,
+    "header_heap_bytes": 2048,
+    "header_stack_bytes": 2048,
+    "effective_heap_bytes": 2048,
+    "effective_stack_bytes": 2048,
+    "near_static_bytes": 3904,
+    "near_total_before_arguments_environment": 8000,
+    "remaining_before_arguments_environment": 57520,
+    "minimum_argument_environment_reserve": 1024,
+    "memory_gate_pass": true,
+    "note": "Zero header heap/stack fields select ELKS INIT_HEAP/INIT_STACK defaults of 4096 each. argv/envp also consume near space."
+  },
+  "real_8088_execution": "not verified",
+  "limits": "Linear decoding of ELF executable sections; inline data in executable sections requires manual review if rejected. Static ISA compatibility does not prove timing, BIOS compatibility or actual 8088 execution."
+}

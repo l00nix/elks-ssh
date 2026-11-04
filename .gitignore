@@ -19,3 +19,8 @@ id_*
 /iotest
 /default_options_guard.h
 *.o
+/audit-tools/
+/dropbear.elf
+/dropbear-audit.map
+/dropbear-audit.dis
+/dropbear-audit.json

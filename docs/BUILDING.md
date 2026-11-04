@@ -72,7 +72,7 @@ cd feasibility
 ELKSSH_AUDIT=1 ELKSSH_ELKS=/absolute/path/to/elks sh toolchain/build-external.sh
 export PATH=/absolute/path/to/elks/cross/bin:$PATH
 for app in cryptest osprobe; do
-    ia16-elf-objdump -d -z --insn-width=16 -M intel,i8086 \
+    ia16-elf-objdump -D -z --insn-width=16 -M intel,i8086 \
         build/$app.elf > build/$app.dis
     python3 tools/isa-audit.py build/$app build/$app.elf build/$app.dis \
         --map build/$app.map --output build/$app-audit.json
@@ -81,8 +81,35 @@ done
 
 The audit checks executable-section bytes, rejects later/unsupported opcodes,
 and verifies that the inspected ELF text matches the converted executable.
-It is a static gate, not proof of real 8086 execution or constant-time crypto.
+Medium-model daemon audits also compare `.fartext` against the converted
+executable, using its 64-byte supplemental header. Use `objdump -D` to decode
+across relocation symbols inside far-jump operands; `-d` can split a valid
+instruction at such a symbol. Unexpected executable sections fail the mapping
+check. It is a static gate, not proof of real 8086 execution or constant-time crypto.
 Compiler `.su` files report individual frame bounds, not whole-call-chain peaks.
+
+For the normal daemon, retain the linked ELF without changing the resulting
+binary (run in the repository root with the prepared toolchain on PATH):
+
+```sh
+mkdir -p audit-tools
+cp feasibility/tools/retain-elf2elks.py audit-tools/elf2elks
+chmod +x audit-tools/elf2elks
+export ELKSSH_REAL_ELF2ELKS=/absolute/path/to/elks/elks/tools/bin/elf2elks
+export PATH="$PWD/audit-tools:$PATH"
+make -f Makefile.elks PROGRAM=dropbear \
+    CC="ia16-elf-gcc -Wl,-Map,dropbear-audit.map"
+ia16-elf-objdump -D -z --insn-width=16 -M intel,i8086 \
+    dropbear.elf > dropbear-audit.dis
+python3 feasibility/tools/isa-audit.py dropbear dropbear.elf dropbear-audit.dis \
+    --map dropbear-audit.map --output dropbear-audit.json
+python3 feasibility/tests/isa_audit.py dropbear dropbear.elf \
+    dropbear-audit.dis dropbear-audit.map
+```
+
+The regression script verifies exact-byte acceptance and rejection of altered
+near/far code, missing far-code length and truncated payload/header. Retain binary
+hashes with each report; an audit of one build does not cover later changes.
 
 ## QEMU
 

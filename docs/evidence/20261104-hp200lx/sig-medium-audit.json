@@ -1,0 +1,42 @@
+{
+  "executable_sha256": "3b01898a742a7955e0aa09092a415c7ef936dd3ca295e13c3b66e678f0b1b010",
+  "elf_sha256": "f9b37f2ac0ec41acf147695fb0465070ba72c32f4991ca1128d1286cb72f6ad2",
+  "instructions": 1093,
+  "code_sections": {
+    ".text": {
+      "bytes": 768,
+      "decoded_bytes": 768,
+      "linker_zero_padding_bytes": 13,
+      "uncovered_bytes": 0
+    },
+    ".fartext": {
+      "bytes": 1936,
+      "decoded_bytes": 1936,
+      "linker_zero_padding_bytes": 10,
+      "uncovered_bytes": 0
+    }
+  },
+  "isa_static_pass": true,
+  "forbidden_instructions": [],
+  "ambiguities": [],
+  "memory": {
+    "header_bytes": 64,
+    "header_version": 1,
+    "text_bytes": 768,
+    "far_text_bytes": 1936,
+    "data_bytes": 320,
+    "bss_bytes": 3152,
+    "header_heap_bytes": 2048,
+    "header_stack_bytes": 2048,
+    "effective_heap_bytes": 2048,
+    "effective_stack_bytes": 2048,
+    "near_static_bytes": 3472,
+    "near_total_before_arguments_environment": 7568,
+    "remaining_before_arguments_environment": 57952,
+    "minimum_argument_environment_reserve": 1024,
+    "memory_gate_pass": true,
+    "note": "Zero header heap/stack fields select ELKS INIT_HEAP/INIT_STACK defaults of 4096 each. argv/envp also consume near space."
+  },
+  "real_8088_execution": "not verified",
+  "limits": "Linear decoding of ELF executable sections; inline data in executable sections requires manual review if rejected. Static ISA compatibility does not prove timing, BIOS compatibility or actual 8088 execution."
+}

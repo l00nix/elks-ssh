@@ -1,0 +1,42 @@
+{
+  "dropbear-session": {
+    "bytes": 107656,
+    "sha256": "7c6d98b80aeb2495bcc4ba18ac92267f2c460d5dd6d09483a802cfc8610293d7",
+    "md5": "5935baa66311e57aca60fcc8d901fc7c"
+  },
+  "cryptest": {
+    "bytes": 48128,
+    "sha256": "877486f6e82e0d3a707d40f2a7a8fb170dcd3d5857717acc4ae563efedc6fba9",
+    "md5": "82fab917ae4932ada5a213efcd510555"
+  },
+  "osprobe": {
+    "bytes": 4208,
+    "sha256": "1048adc83d45817fb723b39e3eda7f04bb0ae5cb3af7c1944b09fb2658ed0772",
+    "md5": "7c3f0ca94948e90ae08de7e593a43ca4"
+  },
+  "dropbear.elf": {
+    "bytes": 270000,
+    "sha256": "2043c2625cef5a553e232ab909b96d9ea76c15049677756d22ef4de9bedf3c0b",
+    "md5": "3110985f13368d369bd381908b7ea77f"
+  },
+  "dropbear-audit.dis": {
+    "bytes": 3762409,
+    "sha256": "5b06f4e77018b068f75576ecf0d1e2966b6c08eff70fbb36b624a047218f28df",
+    "md5": "b2b000472fd4a30b5a5a3dd82d0c1688"
+  },
+  "dropbear-audit.map": {
+    "bytes": 487943,
+    "sha256": "4c6fa2474e248a05fb522836e6dd626ed49022e77f900d6884e5975a5cf0a4d8",
+    "md5": "2e81d06a5cc69dc80a723b581f1afda0"
+  },
+  "sig-small": {
+    "bytes": 2880,
+    "sha256": "168af028809dadf92c5c0efb9c6bce2a5ceae1b841d63f2383b1192f2b8755bc",
+    "md5": "f746787e55cea83a6dd055747b2deaad"
+  },
+  "sig-medium": {
+    "bytes": 3384,
+    "sha256": "3b01898a742a7955e0aa09092a415c7ef936dd3ca295e13c3b66e678f0b1b010",
+    "md5": "69a6b97ff4fb46f6683bf2e006cc2794"
+  }
+}
