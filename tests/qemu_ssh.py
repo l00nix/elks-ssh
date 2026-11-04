@@ -22,6 +22,7 @@ import threading
 import time
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
+from kex_rejection import reject_public_point
 
 
 def sha(path):
@@ -160,6 +161,26 @@ def run(args):
                         # once with the actual authenticated client after startup.
                         time.sleep(2)
                         command('cat /tmp/sshd.log')
+                        if args.kex_rejection_suite:
+                            result['kex_rejections'] = {}
+                            for label, point in [('zero', bytes(32)), ('one', b'\x01'+bytes(31)),
+                                                 ('short', bytes(31))]:
+                                before = command('cat /tmp/sshd.log').count(b'Bad curve25519')
+                                rejection = reject_public_point(port, point)
+                                after = command('cat /tmp/sshd.log').count(b'Bad curve25519')
+                                if not rejection['closed'] or rejection['reached_newkeys'] or after != before+1:
+                                    raise RuntimeError('Expected specific X25519 rejection: '+label)
+                                rejection['specific_server_rejection'] = True
+                                for _ in range(10):
+                                    state = command('ps').decode('latin1')
+                                    active = [line for line in state.splitlines()
+                                              if re.match(r'\s*\d+\s',line) and 'sshtest ' in line]
+                                    if len(active) == 1: break
+                                    time.sleep(1)
+                                if len(active) != 1:
+                                    raise RuntimeError('KEX rejection child was not reaped: '+label)
+                                rejection['connection_child_reaped'] = True
+                                result['kex_rejections'][label] = rejection
                         ssh=['ssh','-F','/dev/null','-vv','-p',str(port),'-i',str(temp/'clientkey'),
                              '-oBatchMode=yes','-oIdentitiesOnly=yes','-oIdentityAgent=none','-oStrictHostKeyChecking=yes',
                              '-oUserKnownHostsFile='+str(temp/'known_hosts'),'-oGlobalKnownHostsFile=/dev/null',
@@ -352,6 +373,7 @@ if __name__=='__main__':
     p.add_argument('--cpu',choices=['486','pentium'],default='486')
     p.add_argument('--suite',action='store_true',help='Also test rejected keys/permissions, host mismatch and repeated login')
     p.add_argument('--session-suite',action='store_true',help='Also test stdin EOF, PTY commands and forced rekeying')
+    p.add_argument('--kex-rejection-suite',action='store_true',help='Reject public low-order and short X25519 inputs before login')
     p.add_argument('--screenshot',action='store_true')
     p.add_argument('--connect-timeout',type=int,default=300)
     p.add_argument('--entropy',choices=['healthy','short','silent'],default='healthy')
@@ -359,6 +381,8 @@ if __name__=='__main__':
     if args.filesystem=='minix' and args.mfs is None: p.error('--mfs is required for MINIX')
     if (args.suite or args.session_suite) and (args.filesystem!='minix' or args.entropy!='healthy'):
         p.error('Suites require --filesystem minix and healthy entropy')
+    if args.kex_rejection_suite and args.entropy!='healthy':
+        p.error('KEX rejection suite requires healthy test entropy')
     if args.screenshot and args.entropy!='healthy':
         p.error('--screenshot requires healthy entropy')
     raise SystemExit(run(args))

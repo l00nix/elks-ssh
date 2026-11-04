@@ -14,6 +14,14 @@ id_*
 /dbclient
 /dropbear
 /dropbear-qemu
+/dropbear-m15
+/dropbear-m15-qemu
+/dropbear-m15.elf
+/dropbear-m15-qemu.elf
+/edbench
+/edbench.elf
+/m15bench
+/m15bench.elf
 /dbclient-qemu
 /wiretest
 /iotest

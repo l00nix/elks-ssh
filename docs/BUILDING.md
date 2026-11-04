@@ -248,3 +248,8 @@ open; the other supplies immediate SSH input EOF. The rekey case requests a
 4 KiB client rekey limit, compares the entire payload and requires more than
 one completed key exchange. These are automated command-session tests; terminal
 resize, control-key delivery and a human-operated shell need separate validation.
+
+## Experimental m15 daemon
+
+See [M15-DAEMON](M15-DAEMON.md) for the isolated build overlay, probe commands,
+malformed-KEX tests and current failures. It is not a deployment candidate.

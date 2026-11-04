@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "cpu": "486",
+  "image_sha256": "2302b8604974a0ace258f5a651cf04cad1b36c5b59fdf218f1024b254f18812d",
+  "real_hardware": false,
+  "production_crypto_selected": false,
+  "cases": {
+    "edbench": {
+      "passed": true,
+      "checks": 4,
+      "host_seconds": 64.72,
+      "vector_seconds": {
+        "sign-rfc8032": 13,
+        "verify-rfc8032": 26,
+        "reject-tampered": 25,
+        "reject-short": 0
+      }
+    },
+    "dropbear-m15": {
+      "passed": true,
+      "checks": 1,
+      "host_seconds": 0.266,
+      "vector_seconds": {}
+    }
+  },
+  "edbench_sha256": "f3125e63e276732375f5fc003732071085b0b6d96f415e411ef038761008694c",
+  "dropbear-m15_sha256": "f25becead000b4c0e88305d8da5219c54a1ff5569fb30fdede8818ad5a4c41f5",
+  "original_image_unchanged": true
+}

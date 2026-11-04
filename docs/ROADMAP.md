@@ -34,13 +34,12 @@ a release candidate.
 
 ## Next development order
 
-1. Follow up the [X25519 comparison](X25519-COMPARISON.md): the unrolled probe
-   improves the matched HP scalar test from 235 to 28 seconds, but its code
-   footprint, target timing behavior and complete-daemon fit still need review.
-   Keep the smaller variant excluded after its 16-bit vector failures. Measure
-   Ed25519 and full-login cost before selecting a production crypto backend.
-   The HP signal-callback rejection is resolved
-   for the measured build by [linking the unchanged libc callback first](SIGNAL-LAYOUT.md).
+1. Resolve the [experimental m15 integration](M15-DAEMON.md) failures before
+   choosing a production backend: combined-probe Ed25519 failure, shell `ENOMEM`,
+   and data-dependent arithmetic timing. The code now fits two segments and
+   authenticates in QEMU, but does not run commands. Preserve the existing normal
+   daemon and exclude the smaller m15 variant after its vector failures.
+   The HP signal-callback fix remains [application-only](SIGNAL-LAYOUT.md).
 2. Extend disposable QEMU tests for interactive shell input, terminal
    resize/control keys and abrupt disconnects; retain stdin/EOF and rekey checks.
 3. Run the [Windows 11 client matrix](WINDOWS-TESTING.md) against that fixture.

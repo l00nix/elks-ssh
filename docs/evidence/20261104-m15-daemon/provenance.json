@@ -1,0 +1,16 @@
+{
+  "base_commit": "4f46827d41e73c985521a223c5ebcde579ec6aad",
+  "elks_commit": "e1469b64c5809c44d5c822eaeebd0e97d5996289",
+  "compiler": "IA16 GCC 6.3.0",
+  "normal_outputs_unchanged": {
+    "dropbear": "6613bdd3e73c1502d8ee45f0dc18b1cdb1b0a87a58147a528cb008eaa4abdabb",
+    "dropbear-qemu": "af21e5831fd68af63e9788494b14e918fd6a75aaa226259d08012673745e7040"
+  },
+  "final_experimental_binaries": {
+    "dropbear-m15": "5a255769af7ce1338de1afef75fddd5bafe2241a21fcc14dea35adbe98c61b38",
+    "dropbear-m15-qemu": "3b2af78bcecfd4e5ff294c3581eca20c5a095ab8db607a8d9c8cd7dd3a8a798e"
+  },
+  "original_8086_execution": false,
+  "hardware_touched": false,
+  "promoted_to_production": false
+}

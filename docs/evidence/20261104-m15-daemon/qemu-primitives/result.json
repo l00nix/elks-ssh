@@ -1,0 +1,33 @@
+{
+  "status": "failed",
+  "cpu": "486",
+  "image_sha256": "2302b8604974a0ace258f5a651cf04cad1b36c5b59fdf218f1024b254f18812d",
+  "real_hardware": false,
+  "production_crypto_selected": false,
+  "cases": {
+    "m15bench": {
+      "passed": true,
+      "checks": 12,
+      "host_seconds": 13.238,
+      "vector_seconds": {
+        "alice-public": 1,
+        "bob-public": 1,
+        "alice-shared": 1,
+        "bob-shared": 1,
+        "low-zero": 1,
+        "low-one": 1,
+        "noncanon-p": 1,
+        "noncanon-p1": 2,
+        "noncanon-p9": 1,
+        "point-highbit": 1,
+        "scalar-zero": 1,
+        "scalar-ff": 1
+      }
+    }
+  },
+  "m15bench_sha256": "2a0078297993fb9160aea555c6a154df9f97665b8f1eddf2f55982064c23340a",
+  "edbench_sha256": "f3125e63e276732375f5fc003732071085b0b6d96f415e411ef038761008694c",
+  "dropbear-m15_sha256": "f25becead000b4c0e88305d8da5219c54a1ff5569fb30fdede8818ad5a4c41f5",
+  "error": "Serial disconnected",
+  "original_image_unchanged": true
+}

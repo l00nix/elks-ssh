@@ -61,7 +61,7 @@ as a login service.
 See [SESSION-PROGRESS](docs/SESSION-PROGRESS.md) for current results and limitations, and
 [ROADMAP](docs/ROADMAP.md) for the staged development plan.
 
-The latest checkpoint uses MINIX filesystem permissions with the unchanged ELKS
+The normal-daemon checkpoint uses MINIX filesystem permissions with the unchanged ELKS
 kernel. Login, stdin/EOF, automated PTY commands (`ps` and `cat /etc/issue`) and
 forced rekeying pass on QEMU's 486 model. The Pentium suite
 also checks larger output, repeated login, exit status, child cleanup, rejection
@@ -87,7 +87,7 @@ A subsequent [matched X25519 comparison](docs/X25519-COMPARISON.md) reduced one
 HP scalar multiplication from 235 to 28 seconds using an isolated BearSSL m15
 probe, which then passed all 12 HP vectors in 337 seconds. The faster variant
 costs more code space; a smaller variant failed the
-16-bit tests. The daemon still uses Dropbear's existing crypto. This is progress
+16-bit tests. The normal daemon still uses Dropbear's existing crypto. This is progress
 toward practical hardware performance, not an SSH handshake measurement.
 
 ![HP 200LX passing all 12 X25519 comparison vectors](docs/screenshots/hp200lx-x25519.png)
@@ -149,3 +149,8 @@ MIT licensed under [feasibility/LICENSE](feasibility/LICENSE); new regression
 tests use [tests/LICENSE](tests/LICENSE). Other third-party
 licenses are described in [THIRD_PARTY](THIRD_PARTY.md). Development uses AI
 coding assistance. Test results distinguish host, emulator and real hardware.
+
+The [experimental m15 daemon integration](docs/M15-DAEMON.md) passes X25519
+vectors and SSH public-key authentication, but cannot execute a shell because
+ELKS returns `ENOMEM`. An Ed25519 probe ordering failure and target timing
+security concerns also remain open. This backend has not been promoted.

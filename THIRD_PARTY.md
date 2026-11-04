@@ -4,7 +4,7 @@ The inherited repository is ghaerr's fork of parabyte's Dropbear ELKS port,
 based on Dropbear 2025.89. Its original history and root LICENSE are retained.
 Our starting commit is `2bee5b852fa3789a8f5539a20291020d53eea427`.
 
-The files in `feasibility/vendor/` are unmodified copies for independent probes.
+The files in `feasibility/vendor/` are unmodified copies for independent probes and isolated experimental builds.
 Their paths, pinned upstream commits or release archives and SHA-256 hashes are recorded in
 [manifest.json](feasibility/vendor/manifest.json).
 
@@ -20,7 +20,8 @@ Their paths, pinned upstream commits or release archives and SHA-256 hashes are 
 - **BearSSL 0.6**: unchanged `ec_c25519_m15.c`, `ccopy.c` and build headers
   from the [official release archive](https://bearssl.org/bearssl-0.6.tar.gz).
   Thomas Pornin's MIT license is retained in `feasibility/vendor/bearssl/LICENSE.txt`.
-  These are comparative X25519 probes only; the daemon does not link BearSSL.
+  Comparative X25519 probes and the isolated `dropbear-m15` experiment link
+  these files. The normal daemon does not link BearSSL.
 - **ELKSWeb audit tools**: `feasibility/tools/isa-audit.py` and `test_isa_audit.py`
   copied from l00nix/ELKSWeb commit `399c79b6ef34806f2ed65bfcc976452ee687d5a8`
   on 2026-11-04, GPL-2.0; license in `feasibility/tools/COPYING`.

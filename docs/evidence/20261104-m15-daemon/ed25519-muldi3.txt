@@ -1,0 +1,115 @@
+Excerpt from edbench.dis; see edbench-audit.json for binary/ELF hashes.
+0002001e <__muldi3>:
+   2001e:	56                                              	push   si
+   2001f:	57                                              	push   di
+   20020:	55                                              	push   bp
+   20021:	89 e5                                           	mov    bp,sp
+   20023:	83 ec 20                                        	sub    sp,0x20
+   20026:	8b 76 0c                                        	mov    si,WORD PTR [bp+0xc]
+   20029:	8b 46 0e                                        	mov    ax,WORD PTR [bp+0xe]
+   2002c:	89 46 ec                                        	mov    WORD PTR [bp-0x14],ax
+   2002f:	8b 46 10                                        	mov    ax,WORD PTR [bp+0x10]
+   20032:	89 46 ea                                        	mov    WORD PTR [bp-0x16],ax
+   20035:	8b 46 12                                        	mov    ax,WORD PTR [bp+0x12]
+   20038:	89 46 e4                                        	mov    WORD PTR [bp-0x1c],ax
+   2003b:	8b 46 14                                        	mov    ax,WORD PTR [bp+0x14]
+   2003e:	89 46 ee                                        	mov    WORD PTR [bp-0x12],ax
+   20041:	8b 7e 16                                        	mov    di,WORD PTR [bp+0x16]
+   20044:	8b 46 18                                        	mov    ax,WORD PTR [bp+0x18]
+   20047:	89 46 e8                                        	mov    WORD PTR [bp-0x18],ax
+   2004a:	8b 4e 1a                                        	mov    cx,WORD PTR [bp+0x1a]
+   2004d:	8b 46 ee                                        	mov    ax,WORD PTR [bp-0x12]
+   20050:	f7 e6                                           	mul    si
+   20052:	89 46 f4                                        	mov    WORD PTR [bp-0xc],ax
+   20055:	89 56 f6                                        	mov    WORD PTR [bp-0xa],dx
+   20058:	8b 46 ec                                        	mov    ax,WORD PTR [bp-0x14]
+   2005b:	f7 66 ee                                        	mul    WORD PTR [bp-0x12]
+   2005e:	89 46 f8                                        	mov    WORD PTR [bp-0x8],ax
+   20061:	89 56 fa                                        	mov    WORD PTR [bp-0x6],dx
+   20064:	8b 46 ec                                        	mov    ax,WORD PTR [bp-0x14]
+   20067:	f7 e7                                           	mul    di
+   20069:	89 46 fc                                        	mov    WORD PTR [bp-0x4],ax
+   2006c:	89 56 fe                                        	mov    WORD PTR [bp-0x2],dx
+   2006f:	89 f0                                           	mov    ax,si
+   20071:	f7 e7                                           	mul    di
+   20073:	89 46 f0                                        	mov    WORD PTR [bp-0x10],ax
+   20076:	8b 46 f8                                        	mov    ax,WORD PTR [bp-0x8]
+   20079:	03 46 f0                                        	add    ax,WORD PTR [bp-0x10]
+   2007c:	93                                              	xchg   bx,ax
+   2007d:	92                                              	xchg   dx,ax
+   2007e:	13 46 fa                                        	adc    ax,WORD PTR [bp-0x6]
+   20081:	89 46 f0                                        	mov    WORD PTR [bp-0x10],ax
+   20084:	8b 46 f6                                        	mov    ax,WORD PTR [bp-0xa]
+   20087:	31 d2                                           	xor    dx,dx
+   20089:	01 d8                                           	add    ax,bx
+   2008b:	13 56 f0                                        	adc    dx,WORD PTR [bp-0x10]
+   2008e:	39 56 fa                                        	cmp    WORD PTR [bp-0x6],dx
+   20091:	77 07                                           	ja     2009a <__muldi3+0x7c>
+   20093:	75 0a                                           	jne    2009f <__muldi3+0x81>
+   20095:	39 46 f8                                        	cmp    WORD PTR [bp-0x8],ax
+   20098:	76 05                                           	jbe    2009f <__muldi3+0x81>
+   2009a:	f8                                              	clc
+   2009b:	83 56 fe 01                                     	adc    WORD PTR [bp-0x2],0x1
+   2009f:	89 d3                                           	mov    bx,dx
+   200a1:	c7 46 f8 00 00                                  	mov    WORD PTR [bp-0x8],0x0
+   200a6:	03 5e fc                                        	add    bx,WORD PTR [bp-0x4]
+   200a9:	89 5e e2                                        	mov    WORD PTR [bp-0x1e],bx
+   200ac:	8b 56 fe                                        	mov    dx,WORD PTR [bp-0x2]
+   200af:	13 56 f8                                        	adc    dx,WORD PTR [bp-0x8]
+   200b2:	89 56 e0                                        	mov    WORD PTR [bp-0x20],dx
+   200b5:	89 46 fc                                        	mov    WORD PTR [bp-0x4],ax
+   200b8:	31 c0                                           	xor    ax,ax
+   200ba:	93                                              	xchg   bx,ax
+   200bb:	8b 46 f4                                        	mov    ax,WORD PTR [bp-0xc]
+   200be:	89 da                                           	mov    dx,bx
+   200c0:	01 d8                                           	add    ax,bx
+   200c2:	13 56 fc                                        	adc    dx,WORD PTR [bp-0x4]
+   200c5:	89 46 f0                                        	mov    WORD PTR [bp-0x10],ax
+   200c8:	89 56 e6                                        	mov    WORD PTR [bp-0x1a],dx
+   200cb:	8b 46 e2                                        	mov    ax,WORD PTR [bp-0x1e]
+   200ce:	89 46 f8                                        	mov    WORD PTR [bp-0x8],ax
+   200d1:	8b 46 e0                                        	mov    ax,WORD PTR [bp-0x20]
+   200d4:	89 46 f4                                        	mov    WORD PTR [bp-0xc],ax
+   200d7:	8b 46 ec                                        	mov    ax,WORD PTR [bp-0x14]
+   200da:	f7 66 e8                                        	mul    WORD PTR [bp-0x18]
+   200dd:	93                                              	xchg   bx,ax
+   200de:	91                                              	xchg   cx,ax
+   200df:	f7 e6                                           	mul    si
+   200e1:	91                                              	xchg   cx,ax
+   200e2:	01 d9                                           	add    cx,bx
+   200e4:	8b 46 e8                                        	mov    ax,WORD PTR [bp-0x18]
+   200e7:	f7 e6                                           	mul    si
+   200e9:	89 46 fc                                        	mov    WORD PTR [bp-0x4],ax
+   200ec:	89 56 fe                                        	mov    WORD PTR [bp-0x2],dx
+   200ef:	01 4e fe                                        	add    WORD PTR [bp-0x2],cx
+   200f2:	97                                              	xchg   di,ax
+   200f3:	f7 66 ea                                        	mul    WORD PTR [bp-0x16]
+   200f6:	97                                              	xchg   di,ax
+   200f7:	8b 46 e4                                        	mov    ax,WORD PTR [bp-0x1c]
+   200fa:	f7 66 ee                                        	mul    WORD PTR [bp-0x12]
+   200fd:	89 f9                                           	mov    cx,di
+   200ff:	01 c1                                           	add    cx,ax
+   20101:	8b 46 ee                                        	mov    ax,WORD PTR [bp-0x12]
+   20104:	f7 66 ea                                        	mul    WORD PTR [bp-0x16]
+   20107:	89 d6                                           	mov    si,dx
+   20109:	01 ce                                           	add    si,cx
+   2010b:	8b 4e fc                                        	mov    cx,WORD PTR [bp-0x4]
+   2010e:	01 c1                                           	add    cx,ax
+   20110:	8b 46 fe                                        	mov    ax,WORD PTR [bp-0x2]
+   20113:	11 f0                                           	adc    ax,si
+   20115:	03 4e f8                                        	add    cx,WORD PTR [bp-0x8]
+   20118:	13 46 f4                                        	adc    ax,WORD PTR [bp-0xc]
+   2011b:	8b 5e 0a                                        	mov    bx,WORD PTR [bp+0xa]
+   2011e:	8b 56 f0                                        	mov    dx,WORD PTR [bp-0x10]
+   20121:	89 17                                           	mov    WORD PTR [bx],dx
+   20123:	8b 56 e6                                        	mov    dx,WORD PTR [bp-0x1a]
+   20126:	89 57 02                                        	mov    WORD PTR [bx+0x2],dx
+   20129:	89 4f 04                                        	mov    WORD PTR [bx+0x4],cx
+   2012c:	89 47 06                                        	mov    WORD PTR [bx+0x6],ax
+   2012f:	93                                              	xchg   bx,ax
+   20130:	89 ec                                           	mov    sp,bp
+   20132:	5d                                              	pop    bp
+   20133:	5f                                              	pop    di
+   20134:	5e                                              	pop    si
+   20135:	cb                                              	retf
+

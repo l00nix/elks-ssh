@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "cpu": "486",
+  "image_sha256": "2302b8604974a0ace258f5a651cf04cad1b36c5b59fdf218f1024b254f18812d",
+  "real_hardware": false,
+  "production_crypto_selected": false,
+  "cases": {
+    "dropbear-m15": {
+      "passed": true,
+      "checks": 1,
+      "host_seconds": 0.234,
+      "vector_seconds": {}
+    }
+  },
+  "dropbear-m15_sha256": "5a255769af7ce1338de1afef75fddd5bafe2241a21fcc14dea35adbe98c61b38",
+  "original_image_unchanged": true
+}
