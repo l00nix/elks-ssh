@@ -8,6 +8,8 @@
 3. **SSH interoperability:** modern OpenSSH key exchange, host verification,
    public-key login, commands, interactive shell, rekeying and cleanup. Add
    negative packet/authentication tests and regression checks for other services.
+   Validate Windows 11's native OpenSSH client separately from macOS/Linux;
+   record the Windows build, client version and terminal used.
 4. **Hardware candidate:** arrange PPC and HP 200LX access with the owner;
    measure runtime, memory, failures and recovery. Retain captured evidence.
 5. **Companion tools:** SFTP subsystem and small key utility; native generation
@@ -26,3 +28,16 @@ memory sampling is preliminary; production entropy and the linked server's
 The public fork is authorized. Publication of a secure release still requires
 evidence that these criteria are met; the current feasibility milestone is not
 a release candidate.
+
+## Next development order
+
+1. Extend the disposable QEMU tests for client stdin/EOF, interactive PTYs,
+   terminal resize/control keys, abrupt disconnects and rekeying.
+2. Run the [Windows 11 client matrix](WINDOWS-TESTING.md) against that fixture,
+   starting with the already-working public-key login/remote-command path.
+3. Complete the linked daemon's 8086 instruction audit and measure memory under
+   long sessions, rekeying and resource pressure; samples are not peak bounds.
+4. Qualify the production entropy source through an existing ELKS interface,
+   including missing/short input, disconnect and recovery behavior.
+5. Arrange PPC/HP 200LX testing with the owner when an emulator-tested candidate
+   is ready. File transfer and key-generation utilities follow the core service.
