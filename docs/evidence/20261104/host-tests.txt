@@ -1,0 +1,20 @@
+ELKS SSH crypto feasibility 0.0.1
+ABI int=4 long=8 pointer=8 longlong=8
+Public test vectors only; no RNG, keys or listening service.
+PASS SHA256 empty
+PASS SHA256 abc
+PASS SHA256 two padding blocks
+PASS ChaCha20 zero block
+PASS ChaCha20 multi-block roundtrip
+PASS X25519 Alice public
+PASS X25519 Bob public
+PASS X25519 Alice shared
+PASS X25519 Bob shared
+PASS X25519 low-order result (must reject in SSH)
+RESULT PASS failures=0 elapsed_seconds=0
+PASS unchanged vendor files: 11
+......
+----------------------------------------------------------------------
+Ran 6 tests in 0.005s
+
+OK

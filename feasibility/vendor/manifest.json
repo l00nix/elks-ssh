@@ -1,0 +1,23 @@
+{
+  "dropbear": {
+    "commit": "17549ea6b6be0d59e99c5c5350185c0f9cc57211",
+    "files": {
+      "src/curve25519.c": "a48e0f9d56e5fb4e4e37369c5097480e1e9a65f0f283ffe51ea97ab7d5b00920",
+      "src/curve25519.h": "8081668378b3e18b468e7facde56b8913df9a6ca6e00a4fe26df6f7e368e13c9",
+      "LICENSE": "a99ce657d790b761c132ee7e0de18edb437ae6361e536d991c6a12f36e770445"
+    }
+  },
+  "tinyssh": {
+    "commit": "6a60c2aac18da9035a7401316789d6f4df7e295f",
+    "files": {
+      "crypto_hash_sha256.c": "e100ad539c5ae7659ef620e766994afde863981d0d5a80723915d2d51b731577",
+      "crypto_hash_sha256.h": "610f05f77292d2a9a060202b273022ce22de14a424d781f5e6e026050032a783",
+      "crypto_stream_chacha20.c": "56e739e22f55fc646a56f7e21b6a01ace90ca3c6d8d9932a487c01b99aa3a975",
+      "crypto_stream_chacha20.h": "8d1be5e889ca314020e530c00bc148238e2545e30bb2a9aee010932f9e287702",
+      "cryptoint/crypto_uint32.h": "8175c185468fb5ed974fa09bee213e5b0b5216f7f0f0c726d46da0c773827502",
+      "cryptoint/crypto_uint64.h": "89970eb55e3d81da727fbd21171f2d91326cafd95e12f217006e2a2c36bf5495",
+      "cryptoint/README": "384af287d5edb1babac9de894f221136ff9e3e035a6fc9f445a5887aaa37681d",
+      "LICENSE.md": "216f62311707f543cee4e20842ff6c24b03df090f9337ec225382c400cfc3d1e"
+    }
+  }
+}

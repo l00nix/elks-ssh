@@ -1,0 +1,99 @@
+ELKS SSH feasibility: architecture and integration constraints
+Recorded 2026-11-04 at the user's request. Pre-implementation guidance.
+
+User scope clarification
+------------------------
+Build the suite on top of existing ELKS. Kernel and architecture changes are
+out of scope. Use existing OS interfaces and keep compatibility adaptations
+inside the application where possible. Optional build/install registration is
+permitted by the previously requested external-application integration.
+The user subsequently authorized a public fork of the existing public ELKS
+Dropbear port. Do not invite ghaerr until a first viable release candidate.
+PPC and HP 200LX hardware are reserved for other tests until the user schedules
+this project. Original 8086/8088 ISA is the baseline; emulator results alone
+do not establish full CPU/platform compatibility.
+
+Sources
+-------
+Ghaerr's latest PicoMEM architecture and AI-development feedback:
+https://github.com/ghaerr/elks/discussions/2841#discussioncomment-19387609
+
+Earlier PicoMEM feedback on normal device and mount interfaces:
+https://github.com/ghaerr/elks/discussions/2841
+
+ELKS external application build/install guidance:
+https://github.com/ghaerr/elks/discussions/2185#discussioncomment-19053594
+
+Distinguish the maintainer's actual advice from our application of it below.
+These comments concern PicoMEM and ELKSWeb; they do not approve an SSH port,
+choose an SSH implementation, or establish a new formal ELKS policy.
+
+Maintainer guidance to carry forward
+-----------------------------------
+* Consider whole-system operation and compare alternative designs, with their
+  advantages and disadvantages, before implementing a particular solution.
+* Reuse tested upper layers and isolate new functionality behind established
+  interfaces. The PicoMEM example is a subdriver beneath the SSD master driver.
+* Minimize changes to existing files and feature-specific conditional branches
+  in shared code. Working hardware demonstrations alone do not establish a
+  maintainable upstream architecture.
+* Run regression tests to show both new behavior and preservation of existing
+  behavior. Keep the design understandable for human review and maintenance.
+* Keep actively developing applications external initially. Use buildext.sh
+  and elkscmd/ExtApplications for optional build/image integration, with the
+  ELKS toolchain and minimal extra host dependencies. Larger programs should
+  initially target HD images rather than crowded floppy images.
+
+How we will apply this to SSH (our proposed design constraints)
+-------------------------------------------------------------
+1. Compare existing small SSH-2 implementations before selecting a port.
+   Evaluate license, maintenance, algorithm support, IA16 compilation, code,
+   data, heap and stack sizes, protocol buffers, and handshake time. Historical
+   SSH-1 servers do not meet the modern-client requirement.
+
+2. Place SSH protocol, cryptography and authentication in a user-space daemon.
+   Use ELKS libc sockets and ktcp, existing PTYs/termios, process lifecycle,
+   account identities and ordinary filesystem access. Network hardware remains
+   below those interfaces; the SSH daemon must not require PicoMEM specifically.
+   Inspect current upstream APIs again when implementation begins.
+
+3. Use telnetd as a reference for ELKS socket and PTY integration, not as a
+   security template. In particular, do not copy its fallback from failed login
+   execution to an unauthenticated shell. Key authentication must establish the
+   intended user's identity and permissions before launching a session.
+
+4. Document any missing OS facility as a separate feasibility gap. Secure
+   randomness is an unresolved prerequisite. Investigate sound user-space
+   solutions using existing interfaces. If a required capability cannot be
+   supplied within this scope, report the blocker and alternatives; do not
+   modify the kernel or architecture to force the port to work. Any proposed
+   expansion of scope must be discussed with the user first.
+
+5. Preserve upstream protocol/crypto code where practical and keep the ELKS
+   adaptation small and explicit. Follow ELKS style in new integration code;
+   avoid sweeping changes to imported code that make future updates harder.
+
+6. Build using the prepared ELKS toolchain through the external-application
+   mechanism, retaining the existing remote build host workflow. Fetching a
+   remote source repository through buildext.sh is distinct from executing the
+   compiler on a remote machine. Keep analysis/test tools out of the minimal
+   build path. Repository publication and upstream submission are later steps.
+
+Validation before claiming success
+---------------------------------
+* Known-answer crypto tests and modern OpenSSH interoperability: key exchange,
+  host-key verification, public-key authentication, rekeying and clean logout.
+* Negative tests: invalid signatures/keys, malformed and truncated packets,
+  oversized lengths, partial I/O, timeout/disconnect and allocation failures.
+* Account, key-file ownership/permissions, PTY lifecycle and process cleanup.
+  Authentication errors must never yield a shell or a more privileged identity.
+* Measured memory/stack and timing on emulators, then HP 200LX and PPC hardware.
+  Emulator success alone is not proof of 8086 hardware performance.
+* Existing network services and shell behavior remain functional, including
+  configurations without the optional SSH package. Validate against an
+  unchanged ELKS kernel and document the required existing build options.
+
+Initial deliverable: a short design comparison, an explicit list of ELKS API
+gaps, and a measured crypto/build feasibility prototype. Development has begun;
+see DESIGN.md and VALIDATION.md for the current evidence. No working SSH server
+or maintainer approval is claimed here.

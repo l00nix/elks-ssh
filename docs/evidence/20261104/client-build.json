@@ -1,0 +1,26 @@
+{
+  "upstream": "2bee5b852fa3789a8f5539a20291020d53eea427",
+  "compiler": "ia16-elf-gcc 6.3.0",
+  "elks": "e1469b64c5809c44d5c822eaeebd0e97d5996289",
+  "model": "medium",
+  "march": "i8086",
+  "weak_random": false,
+  "build": "passed",
+  "bytes": 99040,
+  "sha256": "37fbf09e7c9f793c551364707f99584aead21a1724f6f6c4ef5ea0d0decc37aa",
+  "warnings": [
+    "src/dbutil.c:110:1: warning: 'noreturn' function does return",
+    "src/common-channel.c:873:12: warning: large integer implicitly truncated to unsigned type [-Woverflow]",
+    "src/sysoptions.h:248:25: warning: large integer implicitly truncated to unsigned type [-Woverflow]",
+    "src/netio.c:467:6: warning: unused variable 'val' [-Wunused-variable]",
+    "src/netio.c:466:6: warning: unused variable 'rc' [-Wunused-variable]",
+    "src/cli-auth.c:363:22: warning: passing argument 1 of 'getpass' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]",
+    "src/cli-kex.c:146:44: warning: passing argument 3 of 'buf_get_pub_key' from incompatible pointer type [-Wincompatible-pointer-types]",
+    "src/cli-runopts.c:139:14: warning: unused variable 'proxycmd_arg' [-Wunused-variable]",
+    "src/cli-runopts.c:38:13: warning: 'parse_multihop_hostname' declared 'static' but never defined [-Wunused-function]",
+    "src/cli-chansession.c:350:12: warning: 'cli_init_netcat' defined but not used [-Wunused-function]"
+  ],
+  "secure_interoperability": "not tested",
+  "linked_ISA_audit": "not yet performed for client",
+  "kernel_changes": false
+}

@@ -1,0 +1,28 @@
+# Third-party components
+
+The inherited repository is ghaerr's fork of parabyte's Dropbear ELKS port,
+based on Dropbear 2025.89. Its original history and root LICENSE are retained.
+Our starting commit is `2bee5b852fa3789a8f5539a20291020d53eea427`.
+
+The files in `feasibility/vendor/` are unmodified copies for independent probes.
+Their paths, pinned upstream commits and SHA-256 hashes are recorded in
+[manifest.json](feasibility/vendor/manifest.json).
+
+- **Dropbear**: `src/curve25519.c`, `src/curve25519.h`, and license from
+  [mkj/dropbear](https://github.com/mkj/dropbear/tree/17549ea6b6be0d59e99c5c5350185c0f9cc57211).
+  The source contains Matt Johnston's permissive notice and identifies its
+  modified public-domain TweetNaCl origin. The initial build enables X25519
+  only; the included source's Ed25519 portion is not yet built.
+- **TinySSH**: SHA-256, ChaCha20, headers and cryptoint headers from
+  [janmojzis/tinyssh](https://github.com/janmojzis/tinyssh/tree/6a60c2aac18da9035a7401316789d6f4df7e295f).
+  See its retained `LICENSE.md` and `cryptoint/README` for the upstream license
+  choices and Daniel J. Bernstein attribution.
+- **ELKSWeb audit tools**: `feasibility/tools/isa-audit.py` and `test_isa_audit.py`
+  copied from l00nix/ELKSWeb commit `399c79b6ef34806f2ed65bfcc976452ee687d5a8`
+  on 2026-11-04, GPL-2.0; license in `feasibility/tools/COPYING`.
+  These are build-analysis programs, not linked into the probe executable.
+
+The shim headers under `feasibility/tests/shim/` select upstream crypto features for a
+standalone feasibility test. They are not a substitute for a complete Dropbear
+configuration or port. Fixed RFC test vectors are public test data, never keys
+for a running service.

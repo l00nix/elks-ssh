@@ -1,0 +1,17 @@
+build/
+research/
+test-output/
+__pycache__/
+*.pyc
+.DS_Store
+.env
+*.pem
+id_*
+*_host_key
+*.key
+*.su
+obj-elks/
+dbclient
+dropbear
+default_options_guard.h
+*.o

@@ -1,0 +1,5 @@
+# Preserve source hashes and raw console line endings exactly.
+feasibility/vendor/** -text -whitespace
+feasibility/tools/COPYING -text -whitespace
+docs/evidence/** -text -whitespace
+docs/screenshots/*.png binary
