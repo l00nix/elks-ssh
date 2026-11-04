@@ -1070,6 +1070,16 @@ static void close_chan_fd(struct Channel *channel, int fd, int how) {
 		}
 	} else {
 		TRACE(("CLOSE some fd %d", fd))
+#ifdef __ia16__
+		/* A PTY shares one master for input and output. SSH input EOF
+		 * must not hang it up before the child starts or discard output
+		 * while the exited child's channel is still being drained. */
+		if (how == SHUT_WR && fd >= 0 && fd == channel->readfd
+				&& fd == channel->writefd) {
+			channel->writefd = FD_CLOSED;
+			return;
+		}
+#endif
 		m_close(fd);
 		closein = closeout = 1;
 	}

@@ -11,8 +11,11 @@
   Preserve upstream history and attribution. Do not invite ghaerr before a first
   viable release candidate. At that milestone, prepare the test package and
   revisit the invitation with the user; none is authorized for this prototype.
-- Do not access PPC or HP 200LX hardware until the user schedules it for this
-  project; other testing is in progress. Use disposable emulator images.
+- The user authorized PPC SSH testing and Mac/Windows client screenshots on
+  2026-11-04. Preserve other projects' kernel/firmware and running tests; this
+  authorization does not make the QEMU-only entropy adapter hardware-ready.
+  HP 200LX access still requires scheduling. Use disposable emulator images
+  for development and failure testing.
 - Preserve known-answer tests and run meaningful failure/regression tests.
 - Never present a probe or partial handshake as a usable SSH service.
 - No weak fallback RNG, embedded secret keys, or authentication bypass.

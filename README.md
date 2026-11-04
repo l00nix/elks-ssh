@@ -44,8 +44,10 @@ See [the architecture comparison](docs/DESIGN.md).
   Older ELKS releases, non-PC platforms, NEC CPUs and future releases need
   explicit validation; universal compatibility is a target, not a current claim.
 
-The PPC and HP 200LX are in use by other tests. **Do not connect to them,
-upload files, reboot or reconfigure them until the owner schedules this work.**
+The owner has authorized PPC SSH testing and client screenshots. Hardware
+deployment still depends on an appropriate entropy source and a validated
+candidate. Preserve other projects' tests and kernel/firmware. **HP 200LX access
+still requires scheduling.**
 
 ## Build and test
 
@@ -55,11 +57,12 @@ external build path. The proposed integration follows ELKS's `buildext.sh` and
 `elkscmd/ExtApplications` conventions; probes are not automatically installed
 as a login service.
 
-See [LOGIN-PROGRESS](docs/LOGIN-PROGRESS.md) for current results and limitations, and
+See [SESSION-PROGRESS](docs/SESSION-PROGRESS.md) for current results and limitations, and
 [ROADMAP](docs/ROADMAP.md) for the staged development plan.
 
 The latest checkpoint uses MINIX filesystem permissions with the unchanged ELKS
-kernel. Login and delayed output pass on QEMU's 486 model. The Pentium suite
+kernel. Login, stdin/EOF, automated PTY commands (`ps` and `cat /etc/issue`) and
+forced rekeying pass on QEMU's 486 model. The Pentium suite
 also checks larger output, repeated login, exit status, child cleanup, rejection
 of incorrect client/host keys and unsafe key-file permissions, and the single
 unauthenticated connection limit. ELKS uses `authkeys` because its MINIX
@@ -71,6 +74,11 @@ Actual QEMU guest console showing successful public-key authentication and
 disconnect. Fresh host/client keys and host-fed session entropy are confined to
 the disposable test. See [results, memory samples and limitations](docs/LOGIN-PROGRESS.md)
 and the unresolved [production entropy strategy](docs/ENTROPY.md).
+
+The [native Windows client preflight](docs/WINDOWS-TESTING.md) confirms OpenSSH
+9.5p2 and the required algorithm support on the Surface. A Windows-to-ELKS
+connection and the [requested physical PPC screenshots](docs/PPC-CAPTURE.md)
+remain pending.
 
 Earlier checkpoints established [crypto/OS probes](docs/VALIDATION.md),
 [16-bit wire handling](docs/SERVER-PROGRESS.md) and

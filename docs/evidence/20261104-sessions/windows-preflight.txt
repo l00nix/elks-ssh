@@ -1,0 +1,11 @@
+Manually transcribed from the actual Windows Terminal screenshot on 2026-11-04.
+This is client preflight, not an ELKS connection result.
+Screenshot: ../../screenshots/windows-client-preflight.png
+Shell: Windows PowerShell 5.1 in Windows Terminal, viewed through Windows App RDP.
+OS: Microsoft Windows 11 Pro, Version 10.0.26300, BuildNumber 26300, OSArchitecture 64-bit
+Executable: C:\Windows\System32\OpenSSH\ssh.exe
+Version: OpenSSH_for_Windows_9.5p2, LibreSSL 3.8.2
+ssh -Q kex exact match: curve25519-sha256
+ssh -Q key exact match: ssh-ed25519
+ssh -Q cipher exact match: chacha20-poly1305@openssh.com
+No login, host-key verification or algorithm negotiation performed on Windows yet.

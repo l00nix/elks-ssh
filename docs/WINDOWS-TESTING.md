@@ -1,12 +1,29 @@
 # Windows 11 native SSH client compatibility
 
-Status on 2026-11-04: **not yet tested on Windows**. The existing QEMU results
-use macOS OpenSSH 10.3p1. Microsoft documents an OpenSSH-based native client for
-Windows 11, so protocol interoperability is expected, but that is an inference,
-not a Windows test result. A Windows test target has been identified through an
-existing RDP session, but native client execution and the isolated test route
-have not yet been established. No Windows client version or algorithm listing
-has been collected.
+Status on 2026-11-04: **native client preflight completed; ELKS connection
+matrix still pending**. On the Surface Laptop, native PowerShell 5.1 running in
+Windows Terminal reported:
+
+| Item | Observed value |
+| --- | --- |
+| OS | Microsoft Windows 11 Pro, 10.0.26300, build 26300, 64-bit |
+| Executable | `C:\Windows\System32\OpenSSH\ssh.exe` |
+| Client | `OpenSSH_for_Windows_9.5p2, LibreSSL 3.8.2` |
+| `ssh -Q kex` match | `curve25519-sha256` |
+| `ssh -Q key` match | `ssh-ed25519` |
+| `ssh -Q cipher` match | `chacha20-poly1305@openssh.com` |
+
+![Native Windows client preflight on the Surface](screenshots/windows-client-preflight.png)
+
+Actual Windows Terminal pixels captured through Windows App on macOS. The
+screen explicitly identifies this as preflight, with no PPC login. RDP became
+responsive after the owner reported disabling clipboard redirection. That is
+an observed recovery, not a controlled diagnosis of the earlier connection
+stall. No SSH configuration or installed software was changed.
+
+The algorithm matches establish compiled support, not negotiated compatibility.
+Existing successful ELKS connections use macOS OpenSSH 10.3p1 against QEMU.
+The isolated Windows-to-QEMU route and Windows acceptance matrix remain pending.
 
 Test the Windows-provided `ssh.exe` first. A separately installed Win32-OpenSSH
 build is a separate matrix entry. WSL OpenSSH does not validate the native
@@ -69,8 +86,9 @@ public fingerprints and results. No physical PPC/HP 200LX is needed.
 | Rekeying, abrupt disconnect and server child cleanup | Pending |
 
 The first four rows extend the existing QEMU checks to a different client. The
-last three also require server/harness work that has not yet been validated on
-the current macOS client. Terminal behavior must be assessed separately from
+[macOS session checkpoint](SESSION-PROGRESS.md) now covers redirected stdin/EOF,
+automated PTY commands and forced rekeying; full terminal interaction and abrupt
+disconnect handling still need validation. Terminal behavior must be assessed separately from
 transport/authentication. SFTP, `scp` and WinSCP are outside this checkpoint;
 the ELKS SFTP subsystem is not implemented.
 

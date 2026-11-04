@@ -201,3 +201,12 @@ basic login/delayed-output test. Run with `--entropy short` or `silent`, without
 
 Guest `ps` samples are retained in `memory.json`; they do not measure true peak
 stack use or total system memory. QEMU wall time is not an 8088 benchmark.
+
+Use `--session-suite` for additional stdin/EOF, PTY-command and forced-rekey
+checks. It can be combined with `--suite` or run separately against the same
+disposable fixture. The PTY tests run `tty`, `ps` and `cat /etc/issue`, requiring
+both the beginning and final output markers. One keeps an 80x24 host terminal
+open; the other supplies immediate SSH input EOF. The rekey case requests a
+4 KiB client rekey limit, compares the entire payload and requires more than
+one completed key exchange. These are automated command-session tests; terminal
+resize, control-key delivery and a human-operated shell need separate validation.

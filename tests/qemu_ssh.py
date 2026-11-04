@@ -4,15 +4,19 @@ Never runs on physical serial ports. Requires cryptography, QEMU and mtools.
 No private keys, entropy bytes or reusable guest image are retained in outputs.
 """
 import argparse
+from contextlib import ExitStack
+import fcntl
 import hashlib
 import json
 import os
+import pty
 from pathlib import Path
 import re
 import shutil
 import socket
 import struct
 import subprocess
+import termios
 import tempfile
 import threading
 import time
@@ -182,12 +186,28 @@ def run(args):
                             if len(active)!=1: raise RuntimeError('Held connection child was not reaped')
                         snapshots=[]
                         cases={}
-                        def attempt_case(name, argv, expected_exit=0, expected_output=None, rejection=None):
+                        def attempt_case(name, argv, expected_exit=0, expected_output=None, rejection=None,
+                                         input_text='', output_patterns=(), require_pty=False, require_rekey=False,
+                                         terminal_eof=False):
                             start=time.monotonic()
                             timed_out=False
                             stdout_path=temp/(name+'.stdout');stderr_path=temp/(name+'.stderr')
-                            with stdout_path.open('w') as stdout, stderr_path.open('w') as stderr:
-                                attempt=subprocess.Popen(argv,stdin=subprocess.DEVNULL,stdout=stdout,stderr=stderr)
+                            input_path=temp/(name+'.stdin');input_path.write_text(input_text)
+                            with ExitStack() as resources:
+                                stdout=resources.enter_context(stdout_path.open('w'))
+                                stderr=resources.enter_context(stderr_path.open('w'))
+                                stdin=resources.enter_context(input_path.open('rb'))
+                                client_env=None
+                                if require_pty and not terminal_eof:
+                                    # Model a live 80x24 terminal. The separate
+                                    # terminal_eof case sends immediate SSH EOF.
+                                    master,slave=pty.openpty()
+                                    resources.callback(os.close,master)
+                                    resources.callback(os.close,slave)
+                                    fcntl.ioctl(slave,termios.TIOCSWINSZ,struct.pack('HHHH',24,80,0,0))
+                                    stdin=slave
+                                    client_env=dict(os.environ,TERM='vt100')
+                                attempt=subprocess.Popen(argv,stdin=stdin,stdout=stdout,stderr=stderr,env=client_env)
                                 try:
                                     while attempt.poll() is None:
                                         if time.monotonic()-start>600:
@@ -214,6 +234,15 @@ def run(args):
                                 and (expected_output is None or sshstdout==expected_output)
                                 and (rejection is None or (rejection in sshlog and not authenticated)))
                             if expected_exit != 255: case['passed'] &= authenticated and case['host_key_verified']
+                            if output_patterns:
+                                case['output_patterns_matched']=all(re.search(pattern,sshstdout,re.M) for pattern in output_patterns)
+                                case['passed'] &= case['output_patterns_matched']
+                            if require_pty:
+                                case['pty_accepted']='PTY allocation request accepted' in sshlog
+                                case['passed'] &= case['pty_accepted']
+                            if require_rekey:
+                                case['newkeys_received_count']=sshlog.count('SSH2_MSG_NEWKEYS received')
+                                case['passed'] &= case['newkeys_received_count']>=2
                             cases[name]=case
                             result['cases']=cases
                             # Verify that the connection child was reaped, including
@@ -251,6 +280,20 @@ def run(args):
                             attempt_case('stream',stream,expected_output=payload+'STREAM_DONE\n')
                             repeat=ssh.copy();repeat[-1]='echo ELKSSH_REPEAT_OK; exit 7'
                             attempt_case('repeat-exit',repeat,expected_exit=7,expected_output='ELKSSH_REPEAT_OK\n')
+                        if args.session_suite and first['passed']:
+                            input_case=ssh.copy();input_case[-1]='cat; echo INPUT_EOF_OK'
+                            text_input='ELKSSH_STDIN\nsecond line\n'
+                            attempt_case('stdin-eof',input_case,input_text=text_input,
+                                expected_output=text_input+'INPUT_EOF_OK\n')
+                            pty_case=ssh.copy();pty_case.insert(1,'-tt')
+                            pty_case[-1]='echo PTY_BEGIN; tty; ps; cat /etc/issue; echo PTY_DONE'
+                            attempt_case('pty-commands',pty_case,require_pty=True,
+                                output_patterns=(r'^PTY_BEGIN$',r'^/dev/tty',r'PID.*COMMAND',r'ELKS 0\.9\.2',r'^PTY_DONE$'))
+                            attempt_case('pty-input-eof',pty_case,require_pty=True,terminal_eof=True,
+                                output_patterns=(r'^PTY_BEGIN$',r'^/dev/tty',r'PID.*COMMAND',r'ELKS 0\.9\.2',r'^PTY_DONE$'))
+                            rekey=ssh.copy();rekey.insert(1,'-oRekeyLimit=4K')
+                            rekey[-1]='cat /root/payload; echo REKEY_DONE'
+                            attempt_case('rekey-output',rekey,expected_output=payload+'REKEY_DONE\n',require_rekey=True)
                         result['suite_passed']=all(case['passed'] for case in cases.values()) and result.get('preauth_limit',True)
                         rows=[]
                         for sample in snapshots:
@@ -308,13 +351,14 @@ if __name__=='__main__':
     p.add_argument('--mfs',type=lambda s:Path(s).resolve())
     p.add_argument('--cpu',choices=['486','pentium'],default='486')
     p.add_argument('--suite',action='store_true',help='Also test rejected keys/permissions, host mismatch and repeated login')
+    p.add_argument('--session-suite',action='store_true',help='Also test stdin EOF, PTY commands and forced rekeying')
     p.add_argument('--screenshot',action='store_true')
     p.add_argument('--connect-timeout',type=int,default=300)
     p.add_argument('--entropy',choices=['healthy','short','silent'],default='healthy')
     args=p.parse_args()
     if args.filesystem=='minix' and args.mfs is None: p.error('--mfs is required for MINIX')
-    if args.suite and (args.filesystem!='minix' or args.entropy!='healthy'):
-        p.error('--suite requires --filesystem minix and healthy entropy')
+    if (args.suite or args.session_suite) and (args.filesystem!='minix' or args.entropy!='healthy'):
+        p.error('Suites require --filesystem minix and healthy entropy')
     if args.screenshot and args.entropy!='healthy':
         p.error('--screenshot requires healthy entropy')
     raise SystemExit(run(args))

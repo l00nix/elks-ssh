@@ -20,10 +20,11 @@
 
 Current checkpoint: milestones 1 and 2 have probe/build/regression evidence;
 milestone 3 now has QEMU public-key login, remote commands, output integrity,
-repeated connection cleanup and negative authentication tests. Interactive
-sessions, stdin, rekeying and broader failure handling remain open. Runtime
+repeated connection cleanup and negative authentication tests. Stdin/EOF,
+automated PTY commands and forced rekeying now pass. Full interactive sessions
+and broader failure handling remain open. Runtime
 memory sampling is preliminary; production entropy and the linked server's
-8086 audit remain release gates. See [login progress](LOGIN-PROGRESS.md).
+8086 audit remain release gates. See [session progress](SESSION-PROGRESS.md).
 
 The public fork is authorized. Publication of a secure release still requires
 evidence that these criteria are met; the current feasibility milestone is not
@@ -31,8 +32,8 @@ a release candidate.
 
 ## Next development order
 
-1. Extend the disposable QEMU tests for client stdin/EOF, interactive PTYs,
-   terminal resize/control keys, abrupt disconnects and rekeying.
+1. Extend the disposable QEMU tests for interactive shell input, terminal
+   resize/control keys and abrupt disconnects; retain stdin/EOF and rekey checks.
 2. Run the [Windows 11 client matrix](WINDOWS-TESTING.md) against that fixture,
    starting with the already-working public-key login/remote-command path.
 3. Complete the linked daemon's 8086 instruction audit and measure memory under
@@ -41,3 +42,8 @@ a release candidate.
    including missing/short input, disconnect and recovery behavior.
 5. Arrange PPC/HP 200LX testing with the owner when an emulator-tested candidate
    is ready. File transfer and key-generation utilities follow the core service.
+
+PPC testing is now authorized, including [Mac and Windows SSH captures](PPC-CAPTURE.md)
+of `ps` and `cat /etc/issue`. Readiness checks found no installed SSH service or
+random device; those screenshots remain pending a hardware-appropriate entropy
+path and candidate. HP 200LX access has not been scheduled.

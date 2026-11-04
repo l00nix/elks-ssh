@@ -324,6 +324,15 @@ static void cleanupchansess(const struct Channel *channel) {
 	m_free(chansess->term);
 	m_free(chansess->original_command);
 
+#ifdef __ia16__
+	/* Retained until channel output has drained: ELKS frees the PTY
+	 * queues when its last slave handle closes. */
+	if (chansess->slave >= 0) {
+		m_close(chansess->slave);
+		chansess->slave = -1;
+	}
+#endif
+
 	if (chansess->tty) {
 		/* write the utmp/wtmp login record */
 		li = chansess_login_alloc(chansess);
@@ -923,7 +932,11 @@ static int ptycommand(struct Channel *channel, struct ChanSess *chansess) {
 		/* add a child pid */
 		addchildpid(chansess, pid);
 
+		/* Keep the ELKS output queue alive after the child's exit.
+		 * cleanupchansess releases this handle after channel draining. */
+#ifndef __ia16__
 		close(chansess->slave);
+#endif
 		channel->writefd = chansess->master;
 		channel->readfd = chansess->master;
 		/* don't need to set stderr here */
