@@ -1,0 +1,11 @@
+{
+  "network_autostart_configured": true,
+  "boot_verified": false,
+  "bootopts_bytes": 850,
+  "backup": "/root/rngtest/bootopts.bak",
+  "bootopts_before_sha256": "a6a07bbc20220c12c9ab8c4f68cc4d63a6dffd151e2136c8c111a143bc96e965",
+  "bootopts_after_sha256": "1769a0a3cf90f8dfed2c396a008ddb697114ca7216853fd2faddaabf22726e97",
+  "probe_sha256": "fd1134ac2356102187ede2f1f9d1e818c945424c85ed96d75a0c93f69e40edb2",
+  "test_data_public": true,
+  "firmware_changed": false
+}

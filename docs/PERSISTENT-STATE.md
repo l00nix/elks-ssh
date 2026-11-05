@@ -112,3 +112,25 @@ kernel random pool with `rngd`. It is relevant to optional externally assisted
 reseeding, but requires a helper and an already usable SSH client. It therefore
 does not solve independent startup or provide the missing ELKS kernel random
 interface. No code from that repository was imported or executed.
+
+## Disposable PicoMEM image prepared
+
+The owner booted a new vanilla ELKS image at `10.0.0.66`. Its version is again
+0.9.2 commit `e7a56a43`, with the working `ne0=5,0x300,,0x92` setting. The only
+network configuration change was `#net=ne0` to `net=ne0` in `/bootopts` (850
+bytes afterwards). The original was saved at `/root/rngtest/bootopts.bak`;
+FTP readback verified both files and `sync` completed. The inspected `rc.sys`
+runs `net start $net`; existing `net.cfg` uses DHCP and starts Telnet/FTP.
+Autostart is configured but still awaits boot verification.
+
+The audited public probe and initial public state were installed under
+`/root/rngtest` with modes 700 and 600 respectively. The first physical test is
+armed at **stage 6**, after state advancement/readback and lock removal, before
+returning output. Host readback matches generation one of the independent
+reference; no output was exposed. The owner has been asked to remove power from
+both PPC and PicoMEM and boot the same disposable image. This is **pending**,
+not a passed physical power-loss test. No firmware or SSH service changed.
+
+Setup evidence: [configuration and backup hashes](evidence/20261105-picomem-power/setup.json),
+[armed state](evidence/20261105-picomem-power/armed-stage6.json), and
+[probe transcript](evidence/20261105-picomem-power/stage6-telnet.txt).

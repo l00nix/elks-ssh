@@ -1,0 +1,31 @@
+ls -l /bootopts; echo PWR1=$?
+-rw-r--r--  1 root     root          851  Jan  1 00:58 bootopts
+PWR1=0
+# test -d /root/rngtest; echo PWR2=$?
+PWR2=1
+# mkdir /root/rngtest; echo PWR3=$?
+PWR3=0
+# chmod 700 /root/rngtest; echo PWR4=$?
+PWR4=0
+# chmod 700 /root/rngtest/rngprobe; echo PWR5=$?
+PWR5=0
+# chmod 600 /root/rngtest/state; echo PWR6=$?
+PWR6=0
+# sync; echo PWR7=$?
+PWR7=0
+# ls -l /root/rngtest; echo PWR8=$?
+-rw-r--r--  1 root     root          851  Jan  1 01:02 bootopts.bak
+-rwx------  1 root     root        14120  Jan  1 01:02 rngprobe
+-rw-------  1 root     root         1024  Jan  1 01:02 state
+PWR8=0
+# ps; echo PWR9=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4030  12944 /bin/init 
+    6     6    1 root    S   0  1176 13130  66608 -/bin/sh 
+   20    11    1 root    R  16     0  1198   8944 telnetd 
+   21    21   p0 root    S  11  1330 13038  66688 -/bin/sh 
+    9     9    1 root    S  42  4656 32136  82816 ktcp -b -p ne0 
+   11    11    1 root    S   0     0  1230   8944 telnetd 
+   13    13    1 root    S   0     0  7324  25840 ftpd -d -P 49152:49159 
+   30    21   p0 root    R   0    50  2094   8976 ps 
+PWR9=0
