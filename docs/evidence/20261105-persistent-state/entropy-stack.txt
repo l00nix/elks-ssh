@@ -1,0 +1,4 @@
+entropy.c:28:13:wipe	6	static
+entropy.c:58:13:digest	130	dynamic,bounded
+entropy.c:42:12:state_open	76	dynamic,bounded
+entropy.c:67:9:elkssh_persistent_getrandom	2338	dynamic,bounded

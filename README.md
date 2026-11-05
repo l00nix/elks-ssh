@@ -21,8 +21,10 @@ It must operate independently after one-time secure provisioning, with no
 companion host or LAN helper. Serial entropy is a laboratory fixture. The
 standalone randomness implementation remains unresolved; see the
 [deployment requirements](docs/RNG-DEPLOYMENT.md). An isolated HMAC_DRBG probe
-passes upstream vectors in ELKS/QEMU and the static 8086 audit; persistent state
-and restart safety remain unimplemented.
+passes upstream vectors in ELKS/QEMU and the static 8086 audit. The isolated
+[persistent-state experiment](docs/PERSISTENT-STATE.md) now passes QEMU failure
+tests and public-data PPC checks; physical power-loss qualification and SSH
+integration remain outstanding.
 
 ## Planned suite
 

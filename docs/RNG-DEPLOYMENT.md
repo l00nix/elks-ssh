@@ -7,8 +7,8 @@ The existing serial adapter is a laboratory fixture, not the deployment design.
 
 **Decision confirmed by the owner:** the service must operate independently
 after one-time secure provisioning. A LAN helper, companion host, serial cable
-or extra RNG hardware must not be required at runtime. The standalone
-implementation is not yet available. The HP tests did not implement it: see
+or extra RNG hardware must not be required at runtime. A standalone SSH deployment is not yet available; the
+[isolated persistent-state probe](PERSISTENT-STATE.md) now has QEMU and PPC evidence. The HP tests did not implement it: see
 [HP progress](HP200LX-PROGRESS.md) for crypto probes and the missing-randomness
 startup refusal.
 
@@ -138,3 +138,11 @@ zero after its global flush, without reporting a failed device write. These
 source findings need to inform the fault-injection fixture; the generator probe
 must not be turned into a deployable seed-file adapter on the strength of its
 known-answer tests. No daemon, key tool or machine startup configuration changed.
+
+## Persistent-state follow-up
+
+The [next checkpoint](PERSISTENT-STATE.md) implements an isolated file-backed
+consumer and validates 23 QEMU cases, nine storage cases and four public-data
+PPC exercises. It is not connected to the daemon. The owner can prepare a
+disposable PicoMEM HDD image for physical power-loss tests; no CF card is used
+on the PPC. Runtime independence remains the required deployment model.

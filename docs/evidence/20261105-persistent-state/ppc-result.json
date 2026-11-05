@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "host": "10.0.0.66",
+  "public_test_state_only": true,
+  "ssh_tested": false,
+  "physical_power_loss_tested": false,
+  "cases": [
+    {
+      "case": "single",
+      "outputs_match_reference": true,
+      "outputs": 1,
+      "wall_seconds_including_telnet": 3.751
+    },
+    {
+      "case": "fork",
+      "outputs_match_reference": true,
+      "outputs": 3,
+      "wall_seconds_including_telnet": 6.208
+    },
+    {
+      "case": "contention",
+      "outputs_match_reference": true,
+      "outputs": 1,
+      "wall_seconds_including_telnet": 3.111
+    },
+    {
+      "case": "relaunch",
+      "outputs_match_reference": true,
+      "outputs": 1,
+      "wall_seconds_including_telnet": 2.865
+    }
+  ],
+  "generation": 6,
+  "state_matches_reference": true,
+  "public_state_sha256": "f56f3aa19e825f26dacd5f6d458ed8945f45bdefaebdf2132c9e1b0855a51e55",
+  "probe_sha256": "fd1134ac2356102187ede2f1f9d1e818c945424c85ed96d75a0c93f69e40edb2"
+}

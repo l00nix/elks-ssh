@@ -1,0 +1,101 @@
+{
+  "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+  "probe_sha256": "5db198882125a42268e59f4ac74f095ecd552630f9a8a9c759ee027af46be197",
+  "qemu": "QEMU emulator version 11.1.0",
+  "disk_cache": "writethrough",
+  "cpu": "486",
+  "cases": [
+    {
+      "case": "healthy",
+      "status": "passed",
+      "physical_power_loss": false,
+      "pattern_sector": 3928,
+      "exit_code": 0,
+      "guest_acknowledged": true,
+      "guest_refused": false,
+      "disk_record": "new"
+    },
+    {
+      "case": "eio-0",
+      "status": "passed",
+      "physical_power_loss": false,
+      "pattern_sector": 3928,
+      "exit_code": 14,
+      "guest_acknowledged": false,
+      "guest_refused": true,
+      "disk_record": "old"
+    },
+    {
+      "case": "eio-1",
+      "status": "passed",
+      "physical_power_loss": false,
+      "pattern_sector": 3928,
+      "exit_code": 14,
+      "guest_acknowledged": false,
+      "guest_refused": true,
+      "disk_record": "mixed"
+    },
+    {
+      "case": "enospc-0",
+      "status": "passed",
+      "physical_power_loss": false,
+      "pattern_sector": 3928,
+      "exit_code": 14,
+      "guest_acknowledged": false,
+      "guest_refused": true,
+      "disk_record": "old"
+    },
+    {
+      "case": "enospc-1",
+      "status": "passed",
+      "physical_power_loss": false,
+      "pattern_sector": 3928,
+      "exit_code": 14,
+      "guest_acknowledged": false,
+      "guest_refused": true,
+      "disk_record": "mixed"
+    },
+    {
+      "case": "crash-1",
+      "status": "passed",
+      "physical_power_loss": false,
+      "pattern_sector": 3928,
+      "stopped_at_stage": 1,
+      "guest_acknowledged": false,
+      "guest_refused": false,
+      "disk_record": "old"
+    },
+    {
+      "case": "crash-2",
+      "status": "passed",
+      "physical_power_loss": false,
+      "pattern_sector": 3928,
+      "stopped_at_stage": 2,
+      "guest_acknowledged": false,
+      "guest_refused": false,
+      "disk_record": "old"
+    },
+    {
+      "case": "crash-3",
+      "status": "passed",
+      "physical_power_loss": false,
+      "pattern_sector": 3928,
+      "stopped_at_stage": 3,
+      "guest_acknowledged": false,
+      "guest_refused": false,
+      "disk_record": "new"
+    },
+    {
+      "case": "crash-4",
+      "status": "passed",
+      "physical_power_loss": false,
+      "pattern_sector": 3928,
+      "stopped_at_stage": 4,
+      "guest_acknowledged": false,
+      "guest_refused": false,
+      "disk_record": "new"
+    }
+  ],
+  "original_image_unchanged": true,
+  "status": "passed"
+}

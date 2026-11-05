@@ -75,5 +75,7 @@ The [serial entropy checkpoint](SERIAL-ENTROPY.md) implements an isolated
 controlled-cable provider. Software fault matrices and PPC daemon startup pass.
 The [disconnect/recovery follow-up](SERIAL-RECOVERY.md) records physical tests
 and remaining failures. Native key generation passes QEMU but refused entropy
-on the PPC. Next: the independent generator and storage prerequisites.
+on the PPC. The [persistent-state follow-up](PERSISTENT-STATE.md) now passes
+isolated QEMU and public-data PPC checks. Next is physical power-loss testing
+on a disposable PicoMEM HDD image, followed by qualified SSH integration.
 No hardware listener or automatic service is installed.

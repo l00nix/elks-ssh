@@ -4,6 +4,8 @@
 secure provisioning, with no serial cable, companion host or LAN helper.
 The [deployment design](RNG-DEPLOYMENT.md) supersedes serial qualification as
 the critical path. The serial implementation remains a laboratory fixture.
+The [persistent-state checkpoint](PERSISTENT-STATE.md) has isolated QEMU and
+PPC probe evidence, with physical storage qualification still outstanding.
 
 The prepared ELKS tree at `e1469b64c5809c44d5c822eaeebd0e97d5996289`
 has no `getrandom` or `/dev/urandom` implementation found in the inspected

@@ -29,4 +29,7 @@
   companion hosts, LAN helpers and extra RNG hardware runtime requirements.
   The owner explicitly requires independent operation after one-time secure
   provisioning. Qualify persistent generator state and recovery before deployment.
+- The PPC uses a PicoMEM-backed HDD image, not a CF card. The owner can create
+  a separate disposable HDD image for power-loss testing. Preserve the working
+  image and PicoMEM firmware; coordinate physical power interruption with them.
 - Do not spawn subagents without explicit user authorization.

@@ -1,0 +1,474 @@
+{
+  "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+  "probe_sha256": "fd1134ac2356102187ede2f1f9d1e818c945424c85ed96d75a0c93f69e40edb2",
+  "cpu": "486",
+  "disk_cache": "writethrough",
+  "cases": [
+    {
+      "case": "healthy",
+      "status": "passed",
+      "hardware": false,
+      "secrets_used": false,
+      "first": {
+        "outputs": [
+          "0ffb80875a3e9022a4941a3fa1b0d3611df14e1cf651a73ce9229b9f3ad56887"
+        ],
+        "refused": false,
+        "exit_code": 0,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      },
+      "restart": {
+        "outputs": [
+          "08767656d3e9669eb668d1e1f5b80d27bb1aee12ff719eeb83e3dce006718c16"
+        ],
+        "refused": false,
+        "exit_code": 0,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      },
+      "state_matches_reference": true
+    },
+    {
+      "case": "fork",
+      "status": "passed",
+      "hardware": false,
+      "secrets_used": false,
+      "first": {
+        "outputs": [
+          "0ffb80875a3e9022a4941a3fa1b0d3611df14e1cf651a73ce9229b9f3ad56887",
+          "08767656d3e9669eb668d1e1f5b80d27bb1aee12ff719eeb83e3dce006718c16",
+          "d39f41d16fd1bd1b6d652ced1a9e5e57f1c0924a5592490a5214ed35a03e711c"
+        ],
+        "refused": false,
+        "exit_code": 0,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      },
+      "restart": {
+        "outputs": [
+          "c1a864b9838f64738a07a98e0d5c6ffb62351bb42dae1b8b19689fcc9dcec070"
+        ],
+        "refused": false,
+        "exit_code": 0,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      },
+      "state_matches_reference": true
+    },
+    {
+      "case": "contend",
+      "status": "passed",
+      "hardware": false,
+      "secrets_used": false,
+      "first": {
+        "outputs": [
+          "0ffb80875a3e9022a4941a3fa1b0d3611df14e1cf651a73ce9229b9f3ad56887"
+        ],
+        "refused": true,
+        "exit_code": 0,
+        "stopped_at": null,
+        "contention_refused": true,
+        "failed_assertion": false
+      },
+      "restart": {
+        "outputs": [
+          "08767656d3e9669eb668d1e1f5b80d27bb1aee12ff719eeb83e3dce006718c16"
+        ],
+        "refused": false,
+        "exit_code": 0,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      },
+      "state_matches_reference": true
+    },
+    {
+      "case": "full-fs",
+      "status": "passed",
+      "hardware": false,
+      "secrets_used": false,
+      "first": {
+        "outputs": [
+          "0ffb80875a3e9022a4941a3fa1b0d3611df14e1cf651a73ce9229b9f3ad56887"
+        ],
+        "refused": false,
+        "exit_code": 0,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      },
+      "restart": {
+        "outputs": [
+          "08767656d3e9669eb668d1e1f5b80d27bb1aee12ff719eeb83e3dce006718c16"
+        ],
+        "refused": false,
+        "exit_code": 0,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      },
+      "state_matches_reference": true
+    },
+    {
+      "case": "bad-mode",
+      "status": "passed",
+      "hardware": false,
+      "secrets_used": false,
+      "first": {
+        "outputs": [],
+        "refused": true,
+        "exit_code": 1,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      }
+    },
+    {
+      "case": "bad-dir",
+      "status": "passed",
+      "hardware": false,
+      "secrets_used": false,
+      "first": {
+        "outputs": [],
+        "refused": true,
+        "exit_code": 1,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      }
+    },
+    {
+      "case": "missing",
+      "status": "passed",
+      "hardware": false,
+      "secrets_used": false,
+      "first": {
+        "outputs": [],
+        "refused": true,
+        "exit_code": 1,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      }
+    },
+    {
+      "case": "busy",
+      "status": "passed",
+      "hardware": false,
+      "secrets_used": false,
+      "first": {
+        "outputs": [],
+        "refused": true,
+        "exit_code": 1,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      }
+    },
+    {
+      "case": "hardlink",
+      "status": "passed",
+      "hardware": false,
+      "secrets_used": false,
+      "first": {
+        "outputs": [],
+        "refused": true,
+        "exit_code": 1,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      }
+    },
+    {
+      "case": "symlink",
+      "status": "passed",
+      "hardware": false,
+      "secrets_used": false,
+      "first": {
+        "outputs": [],
+        "refused": true,
+        "exit_code": 1,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      }
+    },
+    {
+      "case": "checksum",
+      "status": "passed",
+      "hardware": false,
+      "secrets_used": false,
+      "first": {
+        "outputs": [],
+        "refused": true,
+        "exit_code": 1,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      }
+    },
+    {
+      "case": "truncated",
+      "status": "passed",
+      "hardware": false,
+      "secrets_used": false,
+      "first": {
+        "outputs": [],
+        "refused": true,
+        "exit_code": 1,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      }
+    },
+    {
+      "case": "exhausted",
+      "status": "passed",
+      "hardware": false,
+      "secrets_used": false,
+      "first": {
+        "outputs": [],
+        "refused": true,
+        "exit_code": 1,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      }
+    },
+    {
+      "case": "eio-0",
+      "status": "passed",
+      "hardware": false,
+      "secrets_used": false,
+      "first": {
+        "outputs": [],
+        "refused": true,
+        "exit_code": 1,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      },
+      "restart": {
+        "outputs": [],
+        "refused": true,
+        "exit_code": 1,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      }
+    },
+    {
+      "case": "eio-1",
+      "status": "passed",
+      "hardware": false,
+      "secrets_used": false,
+      "first": {
+        "outputs": [],
+        "refused": true,
+        "exit_code": 1,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      },
+      "restart": {
+        "outputs": [],
+        "refused": true,
+        "exit_code": 1,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      }
+    },
+    {
+      "case": "enospc-0",
+      "status": "passed",
+      "hardware": false,
+      "secrets_used": false,
+      "first": {
+        "outputs": [],
+        "refused": true,
+        "exit_code": 1,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      },
+      "restart": {
+        "outputs": [],
+        "refused": true,
+        "exit_code": 1,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      }
+    },
+    {
+      "case": "enospc-1",
+      "status": "passed",
+      "hardware": false,
+      "secrets_used": false,
+      "first": {
+        "outputs": [],
+        "refused": true,
+        "exit_code": 1,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      },
+      "restart": {
+        "outputs": [],
+        "refused": true,
+        "exit_code": 1,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      }
+    },
+    {
+      "case": "crash-1",
+      "status": "passed",
+      "hardware": false,
+      "secrets_used": false,
+      "first": {
+        "outputs": [],
+        "refused": false,
+        "exit_code": null,
+        "stopped_at": 1,
+        "contention_refused": false,
+        "failed_assertion": false
+      },
+      "restart": {
+        "outputs": [],
+        "refused": true,
+        "exit_code": 1,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      },
+      "abandoned_lock_refused": true
+    },
+    {
+      "case": "crash-2",
+      "status": "passed",
+      "hardware": false,
+      "secrets_used": false,
+      "first": {
+        "outputs": [],
+        "refused": false,
+        "exit_code": null,
+        "stopped_at": 2,
+        "contention_refused": false,
+        "failed_assertion": false
+      },
+      "restart": {
+        "outputs": [],
+        "refused": true,
+        "exit_code": 1,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      },
+      "abandoned_lock_refused": true
+    },
+    {
+      "case": "crash-3",
+      "status": "passed",
+      "hardware": false,
+      "secrets_used": false,
+      "first": {
+        "outputs": [],
+        "refused": false,
+        "exit_code": null,
+        "stopped_at": 3,
+        "contention_refused": false,
+        "failed_assertion": false
+      },
+      "restart": {
+        "outputs": [],
+        "refused": true,
+        "exit_code": 1,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      },
+      "abandoned_lock_refused": true
+    },
+    {
+      "case": "crash-4",
+      "status": "passed",
+      "hardware": false,
+      "secrets_used": false,
+      "first": {
+        "outputs": [],
+        "refused": false,
+        "exit_code": null,
+        "stopped_at": 4,
+        "contention_refused": false,
+        "failed_assertion": false
+      },
+      "restart": {
+        "outputs": [],
+        "refused": true,
+        "exit_code": 1,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      },
+      "abandoned_lock_refused": true
+    },
+    {
+      "case": "crash-5",
+      "status": "passed",
+      "hardware": false,
+      "secrets_used": false,
+      "first": {
+        "outputs": [],
+        "refused": false,
+        "exit_code": null,
+        "stopped_at": 5,
+        "contention_refused": false,
+        "failed_assertion": false
+      },
+      "restart": {
+        "outputs": [],
+        "refused": true,
+        "exit_code": 1,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      },
+      "abandoned_lock_refused": true
+    },
+    {
+      "case": "crash-6",
+      "status": "passed",
+      "hardware": false,
+      "secrets_used": false,
+      "first": {
+        "outputs": [],
+        "refused": false,
+        "exit_code": null,
+        "stopped_at": 6,
+        "contention_refused": false,
+        "failed_assertion": false
+      },
+      "restart": {
+        "outputs": [
+          "08767656d3e9669eb668d1e1f5b80d27bb1aee12ff719eeb83e3dce006718c16"
+        ],
+        "refused": false,
+        "exit_code": 0,
+        "stopped_at": null,
+        "contention_refused": false,
+        "failed_assertion": false
+      },
+      "unexposed_output_skipped": true
+    }
+  ],
+  "original_image_unchanged": true,
+  "status": "passed"
+}

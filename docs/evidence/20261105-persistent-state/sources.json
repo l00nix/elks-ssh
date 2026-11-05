@@ -1,0 +1,12 @@
+{
+  "experimental/persistent-entropy/README.md": "4dd803d2f91f76f31c1f33028a020ebf254a9f5d26799bfcdd6e6a90c6a2d03f",
+  "experimental/persistent-entropy/entropy.c": "dc38be8c97e64913403bca2c40f548cd520fcbef51ffe18fb0fb188644942029",
+  "experimental/persistent-entropy/entropy.h": "bd7a23c232fac9245375d9c8212d15d45adcc464b1f39d72e48e3a4d68cc08b7",
+  "experimental/persistent-entropy/fixture.py": "e5df2be3bdf89d41a37b160903abacf73b1cf7ded199a6ef5293bef5b879b63e",
+  "experimental/persistent-entropy/probe.c": "2c5af4a338cc037c47c831f19449dd0d52dbee71d8e6f8ddbc13d615d6044ee5",
+  "experimental/persistent-entropy/qemu_probe.py": "779439e332af5ccd9463dada2ac650dc10503ce6bed4f00ff912257c9cdec6f6",
+  "feasibility/src/storeprobe.c": "a7af3ac1f4ee01dcefca08b2d5fb0c3157ff3a6818a10d3520cc763eb7e07f04",
+  "feasibility/tests/qemu_store.py": "fae4d7974f063bb2c1316e1b775f0e7bfc5036e3035e8e152b9a6ac264904173",
+  "feasibility/toolchain/build-persistent.sh": "ba55e319ba5ade1522df554db60a2af61b1a796a924a7987e7a46389a51bda04",
+  "feasibility/toolchain/build-store.sh": "35a34699e53f3836b225ab6fefe5bbaa22fd56a1ba9302be028aef87cbee1530"
+}
