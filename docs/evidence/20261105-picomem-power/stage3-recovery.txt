@@ -1,0 +1,3 @@
+# /root/rngtest/rngprobe; echo PWR3=$?
+REFUSED output unchanged; process retry refused
+PWR3=1

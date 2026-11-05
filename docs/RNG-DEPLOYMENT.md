@@ -145,7 +145,7 @@ The [next checkpoint](PERSISTENT-STATE.md) implements an isolated file-backed
 consumer and validates 23 QEMU cases, nine storage cases and four public-data
 PPC exercises. It is not connected to the daemon. On a separate disposable
 PicoMEM HDD image, physical stage 6 recovery now passes and network autostart
-is boot-verified; the interrupted stage 3 test is pending. No CF card is used
+is boot-verified; interrupted stage 3 recovery also correctly refuses output. No CF card is used
 on the PPC. Runtime independence remains the required deployment model.
 
 ## Timing input proposal

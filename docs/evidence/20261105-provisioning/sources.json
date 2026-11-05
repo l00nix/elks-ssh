@@ -1,0 +1,14 @@
+{
+  "host_system": "Darwin",
+  "host_arch": "arm64",
+  "bearssl_manifest_verified": true,
+  "sha256": {
+    "experimental/persistent-entropy/seed-record.c": "15aeefdefd504c970c45dc0640fc3464873591fc30c99a18568eb7701fb275e2",
+    "experimental/persistent-entropy/build-host-seed.sh": "ffc3512621aac8e85b46919a9db8dedeebdfe5a3e5813e95374305d5da9d75a9",
+    "experimental/persistent-entropy/provision.py": "a1e8d11b239ee1967b61ff5d7ef2507f6d9bbfce0a90f67dbe839b564dc78a54",
+    "experimental/persistent-entropy/test_provision.py": "ff3d79cd842985d7516a7eb74e9d705308f956e85fb1e3c3c136203f44d7a08f",
+    "experimental/persistent-entropy/qemu_recovery.py": "50a3a9784c4e6ee3629356aada332058a7f709958c602d83650d0214523cfd69",
+    "experimental/persistent-entropy/entropy.c": "dc38be8c97e64913403bca2c40f548cd520fcbef51ffe18fb0fb188644942029",
+    "experimental/persistent-entropy/fixture.py": "e5df2be3bdf89d41a37b160903abacf73b1cf7ded199a6ef5293bef5b879b63e"
+  }
+}

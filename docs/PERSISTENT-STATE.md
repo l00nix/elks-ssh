@@ -139,12 +139,19 @@ output and persisted generation two exactly. **Stage 6 recovery passed.** This
 was a manually delayed power cut, not an interruption immediately after a device
 acknowledgement, and does not establish a universal durability guarantee.
 
-The second test is armed at **stage 3**, after the state write/close returned
-but before the application's explicit `sync()`. The previous state was generation
-two. No output was exposed; the state actually on media is unknown until restart.
-The expected recovery is refusal because the interrupted operation retained its
-lock. This second physical test is **pending**. Do not remove that lock or replace
-the record before collecting recovery evidence. No firmware or SSH service changed.
+The second test paused at **stage 3**, after the state write/close returned
+but before the application's explicit `sync()`. No output was exposed. After
+the requested full power cycle, the advanced generation three record matched
+the independent reference and the empty lock remained. The probe returned exit
+1, left caller output unchanged, and refused a same-process retry. State and
+lock were unchanged by the refusal. **Stage 3 recovery passed.** The record
+survived despite pausing before explicit sync; this does not demonstrate a torn
+write or mean that unflushed writes are always safe.
+
+The interrupted state and lock remain on the PPC for inspection. Recovery must
+use fresh secure provisioning while all consumers are stopped; deleting the
+lock and reusing an uncertain record is not an accepted recovery procedure.
+No firmware or SSH service changed.
 
 Setup evidence: [configuration and backup hashes](evidence/20261105-picomem-power/setup.json),
 [stage 6 armed state](evidence/20261105-picomem-power/armed-stage6.json), and
@@ -152,5 +159,13 @@ Setup evidence: [configuration and backup hashes](evidence/20261105-picomem-powe
 Recovery evidence: [stage 6 result](evidence/20261105-picomem-power/stage6-recovery.json),
 [recovery transcript](evidence/20261105-picomem-power/stage6-recovery.txt), and
 [boot processes](evidence/20261105-picomem-power/reboot-ps.txt).
-Next test: [stage 3 armed state](evidence/20261105-picomem-power/armed-stage3.json)
+Second test: [stage 3 armed state](evidence/20261105-picomem-power/armed-stage3.json)
 and [pause transcript](evidence/20261105-picomem-power/stage3-telnet.txt).
+
+Stage 3 recovery: [result](evidence/20261105-picomem-power/stage3-recovery.json),
+[refusal transcript](evidence/20261105-picomem-power/stage3-recovery.txt),
+[files](evidence/20261105-picomem-power/stage3-files.txt), and
+[boot processes](evidence/20261105-picomem-power/stage3-reboot-ps.txt).
+
+The next [provisioning checkpoint](PROVISIONING.md) tests host preparation and
+fresh offline recovery in QEMU. It leaves this physical interrupted state intact.

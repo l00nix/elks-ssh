@@ -1,0 +1,15 @@
+test_cli_reports_status_without_record_and_refuses_reuse (__main__.ProvisionTests) ... ok
+test_existing_bundle_is_not_replaced (__main__.ProvisionTests) ... ok
+test_flush_failure_never_marks_complete (__main__.ProvisionTests) ... ok
+test_fresh_recovery_material_and_private_modes (__main__.ProvisionTests) ... ok
+test_helper_failure_leaves_no_usable_bundle (__main__.ProvisionTests) ... ok
+test_host_random_source_failure_leaves_no_usable_bundle (__main__.ProvisionTests) ... ok
+test_incomplete_and_excess_seed_refuse_without_output (__main__.ProvisionTests) ... ok
+test_invalid_record_leaves_no_usable_bundle (__main__.ProvisionTests) ... ok
+test_symlink_destination_refused (__main__.ProvisionTests) ... ok
+test_upstream_initialization_matches_independent_public_oracle (__main__.ProvisionTests) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.085s
+
+OK

@@ -76,6 +76,9 @@ controlled-cable provider. Software fault matrices and PPC daemon startup pass.
 The [disconnect/recovery follow-up](SERIAL-RECOVERY.md) records physical tests
 and remaining failures. Native key generation passes QEMU but refused entropy
 on the PPC. The [persistent-state follow-up](PERSISTENT-STATE.md) now passes
-isolated QEMU and public-data PPC checks. Next is physical power-loss testing
-on a disposable PicoMEM HDD image, followed by qualified SSH integration.
+isolated QEMU and public-data PPC checks, including physical stage 6 recovery
+and stage 3 refusal on a disposable PicoMEM HDD image. The
+[offline provisioning checkpoint](PROVISIONING.md) adds host-side preparation
+and QEMU recovery tests. Offline image installation and non-disclosing target
+validation precede qualified SSH integration.
 No hardware listener or automatic service is installed.

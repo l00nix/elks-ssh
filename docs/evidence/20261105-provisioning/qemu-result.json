@@ -1,0 +1,51 @@
+{
+  "status": "passed",
+  "public_test_data_only": true,
+  "hardware": false,
+  "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+  "probe_sha256": "fd1134ac2356102187ede2f1f9d1e818c945424c85ed96d75a0c93f69e40edb2",
+  "helper_sha256": "2009ec7bd2fcc2bf8133f6f875cf5f2f3ee70d94e652a90e677d25102e38e26f",
+  "cpu": "486",
+  "disk_cache": "writethrough",
+  "initial": {
+    "outputs": [
+      "0ffb80875a3e9022a4941a3fa1b0d3611df14e1cf651a73ce9229b9f3ad56887"
+    ],
+    "refused": false,
+    "exit_code": 0,
+    "stopped_at": null,
+    "contention_refused": false,
+    "failed_assertion": false
+  },
+  "interrupted_refused": {
+    "outputs": [],
+    "refused": true,
+    "exit_code": 1,
+    "stopped_at": null,
+    "contention_refused": false,
+    "failed_assertion": false
+  },
+  "recovered": {
+    "outputs": [
+      "97f6d8d9192ba291fb8c85b03d48da27ac7180e08b9e00ca9ab0a33f53d78210"
+    ],
+    "refused": false,
+    "exit_code": 0,
+    "stopped_at": null,
+    "contention_refused": false,
+    "failed_assertion": false
+  },
+  "recovery_restart": {
+    "outputs": [
+      "506b2d4c4aaae35c6f1990e8f4b4bf031345ccebfdb5be6dc71891afa0313256"
+    ],
+    "refused": false,
+    "exit_code": 0,
+    "stopped_at": null,
+    "contention_refused": false,
+    "failed_assertion": false
+  },
+  "fresh_state_matches_reference": true,
+  "old_sequence_not_resumed": true,
+  "original_image_unchanged": true
+}

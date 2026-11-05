@@ -1,0 +1,18 @@
+{
+  "test": "stage3-recovery",
+  "status": "passed",
+  "public_test_data_only": true,
+  "ssh_tested": false,
+  "network_available_after_reboot": true,
+  "lock_present": true,
+  "lock_bytes": 0,
+  "state_bytes": 1024,
+  "state_matches_reference_generation": 3,
+  "public_state_sha256": "5cb6420dc7118a83a639c23aec71b1b23b0323ae310e31891a8d1b14dc511b97",
+  "power_cycle_requested": "Full PPC power-off/on; PicoMEM powered by PPC only",
+  "owner_response": "it is up",
+  "refused_output": true,
+  "process_retry_refused": true,
+  "state_unchanged_after_refusal": true,
+  "lock_retained": true
+}

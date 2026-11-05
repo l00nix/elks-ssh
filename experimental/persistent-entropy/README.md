@@ -51,3 +51,11 @@ whole-session memory measurements, real 8086 execution and physical storage
 qualification are not supplied by this probe. No kernel/libc changes are made.
 
 Recorded results and remaining hardware gates: [persistent-state checkpoint](../../docs/PERSISTENT-STATE.md).
+
+## Host preparation and offline recovery
+
+The [provisioning checkpoint](../../docs/PROVISIONING.md) adds a host-only
+BearSSL initializer and private bundle creator, ten host failure/behavior tests,
+and a five-boot public QEMU recovery lifecycle. It does not install secret
+material on ELKS or connect the adapter to SSH. Public `probe.c` must never
+consume a real secret bundle because it prints generated output.
