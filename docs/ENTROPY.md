@@ -114,3 +114,21 @@ These are acceptance requirements, not completed tests. Existing QEMU short
 and silent-source tests exercise only part of this contract. Secure standalone
 operation remains a separate milestone with the persistence and rollback
 requirements above.
+
+## Exhaustive short-response baseline — 2026-11-05
+
+The existing QEMU-only adapter was tested with every response length from zero
+through 31 bytes. All 32 cases refused startup with exit 1, left no `sshtest`
+process, and preserved the input image. Each case exercised two requests; host
+provider errors also fail the harness. This validates the emulator adapter's
+short-input behavior, not a physical provider or replay resistance.
+
+Reproduce a length with `tests/qemu_ssh.py --entropy short --entropy-bytes N`
+and the usual image/server/output arguments. Zero through 31 are accepted;
+the default remains 16. Evidence: [32-case matrix](evidence/20261105-entropy-short/summary.json).
+
+Hardware focus is now the PPC: Telnet is working and a public serial marker
+was received on its dedicated Mac adapter after releasing the idle DOS bridges.
+The HP reports that its network stack is down; leave it on serial console while
+qualifying the PPC path. No entropy provider or SSH listener was installed by
+this baseline test.

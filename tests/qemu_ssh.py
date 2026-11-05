@@ -30,9 +30,10 @@ def sha(path):
 
 
 class EntropyProvider(threading.Thread):
-    def __init__(self, path, mode):
+    def __init__(self, path, mode, short_bytes=16):
         super().__init__(daemon=True)
         self.path, self.mode = path, mode
+        self.short_bytes = short_bytes
         self.stop_event = threading.Event()
         self.requests = 0
         self.bytes_sent = 0
@@ -57,7 +58,7 @@ class EntropyProvider(threading.Thread):
                         self.requests += 1
                         if self.mode == 'silent': continue
                         fresh = os.urandom(32)
-                        if self.mode == 'short': fresh = fresh[:16]
+                        if self.mode == 'short': fresh = fresh[:self.short_bytes]
                         conn.sendall(fresh)
                         self.bytes_sent += len(fresh)
         except Exception as exc:
@@ -125,7 +126,7 @@ def run(args):
                 while not serial.exists() or not entropy.exists():
                     if proc.poll() is not None or time.monotonic()>deadline: raise RuntimeError('QEMU startup failed')
                     time.sleep(.05)
-                provider=EntropyProvider(entropy,args.entropy);provider.start()
+                provider=EntropyProvider(entropy,args.entropy,args.entropy_bytes);provider.start()
                 with socket.socket(socket.AF_UNIX) as conn:
                     conn.connect(str(serial));conn.settimeout(.2)
                     def receive(pattern,timeout=45):
@@ -153,6 +154,11 @@ def run(args):
                         refusal=command('sshtest -F -r '+authdir+'/hostkey',expected=1,timeout=60)
                         if b'Failure reading random device' not in refusal:raise RuntimeError('Expected entropy refusal')
                         result['entropy_failure_closed']=True
+                        state=command('ps')
+                        if any(b'sshtest ' in row for row in state.splitlines()
+                               if re.match(rb'\s*\d+\s',row)):
+                            raise RuntimeError('Server remained after entropy refusal')
+                        result['entropy_failure_no_server_process']=True
                     else:
                         command('ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0')
                         command('ls -ld / /root '+authdir+'/authkeys')
@@ -354,6 +360,14 @@ def run(args):
                 result['entropy_requests']=provider.requests
                 result['entropy_bytes_sent']=provider.bytes_sent
                 result['entropy_provider_error']=provider.error
+                if args.entropy == 'short':
+                    result['entropy_response_bytes']=args.entropy_bytes
+                    if provider.requests == 0 or provider.bytes_sent != provider.requests*args.entropy_bytes:
+                        result['status']='failed'
+                        result['error']='Short entropy responses were not exercised as requested'
+                if provider.error:
+                    result['status']='failed'
+                    result['error']='Entropy provider failed unexpectedly'
             if proc and proc.poll() is None:
                 proc.terminate();proc.wait(timeout=10)
             result['original_image_unchanged']=sha(args.image)==result['image_sha256']
@@ -377,6 +391,8 @@ if __name__=='__main__':
     p.add_argument('--screenshot',action='store_true')
     p.add_argument('--connect-timeout',type=int,default=300)
     p.add_argument('--entropy',choices=['healthy','short','silent'],default='healthy')
+    p.add_argument('--entropy-bytes',type=int,choices=range(32),default=16,
+                   help='Bytes per short entropy response (0 through 31; default 16)')
     args=p.parse_args()
     if args.filesystem=='minix' and args.mfs is None: p.error('--mfs is required for MINIX')
     if (args.suite or args.session_suite) and (args.filesystem!='minix' or args.entropy!='healthy'):
