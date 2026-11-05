@@ -169,3 +169,9 @@ Stage 3 recovery: [result](evidence/20261105-picomem-power/stage3-recovery.json)
 
 The next [provisioning checkpoint](PROVISIONING.md) tests host preparation and
 fresh offline recovery in QEMU. It leaves this physical interrupted state intact.
+
+On a separate `sshrec.img` prepared from the preserved interrupted image,
+the first physical recovery request now matches the new public sequence and
+persists generation one correctly. The original interrupted image is retained.
+A power cycle of the recovered image is pending to check that successful output
+is not repeated; see the [recovery checkpoint](PROVISIONING.md).

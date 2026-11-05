@@ -119,7 +119,8 @@ separate copies. Its SHA-256 is
 Network autostart and the working IRQ 5 NE2000 settings are retained. The owner
 has been asked to copy it to the PicoMEM HDD-image folder without overwriting
 `ssh2.img`, select it as the boot image, and report when ELKS is reachable.
-**Physical recovery boot is pending.** There is no SSH listener or real key.
+**The first physical recovery request now passes**, as recorded below.
+There is no SSH listener or real key.
 
 Evidence: [image verification and identities](evidence/20261105-ppc-recovery-image/result.json),
 [source filesystem check](evidence/20261105-ppc-recovery-image/source-fsck/serial.txt),
@@ -143,3 +144,27 @@ Never apply the byte-printing probe to a secret state bundle. A production
 installer, non-disclosing target validation, broader storage qualification and
 SSH integration remain open. The public preparation script is a reproducible
 hardware test fixture, not a general-purpose filesystem repair tool.
+
+## Physical recovery first request
+
+The owner booted `sshrec.img` on the PPC. Ethernet control was reachable at
+`10.0.0.66`; the recovery marker, unconsumed generation-zero state, audited
+probe binary and hardware boot options all matched the prepared image. The
+first request returned the expected public vector
+`97f6d8d9192ba291fb8c85b03d48da27ac7180e08b9e00ca9ab0a33f53d78210`.
+The complete generation-one record matched the independent reference and the
+lock was absent after success. Wall time including Telnet overhead was 2.943
+seconds; this is not an SSH performance measurement. No probe process remains.
+
+The public generator read local persistent state; no serial or network entropy
+provider was used. Telnet/FTP carried only control commands and public fixture
+data. The owner has been asked to power off the PPC/PicoMEM and boot this same
+image without replacing it. **Physical recovery reboot continuity is pending**:
+state must remain at generation one and the next request must return the second
+public vector, not repeat the first. No additional request has consumed that
+second output yet.
+
+Evidence: [hardware result](evidence/20261105-ppc-recovery-image/hardware/result.json),
+[first output](evidence/20261105-ppc-recovery-image/hardware/first-output.txt),
+[final files](evidence/20261105-ppc-recovery-image/hardware/after-files.txt), and
+[final processes](evidence/20261105-ppc-recovery-image/hardware/after-ps.txt).

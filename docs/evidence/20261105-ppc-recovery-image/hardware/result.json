@@ -1,0 +1,20 @@
+{
+  "test": "ppc-recovery-first-output",
+  "status": "passed",
+  "public_test_data_only": true,
+  "ssh_tested": false,
+  "ip": "10.0.0.66",
+  "marker_matches": true,
+  "initial_generation": 0,
+  "initial_state_matches": true,
+  "probe_matches": true,
+  "bootopts_preserved": true,
+  "network_available_after_boot": true,
+  "first_output": "97f6d8d9192ba291fb8c85b03d48da27ac7180e08b9e00ca9ab0a33f53d78210",
+  "final_generation": 1,
+  "state_matches_reference": true,
+  "lock_absent_after_success": true,
+  "wall_seconds": 2.943,
+  "recovery_reboot_continuity": "pending physical power cycle",
+  "public_state_sha256": "69ac4de0535a9cb8cb3d28f76016c3ccee1f1eaa729e20c733c93bc93bf4de0e"
+}
