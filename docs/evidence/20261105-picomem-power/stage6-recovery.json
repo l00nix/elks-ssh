@@ -1,0 +1,18 @@
+{
+  "test": "stage6-recovery",
+  "status": "passed",
+  "power_removal_confirmation": "Owner confirms PPC was powered off and PicoMEM is powered only by PPC; USB stick attached, no external power supply",
+  "public_test_data_only": true,
+  "ssh_tested": false,
+  "network_available_after_reboot": true,
+  "bootopts_preserved": true,
+  "pre_probe_generation": 1,
+  "lock_absent": true,
+  "unused_first_output_skipped": true,
+  "final_generation": 2,
+  "state_matches_reference": true,
+  "public_state_sha256": "03f29777c5b4a77e5c349425021b5250f203904a3e72bb18e9e09a2f225f075f",
+  "wall_seconds": 5.065,
+  "physical_power_cycle_confirmed": true,
+  "network_autostart_boot_verified": true
+}

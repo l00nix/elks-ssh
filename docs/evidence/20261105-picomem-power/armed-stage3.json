@@ -1,0 +1,10 @@
+{
+  "test": "physical-stage3",
+  "status": "armed",
+  "public_test_data_only": true,
+  "stage": 3,
+  "previous_generation": 2,
+  "output_exposed": false,
+  "state_on_media": "unknown until restart",
+  "awaiting": "User removes power from PPC and PicoMEM, then boots same disposable image"
+}

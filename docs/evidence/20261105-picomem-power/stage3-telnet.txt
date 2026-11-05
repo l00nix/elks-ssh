@@ -1,0 +1,4 @@
+/root/rngtest/rngprobe 3
+STAGE 1
+STAGE 2
+STAGE 3

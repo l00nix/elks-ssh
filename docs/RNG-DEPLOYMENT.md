@@ -143,6 +143,21 @@ known-answer tests. No daemon, key tool or machine startup configuration changed
 
 The [next checkpoint](PERSISTENT-STATE.md) implements an isolated file-backed
 consumer and validates 23 QEMU cases, nine storage cases and four public-data
-PPC exercises. It is not connected to the daemon. The owner can prepare a
-disposable PicoMEM HDD image for physical power-loss tests; no CF card is used
+PPC exercises. It is not connected to the daemon. On a separate disposable
+PicoMEM HDD image, physical stage 6 recovery now passes and network autostart
+is boot-verified; the interrupted stage 3 test is pending. No CF card is used
 on the PPC. Runtime independence remains the required deployment model.
+
+## Timing input proposal
+
+The owner suggested sampling the 8253/8254 timer around human keystrokes or
+other external activity. Event timing can supply uncertainty, but clock values
+alone are not a qualified entropy source; buffering, repetitive input and
+predictable activity can reduce it. See [RFC 4086, sections 3.4–3.5](https://www.rfc-editor.org/rfc/rfc4086#section-3.4).
+
+Treat a user-space timing collector as a possible future provisioning source,
+subject to platform-specific measurement and conservative entropy assessment.
+No collector is implemented and no entropy is credited to timing in this design.
+Retain unique secure one-time provisioning and protected persistent state as
+the selected deployment path. Network activity must not be assumed secret or
+uncontrollable by an attacker. A keyboard ceremony is not required at each boot.

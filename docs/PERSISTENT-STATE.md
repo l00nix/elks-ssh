@@ -89,10 +89,10 @@ python3 experimental/persistent-entropy/qemu_probe.py \
 
 ## Next hardware gate
 
-The owner will prepare a separate disposable ELKS MINIX **HDD image for
+The owner has prepared a separate disposable ELKS MINIX **HDD image for
 PicoMEM**. Do not treat the PPC as a CF-card machine or interrupt writes on its
-working image. Once that image is booted and reachable, stage only the public
-fixture and coordinate power cuts at the recorded transaction boundaries.
+working image. Use only the public fixture and coordinate power cuts at the
+recorded transaction boundaries on this disposable image.
 The tests must account for power reaching PicoMEM and its backing storage;
 resetting the PPC CPU alone is not a storage power-loss test.
 
@@ -121,16 +121,36 @@ network configuration change was `#net=ne0` to `net=ne0` in `/bootopts` (850
 bytes afterwards). The original was saved at `/root/rngtest/bootopts.bak`;
 FTP readback verified both files and `sync` completed. The inspected `rc.sys`
 runs `net start $net`; existing `net.cfg` uses DHCP and starts Telnet/FTP.
-Autostart is configured but still awaits boot verification.
+Autostart is now boot-verified: after the physical power cycle, Ethernet was
+reachable at the same address and `ps` showed `ktcp`, `telnetd` and `ftpd`
+while the local console was still at `getty`.
 
 The audited public probe and initial public state were installed under
-`/root/rngtest` with modes 700 and 600 respectively. The first physical test is
-armed at **stage 6**, after state advancement/readback and lock removal, before
-returning output. Host readback matches generation one of the independent
-reference; no output was exposed. The owner has been asked to remove power from
-both PPC and PicoMEM and boot the same disposable image. This is **pending**,
-not a passed physical power-loss test. No firmware or SSH service changed.
+`/root/rngtest` with modes 700 and 600 respectively. The first physical test
+paused at **stage 6**, after state advancement/readback and lock removal, before
+returning output. Host readback matched generation one of the independent
+reference; no output was exposed.
+
+The owner confirms that powering off the PPC also powered off PicoMEM, which
+has no external power supply; its only attached USB device is a storage stick.
+After this power cycle, generation one remained intact and the lock was absent.
+A new request skipped the unexposed first output, returned the second reference
+output and persisted generation two exactly. **Stage 6 recovery passed.** This
+was a manually delayed power cut, not an interruption immediately after a device
+acknowledgement, and does not establish a universal durability guarantee.
+
+The second test is armed at **stage 3**, after the state write/close returned
+but before the application's explicit `sync()`. The previous state was generation
+two. No output was exposed; the state actually on media is unknown until restart.
+The expected recovery is refusal because the interrupted operation retained its
+lock. This second physical test is **pending**. Do not remove that lock or replace
+the record before collecting recovery evidence. No firmware or SSH service changed.
 
 Setup evidence: [configuration and backup hashes](evidence/20261105-picomem-power/setup.json),
-[armed state](evidence/20261105-picomem-power/armed-stage6.json), and
-[probe transcript](evidence/20261105-picomem-power/stage6-telnet.txt).
+[stage 6 armed state](evidence/20261105-picomem-power/armed-stage6.json), and
+[stage 6 probe transcript](evidence/20261105-picomem-power/stage6-telnet.txt).
+Recovery evidence: [stage 6 result](evidence/20261105-picomem-power/stage6-recovery.json),
+[recovery transcript](evidence/20261105-picomem-power/stage6-recovery.txt), and
+[boot processes](evidence/20261105-picomem-power/reboot-ps.txt).
+Next test: [stage 3 armed state](evidence/20261105-picomem-power/armed-stage3.json)
+and [pause transcript](evidence/20261105-picomem-power/stage3-telnet.txt).
