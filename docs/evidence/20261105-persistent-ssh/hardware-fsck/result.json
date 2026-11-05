@@ -1,0 +1,9 @@
+{
+  "outputs": [],
+  "refused": false,
+  "exit_code": 0,
+  "stopped_at": null,
+  "contention_refused": false,
+  "failed_assertion": false,
+  "private_image_unchanged": true
+}

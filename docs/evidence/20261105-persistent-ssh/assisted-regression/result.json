@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "entropy_mode": "short",
+  "entropy_protocol": "qemu-egd",
+  "server_sha256": "d827eead4a1e601942a6841dc7244c7743b0d27642faa22488af4b0db13ed8b1",
+  "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+  "filesystem": "minix",
+  "cpu": "486",
+  "real_hardware": false,
+  "production_entropy": false,
+  "ssh_client": "OpenSSH_10.3p1, LibreSSL 3.3.6",
+  "entropy_failure_closed": true,
+  "entropy_failure_no_server_process": true,
+  "entropy_requests": 2,
+  "entropy_bytes_sent": 32,
+  "entropy_provider_error": null,
+  "entropy_response_bytes": 16,
+  "original_image_unchanged": true
+}

@@ -1,0 +1,11 @@
+# ps; echo PWR2=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   13    13    1 root    S   0     0  1976   5984 /bin/getty /dev/tty1 
+   14     9    1 root    R   3     0  1196   8912 telnetd 
+   15    15   p0 root    S  23  1176 13182  66624 -/bin/sh 
+   17    15   p0 root    R  14    50  2094   8976 ps 
+    7     7    1 root    S  26  4730 32060  82784 ktcp -b -p ne0 
+    9     9    1 root    S   0     0  1228   8912 telnetd 
+   11    11    1 root    S   0     0  7322  25808 ftpd -d -P 49152:49159 
+PWR2=0

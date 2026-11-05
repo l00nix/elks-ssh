@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "hardware": false,
+  "runtime_entropy_helper": false,
+  "temporary_test_keys_only": true,
+  "production_ready": false,
+  "ssh_exit": 0,
+  "autostart_login_passed": true,
+  "ps_and_issue_passed": true,
+  "plaintext_services_absent": true,
+  "strict_pinned_host_verification": true,
+  "persistent_generation": 3,
+  "state_matches_reference": true,
+  "source_unchanged": true
+}

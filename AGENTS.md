@@ -33,3 +33,12 @@
   a separate disposable HDD image for power-loss testing. Preserve the working
   image and PicoMEM firmware; coordinate physical power interruption with them.
 - Do not spawn subagents without explicit user authorization.
+- A fresh private PPC image is prepared under
+  `~/.local/share/elks-ssh/ppc-trial-20261105/sshtrial.img`; hardware boot is
+  pending. It starts experimental SSH on TCP 2222 and disables Telnet/FTP.
+  Use that directory's `connect.sh` and pinned host key for this trial. Never
+  print/fetch secret state or keys through plaintext control, publish the image,
+  run the public byte-printing probe against it, or clone/restore it. Retire the
+  Mac's initial image copy after confirmed physical boot; retain client access
+  files. The existing public PPC fixture is at recovery generation three after
+  the non-disclosing checker test. Do not confuse public and private states.

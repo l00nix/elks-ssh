@@ -79,6 +79,9 @@ on the PPC. The [persistent-state follow-up](PERSISTENT-STATE.md) now passes
 isolated QEMU and public-data PPC checks, including physical stage 6 recovery
 and stage 3 refusal on a disposable PicoMEM HDD image. The
 [offline provisioning checkpoint](PROVISIONING.md) adds host-side preparation
-and QEMU recovery tests. Offline image installation and non-disclosing target
-validation precede qualified SSH integration.
-No hardware listener or automatic service is installed.
+and QEMU recovery tests. The [persistent SSH checkpoint](PERSISTENT-SSH.md) now adds a non-disclosing
+PPC checker, eleven QEMU session cases without a runtime entropy helper, and a
+separate private PPC test image. Physical SSH validation and broader security
+qualification remain open.
+The existing public hardware image has no SSH listener; a separate private
+image with SSH autostart awaits its first physical boot.

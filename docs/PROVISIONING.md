@@ -1,7 +1,7 @@
 # Offline provisioning and recovery experiment — 2026-11-05
 
-The PPC's physical stage 6 recovery and stage 3 refusal tests pass. A stale lock
-remains on the disposable PPC image. It must not be cleared just to resume the
+The PPC's physical stage 6 recovery and stage 3 refusal tests pass. The stale lock
+is preserved in the original disposable PPC image. It must not be cleared just to resume the
 old sequence. See the [physical evidence](PERSISTENT-STATE.md).
 
 ## Chosen workflow
@@ -159,12 +159,28 @@ seconds; this is not an SSH performance measurement. No probe process remains.
 The public generator read local persistent state; no serial or network entropy
 provider was used. Telnet/FTP carried only control commands and public fixture
 data. The owner has been asked to power off the PPC/PicoMEM and boot this same
-image without replacing it. **Physical recovery reboot continuity is pending**:
-state must remain at generation one and the next request must return the second
-public vector, not repeat the first. No additional request has consumed that
-second output yet.
+image without replacing it. **The subsequent physical power-cycle check passes**:
+generation one survived exactly and the next request returned the second
+public vector, not the first. The full generation-two record matched the
+independent reference and no lock remained. Wall time including Telnet overhead
+was 2.979 seconds. This completes this finite physical recovery lifecycle test;
+it does not prove durability for every device or power-loss timing.
 
 Evidence: [hardware result](evidence/20261105-ppc-recovery-image/hardware/result.json),
 [first output](evidence/20261105-ppc-recovery-image/hardware/first-output.txt),
 [final files](evidence/20261105-ppc-recovery-image/hardware/after-files.txt), and
 [final processes](evidence/20261105-ppc-recovery-image/hardware/after-ps.txt).
+
+Power-cycle evidence: [hardware result](evidence/20261105-ppc-recovery-image/hardware-reboot/result.json)
+and [second output](evidence/20261105-ppc-recovery-image/hardware-reboot/second-output.txt).
+The PPC and PicoMEM power topology remains as confirmed by the owner: PicoMEM
+is powered by the PPC and has no external supply.
+
+## Subsequent SSH experiment
+
+The [persistent SSH checkpoint](PERSISTENT-SSH.md) supplies a non-disclosing
+checker, an isolated state-backed Dropbear variant, and a narrowly scoped private
+PPC image builder. Eleven QEMU session cases and the PPC checker pass. A fresh
+private image now awaits physical SSH testing; it was not booted with the QEMU
+test's seed or keys. This does not turn the public recovery image into a secret
+source or supply a generally qualified production installer.

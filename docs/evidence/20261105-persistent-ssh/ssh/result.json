@@ -1,0 +1,161 @@
+{
+  "status": "passed",
+  "entropy_mode": "healthy",
+  "entropy_protocol": "persistent-state",
+  "server_sha256": "f4f1c03f0c0cc824dc1d5f088e11240d1e176506dd0d5bb00fb56c63cd21bfee",
+  "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+  "filesystem": "minix",
+  "cpu": "486",
+  "real_hardware": false,
+  "production_entropy": false,
+  "ssh_client": "OpenSSH_10.3p1, LibreSSL 3.3.6",
+  "persistent_fault": "none",
+  "preauth_limit": true,
+  "cases": {
+    "login": {
+      "ssh_exit": 0,
+      "timeout": false,
+      "host_key_verified": true,
+      "newkeys_received": true,
+      "encrypted_auth_service": true,
+      "authenticated": true,
+      "host_elapsed_seconds": 55.941,
+      "passed": true,
+      "connection_child_reaped": true
+    },
+    "wrong-key": {
+      "ssh_exit": 255,
+      "timeout": false,
+      "host_key_verified": true,
+      "newkeys_received": true,
+      "encrypted_auth_service": true,
+      "authenticated": false,
+      "host_elapsed_seconds": 29.713,
+      "passed": true,
+      "connection_child_reaped": true
+    },
+    "wrong-host": {
+      "ssh_exit": 255,
+      "timeout": false,
+      "host_key_verified": false,
+      "newkeys_received": false,
+      "encrypted_auth_service": false,
+      "authenticated": false,
+      "host_elapsed_seconds": 29.573,
+      "passed": true,
+      "connection_child_reaped": true
+    },
+    "unsafe-dir": {
+      "ssh_exit": 255,
+      "timeout": false,
+      "host_key_verified": true,
+      "newkeys_received": true,
+      "encrypted_auth_service": true,
+      "authenticated": false,
+      "host_elapsed_seconds": 29.926,
+      "passed": true,
+      "connection_child_reaped": true
+    },
+    "unsafe-key": {
+      "ssh_exit": 255,
+      "timeout": false,
+      "host_key_verified": true,
+      "newkeys_received": true,
+      "encrypted_auth_service": true,
+      "authenticated": false,
+      "host_elapsed_seconds": 30.093,
+      "passed": true,
+      "connection_child_reaped": true
+    },
+    "stream": {
+      "ssh_exit": 0,
+      "timeout": false,
+      "host_key_verified": true,
+      "newkeys_received": true,
+      "encrypted_auth_service": true,
+      "authenticated": true,
+      "host_elapsed_seconds": 59.203,
+      "passed": true,
+      "connection_child_reaped": true
+    },
+    "repeat-exit": {
+      "ssh_exit": 7,
+      "timeout": false,
+      "host_key_verified": true,
+      "newkeys_received": true,
+      "encrypted_auth_service": true,
+      "authenticated": true,
+      "host_elapsed_seconds": 55.123,
+      "passed": true,
+      "connection_child_reaped": true
+    },
+    "stdin-eof": {
+      "ssh_exit": 0,
+      "timeout": false,
+      "host_key_verified": true,
+      "newkeys_received": true,
+      "encrypted_auth_service": true,
+      "authenticated": true,
+      "host_elapsed_seconds": 55.178,
+      "passed": true,
+      "connection_child_reaped": true
+    },
+    "pty-commands": {
+      "ssh_exit": 0,
+      "timeout": false,
+      "host_key_verified": true,
+      "newkeys_received": true,
+      "encrypted_auth_service": true,
+      "authenticated": true,
+      "host_elapsed_seconds": 55.244,
+      "passed": true,
+      "output_patterns_matched": true,
+      "pty_accepted": true,
+      "connection_child_reaped": true
+    },
+    "pty-input-eof": {
+      "ssh_exit": 0,
+      "timeout": false,
+      "host_key_verified": true,
+      "newkeys_received": true,
+      "encrypted_auth_service": true,
+      "authenticated": true,
+      "host_elapsed_seconds": 55.231,
+      "passed": true,
+      "output_patterns_matched": true,
+      "pty_accepted": true,
+      "connection_child_reaped": true
+    },
+    "rekey-output": {
+      "ssh_exit": 0,
+      "timeout": false,
+      "host_key_verified": true,
+      "newkeys_received": true,
+      "encrypted_auth_service": true,
+      "authenticated": true,
+      "host_elapsed_seconds": 173.94,
+      "passed": true,
+      "newkeys_received_count": 5,
+      "connection_child_reaped": true
+    }
+  },
+  "ssh_exit": 0,
+  "host_key_verified": true,
+  "newkeys_received": true,
+  "encrypted_auth_service": true,
+  "publickey_login": true,
+  "suite_passed": true,
+  "sampled_memory": {
+    "samples": 184,
+    "max_heap_brk_bytes": 13154,
+    "min_sp_minus_brk_bytes": 6776,
+    "process_size_bytes": [
+      130416
+    ],
+    "peak_bound": false
+  },
+  "runtime_entropy_helper": false,
+  "persistent_generation": 20,
+  "persistent_state_check_passed": true,
+  "original_image_unchanged": true
+}

@@ -137,7 +137,7 @@ static void write_urandom()
 		return;
 	}
 #endif
-#if !DROPBEAR_USE_PRNGD && !defined(ELKSSH_QEMU_ENTROPY) && !defined(ELKSSH_SERIAL_ENTROPY)
+#if !DROPBEAR_USE_PRNGD && !defined(ELKSSH_QEMU_ENTROPY) && !defined(ELKSSH_SERIAL_ENTROPY) && !defined(ELKSSH_PERSISTENT_ENTROPY)
 	/* This is opportunistic, don't worry about failure */
 	unsigned char buf[INIT_SEED_SIZE];
 	FILE *f = fopen(DROPBEAR_URANDOM_DEV, "w");
@@ -251,6 +251,10 @@ void seedrandom() {
 #ifdef ELKSSH_SERIAL_ENTROPY
 		/* A failed assisted session must never fall back to a saved seed file. */
 		dropbear_exit("Failure reading dedicated serial entropy");
+#endif
+#ifdef ELKSSH_PERSISTENT_ENTROPY
+		/* Uncertain persistent state must never fall back to another file. */
+		dropbear_exit("Failure reading persistent random state");
 #endif
 #if DROPBEAR_USE_PRNGD
 		if (process_file(&hs, DROPBEAR_PRNGD_SOCKET, INIT_SEED_SIZE, 1) 

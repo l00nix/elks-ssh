@@ -10,21 +10,21 @@ to bring SSH-2 login and secure file transfer to
 kernel and architecture changes are out of scope.
 
 **Experimental: public-key login and remote commands work in QEMU with
-test-only host entropy. This is not deployment-ready or a release candidate.**
+freshly provisioned persistent random state and no runtime entropy helper.
+This is not deployment-ready or a release candidate.**
 Modern OpenSSH connects with strict host verification and no legacy algorithm
 overrides. The normal server refuses startup without secure randomness;
-production entropy, interactive sessions and original 8086/8088 execution
-remain unvalidated. No SSH listener is running on physical machines.
+production qualification, full interactive controls and physical SSH execution
+remain unvalidated. A separate private PPC test image is prepared.
 
 The finished service targets **Ethernet-only machines with no serial cable**.
 It must operate independently after one-time secure provisioning, with no
 companion host or LAN helper. Serial entropy is a laboratory fixture. The
-standalone randomness implementation remains unresolved; see the
-[deployment requirements](docs/RNG-DEPLOYMENT.md). An isolated HMAC_DRBG probe
-passes upstream vectors in ELKS/QEMU and the static 8086 audit. The isolated
-[persistent-state experiment](docs/PERSISTENT-STATE.md) now passes QEMU failure
-tests and public-data PPC checks; physical power-loss qualification and SSH
-integration remain outstanding.
+standalone experiment now passes [11 QEMU SSH/session cases](docs/PERSISTENT-SSH.md)
+and three source-failure cases. The [persistent-state experiment](docs/PERSISTENT-STATE.md)
+also passes public-data PPC interruption and recovery power-cycle checks.
+Broader storage/security qualification and physical SSH testing remain open;
+see the [deployment requirements](docs/RNG-DEPLOYMENT.md).
 
 ## Planned suite
 

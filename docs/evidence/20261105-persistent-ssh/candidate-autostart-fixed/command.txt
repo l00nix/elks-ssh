@@ -1,0 +1,13 @@
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4022  12960 /bin/init 3 
+   10    10    1 root    S   0     0  1984   6000 /bin/getty /dev/tty1 
+   11    11   S0 root    S   0     0  1982   6000 /bin/getty /dev/ttyS0 
+    9     9   S0 root    S   0   436 23892 130432 /bin/sshtrial -F -p 2222 -r /root/sshtrial/hostkey -D /root/sshtrial 
+   12    12      root    R 100  3778 20404 130432 /bin/sshtrial -F -p 2222 -r /root/sshtrial/hostkey -D /root/sshtrial 
+    7     7   S0 root    S   0  8944 27852  82800 ktcp -b -p ne0 
+   13    12      root    S   0   148 14206  66752 sh -c ps; cat /etc/issue; echo SSH_CANDIDATE_OK 
+   14    12      root    R   0    50  2094   9056 ps 
+
+ELKS 0.9.2
+
+SSH_CANDIDATE_OK

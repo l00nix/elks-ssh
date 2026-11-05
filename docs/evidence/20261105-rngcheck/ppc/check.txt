@@ -1,0 +1,3 @@
+# /root/rngtest/rngcheck; echo PWR3=$?
+RNGCHECK OK: request consumed; output discarded
+PWR3=0

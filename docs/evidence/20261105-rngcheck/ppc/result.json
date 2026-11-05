@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "test": "ppc-nondisclosing-checker",
+  "public_test_data_only": true,
+  "ssh_tested": false,
+  "binary_sha256": "8999a4d1d0c0d392552249abef333e6902cd81da7da212f513f6b385fa15c264",
+  "initial_generation": 2,
+  "final_generation": 3,
+  "state_matches_reference": true,
+  "no_generated_output": true,
+  "lock_absent_after_success": true,
+  "wall_seconds": 2.656
+}

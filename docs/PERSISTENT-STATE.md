@@ -3,8 +3,9 @@
 The isolated persistent-state adapter passes **23 QEMU cases** and four public-
 data exercises on the physical PPC. A separate storage probe passes nine QEMU
 cases. This is a user-space experiment using BearSSL HMAC_DRBG; it is not yet
-an SSH randomness source or a release candidate. The daemon and key utility
-were not changed. No real secret seed or host key was provisioned on hardware.
+an SSH randomness source or a release candidate. At that isolated checkpoint the daemon and key utility
+were not changed; later SSH integration is recorded in
+[the persistent SSH checkpoint](PERSISTENT-SSH.md). No real secret seed or host key was provisioned on hardware.
 
 ## Design and tests
 
@@ -173,5 +174,10 @@ fresh offline recovery in QEMU. It leaves this physical interrupted state intact
 On a separate `sshrec.img` prepared from the preserved interrupted image,
 the first physical recovery request now matches the new public sequence and
 persists generation one correctly. The original interrupted image is retained.
-A power cycle of the recovered image is pending to check that successful output
+A power cycle of the recovered image now confirms that successful output
 is not repeated; see the [recovery checkpoint](PROVISIONING.md).
+
+The non-disclosing checker subsequently consumed recovery generation three on
+the PPC. The [next checkpoint](PERSISTENT-SSH.md) passes eleven QEMU SSH/session
+cases with freshly provisioned persistent state and prepares a separate private
+hardware image; no public fixture becomes an SSH secret source.

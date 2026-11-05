@@ -1,0 +1,3 @@
+[9] Nov 05 23:51:10 Not backgrounding
+[12] Nov 05 23:51:12 Child connection from 10.0.2.2:58854
+[12] Nov 05 23:52:06 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:rGam/zfG75T6mh1KvSv4r++6r+v3yJDcELB4qHX+Xrg from 10.0.2.2:58854

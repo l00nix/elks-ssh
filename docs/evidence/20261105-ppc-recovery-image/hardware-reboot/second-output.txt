@@ -1,0 +1,9 @@
+# /root/rngtest/rngprobe; echo PWR5=$?
+STAGE 1
+STAGE 2
+STAGE 3
+STAGE 4
+STAGE 5
+STAGE 6
+PUBLIC-FIXTURE 506b2d4c4aaae35c6f1990e8f4b4bf031345ccebfdb5be6dc71891afa0313256
+PWR5=0

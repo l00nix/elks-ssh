@@ -1,0 +1,87 @@
+{
+  "status": "passed",
+  "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+  "check_sha256": "8999a4d1d0c0d392552249abef333e6902cd81da7da212f513f6b385fa15c264",
+  "cpu": "486",
+  "disk_cache": "writethrough",
+  "cases": [
+    {
+      "case": "healthy",
+      "status": "passed",
+      "secret_state_used": false,
+      "rounds": [
+        {
+          "exit_code": 0,
+          "state_check_passed": true,
+          "no_generated_output": true
+        }
+      ]
+    },
+    {
+      "case": "arguments",
+      "status": "passed",
+      "secret_state_used": false,
+      "rounds": [
+        {
+          "exit_code": 2,
+          "state_check_passed": true,
+          "no_generated_output": true
+        }
+      ]
+    },
+    {
+      "case": "busy",
+      "status": "passed",
+      "secret_state_used": false,
+      "rounds": [
+        {
+          "exit_code": 1,
+          "state_check_passed": true,
+          "no_generated_output": true
+        }
+      ]
+    },
+    {
+      "case": "missing",
+      "status": "passed",
+      "secret_state_used": false,
+      "rounds": [
+        {
+          "exit_code": 1,
+          "state_check_passed": true,
+          "no_generated_output": true
+        }
+      ]
+    },
+    {
+      "case": "checksum",
+      "status": "passed",
+      "secret_state_used": false,
+      "rounds": [
+        {
+          "exit_code": 1,
+          "state_check_passed": true,
+          "no_generated_output": true
+        }
+      ]
+    },
+    {
+      "case": "secret-restart",
+      "status": "passed",
+      "secret_state_used": true,
+      "rounds": [
+        {
+          "exit_code": 0,
+          "state_check_passed": true,
+          "no_generated_output": true
+        },
+        {
+          "exit_code": 0,
+          "state_check_passed": true,
+          "no_generated_output": true
+        }
+      ]
+    }
+  ],
+  "original_image_unchanged": true
+}

@@ -1,0 +1,15 @@
+PTY_BEGIN
+/dev/ttyp0
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10766  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  179   179      root    S  99  3506 20688 130416 sshtest -F -r /root/hostkey -D /root 
+  196   196   p0 root    S   0   184 14164  66816 sh -c echo PTY_BEGIN; tty; ps; cat /etc/issue; echo PTY_DONE 
+  198   196   p0 root    R   0    50  2096   9088 ps 
+
+ELKS 0.9.2
+
+PTY_DONE

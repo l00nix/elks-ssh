@@ -1,0 +1,19 @@
+{
+  "test": "ppc-recovery-power-cycle",
+  "status": "passed",
+  "public_test_data_only": true,
+  "ssh_tested": false,
+  "ip": "10.0.0.66",
+  "owner_confirmed_return_after_requested_full_power_cycle": true,
+  "pre_request_generation": 1,
+  "saved_state_survived": true,
+  "lock_absent_before": true,
+  "network_available_after_reboot": true,
+  "second_output": "506b2d4c4aaae35c6f1990e8f4b4bf031345ccebfdb5be6dc71891afa0313256",
+  "first_output_not_repeated": true,
+  "final_generation": 2,
+  "state_matches_reference": true,
+  "lock_absent_after_success": true,
+  "wall_seconds": 2.979,
+  "public_state_sha256": "168789323e54eece3ed34ac1edc3dedfa20c28b1beca107da2b2fe822ab26eae"
+}

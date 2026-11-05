@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""MIT. Disposable QEMU SSH test with fresh host-fed entropy and ephemeral keys.
+"""MIT. Disposable QEMU SSH test with isolated randomness and ephemeral keys.
 Never runs on physical serial ports. Requires cryptography, QEMU and mtools.
 No private keys, entropy bytes or reusable guest image are retained in outputs.
 """
@@ -70,8 +70,10 @@ class EntropyProvider(threading.Thread):
 
 def run(args):
     out = args.out.resolve(); out.mkdir(parents=True, exist_ok=True)
+    persistent = args.persistent_entropy
+    failure_mode = args.entropy != 'healthy' or args.persistent_fault != 'none'
     result = {'status':'failed', 'entropy_mode':args.entropy,
-              'entropy_protocol':'serial-framed' if args.serial_entropy else 'qemu-egd',
+              'entropy_protocol':'persistent-state' if persistent else ('serial-framed' if args.serial_entropy else 'qemu-egd'),
               'server_sha256':sha(args.server), 'image_sha256':sha(args.image),
               'filesystem':args.filesystem, 'cpu':args.cpu, 'real_hardware':False, 'production_entropy':False,
               'ssh_client':subprocess.run(['ssh','-V'],capture_output=True,text=True).stderr.strip()}
@@ -93,6 +95,27 @@ def run(args):
         put(temp/'sshtest','/bin/sshtest')
         authdir = '/root' if args.filesystem == 'minix' else '/etc'
         framed = None
+        initial_persistent_state = None
+        if persistent:
+            source=Path(__file__).resolve().parents[1]/'experimental/persistent-entropy/provision.py'
+            spec=importlib.util.spec_from_file_location('persistent_provision',source)
+            provision=importlib.util.module_from_spec(spec);spec.loader.exec_module(provision)
+            provision.create_bundle(temp/'private-rng',args.seed_helper)
+            initial_persistent_state=(temp/'private-rng/state').read_bytes()
+            subprocess.run([str(args.mfs),str(disk),'mkdir','/root/rngtest'],check=True)
+            if args.persistent_fault=='checksum':
+                initial_persistent_state=initial_persistent_state[:20]+bytes([initial_persistent_state[20]^1])+initial_persistent_state[21:]
+                (temp/'private-rng/state').write_bytes(initial_persistent_state)
+            if args.persistent_fault!='missing':
+                put(temp/'private-rng/state','/root/rngtest/state')
+            if args.persistent_fault=='busy':
+                (temp/'private-rng/lock').touch(mode=0o600)
+                put(temp/'private-rng/lock','/root/rngtest/lock')
+            if failure_mode:
+                # A readable deterministic fallback must not bypass source failure.
+                (temp/'fake-random').write_bytes(b'not-valid-entropy'.ljust(32,b'!'))
+                put(temp/'fake-random','/dev/urandom')
+            result['persistent_fault']=args.persistent_fault
         if args.serial_entropy:
             source=Path(__file__).resolve().parents[1]/'experimental/serial-entropy/provider.py'
             spec=importlib.util.spec_from_file_location('serial_entropy_provider',source)
@@ -130,16 +153,17 @@ def run(args):
                 proc=subprocess.Popen(['qemu-system-i386','-machine','pc','-cpu',args.cpu,
                     '-accel','tcg,one-insn-per-tb=on','-m','16M','-display','none','-monitor','none',
                     '-serial',f'unix:{serial},server=on,wait=off',
-                    '-serial',f'unix:{entropy},server=on,wait=off',
+                    *([] if persistent else ['-serial',f'unix:{entropy},server=on,wait=off']),
                     '-qmp',f'unix:{qmp},server=on,wait=off',
                     '-netdev',f'user,id=test,restrict=on,hostfwd=tcp:127.0.0.1:{port}-:22',
                     '-device','ne2k_isa,irq=12,netdev=test',
-                    '-drive',f'file={disk},format=raw,if=ide','-boot','c'],stdout=log,stderr=log)
+                    '-drive',f'file={disk},format=raw,if=ide'+(',cache=writethrough,werror=report,rerror=report' if persistent else ''),'-boot','c'],stdout=log,stderr=log)
                 deadline=time.monotonic()+10
-                while not serial.exists() or not entropy.exists():
+                while not serial.exists() or (not persistent and not entropy.exists()):
                     if proc.poll() is not None or time.monotonic()>deadline: raise RuntimeError('QEMU startup failed')
                     time.sleep(.05)
-                provider=EntropyProvider(entropy,args.entropy,args.entropy_bytes,framed);provider.start()
+                if not persistent:
+                    provider=EntropyProvider(entropy,args.entropy,args.entropy_bytes,framed);provider.start()
                 with socket.socket(socket.AF_UNIX) as conn:
                     conn.connect(str(serial));conn.settimeout(.2)
                     def receive(pattern,timeout=45):
@@ -163,13 +187,16 @@ def run(args):
                             raise RuntimeError('Command failed: '+text)
                         return data
                     command('uname -a')
+                    if persistent:
+                        command('chmod 700 /root/rngtest')
                     if args.serial_entropy:
                         command('chmod 600 /dev/ttyS1')
                         command('chmod 700 /root/ssh1105')
                         command('chmod 600 /root/ssh1105/esession /root/ssh1105/ecounter')
-                    if args.entropy!='healthy':
+                    if failure_mode:
                         refusal=command('sshtest -F -r '+authdir+'/hostkey',expected=1,timeout=60)
-                        if b'Failure reading random device' not in refusal:raise RuntimeError('Expected entropy refusal')
+                        refusal_text=b'Failure reading persistent random state' if persistent else b'Failure reading random device'
+                        if refusal_text not in refusal:raise RuntimeError('Expected entropy refusal')
                         result['entropy_failure_closed']=True
                         state=command('ps')
                         if any(b'sshtest ' in row for row in state.splitlines()
@@ -352,11 +379,11 @@ def run(args):
                     command('echo SHELL_STILL_WORKS')
                     if b'STACK USING' in transcript or b'STACK OVERFLOW' in transcript:
                         raise RuntimeError('Guest stack reservation exceeded')
-                    if provider.error: raise RuntimeError(provider.error)
-                    if provider.requests == 0: raise RuntimeError('Entropy transport was never exercised')
+                    if provider and provider.error: raise RuntimeError(provider.error)
+                    if provider and provider.requests == 0: raise RuntimeError('Entropy transport was never exercised')
                     if args.screenshot:
                         command("echo -e '\\033[2J\\033[H' > /dev/tty1")
-                        command('echo QEMU ONLY - HOST-FED ENTROPY > /dev/tty1')
+                        command('echo QEMU ONLY - '+('PERSISTENT STATE' if persistent else 'HOST-FED ENTROPY')+' > /dev/tty1')
                         command('cat /tmp/sshd.log > /dev/tty1')
                         with socket.socket(socket.AF_UNIX) as control:
                             control.connect(str(qmp))
@@ -368,7 +395,7 @@ def run(args):
                                     response=json.loads(stream.readline())
                                     if 'error' in response: raise RuntimeError(response)
                                     if 'return' in response: break
-                    result['status']='passed' if args.entropy!='healthy' or (result.get('publickey_login') and result.get('suite_passed')) else 'blocked'
+                    result['status']='passed' if failure_mode or (result.get('publickey_login') and result.get('suite_passed')) else 'blocked'
         except Exception as exc:
             result['error']=str(exc)
         finally:
@@ -387,6 +414,29 @@ def run(args):
                     result['error']='Entropy provider failed unexpectedly'
             if proc and proc.poll() is None:
                 proc.terminate();proc.wait(timeout=10)
+            if persistent:
+                result['runtime_entropy_helper']=False
+                # Inspect only after QEMU stops. Never include state/seed values
+                # or their fingerprints in the report or exception text.
+                saved=subprocess.run([str(args.mfs),'-f',str(disk),'cat','/root/rngtest/state'],capture_output=True)
+                valid=False
+                if args.persistent_fault=='missing':
+                    valid=saved.returncode!=0
+                elif failure_mode:
+                    valid=saved.returncode==0 and saved.stdout==initial_persistent_state
+                elif saved.returncode==0 and len(saved.stdout)==1024:
+                    generation=int.from_bytes(saved.stdout[8:12],'big')
+                    if 2<=generation<=1024:
+                        source=Path(__file__).resolve().parents[1]/'experimental/persistent-entropy/fixture.py'
+                        spec=importlib.util.spec_from_file_location('private_state_reference',source)
+                        reference=importlib.util.module_from_spec(spec);spec.loader.exec_module(reference)
+                        k,v=initial_persistent_state[12:44],initial_persistent_state[44:76]
+                        for _ in range(generation):discard,k,v=reference.generate(k,v)
+                        valid=saved.stdout==reference.record(k,v,generation)
+                        result['persistent_generation']=generation
+                result['persistent_state_check_passed']=valid
+                if not valid:
+                    result['status']='failed';result['error']='Persistent state did not match expected lifecycle'
             result['original_image_unchanged']=sha(args.image)==result['image_sha256']
             (out/'serial.txt').write_bytes(transcript)
             (out/'result.json').write_text(json.dumps(result,indent=2)+'\n')
@@ -409,10 +459,17 @@ if __name__=='__main__':
     p.add_argument('--connect-timeout',type=int,default=300)
     p.add_argument('--entropy',choices=['healthy','short','silent'],default='healthy')
     p.add_argument('--serial-entropy',action='store_true',help='Use the isolated framed serial adapter through a private QEMU socket')
+    p.add_argument('--persistent-entropy',action='store_true',help='Use fresh offline-provisioned state without a runtime entropy helper')
+    p.add_argument('--seed-helper',type=lambda s:Path(s).resolve(),help='Trusted locally built seed-record helper')
+    p.add_argument('--persistent-fault',choices=['none','missing','busy','checksum'],default='none')
     p.add_argument('--entropy-bytes',type=int,choices=range(32),default=16,
                    help='Bytes per short entropy response (0 through 31; default 16)')
     args=p.parse_args()
     if args.filesystem=='minix' and args.mfs is None: p.error('--mfs is required for MINIX')
+    if args.persistent_entropy and (args.serial_entropy or args.filesystem!='minix' or args.entropy!='healthy' or args.seed_helper is None):
+        p.error('--persistent-entropy requires MINIX, healthy mode, --seed-helper and no serial adapter')
+    if args.persistent_fault!='none' and (not args.persistent_entropy or args.suite or args.session_suite or args.kex_rejection_suite or args.screenshot):
+        p.error('--persistent-fault requires standalone persistent-source testing without suites/screenshots')
     if args.serial_entropy and (args.filesystem!='minix' or args.entropy!='healthy'):
         p.error('--serial-entropy requires MINIX and healthy input; use the serial probe matrix for fault cases')
     if (args.suite or args.session_suite) and (args.filesystem!='minix' or args.entropy!='healthy'):

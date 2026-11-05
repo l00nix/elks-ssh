@@ -7,8 +7,9 @@ The existing serial adapter is a laboratory fixture, not the deployment design.
 
 **Decision confirmed by the owner:** the service must operate independently
 after one-time secure provisioning. A LAN helper, companion host, serial cable
-or extra RNG hardware must not be required at runtime. A standalone SSH deployment is not yet available; the
-[isolated persistent-state probe](PERSISTENT-STATE.md) now has QEMU and PPC evidence. The HP tests did not implement it: see
+or extra RNG hardware must not be required at runtime. Production deployment is not yet available. The
+[persistent SSH experiment](PERSISTENT-SSH.md) now passes QEMU sessions without
+a runtime helper, and a separate private PPC image awaits hardware testing. The HP tests did not implement it: see
 [HP progress](HP200LX-PROGRESS.md) for crypto probes and the missing-randomness
 startup refusal.
 
@@ -161,3 +162,13 @@ No collector is implemented and no entropy is credited to timing in this design.
 Retain unique secure one-time provisioning and protected persistent state as
 the selected deployment path. Network activity must not be assumed secret or
 uncontrollable by an attacker. A keyboard ceremony is not required at each boot.
+
+## SSH integration checkpoint
+
+The [persistent SSH variant](PERSISTENT-SSH.md) now passes eleven QEMU session
+cases and missing/busy/corrupt-source refusal tests. It uses freshly provisioned
+state and has no runtime entropy provider. The public PPC recovery lifecycle
+passes a complete power cycle without repeating output. A non-disclosing checker
+passes on the PPC; a separate private SSH image is prepared for the next hardware
+test. These experiments do not resolve the remaining storage and crypto-timing
+release gates.

@@ -1,0 +1,8 @@
+# ls -la /root/rngtest; echo PWR3=$?
+drwx------  2 root     root          112  Jan  1  1980 .
+drwxr-xr-x  3 root     root           96  Jan  1  1980 ..
+-rw-------  1 root     root          101  Nov  5  2026 RECOVERY
+-rw-r--r--  1 root     root          851  Jan  1  1980 bootopts.bak
+-rwx------  1 root     root        14120  Jan  1  1980 rngprobe
+-rw-------  1 root     root         1024  Jan  1  1980 state
+PWR3=0

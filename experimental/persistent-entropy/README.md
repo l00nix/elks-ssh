@@ -1,9 +1,15 @@
 # Persistent state experiment
 
-**Not a deployment-ready RNG. Do not install as an SSH randomness source.**
+**Not a deployment-ready RNG. Explicit experiments only; not a secure release.**
 This is the next experiment for independent operation after trusted one-time
 provisioning. It uses unchanged BearSSL HMAC_DRBG/SHA-256. The public fixture
 is deliberately predictable and must never provision a real service.
+
+The separate [persistent SSH experiment](../../docs/PERSISTENT-SSH.md) now tests
+Dropbear with freshly provisioned state in isolated QEMU and prepares a private
+PPC trial. `rngcheck` consumes a request without exposing its output. Neither
+the byte-printing public fixture nor a restored/cloned state is a valid source
+for real SSH. Hardware and release qualification remain incomplete.
 
 ## Design comparison
 

@@ -1,0 +1,51 @@
+debug1: OpenSSH_10.3p1, LibreSSL 3.3.6
+debug1: Reading configuration data /dev/null
+debug1: Authenticator provider $SSH_SK_PROVIDER did not resolve; disabling
+debug1: Connecting to 127.0.0.1 [127.0.0.1] port 58853.
+debug1: fd 3 clearing O_NONBLOCK
+debug1: Connection established.
+debug1: loaded pubkey from <temporary>/instance/clientkey: ED25519 SHA256:rGam/zfG75T6mh1KvSv4r++6r+v3yJDcELB4qHX+Xrg
+debug1: identity file <temporary>/instance/clientkey type 2
+debug1: no identity pubkey loaded from <temporary>/instance/clientkey
+debug1: Local version string SSH-2.0-OpenSSH_10.3
+debug1: Remote protocol version 2.0, remote software version dropbear_2025.89
+debug1: compat_banner: no match: dropbear_2025.89
+debug1: Authenticating to 127.0.0.1:58853 as 'root'
+debug1: SSH2_MSG_KEXINIT sent
+debug1: SSH2_MSG_KEXINIT received
+debug1: kex: algorithm: curve25519-sha256
+debug1: kex: host key algorithm: ssh-ed25519
+debug1: kex: server->client cipher: chacha20-poly1305@openssh.com MAC: <implicit> compression: none
+debug1: kex: client->server cipher: chacha20-poly1305@openssh.com MAC: <implicit> compression: none
+debug1: expecting SSH2_MSG_KEX_ECDH_REPLY
+debug1: SSH2_MSG_KEX_ECDH_REPLY received
+debug1: Server host key: ssh-ed25519 SHA256:idGsrFkMRIRHyBrLWdvE78FGbHC561Bt+jROQeqGqck
+debug1: Host '[127.0.0.1]:58853' is known and matches the ED25519 host key.
+debug1: Found key in <temporary>/instance/test_hosts:1
+debug1: ssh_packet_send2_wrapped: resetting send seqnr 3
+debug1: rekey out after 134217728 blocks
+debug1: SSH2_MSG_NEWKEYS sent
+debug1: expecting SSH2_MSG_NEWKEYS
+debug1: ssh_packet_read_poll2: resetting read seqnr 3
+debug1: SSH2_MSG_NEWKEYS received
+debug1: rekey in after 134217728 blocks
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+debug1: SSH2_MSG_SERVICE_ACCEPT received
+debug1: Authentications that can continue: publickey
+debug1: Next authentication method: publickey
+debug1: Will attempt key: <temporary>/instance/clientkey ED25519 SHA256:rGam/zfG75T6mh1KvSv4r++6r+v3yJDcELB4qHX+Xrg explicit
+debug1: Offering public key: <temporary>/instance/clientkey ED25519 SHA256:rGam/zfG75T6mh1KvSv4r++6r+v3yJDcELB4qHX+Xrg explicit
+debug1: Server accepts key: <temporary>/instance/clientkey ED25519 SHA256:rGam/zfG75T6mh1KvSv4r++6r+v3yJDcELB4qHX+Xrg explicit
+Authenticated to 127.0.0.1 ([127.0.0.1]:58853) using "publickey".
+debug1: channel 0: new session [client-session] (inactive timeout: 0)
+debug1: Entering interactive session.
+debug1: pledge: network
+debug1: Sending command: ps; cat /etc/issue; echo SSH_CANDIDATE_OK
+debug1: pledge: fork
+debug1: client_input_channel_req: channel 0 rtype exit-status reply 0
+debug1: channel 0: free: client-session, nchannels 1
+Transferred: sent 2332, received 1792 bytes, in 0.6 seconds
+Bytes per second: sent 3740.8, received 2874.6
+debug1: Exit status 0

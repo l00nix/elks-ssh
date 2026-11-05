@@ -1,0 +1,2540 @@
+Direct console, scan kbd 80x25 emulating ANSI (3 virtual consoles)
+xms: 15232K, off. 64K ext buffers, 8K cache, 15 req hdrs
+eth: ne0 at 300, irq 12, (ne2k) MAC 52:54:00:12:34:56, flags 0x80
+eth: wd0 at 0x240, irq 2, ram 0xce00 not found
+eth: 3c0 at 330, irq 11 not found
+df: CMOS df0 is 2.88M (5)
+ssd: no XMS
+hda:   31M CHS  63,16,63
+fd0: 2880K CHS  80, 2,36
+cfa:   31M CHS  63,16,63 31752K VER f0/512 xtide=0,0
+cfb: ATA at 1f0/3f6 xtide=0,0 not found (-22)
+hda:(0,63504) no mbr, no partitions
+cfa:(0,63504) no mbr, no partitions
+boot: BIOS drive 80, root device /dev/hda (0300)
+PC/AT class cpu 7, syscaps ff, 638K ram, 16 tasks, 64 files, 96 inodes
+ELKS 0.9.2 (62576 text, 32448 ftext, 10384 data, 8320 bss, 46830 heap)
+Kernel text ffff ftext 330 init 8b8 data b1c end 1b1c top 9f80 529+9+0K free
+VFS: Mounted root device /dev/hda (0300) minix filesystem.
+Running /etc/rc.sys script
+Thu Nov  5 23:40:01 2026
+
+ELKS 0.9.2
+
+[0.26 secs] login: root
+# uname -a; echo STEP1=$?
+
+ELKS elks 0.9.2 commit e1469b64 20 Oct 2026 14:22:02 +0000 ibmpc i8086
+STEP1=0
+# chmod 700 /root/rngtest; echo STEP2=$?
+
+STEP2=0
+# ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0; echo STEP3=$?
+
+ktcp: ip 10.0.2.15, gateway 10.0.2.2, netmask 255.255.255.0
+ktcp: /dev/ne0 mac 52.54.00.12.34.56 mtu 1500
+STEP3=0
+# ls -ld / /root /root/authkeys; echo STEP4=$?
+
+drwxr-xr-x 12 root     root          224  Nov  4 13:51 
+drwx------  3 root     root          144  Nov  4 13:51 root
+-rw-------  1 root     root           91  Nov  5 23:40 authkeys
+STEP4=0
+# sshtest -F -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &; echo STEP5=$?
+
+STEP5=0
+# cat /tmp/sshd.log; echo STEP6=$?
+
+[13] Nov 05 23:40:01 Not backgrounding
+STEP6=0
+# ps; echo STEP7=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   2  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   4  1392 12978  66640 -/bin/sh 
+   13     7   S0 root    S   8   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0 13480 23312  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   16     7   S0 root    R   0    50  2100   8992 ps 
+STEP7=0
+# ps; echo STEP8=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   2  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   4  1446 12924  66640 -/bin/sh 
+   13     7   S0 root    S   8   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    R   0 13422 23360  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   17    17      root    S   0  4352 19842 130416 sshtest -F -r /root/hostkey -D /root 
+   18     7   S0 root    R   0    50  2100   8992 ps 
+STEP8=0
+# ps; echo STEP9=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   1  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   2  1446 12924  66640 -/bin/sh 
+   13     7   S0 root    S   6   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   1 13422 23370  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   17    17      root    R  38  9220 13084 130416 sshtest -F -r /root/hostkey -D /root 
+   19     7   S0 root    R   0    50  2100   8992 ps 
+STEP9=0
+# ps; echo STEP10=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1446 12924  66640 -/bin/sh 
+   13     7   S0 root    S   1   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   17    17      root    R  91  9220 12954 130416 sshtest -F -r /root/hostkey -D /root 
+   20     7   S0 root    R   0    50  2100   8992 ps 
+STEP10=0
+# ps; echo STEP11=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1446 12924  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   17    17      root    R  98  9220 13022 130416 sshtest -F -r /root/hostkey -D /root 
+   21     7   S0 root    R   0    50  2100   8992 ps 
+STEP11=0
+# ps; echo STEP12=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1446 12924  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   17    17      root    R  99  9220 12910 130416 sshtest -F -r /root/hostkey -D /root 
+   22     7   S0 root    R   0    50  2100   8992 ps 
+STEP12=0
+# ps; echo STEP13=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1446 12924  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   17    17      root    R  99  6036 14414 130416 sshtest -F -r /root/hostkey -D /root 
+   23     7   S0 root    R   0    50  2100   8992 ps 
+STEP13=0
+# ps; echo STEP14=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1446 12924  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   17    17      root    R  99  6036 14414 130416 sshtest -F -r /root/hostkey -D /root 
+   24     7   S0 root    R   0    50  2100   8992 ps 
+STEP14=0
+# ps; echo STEP15=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1446 12924  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   17    17      root    R  99  6036 14468 130416 sshtest -F -r /root/hostkey -D /root 
+   25     7   S0 root    R   0    50  2100   8992 ps 
+STEP15=0
+# ps; echo STEP16=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1446 12924  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    R   0  8948 27848  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   17    17      root    S  99  3702 20492 130416 sshtest -F -r /root/hostkey -D /root 
+   26     7   S0 root    R   0    50  2100   8992 ps 
+STEP16=0
+# ps; echo STEP17=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1478 12892  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   17    17      root    R  98 13154  7384 130416 sshtest -F -r /root/hostkey -D /root 
+   27     7   S0 root    R   0    50  2100   8992 ps 
+STEP17=0
+# ps; echo STEP18=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1468 12902  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   17    17      root    R  99 13154  7382 130416 sshtest -F -r /root/hostkey -D /root 
+   28     7   S0 root    R   0    50  2100   8992 ps 
+STEP18=0
+# ps; echo STEP19=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1500 12870  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   17    17      root    R  99 13154  7398 130416 sshtest -F -r /root/hostkey -D /root 
+   29     7   S0 root    R   0    50  2100   8992 ps 
+STEP19=0
+# ps; echo STEP20=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1522 12848  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   17    17      root    R  99 13154  7148 130416 sshtest -F -r /root/hostkey -D /root 
+   30     7   S0 root    R   0    50  2100   8992 ps 
+STEP20=0
+# ps; echo STEP21=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1544 12826  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   17    17      root    R  99 13154  6846 130416 sshtest -F -r /root/hostkey -D /root 
+   31     7   S0 root    R   0    50  2100   8992 ps 
+STEP21=0
+# ps; echo STEP22=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1566 12804  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   17    17      root    R  99 13154  6828 130416 sshtest -F -r /root/hostkey -D /root 
+   32     7   S0 root    R   0    50  2100   8992 ps 
+STEP22=0
+# ps; echo STEP23=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1588 12782  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   17    17      root    R  99 13154  8018 130416 sshtest -F -r /root/hostkey -D /root 
+   33     7   S0 root    R   0    50  2100   8992 ps 
+STEP23=0
+# ps; echo STEP24=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1610 12760  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   17    17      root    S  50  3506 20688 130416 sshtest -F -r /root/hostkey -D /root 
+   34    17      root    S   2   176 14176  66768 sh -c echo ELKSSH_LOGIN_OK; sleep 2; echo ELKSSH_DONE 
+   35    17      root    S   0     0  8136   8944 sleep 2 
+   36     7   S0 root    R   0    50  2100   8992 ps 
+STEP24=0
+# ps; echo STEP25=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1632 12738  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   2  4474 32318  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   37     7   S0 root    R   0    50  2100   8992 ps 
+STEP25=0
+# cat /tmp/sshd.log; echo STEP26=$?
+
+[13] Nov 05 23:40:01 Not backgrounding
+[15] Nov 05 23:40:03 Child connection from 10.0.2.2:58731
+[15] Nov 05 23:40:03 Exit before auth from <10.0.2.2:58731>: Exited normally
+[17] Nov 05 23:40:03 Child connection from 10.0.2.2:58733
+[17] Nov 05 23:40:55 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58733
+[17] Nov 05 23:40:57 Exit (root) from <10.0.2.2:58733>: Disconnect received
+STEP26=0
+# ps; echo STEP27=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1792 12578  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    R   2  8948 27848  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   39     7   S0 root    R   0    50  2100   8992 ps 
+   40    40      root    S   0  4352 19586 130416 sshtest -F -r /root/hostkey -D /root 
+STEP27=0
+# ps; echo STEP28=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1768 12602  66640 -/bin/sh 
+   13     7   S0 root    S   2   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   2  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   41     7   S0 root    R   0    50  2100   8992 ps 
+   40    40      root    R  75  9220 13018 130416 sshtest -F -r /root/hostkey -D /root 
+STEP28=0
+# ps; echo STEP29=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1768 12602  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   42     7   S0 root    R   0    50  2100   8992 ps 
+   40    40      root    R  91  9220 12944 130416 sshtest -F -r /root/hostkey -D /root 
+STEP29=0
+# ps; echo STEP30=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1768 12602  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   43     7   S0 root    R   0    50  2100   8992 ps 
+   40    40      root    R  98  9220 13046 130416 sshtest -F -r /root/hostkey -D /root 
+STEP30=0
+# ps; echo STEP31=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1800 12570  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   44     7   S0 root    R   0    50  2100   8992 ps 
+   40    40      root    R  99  9220 13148 130416 sshtest -F -r /root/hostkey -D /root 
+STEP31=0
+# ps; echo STEP32=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1822 12548  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   45     7   S0 root    R   0    50  2100   8992 ps 
+   40    40      root    R  99  6036 14486 130416 sshtest -F -r /root/hostkey -D /root 
+STEP32=0
+# ps; echo STEP33=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1844 12526  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   46     7   S0 root    R   0    50  2100   8992 ps 
+   40    40      root    R  99  6036 14464 130416 sshtest -F -r /root/hostkey -D /root 
+STEP33=0
+# ps; echo STEP34=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1866 12504  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   47     7   S0 root    R   0    50  2100   8992 ps 
+   40    40      root    R  99  6036 14462 130416 sshtest -F -r /root/hostkey -D /root 
+STEP34=0
+# ps; echo STEP35=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1888 12482  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    R   0  8948 27848  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   48     7   S0 root    R   0    50  2100   8992 ps 
+   40    40      root    S  99  3702 20492 130416 sshtest -F -r /root/hostkey -D /root 
+STEP35=0
+# ps; echo STEP36=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1910 12460  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   1  4474 32318  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   49     7   S0 root    R   0    50  2100   8992 ps 
+STEP36=0
+# cat /tmp/sshd.log; echo STEP37=$?
+
+[13] Nov 05 23:40:01 Not backgrounding
+[15] Nov 05 23:40:03 Child connection from 10.0.2.2:58731
+[15] Nov 05 23:40:03 Exit before auth from <10.0.2.2:58731>: Exited normally
+[17] Nov 05 23:40:03 Child connection from 10.0.2.2:58733
+[17] Nov 05 23:40:55 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58733
+[17] Nov 05 23:40:57 Exit (root) from <10.0.2.2:58733>: Disconnect received
+[40] Nov 05 23:40:59 Child connection from 10.0.2.2:58748
+[40] Nov 05 23:41:27 Exit before auth from <10.0.2.2:58748>: (user 'root', 0 fails): Exited normally
+STEP37=0
+# ps; echo STEP38=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2070 12300  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    R   1  8948 27834  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   51     7   S0 root    R   0    50  2100   8992 ps 
+   52    52      root    R   0  4352 19586 130416 sshtest -F -r /root/hostkey -D /root 
+STEP38=0
+# ps; echo STEP39=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2046 12324  66640 -/bin/sh 
+   13     7   S0 root    S   1   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   2  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   53     7   S0 root    R   0    50  2100   8992 ps 
+   52    52      root    R  77  9220 13098 130416 sshtest -F -r /root/hostkey -D /root 
+STEP39=0
+# ps; echo STEP40=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2046 12324  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   54     7   S0 root    R   0    50  2100   8992 ps 
+   52    52      root    R  91  9220 12956 130416 sshtest -F -r /root/hostkey -D /root 
+STEP40=0
+# ps; echo STEP41=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2046 12324  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   55     7   S0 root    R   0    50  2100   8992 ps 
+   52    52      root    R  98  9220 13342 130416 sshtest -F -r /root/hostkey -D /root 
+STEP41=0
+# ps; echo STEP42=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2078 12292  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   56     7   S0 root    R   0    50  2100   8992 ps 
+   52    52      root    R  99  9220 13148 130416 sshtest -F -r /root/hostkey -D /root 
+STEP42=0
+# ps; echo STEP43=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2100 12270  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   57     7   S0 root    R   0    50  2100   8992 ps 
+   52    52      root    R  99  6036 14422 130416 sshtest -F -r /root/hostkey -D /root 
+STEP43=0
+# ps; echo STEP44=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2122 12248  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   58     7   S0 root    R   0    50  2100   8992 ps 
+   52    52      root    R  99  6036 14486 130416 sshtest -F -r /root/hostkey -D /root 
+STEP44=0
+# ps; echo STEP45=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2144 12226  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   59     7   S0 root    R   0    50  2100   8992 ps 
+   52    52      root    R  99  6036 14470 130416 sshtest -F -r /root/hostkey -D /root 
+STEP45=0
+# ps; echo STEP46=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2166 12204  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  4474 32318  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   60     7   S0 root    R   0    50  2100   8992 ps 
+STEP46=0
+# ps; echo STEP47=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2188 12182  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  4474 32318  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   61     7   S0 root    R   0    50  2100   8992 ps 
+STEP47=0
+# cat /tmp/sshd.log; echo STEP48=$?
+
+[13] Nov 05 23:40:01 Not backgrounding
+[15] Nov 05 23:40:03 Child connection from 10.0.2.2:58731
+[15] Nov 05 23:40:03 Exit before auth from <10.0.2.2:58731>: Exited normally
+[17] Nov 05 23:40:03 Child connection from 10.0.2.2:58733
+[17] Nov 05 23:40:55 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58733
+[17] Nov 05 23:40:57 Exit (root) from <10.0.2.2:58733>: Disconnect received
+[40] Nov 05 23:40:59 Child connection from 10.0.2.2:58748
+[40] Nov 05 23:41:27 Exit before auth from <10.0.2.2:58748>: (user 'root', 0 fails): Exited normally
+[52] Nov 05 23:41:29 Child connection from 10.0.2.2:58757
+[52] Nov 05 23:41:56 Exit before auth from <10.0.2.2:58757>: Error writing: Broken pipe 
+STEP48=0
+# chmod 777 /root; echo STEP49=$?
+
+STEP49=0
+# ps; echo STEP50=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2448 11922  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    R   0  8948 27818  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   64    64      root    S   0  4352 19842 130416 sshtest -F -r /root/hostkey -D /root 
+   65     7   S0 root    R   0    50  2100   8992 ps 
+STEP50=0
+# ps; echo STEP51=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2418 11952  66640 -/bin/sh 
+   13     7   S0 root    S   2   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   2  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   64    64      root    R  48  9220 13136 130416 sshtest -F -r /root/hostkey -D /root 
+   66     7   S0 root    R   0    50  2100   8992 ps 
+STEP51=0
+# ps; echo STEP52=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2390 11980  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   64    64      root    R  93  9220 12954 130416 sshtest -F -r /root/hostkey -D /root 
+   67     7   S0 root    R   0    50  2100   8992 ps 
+STEP52=0
+# ps; echo STEP53=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2392 11978  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   64    64      root    R  98  9220 13040 130416 sshtest -F -r /root/hostkey -D /root 
+   68     7   S0 root    R   0    50  2100   8992 ps 
+STEP53=0
+# ps; echo STEP54=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2392 11978  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   64    64      root    R  99  9220 12910 130416 sshtest -F -r /root/hostkey -D /root 
+   69     7   S0 root    R   0    50  2100   8992 ps 
+STEP54=0
+# ps; echo STEP55=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2424 11946  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   64    64      root    R  99  6036 14474 130416 sshtest -F -r /root/hostkey -D /root 
+   70     7   S0 root    R   0    50  2100   8992 ps 
+STEP55=0
+# ps; echo STEP56=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2446 11924  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   64    64      root    R  99  6036 14470 130416 sshtest -F -r /root/hostkey -D /root 
+   71     7   S0 root    R   0    50  2100   8992 ps 
+STEP56=0
+# ps; echo STEP57=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2468 11902  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   64    64      root    R  99  6036 14736 130416 sshtest -F -r /root/hostkey -D /root 
+   72     7   S0 root    R   0    50  2100   8992 ps 
+STEP57=0
+# ps; echo STEP58=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2490 11880  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   64    64      root    S  99  4352 19846 130416 sshtest -F -r /root/hostkey -D /root 
+   73     7   S0 root    R   0    50  2100   8992 ps 
+STEP58=0
+# ps; echo STEP59=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2512 11858  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   2  4474 32318  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   74     7   S0 root    R   0    50  2100   8992 ps 
+STEP59=0
+# cat /tmp/sshd.log; echo STEP60=$?
+
+[13] Nov 05 23:40:01 Not backgrounding
+[15] Nov 05 23:40:03 Child connection from 10.0.2.2:58731
+[15] Nov 05 23:40:03 Exit before auth from <10.0.2.2:58731>: Exited normally
+[17] Nov 05 23:40:03 Child connection from 10.0.2.2:58733
+[17] Nov 05 23:40:55 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58733
+[17] Nov 05 23:40:57 Exit (root) from <10.0.2.2:58733>: Disconnect received
+[40] Nov 05 23:40:59 Child connection from 10.0.2.2:58748
+[40] Nov 05 23:41:27 Exit before auth from <10.0.2.2:58748>: (user 'root', 0 fails): Exited normally
+[52] Nov 05 23:41:29 Child connection from 10.0.2.2:58757
+[52] Nov 05 23:41:56 Exit before auth from <10.0.2.2:58757>: Error writing: Broken pipe 
+[64] Nov 05 23:41:59 Child connection from 10.0.2.2:58759
+[64] Nov 05 23:42:27 /root must be owned by user or root, and not writable by group or others
+[64] Nov 05 23:42:27 Exit before auth from <10.0.2.2:58759>: (user 'root', 0 fails): Exited normally
+STEP60=0
+# chmod 700 /root; echo STEP61=$?
+
+STEP61=0
+# chmod 666 /root/authkeys; echo STEP62=$?
+
+STEP62=0
+# ps; echo STEP63=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2872 11498  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    R   2  8948 27834  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   78     7   S0 root    R   0    50  2100   8992 ps 
+   79    79      root    S   0  4352 19586 130416 sshtest -F -r /root/hostkey -D /root 
+STEP63=0
+# ps; echo STEP64=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   1  2818 11552  66640 -/bin/sh 
+   13     7   S0 root    S   2   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   2  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   80     7   S0 root    R   0    50  2100   8992 ps 
+   79    79      root    R  46  9220 13338 130416 sshtest -F -r /root/hostkey -D /root 
+STEP64=0
+# ps; echo STEP65=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2818 11552  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   81     7   S0 root    R   0    50  2100   8992 ps 
+   79    79      root    R  92  9220 13014 130416 sshtest -F -r /root/hostkey -D /root 
+STEP65=0
+# ps; echo STEP66=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2818 11552  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   82     7   S0 root    R   0    50  2100   8992 ps 
+   79    79      root    R  98  9220 13032 130416 sshtest -F -r /root/hostkey -D /root 
+STEP66=0
+# ps; echo STEP67=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2818 11552  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   83     7   S0 root    R   0    50  2100   8992 ps 
+   79    79      root    R  99  9220 13094 130416 sshtest -F -r /root/hostkey -D /root 
+STEP67=0
+# ps; echo STEP68=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2818 11552  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   84     7   S0 root    R   0    50  2100   8992 ps 
+   79    79      root    R  99  6036 14414 130416 sshtest -F -r /root/hostkey -D /root 
+STEP68=0
+# ps; echo STEP69=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2818 11552  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   85     7   S0 root    R   0    50  2100   8992 ps 
+   79    79      root    R  99  6036 14474 130416 sshtest -F -r /root/hostkey -D /root 
+STEP69=0
+# ps; echo STEP70=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2850 11520  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   86     7   S0 root    R   0    50  2100   8992 ps 
+   79    79      root    R  99  6036 14456 130416 sshtest -F -r /root/hostkey -D /root 
+STEP70=0
+# ps; echo STEP71=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2872 11498  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   87     7   S0 root    R   0    50  2100   8992 ps 
+   79    79      root    S  99  4352 19860 130416 sshtest -F -r /root/hostkey -D /root 
+STEP71=0
+# ps; echo STEP72=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2894 11476  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   1  4474 32318  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   88     7   S0 root    R   0    50  2100   8992 ps 
+STEP72=0
+# cat /tmp/sshd.log; echo STEP73=$?
+
+[13] Nov 05 23:40:01 Not backgrounding
+[15] Nov 05 23:40:03 Child connection from 10.0.2.2:58731
+[15] Nov 05 23:40:03 Exit before auth from <10.0.2.2:58731>: Exited normally
+[17] Nov 05 23:40:03 Child connection from 10.0.2.2:58733
+[17] Nov 05 23:40:55 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58733
+[17] Nov 05 23:40:57 Exit (root) from <10.0.2.2:58733>: Disconnect received
+[40] Nov 05 23:40:59 Child connection from 10.0.2.2:58748
+[40] Nov 05 23:41:27 Exit before auth from <10.0.2.2:58748>: (user 'root', 0 fails): Exited normally
+[52] Nov 05 23:41:29 Child connection from 10.0.2.2:58757
+[52] Nov 05 23:41:56 Exit before auth from <10.0.2.2:58757>: Error writing: Broken pipe 
+[64] Nov 05 23:41:59 Child connection from 10.0.2.2:58759
+[64] Nov 05 23:42:27 /root must be owned by user or root, and not writable by group or others
+[64] Nov 05 23:42:27 Exit before auth from <10.0.2.2:58759>: (user 'root', 0 fails): Exited normally
+[79] Nov 05 23:42:29 Child connection from 10.0.2.2:58768
+[79] Nov 05 23:42:57 Unsafe authorized-key file: /root/authkeys
+[79] Nov 05 23:42:57 Exit before auth from <10.0.2.2:58768>: (user 'root', 0 fails): Exited normally
+STEP73=0
+# chmod 600 /root/authkeys; echo STEP74=$?
+
+STEP74=0
+# ps; echo STEP75=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3154 11216  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    R   1  8948 27834  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   91     7   S0 root    R   0    50  2100   8992 ps 
+   92    92      root    S   0  4352 19586 130416 sshtest -F -r /root/hostkey -D /root 
+STEP75=0
+# ps; echo STEP76=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   1  3170 11200  66640 -/bin/sh 
+   13     7   S0 root    S   2   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   93     7   S0 root    R   0    50  2100   8992 ps 
+   92    92      root    R  76  9220 13088 130416 sshtest -F -r /root/hostkey -D /root 
+STEP76=0
+# ps; echo STEP77=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3170 11200  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   94     7   S0 root    R   0    50  2100   8992 ps 
+   92    92      root    R  91  9220 12944 130416 sshtest -F -r /root/hostkey -D /root 
+STEP77=0
+# ps; echo STEP78=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3170 11200  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   95     7   S0 root    R   0    50  2100   8992 ps 
+   92    92      root    R  98  9220 13032 130416 sshtest -F -r /root/hostkey -D /root 
+STEP78=0
+# ps; echo STEP79=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3170 11200  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   96     7   S0 root    R   0    50  2100   8992 ps 
+   92    92      root    R  99  9220 13054 130416 sshtest -F -r /root/hostkey -D /root 
+STEP79=0
+# ps; echo STEP80=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3170 11200  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   97     7   S0 root    R   0    50  2100   8992 ps 
+   92    92      root    R  99  6036 14456 130416 sshtest -F -r /root/hostkey -D /root 
+STEP80=0
+# ps; echo STEP81=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3170 11200  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   98     7   S0 root    R   0    50  2100   8992 ps 
+   92    92      root    R  99  6036 14470 130416 sshtest -F -r /root/hostkey -D /root 
+STEP81=0
+# ps; echo STEP82=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3170 11200  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   99     7   S0 root    R   0    50  2100   8992 ps 
+   92    92      root    R  99  6036 14482 130416 sshtest -F -r /root/hostkey -D /root 
+STEP82=0
+# ps; echo STEP83=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3202 11168  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  100     7   S0 root    R   0    50  2100   8992 ps 
+   92    92      root    S  99  4568 19644 130416 sshtest -F -r /root/hostkey -D /root 
+STEP83=0
+# ps; echo STEP84=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3224 11146  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  101     7   S0 root    R   0    50  2100   8992 ps 
+   92    92      root    R  95 13154  7402 130416 sshtest -F -r /root/hostkey -D /root 
+STEP84=0
+# ps; echo STEP85=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3246 11124  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  102     7   S0 root    R   0    50  2100   8992 ps 
+   92    92      root    R  99 13154  7470 130416 sshtest -F -r /root/hostkey -D /root 
+STEP85=0
+# ps; echo STEP86=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3268 11102  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  103     7   S0 root    R   0    50  2100   8992 ps 
+   92    92      root    R  99 13154  7402 130416 sshtest -F -r /root/hostkey -D /root 
+STEP86=0
+# ps; echo STEP87=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3290 11080  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  104     7   S0 root    R   0    50  2100   8992 ps 
+   92    92      root    R  99 13154  6858 130416 sshtest -F -r /root/hostkey -D /root 
+STEP87=0
+# ps; echo STEP88=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3312 11058  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  105     7   S0 root    R   0    50  2100   8992 ps 
+   92    92      root    R  99 13154  6900 130416 sshtest -F -r /root/hostkey -D /root 
+STEP88=0
+# ps; echo STEP89=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3334 11036  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  106     7   S0 root    R   0    50  2100   8992 ps 
+   92    92      root    R  99 13154  6856 130416 sshtest -F -r /root/hostkey -D /root 
+STEP89=0
+# ps; echo STEP90=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3356 11014  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  107     7   S0 root    R   0    50  2100   8992 ps 
+   92    92      root    R  99 13154  8326 130416 sshtest -F -r /root/hostkey -D /root 
+STEP90=0
+# ps; echo STEP91=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3378 10992  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    R   0  9118 27522  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  108    92      root    S   0   148 14208  66768 sh -c cat /root/payload; sleep 2; echo STREAM_DONE 
+   92    92      root    R  99  3506 20598 130416 sshtest -F -r /root/hostkey -D /root 
+  109    92      root    S   0     0  8158  10400 cat /root/payload 
+  110     7   S0 root    R   0    50  2100   8992 ps 
+STEP91=0
+# ps; echo STEP92=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3400 10970  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S  23  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  108    92      root    S   2   180 14176  66768 sh -c cat /root/payload; sleep 2; echo STREAM_DONE 
+   92    92      root    S  69  3506 20688 130416 sshtest -F -r /root/hostkey -D /root 
+  111    92      root    S   0     0  8136   8944 sleep 2 
+  112     7   S0 root    R   0    50  2100   8992 ps 
+STEP92=0
+# ps; echo STEP93=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3422 10948  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S  13  4474 32318  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  113     7   S0 root    R   0    50  2100   8992 ps 
+STEP93=0
+# cat /tmp/sshd.log; echo STEP94=$?
+
+[13] Nov 05 23:40:01 Not backgrounding
+[15] Nov 05 23:40:03 Child connection from 10.0.2.2:58731
+[15] Nov 05 23:40:03 Exit before auth from <10.0.2.2:58731>: Exited normally
+[17] Nov 05 23:40:03 Child connection from 10.0.2.2:58733
+[17] Nov 05 23:40:55 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58733
+[17] Nov 05 23:40:57 Exit (root) from <10.0.2.2:58733>: Disconnect received
+[40] Nov 05 23:40:59 Child connection from 10.0.2.2:58748
+[40] Nov 05 23:41:27 Exit before auth from <10.0.2.2:58748>: (user 'root', 0 fails): Exited normally
+[52] Nov 05 23:41:29 Child connection from 10.0.2.2:58757
+[52] Nov 05 23:41:56 Exit before auth from <10.0.2.2:58757>: Error writing: Broken pipe 
+[64] Nov 05 23:41:59 Child connection from 10.0.2.2:58759
+[64] Nov 05 23:42:27 /root must be owned by user or root, and not writable by group or others
+[64] Nov 05 23:42:27 Exit before auth from <10.0.2.2:58759>: (user 'root', 0 fails): Exited normally
+[79] Nov 05 23:42:29 Child connection from 10.0.2.2:58768
+[79] Nov 05 23:42:57 Unsafe authorized-key file: /root/authkeys
+[79] Nov 05 23:42:57 Exit before auth from <10.0.2.2:58768>: (user 'root', 0 fails): Exited normally
+[92] Nov 05 23:42:59 Child connection from 10.0.2.2:58769
+[92] Nov 05 23:43:53 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58769
+[92] Nov 05 23:43:57 Exit (root) from <10.0.2.2:58769>: Disconnect received
+STEP94=0
+# ps; echo STEP95=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3582 10788  66640 -/bin/sh 
+   13     7   S0 root    S   2   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    R   6  8948 27834  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  115     7   S0 root    R   1    50  2100   8992 ps 
+  116   116      root    R   0  4352 19586 130416 sshtest -F -r /root/hostkey -D /root 
+STEP95=0
+# ps; echo STEP96=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3558 10812  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   3  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  117     7   S0 root    R   0    50  2100   8992 ps 
+  116   116      root    R  58  9220 13076 130416 sshtest -F -r /root/hostkey -D /root 
+STEP96=0
+# ps; echo STEP97=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3558 10812  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  118     7   S0 root    R   0    50  2100   8992 ps 
+  116   116      root    R  94  9220 12944 130416 sshtest -F -r /root/hostkey -D /root 
+STEP97=0
+# ps; echo STEP98=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3558 10812  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  119     7   S0 root    R   0    50  2100   8992 ps 
+  116   116      root    R  98  9220 12980 130416 sshtest -F -r /root/hostkey -D /root 
+STEP98=0
+# ps; echo STEP99=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3590 10780  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  120     7   S0 root    R   0    50  2100   8992 ps 
+  116   116      root    R  99  9220 13026 130416 sshtest -F -r /root/hostkey -D /root 
+STEP99=0
+# ps; echo STEP100=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3612 10758  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  121     7   S0 root    R   0    50  2100   8992 ps 
+  116   116      root    R  99  6036 14486 130416 sshtest -F -r /root/hostkey -D /root 
+STEP100=0
+# ps; echo STEP101=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3602 10768  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  122     7   S0 root    R   0    50  2100   8992 ps 
+  116   116      root    R  99  6036 14434 130416 sshtest -F -r /root/hostkey -D /root 
+STEP101=0
+# ps; echo STEP102=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3602 10768  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  123     7   S0 root    R   0    50  2100   8992 ps 
+  116   116      root    R  99  6036 14474 130416 sshtest -F -r /root/hostkey -D /root 
+STEP102=0
+# ps; echo STEP103=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3602 10768  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  124     7   S0 root    R   0    50  2100   8992 ps 
+  116   116      root    R  99  6036 15716 130416 sshtest -F -r /root/hostkey -D /root 
+STEP103=0
+# ps; echo STEP104=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  125     7   S0 root    R   0    50  2100   8992 ps 
+  116   116      root    R  97 13154  7458 130416 sshtest -F -r /root/hostkey -D /root 
+STEP104=0
+# ps; echo STEP105=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  126     7   S0 root    R   0    50  2100   8992 ps 
+  116   116      root    R  99 13154  7404 130416 sshtest -F -r /root/hostkey -D /root 
+STEP105=0
+# ps; echo STEP106=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  127     7   S0 root    R   0    50  2100   8992 ps 
+  116   116      root    R  99 13154  7414 130416 sshtest -F -r /root/hostkey -D /root 
+STEP106=0
+# ps; echo STEP107=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  128     7   S0 root    R   0    50  2100   8992 ps 
+  116   116      root    R  99 13154  6844 130416 sshtest -F -r /root/hostkey -D /root 
+STEP107=0
+# ps; echo STEP108=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  129     7   S0 root    R   0    50  2100   8992 ps 
+  116   116      root    R  99 13154  7084 130416 sshtest -F -r /root/hostkey -D /root 
+STEP108=0
+# ps; echo STEP109=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  130     7   S0 root    R   0    50  2100   8992 ps 
+  116   116      root    R  99 13154  6858 130416 sshtest -F -r /root/hostkey -D /root 
+STEP109=0
+# ps; echo STEP110=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  131     7   S0 root    R   0    50  2100   8992 ps 
+  116   116      root    R  99 13154  8292 130416 sshtest -F -r /root/hostkey -D /root 
+STEP110=0
+# ps; echo STEP111=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  4474 32318  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  133     7   S0 root    R   0    50  2100   8992 ps 
+STEP111=0
+# cat /tmp/sshd.log; echo STEP112=$?
+
+[13] Nov 05 23:40:01 Not backgrounding
+[15] Nov 05 23:40:03 Child connection from 10.0.2.2:58731
+[15] Nov 05 23:40:03 Exit before auth from <10.0.2.2:58731>: Exited normally
+[17] Nov 05 23:40:03 Child connection from 10.0.2.2:58733
+[17] Nov 05 23:40:55 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58733
+[17] Nov 05 23:40:57 Exit (root) from <10.0.2.2:58733>: Disconnect received
+[40] Nov 05 23:40:59 Child connection from 10.0.2.2:58748
+[40] Nov 05 23:41:27 Exit before auth from <10.0.2.2:58748>: (user 'root', 0 fails): Exited normally
+[52] Nov 05 23:41:29 Child connection from 10.0.2.2:58757
+[52] Nov 05 23:41:56 Exit before auth from <10.0.2.2:58757>: Error writing: Broken pipe 
+[64] Nov 05 23:41:59 Child connection from 10.0.2.2:58759
+[64] Nov 05 23:42:27 /root must be owned by user or root, and not writable by group or others
+[64] Nov 05 23:42:27 Exit before auth from <10.0.2.2:58759>: (user 'root', 0 fails): Exited normally
+[79] Nov 05 23:42:29 Child connection from 10.0.2.2:58768
+[79] Nov 05 23:42:57 Unsafe authorized-key file: /root/authkeys
+[79] Nov 05 23:42:57 Exit before auth from <10.0.2.2:58768>: (user 'root', 0 fails): Exited normally
+[92] Nov 05 23:42:59 Child connection from 10.0.2.2:58769
+[92] Nov 05 23:43:53 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58769
+[92] Nov 05 23:43:57 Exit (root) from <10.0.2.2:58769>: Disconnect received
+[116] Nov 05 23:43:58 Child connection from 10.0.2.2:58776
+[116] Nov 05 23:44:52 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58776
+[116] Nov 05 23:44:53 Exit (root) from <10.0.2.2:58776>: Disconnect received
+STEP112=0
+# ps; echo STEP113=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3642 10728  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    R   0  8948 27834  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  135   135      root    S   0  4352 19842 130416 sshtest -F -r /root/hostkey -D /root 
+  136     7   S0 root    R   0    50  2100   8992 ps 
+STEP113=0
+# ps; echo STEP114=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3674 10696  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  135   135      root    R  69  9220 13314 130416 sshtest -F -r /root/hostkey -D /root 
+  137     7   S0 root    R   0    50  2100   8992 ps 
+STEP114=0
+# ps; echo STEP115=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3674 10696  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  135   135      root    R  95  9220 13182 130416 sshtest -F -r /root/hostkey -D /root 
+  138     7   S0 root    R   0    50  2100   8992 ps 
+STEP115=0
+# ps; echo STEP116=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3674 10696  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  135   135      root    R  98  9220 13042 130416 sshtest -F -r /root/hostkey -D /root 
+  139     7   S0 root    R   0    50  2100   8992 ps 
+STEP116=0
+# ps; echo STEP117=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3620 10750  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  135   135      root    R  99  9220 13032 130416 sshtest -F -r /root/hostkey -D /root 
+  140     7   S0 root    R   0    50  2100   8992 ps 
+STEP117=0
+# ps; echo STEP118=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3674 10696  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  135   135      root    R  99  6036 14484 130416 sshtest -F -r /root/hostkey -D /root 
+  141     7   S0 root    R   0    50  2100   8992 ps 
+STEP118=0
+# ps; echo STEP119=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3620 10750  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  135   135      root    R  99  6036 14412 130416 sshtest -F -r /root/hostkey -D /root 
+  142     7   S0 root    R   0    50  2100   8992 ps 
+STEP119=0
+# ps; echo STEP120=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3620 10750  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  135   135      root    R  99  6036 14534 130416 sshtest -F -r /root/hostkey -D /root 
+  143     7   S0 root    R   0    50  2100   8992 ps 
+STEP120=0
+# ps; echo STEP121=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3620 10750  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  135   135      root    R  99  6036 15656 130416 sshtest -F -r /root/hostkey -D /root 
+  144     7   S0 root    R   0    50  2100   8992 ps 
+STEP121=0
+# ps; echo STEP122=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3620 10750  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  135   135      root    R  98 13154  7458 130416 sshtest -F -r /root/hostkey -D /root 
+  145     7   S0 root    R   0    50  2100   8992 ps 
+STEP122=0
+# ps; echo STEP123=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3620 10750  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  135   135      root    R  99 13154  7408 130416 sshtest -F -r /root/hostkey -D /root 
+  146     7   S0 root    R   0    50  2100   8992 ps 
+STEP123=0
+# ps; echo STEP124=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3620 10750  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  135   135      root    R  99 13154  7458 130416 sshtest -F -r /root/hostkey -D /root 
+  147     7   S0 root    R   0    50  2100   8992 ps 
+STEP124=0
+# ps; echo STEP125=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3620 10750  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  135   135      root    R  99 13154  6828 130416 sshtest -F -r /root/hostkey -D /root 
+  148     7   S0 root    R   0    50  2100   8992 ps 
+STEP125=0
+# ps; echo STEP126=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3620 10750  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  135   135      root    R  99 13154  7108 130416 sshtest -F -r /root/hostkey -D /root 
+  149     7   S0 root    R   0    50  2100   8992 ps 
+STEP126=0
+# ps; echo STEP127=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3620 10750  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  135   135      root    R  99 13154  6776 130416 sshtest -F -r /root/hostkey -D /root 
+  150     7   S0 root    R   0    50  2100   8992 ps 
+STEP127=0
+# ps; echo STEP128=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3674 10696  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  135   135      root    R  99 13154  6888 130416 sshtest -F -r /root/hostkey -D /root 
+  151     7   S0 root    R   0    50  2100   8992 ps 
+STEP128=0
+# ps; echo STEP129=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3620 10750  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   3  4474 32318  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  154     7   S0 root    R   0    50  2100   8992 ps 
+STEP129=0
+# cat /tmp/sshd.log; echo STEP130=$?
+
+[13] Nov 05 23:40:01 Not backgrounding
+[15] Nov 05 23:40:03 Child connection from 10.0.2.2:58731
+[15] Nov 05 23:40:03 Exit before auth from <10.0.2.2:58731>: Exited normally
+[17] Nov 05 23:40:03 Child connection from 10.0.2.2:58733
+[17] Nov 05 23:40:55 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58733
+[17] Nov 05 23:40:57 Exit (root) from <10.0.2.2:58733>: Disconnect received
+[40] Nov 05 23:40:59 Child connection from 10.0.2.2:58748
+[40] Nov 05 23:41:27 Exit before auth from <10.0.2.2:58748>: (user 'root', 0 fails): Exited normally
+[52] Nov 05 23:41:29 Child connection from 10.0.2.2:58757
+[52] Nov 05 23:41:56 Exit before auth from <10.0.2.2:58757>: Error writing: Broken pipe 
+[64] Nov 05 23:41:59 Child connection from 10.0.2.2:58759
+[64] Nov 05 23:42:27 /root must be owned by user or root, and not writable by group or others
+[64] Nov 05 23:42:27 Exit before auth from <10.0.2.2:58759>: (user 'root', 0 fails): Exited normally
+[79] Nov 05 23:42:29 Child connection from 10.0.2.2:58768
+[79] Nov 05 23:42:57 Unsafe authorized-key file: /root/authkeys
+[79] Nov 05 23:42:57 Exit before auth from <10.0.2.2:58768>: (user 'root', 0 fails): Exited normally
+[92] Nov 05 23:42:59 Child connection from 10.0.2.2:58769
+[92] Nov 05 23:43:53 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58769
+[92] Nov 05 23:43:57 Exit (root) from <10.0.2.2:58769>: Disconnect received
+[116] Nov 05 23:43:58 Child connection from 10.0.2.2:58776
+[116] Nov 05 23:44:52 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58776
+[116] Nov 05 23:44:53 Exit (root) from <10.0.2.2:58776>: Disconnect received
+[135] Nov 05 23:44:54 Child connection from 10.0.2.2:58786
+[135] Nov 05 23:45:48 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58786
+[135] Nov 05 23:45:48 Exit (root) from <10.0.2.2:58786>: Disconnect received
+STEP130=0
+# ps; echo STEP131=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3696 10674  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    R   3  8948 27848  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  156   156      root    S   0  4352 19842 130416 sshtest -F -r /root/hostkey -D /root 
+  157     7   S0 root    R   0    50  2100   8992 ps 
+STEP131=0
+# ps; echo STEP132=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3674 10696  66640 -/bin/sh 
+   13     7   S0 root    S   2   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   2  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  156   156      root    R  40  9220 13070 130416 sshtest -F -r /root/hostkey -D /root 
+  158     7   S0 root    R   0    50  2100   8992 ps 
+STEP132=0
+# ps; echo STEP133=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3620 10750  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  156   156      root    R  91  9220 12944 130416 sshtest -F -r /root/hostkey -D /root 
+  159     7   S0 root    R   0    50  2100   8992 ps 
+STEP133=0
+# ps; echo STEP134=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3620 10750  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  156   156      root    R  98  9220 13090 130416 sshtest -F -r /root/hostkey -D /root 
+  160     7   S0 root    R   0    50  2100   8992 ps 
+STEP134=0
+# ps; echo STEP135=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3620 10750  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  156   156      root    R  99  9220 13032 130416 sshtest -F -r /root/hostkey -D /root 
+  161     7   S0 root    R   0    50  2100   8992 ps 
+STEP135=0
+# ps; echo STEP136=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3620 10750  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  156   156      root    R  99  6036 14456 130416 sshtest -F -r /root/hostkey -D /root 
+  162     7   S0 root    R   0    50  2100   8992 ps 
+STEP136=0
+# ps; echo STEP137=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3620 10750  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  156   156      root    R  99  6036 14470 130416 sshtest -F -r /root/hostkey -D /root 
+  163     7   S0 root    R   0    50  2100   8992 ps 
+STEP137=0
+# ps; echo STEP138=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3620 10750  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  156   156      root    R  99  6036 14464 130416 sshtest -F -r /root/hostkey -D /root 
+  164     7   S0 root    R   0    50  2100   8992 ps 
+STEP138=0
+# ps; echo STEP139=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3674 10696  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  156   156      root    R  99  6036 15630 130416 sshtest -F -r /root/hostkey -D /root 
+  165     7   S0 root    R   0    50  2100   8992 ps 
+STEP139=0
+# ps; echo STEP140=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3620 10750  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  156   156      root    R  98 13154  7398 130416 sshtest -F -r /root/hostkey -D /root 
+  166     7   S0 root    R   0    50  2100   8992 ps 
+STEP140=0
+# ps; echo STEP141=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3620 10750  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  156   156      root    R  99 13154  7326 130416 sshtest -F -r /root/hostkey -D /root 
+  167     7   S0 root    R   0    50  2100   8992 ps 
+STEP141=0
+# ps; echo STEP142=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3674 10696  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  156   156      root    R  99 13154  7360 130416 sshtest -F -r /root/hostkey -D /root 
+  168     7   S0 root    R   0    50  2100   8992 ps 
+STEP142=0
+# ps; echo STEP143=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3674 10696  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  156   156      root    R  99 13154  6892 130416 sshtest -F -r /root/hostkey -D /root 
+  169     7   S0 root    R   0    50  2100   8992 ps 
+STEP143=0
+# ps; echo STEP144=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3602 10768  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  156   156      root    R  99 13154  6878 130416 sshtest -F -r /root/hostkey -D /root 
+  170     7   S0 root    R   0    50  2100   8992 ps 
+STEP144=0
+# ps; echo STEP145=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3602 10768  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  156   156      root    R  99 13154  6858 130416 sshtest -F -r /root/hostkey -D /root 
+  171     7   S0 root    R   0    50  2100   8992 ps 
+STEP145=0
+# ps; echo STEP146=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3602 10768  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  156   156      root    R  99 13154  6906 130416 sshtest -F -r /root/hostkey -D /root 
+  172     7   S0 root    R   0    50  2100   8992 ps 
+STEP146=0
+# ps; echo STEP147=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  4474 32318  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  177     7   S0 root    R   0    50  2100   8992 ps 
+STEP147=0
+# cat /tmp/sshd.log; echo STEP148=$?
+
+[13] Nov 05 23:40:01 Not backgrounding
+[15] Nov 05 23:40:03 Child connection from 10.0.2.2:58731
+[15] Nov 05 23:40:03 Exit before auth from <10.0.2.2:58731>: Exited normally
+[17] Nov 05 23:40:03 Child connection from 10.0.2.2:58733
+[17] Nov 05 23:40:55 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58733
+[17] Nov 05 23:40:57 Exit (root) from <10.0.2.2:58733>: Disconnect received
+[40] Nov 05 23:40:59 Child connection from 10.0.2.2:58748
+[40] Nov 05 23:41:27 Exit before auth from <10.0.2.2:58748>: (user 'root', 0 fails): Exited normally
+[52] Nov 05 23:41:29 Child connection from 10.0.2.2:58757
+[52] Nov 05 23:41:56 Exit before auth from <10.0.2.2:58757>: Error writing: Broken pipe 
+[64] Nov 05 23:41:59 Child connection from 10.0.2.2:58759
+[64] Nov 05 23:42:27 /root must be owned by user or root, and not writable by group or others
+[64] Nov 05 23:42:27 Exit before auth from <10.0.2.2:58759>: (user 'root', 0 fails): Exited normally
+[79] Nov 05 23:42:29 Child connection from 10.0.2.2:58768
+[79] Nov 05 23:42:57 Unsafe authorized-key file: /root/authkeys
+[79] Nov 05 23:42:57 Exit before auth from <10.0.2.2:58768>: (user 'root', 0 fails): Exited normally
+[92] Nov 05 23:42:59 Child connection from 10.0.2.2:58769
+[92] Nov 05 23:43:53 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58769
+[92] Nov 05 23:43:57 Exit (root) from <10.0.2.2:58769>: Disconnect received
+[116] Nov 05 23:43:58 Child connection from 10.0.2.2:58776
+[116] Nov 05 23:44:52 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58776
+[116] Nov 05 23:44:53 Exit (root) from <10.0.2.2:58776>: Disconnect received
+[135] Nov 05 23:44:54 Child connection from 10.0.2.2:58786
+[135] Nov 05 23:45:48 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58786
+[135] Nov 05 23:45:48 Exit (root) from <10.0.2.2:58786>: Disconnect received
+[156] Nov 05 23:45:49 Child connection from 10.0.2.2:58795
+[156] Nov 05 23:46:44 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58795
+[156] Nov 05 23:46:44 ptyallocate: tty modes failed: Invalid argument 
+[173] Nov 05 23:46:44 ioctl(TIOCSCTTY): Invalid argument 
+[173] Nov 05 23:46:44 open /dev/tty failed - could not set controlling tty: No such device 
+[156] Nov 05 23:46:44 Exit (root) from <10.0.2.2:58795>: Disconnect received
+STEP148=0
+# ps; echo STEP149=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3642 10728  66640 -/bin/sh 
+   13     7   S0 root    S   2   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    R   2  8948 27818  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  179   179      root    S   0  4352 19842 130416 sshtest -F -r /root/hostkey -D /root 
+  180     7   S0 root    R   1    50  2100   8992 ps 
+STEP149=0
+# ps; echo STEP150=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3620 10750  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  179   179      root    R  60  9220 13088 130416 sshtest -F -r /root/hostkey -D /root 
+  181     7   S0 root    R   0    50  2100   8992 ps 
+STEP150=0
+# ps; echo STEP151=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3620 10750  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  179   179      root    R  94  9220 12886 130416 sshtest -F -r /root/hostkey -D /root 
+  182     7   S0 root    R   0    50  2100   8992 ps 
+STEP151=0
+# ps; echo STEP152=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  179   179      root    R  98  9220 12986 130416 sshtest -F -r /root/hostkey -D /root 
+  183     7   S0 root    R   0    50  2100   8992 ps 
+STEP152=0
+# ps; echo STEP153=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  179   179      root    R  99  9220 12988 130416 sshtest -F -r /root/hostkey -D /root 
+  184     7   S0 root    R   0    50  2100   8992 ps 
+STEP153=0
+# ps; echo STEP154=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  179   179      root    R  99  6036 14416 130416 sshtest -F -r /root/hostkey -D /root 
+  185     7   S0 root    R   0    50  2100   8992 ps 
+STEP154=0
+# ps; echo STEP155=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3602 10768  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  179   179      root    R  99  6036 14520 130416 sshtest -F -r /root/hostkey -D /root 
+  186     7   S0 root    R   0    50  2100   8992 ps 
+STEP155=0
+# ps; echo STEP156=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3602 10768  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  179   179      root    R  99  6036 14474 130416 sshtest -F -r /root/hostkey -D /root 
+  187     7   S0 root    R   0    50  2100   8992 ps 
+STEP156=0
+# ps; echo STEP157=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  179   179      root    R  99  6036 15646 130416 sshtest -F -r /root/hostkey -D /root 
+  188     7   S0 root    R   0    50  2100   8992 ps 
+STEP157=0
+# ps; echo STEP158=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  179   179      root    R  96 13154  7700 130416 sshtest -F -r /root/hostkey -D /root 
+  189     7   S0 root    R   0    50  2100   8992 ps 
+STEP158=0
+# ps; echo STEP159=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  179   179      root    R  99 13154  7462 130416 sshtest -F -r /root/hostkey -D /root 
+  190     7   S0 root    R   0    50  2100   8992 ps 
+STEP159=0
+# ps; echo STEP160=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  179   179      root    R  99 13154  7402 130416 sshtest -F -r /root/hostkey -D /root 
+  191     7   S0 root    R   0    50  2100   8992 ps 
+STEP160=0
+# ps; echo STEP161=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  179   179      root    R  99 13154  6832 130416 sshtest -F -r /root/hostkey -D /root 
+  192     7   S0 root    R   0    50  2100   8992 ps 
+STEP161=0
+# ps; echo STEP162=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  179   179      root    R  99 13154  7126 130416 sshtest -F -r /root/hostkey -D /root 
+  193     7   S0 root    R   0    50  2100   8992 ps 
+STEP162=0
+# ps; echo STEP163=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  179   179      root    R  99 13154  6830 130416 sshtest -F -r /root/hostkey -D /root 
+  194     7   S0 root    R   0    50  2100   8992 ps 
+STEP163=0
+# ps; echo STEP164=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3602 10768  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  179   179      root    R  99 13154  6892 130416 sshtest -F -r /root/hostkey -D /root 
+  195     7   S0 root    R   0    50  2100   8992 ps 
+STEP164=0
+# ps; echo STEP165=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  4474 32318  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  200     7   S0 root    R   0    50  2100   8992 ps 
+STEP165=0
+# cat /tmp/sshd.log; echo STEP166=$?
+
+[13] Nov 05 23:40:01 Not backgrounding
+[15] Nov 05 23:40:03 Child connection from 10.0.2.2:58731
+[15] Nov 05 23:40:03 Exit before auth from <10.0.2.2:58731>: Exited normally
+[17] Nov 05 23:40:03 Child connection from 10.0.2.2:58733
+[17] Nov 05 23:40:55 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58733
+[17] Nov 05 23:40:57 Exit (root) from <10.0.2.2:58733>: Disconnect received
+[40] Nov 05 23:40:59 Child connection from 10.0.2.2:58748
+[40] Nov 05 23:41:27 Exit before auth from <10.0.2.2:58748>: (user 'root', 0 fails): Exited normally
+[52] Nov 05 23:41:29 Child connection from 10.0.2.2:58757
+[52] Nov 05 23:41:56 Exit before auth from <10.0.2.2:58757>: Error writing: Broken pipe 
+[64] Nov 05 23:41:59 Child connection from 10.0.2.2:58759
+[64] Nov 05 23:42:27 /root must be owned by user or root, and not writable by group or others
+[64] Nov 05 23:42:27 Exit before auth from <10.0.2.2:58759>: (user 'root', 0 fails): Exited normally
+[79] Nov 05 23:42:29 Child connection from 10.0.2.2:58768
+[79] Nov 05 23:42:57 Unsafe authorized-key file: /root/authkeys
+[79] Nov 05 23:42:57 Exit before auth from <10.0.2.2:58768>: (user 'root', 0 fails): Exited normally
+[92] Nov 05 23:42:59 Child connection from 10.0.2.2:58769
+[92] Nov 05 23:43:53 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58769
+[92] Nov 05 23:43:57 Exit (root) from <10.0.2.2:58769>: Disconnect received
+[116] Nov 05 23:43:58 Child connection from 10.0.2.2:58776
+[116] Nov 05 23:44:52 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58776
+[116] Nov 05 23:44:53 Exit (root) from <10.0.2.2:58776>: Disconnect received
+[135] Nov 05 23:44:54 Child connection from 10.0.2.2:58786
+[135] Nov 05 23:45:48 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58786
+[135] Nov 05 23:45:48 Exit (root) from <10.0.2.2:58786>: Disconnect received
+[156] Nov 05 23:45:49 Child connection from 10.0.2.2:58795
+[156] Nov 05 23:46:44 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58795
+[156] Nov 05 23:46:44 ptyallocate: tty modes failed: Invalid argument 
+[173] Nov 05 23:46:44 ioctl(TIOCSCTTY): Invalid argument 
+[173] Nov 05 23:46:44 open /dev/tty failed - could not set controlling tty: No such device 
+[156] Nov 05 23:46:44 Exit (root) from <10.0.2.2:58795>: Disconnect received
+[179] Nov 05 23:46:44 Child connection from 10.0.2.2:58807
+[179] Nov 05 23:47:39 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58807
+[179] Nov 05 23:47:39 ptyallocate: tty modes failed: Invalid argument 
+[196] Nov 05 23:47:39 ioctl(TIOCSCTTY): Invalid argument 
+[196] Nov 05 23:47:39 open /dev/tty failed - could not set controlling tty: No such device 
+[179] Nov 05 23:47:39 Exit (root) from <10.0.2.2:58807>: Disconnect received
+STEP166=0
+# ps; echo STEP167=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    R   0  8948 27848  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    S   0  4352 19842 130416 sshtest -F -r /root/hostkey -D /root 
+  203     7   S0 root    R   0    50  2100   8992 ps 
+STEP167=0
+# ps; echo STEP168=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   2  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  69  9220 13082 130416 sshtest -F -r /root/hostkey -D /root 
+  204     7   S0 root    R   0    50  2100   8992 ps 
+STEP168=0
+# ps; echo STEP169=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3602 10768  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  95  9220 12944 130416 sshtest -F -r /root/hostkey -D /root 
+  205     7   S0 root    R   0    50  2100   8992 ps 
+STEP169=0
+# ps; echo STEP170=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  98  9220 12968 130416 sshtest -F -r /root/hostkey -D /root 
+  206     7   S0 root    R   0    50  2100   8992 ps 
+STEP170=0
+# ps; echo STEP171=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99  9220 13040 130416 sshtest -F -r /root/hostkey -D /root 
+  207     7   S0 root    R   0    50  2100   8992 ps 
+STEP171=0
+# ps; echo STEP172=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99  6036 14754 130416 sshtest -F -r /root/hostkey -D /root 
+  208     7   S0 root    R   0    50  2100   8992 ps 
+STEP172=0
+# ps; echo STEP173=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99  6036 14482 130416 sshtest -F -r /root/hostkey -D /root 
+  209     7   S0 root    R   0    50  2100   8992 ps 
+STEP173=0
+# ps; echo STEP174=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99  6036 14500 130416 sshtest -F -r /root/hostkey -D /root 
+  210     7   S0 root    R   0    50  2100   8992 ps 
+STEP174=0
+# ps; echo STEP175=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99  6036 15954 130416 sshtest -F -r /root/hostkey -D /root 
+  211     7   S0 root    R   0    50  2100   8992 ps 
+STEP175=0
+# ps; echo STEP176=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  97 13154  7392 130416 sshtest -F -r /root/hostkey -D /root 
+  212     7   S0 root    R   0    50  2100   8992 ps 
+STEP176=0
+# ps; echo STEP177=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99 13154  7408 130416 sshtest -F -r /root/hostkey -D /root 
+  213     7   S0 root    R   0    50  2100   8992 ps 
+STEP177=0
+# ps; echo STEP178=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99 13154  7648 130416 sshtest -F -r /root/hostkey -D /root 
+  214     7   S0 root    R   0    50  2100   8992 ps 
+STEP178=0
+# ps; echo STEP179=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99 13154  6840 130416 sshtest -F -r /root/hostkey -D /root 
+  215     7   S0 root    R   0    50  2100   8992 ps 
+STEP179=0
+# ps; echo STEP180=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99 13154  6906 130416 sshtest -F -r /root/hostkey -D /root 
+  216     7   S0 root    R   0    50  2100   8992 ps 
+STEP180=0
+# ps; echo STEP181=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99 13154  6828 130416 sshtest -F -r /root/hostkey -D /root 
+  217     7   S0 root    R   0    50  2100   8992 ps 
+STEP181=0
+# ps; echo STEP182=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99 13154  6898 130416 sshtest -F -r /root/hostkey -D /root 
+  218     7   S0 root    R   0    50  2100   8992 ps 
+STEP182=0
+# ps; echo STEP183=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    R   0  9118 27672  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99  3506 20666 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  221     7   S0 root    R   0    50  2100   8992 ps 
+STEP183=0
+# ps; echo STEP184=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S  10  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  93  9554 13034 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  222     7   S0 root    R   0    50  2100   8992 ps 
+STEP184=0
+# ps; echo STEP185=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  97  9554 12552 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  223     7   S0 root    R   0    50  2100   8992 ps 
+STEP185=0
+# ps; echo STEP186=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99  9554 12752 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  224     7   S0 root    R   0    50  2100   8992 ps 
+STEP186=0
+# ps; echo STEP187=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99  9554 12816 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  225     7   S0 root    R   0    50  2100   8992 ps 
+STEP187=0
+# ps; echo STEP188=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99  6410 14118 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  226     7   S0 root    R   0    50  2100   8992 ps 
+STEP188=0
+# ps; echo STEP189=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99  6410 14100 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  227     7   S0 root    R   0    50  2100   8992 ps 
+STEP189=0
+# ps; echo STEP190=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99  6410 14108 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  228     7   S0 root    R   0    50  2100   8992 ps 
+STEP190=0
+# ps; echo STEP191=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    R   0  8948 27848  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    S 100  5760 18452 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  229     7   S0 root    R   0    50  2100   8992 ps 
+STEP191=0
+# ps; echo STEP192=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   3  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  95  9812 12460 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  230     7   S0 root    R   0    50  2100   8992 ps 
+STEP192=0
+# ps; echo STEP193=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99  9812 12394 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  231     7   S0 root    R   0    50  2100   8992 ps 
+STEP193=0
+# ps; echo STEP194=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99  9812 12434 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  232     7   S0 root    R   0    50  2100   8992 ps 
+STEP194=0
+# ps; echo STEP195=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99  9812 12690 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  233     7   S0 root    R   0    50  2100   8992 ps 
+STEP195=0
+# ps; echo STEP196=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R 100  6668 13898 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  234     7   S0 root    R   0    50  2100   8992 ps 
+STEP196=0
+# ps; echo STEP197=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R 100  6668 13842 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  235     7   S0 root    R   0    50  2100   8992 ps 
+STEP197=0
+# ps; echo STEP198=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R 100  6668 13762 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  236     7   S0 root    R   0    50  2100   8992 ps 
+STEP198=0
+# ps; echo STEP199=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3548 10822  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    R   0  9118 27522  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99  6018 18210 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  237     7   S0 root    R   0    50  2100   8992 ps 
+STEP199=0
+# ps; echo STEP200=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3526 10844  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S  10  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  86  9812 12498 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  238     7   S0 root    R   0    50  2100   8992 ps 
+STEP200=0
+# ps; echo STEP201=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3554 10816  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  98  9812 12354 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  239     7   S0 root    R   0    50  2100   8992 ps 
+STEP201=0
+# ps; echo STEP202=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3554 10816  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99  9812 12746 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  240     7   S0 root    R   0    50  2100   8992 ps 
+STEP202=0
+# ps; echo STEP203=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3554 10816  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R 100  9812 12406 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  241     7   S0 root    R   0    50  2100   8992 ps 
+STEP203=0
+# ps; echo STEP204=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3554 10816  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99  6668 13848 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  242     7   S0 root    R   0    50  2100   8992 ps 
+STEP204=0
+# ps; echo STEP205=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3554 10816  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99  6668 13842 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  243     7   S0 root    R   0    50  2100   8992 ps 
+STEP205=0
+# ps; echo STEP206=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3554 10816  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99  6668 13842 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  244     7   S0 root    R   0    50  2100   8992 ps 
+STEP206=0
+# ps; echo STEP207=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3554 10816  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  9118 27674  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R 100  6018 18154 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  245     7   S0 root    R   0    50  2100   8992 ps 
+STEP207=0
+# ps; echo STEP208=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3554 10816  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   6  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  92  9812 12492 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  246     7   S0 root    R   0    50  2100   8992 ps 
+STEP208=0
+# ps; echo STEP209=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3554 10816  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99  9812 12352 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  247     7   S0 root    R   0    50  2100   8992 ps 
+STEP209=0
+# ps; echo STEP210=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3554 10816  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99  9812 12454 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  248     7   S0 root    R   0    50  2100   8992 ps 
+STEP210=0
+# ps; echo STEP211=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3554 10816  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99  9812 12440 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  249     7   S0 root    R   0    50  2100   8992 ps 
+STEP211=0
+# ps; echo STEP212=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3500 10870  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99  6668 13766 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  250     7   S0 root    R   0    50  2100   8992 ps 
+STEP212=0
+# ps; echo STEP213=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3554 10816  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99  6668 13832 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  251     7   S0 root    R   0    50  2100   8992 ps 
+STEP213=0
+# ps; echo STEP214=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3500 10870  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99  6668 14078 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  252     7   S0 root    R   0    50  2100   8992 ps 
+STEP214=0
+# ps; echo STEP215=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3500 10870  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    R   0  9206 27584  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  202   202      root    R  99  6018 18154 130416 sshtest -F -r /root/hostkey -D /root 
+  219   202      root    S   0   148 14214  66752 sh -c cat /root/payload; echo REKEY_DONE 
+  220   202      root    S   0     0  8158  10400 cat /root/payload 
+  253     7   S0 root    R   0    50  2100   8992 ps 
+STEP215=0
+# ps; echo STEP216=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  3500 10870  66640 -/bin/sh 
+   13     7   S0 root    S   0   410 23908 130416 sshtest -F -r /root/hostkey -D /root 
+   11    11   S0 root    S   4  4474 32318  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+  254     7   S0 root    R   0    50  2100   8992 ps 
+STEP216=0
+# cat /tmp/sshd.log; echo STEP217=$?
+
+[13] Nov 05 23:40:01 Not backgrounding
+[15] Nov 05 23:40:03 Child connection from 10.0.2.2:58731
+[15] Nov 05 23:40:03 Exit before auth from <10.0.2.2:58731>: Exited normally
+[17] Nov 05 23:40:03 Child connection from 10.0.2.2:58733
+[17] Nov 05 23:40:55 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58733
+[17] Nov 05 23:40:57 Exit (root) from <10.0.2.2:58733>: Disconnect received
+[40] Nov 05 23:40:59 Child connection from 10.0.2.2:58748
+[40] Nov 05 23:41:27 Exit before auth from <10.0.2.2:58748>: (user 'root', 0 fails): Exited normally
+[52] Nov 05 23:41:29 Child connection from 10.0.2.2:58757
+[52] Nov 05 23:41:56 Exit before auth from <10.0.2.2:58757>: Error writing: Broken pipe 
+[64] Nov 05 23:41:59 Child connection from 10.0.2.2:58759
+[64] Nov 05 23:42:27 /root must be owned by user or root, and not writable by group or others
+[64] Nov 05 23:42:27 Exit before auth from <10.0.2.2:58759>: (user 'root', 0 fails): Exited normally
+[79] Nov 05 23:42:29 Child connection from 10.0.2.2:58768
+[79] Nov 05 23:42:57 Unsafe authorized-key file: /root/authkeys
+[79] Nov 05 23:42:57 Exit before auth from <10.0.2.2:58768>: (user 'root', 0 fails): Exited normally
+[92] Nov 05 23:42:59 Child connection from 10.0.2.2:58769
+[92] Nov 05 23:43:53 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58769
+[92] Nov 05 23:43:57 Exit (root) from <10.0.2.2:58769>: Disconnect received
+[116] Nov 05 23:43:58 Child connection from 10.0.2.2:58776
+[116] Nov 05 23:44:52 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58776
+[116] Nov 05 23:44:53 Exit (root) from <10.0.2.2:58776>: Disconnect received
+[135] Nov 05 23:44:54 Child connection from 10.0.2.2:58786
+[135] Nov 05 23:45:48 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58786
+[135] Nov 05 23:45:48 Exit (root) from <10.0.2.2:58786>: Disconnect received
+[156] Nov 05 23:45:49 Child connection from 10.0.2.2:58795
+[156] Nov 05 23:46:44 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58795
+[156] Nov 05 23:46:44 ptyallocate: tty modes failed: Invalid argument 
+[173] Nov 05 23:46:44 ioctl(TIOCSCTTY): Invalid argument 
+[173] Nov 05 23:46:44 open /dev/tty failed - could not set controlling tty: No such device 
+[156] Nov 05 23:46:44 Exit (root) from <10.0.2.2:58795>: Disconnect received
+[179] Nov 05 23:46:44 Child connection from 10.0.2.2:58807
+[179] Nov 05 23:47:39 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58807
+[179] Nov 05 23:47:39 ptyallocate: tty modes failed: Invalid argument 
+[196] Nov 05 23:47:39 ioctl(TIOCSCTTY): Invalid argument 
+[196] Nov 05 23:47:39 open /dev/tty failed - could not set controlling tty: No such device 
+[179] Nov 05 23:47:39 Exit (root) from <10.0.2.2:58807>: Disconnect received
+[202] Nov 05 23:47:40 Child connection from 10.0.2.2:58819
+[202] Nov 05 23:48:35 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:UKxefMObkxKOteo/z/7qfgDGuOWerq75s10CoawuEMI from 10.0.2.2:58819
+[202] Nov 05 23:50:32 Exit (root) from <10.0.2.2:58819>: Disconnect received
+STEP217=0
+# echo SHELL_STILL_WORKS; echo STEP218=$?
+
+SHELL_STILL_WORKS
+STEP218=0
