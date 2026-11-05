@@ -1,0 +1,5 @@
+hmac.c:38:1:process_key	298	dynamic,bounded
+hmac.c:57:1:br_hmac_key_init	298	dynamic,bounded
+hmac.c:78:1:br_hmac_init	34	dynamic,bounded
+hmac.c:98:1:br_hmac_update	14	dynamic,bounded
+hmac.c:105:1:br_hmac_out	312	dynamic,bounded

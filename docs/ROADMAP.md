@@ -35,8 +35,10 @@ a release candidate.
 ## Next development order
 
 The owner clarified that deployment must work on Ethernet-only systems without
-serial. First resolve the [randomness deployment model](RNG-DEPLOYMENT.md);
-the serial fixture is stopped and is no longer the critical path. The following
+serial and must operate independently after one-time secure provisioning.
+First qualify the generator and persistent-state lifecycle described in the
+[randomness deployment model](RNG-DEPLOYMENT.md). The serial fixture is stopped
+and is no longer the critical path. The following
 crypto, session and platform work remains relevant.
 
 1. Resolve the [experimental m15 integration](M15-DAEMON.md) failures before
@@ -50,8 +52,9 @@ crypto, session and platform work remains relevant.
 3. Run the [Windows 11 client matrix](WINDOWS-TESTING.md) against that fixture.
    Audit each changed linked candidate and measure memory under long sessions,
    rekeying and resource pressure; samples are not peak bounds.
-4. Qualify the production entropy source through an existing ELKS interface,
-   including missing/short input, disconnect and recovery behavior.
+4. Qualify independent randomness: unique secure provisioning, a reviewed
+   generator, durable state advancement before output, concurrent consumers,
+   interrupted writes, full disks, reboot and restored/cloned-media recovery.
 5. Resume PPC SSH sessions when the Ethernet-only randomness design permits
    them. Keep the HP on console until separate networking and its memory cost
    are resolved. File transfer follows the core service; an isolated native
@@ -72,5 +75,5 @@ The [serial entropy checkpoint](SERIAL-ENTROPY.md) implements an isolated
 controlled-cable provider. Software fault matrices and PPC daemon startup pass.
 The [disconnect/recovery follow-up](SERIAL-RECOVERY.md) records physical tests
 and remaining failures. Native key generation passes QEMU but refused entropy
-on the PPC. Next: an Ethernet-only deployment design and its prerequisites.
+on the PPC. Next: the independent generator and storage prerequisites.
 No hardware listener or automatic service is installed.

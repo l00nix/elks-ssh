@@ -1,6 +1,7 @@
 # Secure randomness: unresolved prerequisite
 
-**Deployment requirement:** Ethernet-only operation, with no serial cable.
+**Deployment requirement:** independent Ethernet-only operation after one-time
+secure provisioning, with no serial cable, companion host or LAN helper.
 The [deployment design](RNG-DEPLOYMENT.md) supersedes serial qualification as
 the critical path. The serial implementation remains a laboratory fixture.
 
@@ -23,11 +24,10 @@ sockets; per-connection reseeding remains in place.
 | User-space generator with securely provisioned persistent state | Potentially standalone after provisioning | Needs a reviewed generator, safe state replacement before use, fork separation, power-loss handling and recovery. Copied disks and snapshots can repeat state; a static seed file is insufficient |
 | Timing/jitter collection | No extra hardware in principle | No validated minimum entropy estimate for original 8086/8088, emulation or these machines; not accepted as a fallback |
 
-Recommended development order: validate a fresh external source in an isolated
-QEMU test harness, then separately decide whether the first hardware candidate
-requires that source or can support a reviewed standalone state design. An
-emulator-fed source would prove interoperability only for that assisted setup.
-It would not establish standalone hardware security. A QEMU-only adapter now
+The initial development stage used a fresh external source in an isolated
+QEMU harness to validate interoperability. That stage does not establish
+standalone hardware security. The next stage must qualify a reviewed generator
+and persistent state lifecycle for independent operation. A QEMU-only adapter now
 exists for development. A separate controlled-cable hardware prototype is now
 implemented and tested on the PPC; it is not qualified for release. See the
 [serial entropy checkpoint](SERIAL-ENTROPY.md).
@@ -40,10 +40,9 @@ test executables; they are not usable service keys.
 ## Recommended end-state direction
 
 Keep the SSH implementation independent of the entropy transport. The finished
-service must work without serial or an unstated extra-hardware requirement.
-Evaluate independent operation after secure provisioning and, if acceptable to
-the owner, an explicit authenticated LAN-assisted mode. A qualified hardware
-RNG can be an optional source. None implies new kernel or libc APIs.
+service must operate independently after secure provisioning. Serial, LAN
+helpers and extra hardware cannot be runtime requirements. A qualified hardware
+RNG can be an optional additional source. No new kernel or libc APIs are planned.
 
 A software-only standalone mode is a separate feasibility milestone, not a
 fallback. It would require securely provisioned state, a reviewed generator,
@@ -117,9 +116,10 @@ Qualification must cover these failures before hardware SSH deployment:
   successful recovery still requires a qualified source.
 
 These are acceptance requirements. The [serial checkpoint](SERIAL-ENTROPY.md)
-records completed framing, fork, timeout, replay and permission tests. Physical
-USB disconnect/reconnect, host suspend and target reboot remain untested; no
-hardware SSH authentication has been attempted with this adapter. Secure
+records completed framing, fork, timeout, replay and permission tests. The
+[recovery follow-up](SERIAL-RECOVERY.md) covers physical USB
+disconnect/reconnect; host suspend and target reboot remain untested. No
+hardware SSH authentication has been completed with this adapter. Secure
 standalone operation remains a separate milestone with the persistence and
 rollback requirements above.
 

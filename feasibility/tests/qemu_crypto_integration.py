@@ -15,7 +15,7 @@ p = argparse.ArgumentParser()
 p.add_argument('--image', type=Path, required=True)
 p.add_argument('--build', type=Path, required=True)
 p.add_argument('--out', type=Path, required=True)
-p.add_argument('--names', nargs='+', choices=['m15bench','edbench','dropbear-m15'],
+p.add_argument('--names', nargs='+', choices=['m15bench','edbench','dropbear-m15','drbgprobe'],
                default=['m15bench','edbench','dropbear-m15'])
 a = p.parse_args()
 a.out.mkdir(parents=True, exist_ok=True)
@@ -96,6 +96,14 @@ try:
                                   and b'FAIL' not in data and b'STACK' not in data)
                         timings = re.findall(rb'PASS ([a-z0-9-]+) seconds=(\d+)',data)
                         passed = passed and len(timings) == count
+                        if name == 'drbgprobe':
+                            count = 6
+                            passed = (b'RESULT PASS checks=6 failures=0' in data
+                                      and int(re.search(pattern,data)[1]) == 0
+                                      and b'FAIL' not in data and b'STACK' not in data)
+                            context = re.search(rb'context=(\d+) bytes', data)
+                            if not context: raise RuntimeError('Missing DRBG context size')
+                            result['drbg_context_bytes'] = int(context[1])
                         if name == 'dropbear-m15':
                             count = 1
                             passed = (b'Failure reading random device /dev/urandom' in data

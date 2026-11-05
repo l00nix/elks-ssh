@@ -17,11 +17,13 @@ Their paths, pinned upstream commits or release archives and SHA-256 hashes are 
   [janmojzis/tinyssh](https://github.com/janmojzis/tinyssh/tree/6a60c2aac18da9035a7401316789d6f4df7e295f).
   See its retained `LICENSE.md` and `cryptoint/README` for the upstream license
   choices and Daniel J. Bernstein attribution.
-- **BearSSL 0.6**: unchanged `ec_c25519_m15.c`, `ccopy.c` and build headers
+- **BearSSL 0.6**: unchanged m15, HMAC_DRBG, HMAC, SHA-256, codec sources and build headers
   from the [official release archive](https://bearssl.org/bearssl-0.6.tar.gz).
   Thomas Pornin's MIT license is retained in `feasibility/vendor/bearssl/LICENSE.txt`.
   Comparative X25519 probes and the isolated `dropbear-m15` experiment link
-  these files. The normal daemon does not link BearSSL.
+  the m15 subset. The isolated `drbgprobe` links the HMAC_DRBG subset; its
+  six known-answer checks use the public `test_HMAC_DRBG` vectors from the
+  same pinned archive. The normal daemon does not link BearSSL.
 - **ELKSWeb audit tools**: `feasibility/tools/isa-audit.py` and `test_isa_audit.py`
   copied from l00nix/ELKSWeb commit `399c79b6ef34806f2ed65bfcc976452ee687d5a8`
   on 2026-11-04, GPL-2.0; license in `feasibility/tools/COPYING`.

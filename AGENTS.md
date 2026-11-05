@@ -26,6 +26,7 @@
 - The owner clarified on 2026-11-05 that the finished SSH service must work
   on Ethernet-only computers without a serial connection. Serial entropy is
   a laboratory fixture, never a required deployment interface. Do not make
-  a companion host or extra RNG hardware a hidden runtime requirement;
-  standalone versus explicitly assisted deployment needs a clear decision.
+  companion hosts, LAN helpers and extra RNG hardware runtime requirements.
+  The owner explicitly requires independent operation after one-time secure
+  provisioning. Qualify persistent generator state and recovery before deployment.
 - Do not spawn subagents without explicit user authorization.

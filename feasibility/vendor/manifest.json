@@ -24,7 +24,7 @@
     "release": "0.6",
     "url": "https://bearssl.org/bearssl-0.6.tar.gz",
     "archive_sha256": "6705bba1714961b41a728dfc5debbe348d2966c117649392f8c8139efc83ff14",
-    "scope": "Unchanged m15 source and build headers for comparative probes only",
+    "scope": "Unchanged m15 and HMAC_DRBG/SHA-256 sources and build headers for isolated experiments only",
     "files": {
       "LICENSE.txt": "771bf18c8633ea69ec9b07d2e604c4b99b7bef41b0f5ce6385d24df4448f61ca",
       "src/ec/ec_c25519_m15.c": "1cad1e8ec560cf5e27c8b64f1c80ac944f5839b6014702e62af4cd24b6cba3b2",
@@ -43,7 +43,17 @@
       "inc/bearssl_rand.h": "968335e8a2957e5bf64cb0b6b1f916e53bc330e8c66d5f2d2f658f415a56dd44",
       "inc/bearssl_ec.h": "3ee566b317361828cce70a96ce22d34d865b8dea73e65de55a6f511076bab766",
       "inc/bearssl_ssl.h": "52ea66d52eac903661865d99a05b5621e743a4acb227d7faf154bb5ce1ea48f3",
-      "inc/bearssl_hmac.h": "a40c14a7a71d5b4fa21f8485d7ad3975d3a37b9cd8b9f72cd0fa032af8105614"
+      "inc/bearssl_hmac.h": "a40c14a7a71d5b4fa21f8485d7ad3975d3a37b9cd8b9f72cd0fa032af8105614",
+      "src/rand/hmac_drbg.c": "f2e1974ee32a591ec8ca4b9194d8ec4fd624549ef688f233bef79634a86bea1b",
+      "src/mac/hmac.c": "2c10c0e19dbfc168acd8493e555b0fdbcca37491cde049007d62bdae6f9ef4ee",
+      "src/hash/sha2small.c": "9e54f88610a5cc3adc92ab5a91cd21989695566d792a439c84ff176e5c6c0b0f",
+      "src/codec/dec32be.c": "ebd7bf469655a9e4de4b3d1d01d4c54f19117def3e3b918242629c150979bd9c",
+      "src/codec/enc32be.c": "8090b5bd6959586e769814e9d3698ac1c454e31ee4dfd5a2b2eb95a805063ae4"
+    },
+    "test_vector_source": {
+      "file": "test/test_crypto.c",
+      "sha256": "e92bb42d050f8b8adcf6c9109870592e25f645040e7d1583becc6ef91d9975c3",
+      "function": "test_HMAC_DRBG"
     }
   }
 }

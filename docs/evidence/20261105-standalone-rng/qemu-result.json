@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "cpu": "486",
+  "image_sha256": "2302b8604974a0ace258f5a651cf04cad1b36c5b59fdf218f1024b254f18812d",
+  "real_hardware": false,
+  "production_crypto_selected": false,
+  "cases": {
+    "drbgprobe": {
+      "passed": true,
+      "checks": 6,
+      "host_seconds": 0.382,
+      "vector_seconds": {}
+    }
+  },
+  "drbgprobe_sha256": "d1cf474d3862840fa2446f948af1238849b5712c6725c93d444022e453b53207",
+  "drbg_context_bytes": 132,
+  "original_image_unchanged": true
+}

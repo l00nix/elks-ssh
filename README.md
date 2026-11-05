@@ -17,9 +17,12 @@ production entropy, interactive sessions and original 8086/8088 execution
 remain unvalidated. No SSH listener is running on physical machines.
 
 The finished service targets **Ethernet-only machines with no serial cable**.
-Serial entropy is a laboratory fixture. A secure standalone or explicitly
-LAN-assisted randomness design remains unresolved; see the
-[deployment requirements](docs/RNG-DEPLOYMENT.md).
+It must operate independently after one-time secure provisioning, with no
+companion host or LAN helper. Serial entropy is a laboratory fixture. The
+standalone randomness implementation remains unresolved; see the
+[deployment requirements](docs/RNG-DEPLOYMENT.md). An isolated HMAC_DRBG probe
+passes upstream vectors in ELKS/QEMU and the static 8086 audit; persistent state
+and restart safety remain unimplemented.
 
 ## Planned suite
 
@@ -52,9 +55,11 @@ See [the architecture comparison](docs/DESIGN.md).
 The owner has authorized PPC SSH testing and client screenshots. Hardware
 deployment still depends on an appropriate entropy source and a validated
 candidate. Preserve other projects' tests and kernel/firmware. The owner has
-made both machines available again. Current entropy testing uses the PPC with
-Ethernet control and a dedicated serial cable; the HP remains on its serial
-console with networking stopped. See [HP hardware progress](docs/HP200LX-PROGRESS.md).
+made both machines available again. The PPC serial entropy fixture is stopped;
+independent operation is now the priority. The HP remains on its serial
+console with networking stopped. Its tests passed crypto probes and daemon
+loading, then refused missing randomness; no HP SSH login has succeeded.
+See [HP hardware progress](docs/HP200LX-PROGRESS.md).
 
 ## Build and test
 

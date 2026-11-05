@@ -1,0 +1,3 @@
+HMAC_DRBG public vectors; context=144 bytes
+OBSERVATION copied state repeats output; persistence/fork safety untested
+RESULT PASS checks=6 failures=0
