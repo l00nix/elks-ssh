@@ -18,7 +18,7 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def boot(disk, output, setup, command, pause=0, source=None):
+def boot(disk, output, setup, command, pause=0, source=None, secondary_disk=None):
     output.mkdir(parents=True, exist_ok=True)
     transcript = bytearray()
     with tempfile.TemporaryDirectory(prefix='esh-rng-') as directory:
@@ -30,7 +30,9 @@ def boot(disk, output, setup, command, pause=0, source=None):
                 '-display', 'none', '-monitor', 'none', '-nic', 'none',
                 '-serial', 'unix:%s,server=on,wait=off' % serial,
                 '-drive', 'file=%s,format=raw,if=ide,cache=writethrough,werror=report,rerror=report' % (source or disk),
-                '-boot', 'c'], stdout=log, stderr=log)
+                '-boot', 'c',
+                *(['-drive', 'file=%s,format=raw,if=ide,index=1,cache=writethrough' % secondary_disk]
+                  if secondary_disk is not None else [])], stdout=log, stderr=log)
             try:
                 end = time.monotonic()+10
                 while not serial.exists():

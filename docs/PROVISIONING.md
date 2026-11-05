@@ -88,8 +88,58 @@ Evidence: [host tests](evidence/20261105-provisioning/host-tests.txt),
 [QEMU results](evidence/20261105-provisioning/qemu-result.json), and
 [source identities](evidence/20261105-provisioning/sources.json).
 
-Next hardware step requires an offline copy of the disposable PicoMEM HDD
-image on the installation host. Preserve the interrupted original. First test
-the offline recovery workflow with public fixtures; never apply the current
-byte-printing probe to a secret state bundle. Image installation, filesystem
-checks, non-disclosing target validation and SSH integration remain open.
+## PPC offline recovery image prepared
+
+The owner supplied an offline copy named `ssh2.img` while retaining the original
+on PicoMEM. Its 67,107,840 bytes contain the expected generation-three public
+record and stale lock. The image SHA-256 is
+`13fe346b6ca0a4f877c6c925051e4c433e2a899bcd8522e136a5d2fffd2df508`.
+The input remains unchanged. No connection or write to the running PPC was
+needed to prepare its replacement.
+
+The [public-fixture preparation tool](../experimental/persistent-entropy/prepare_ppc_recovery.py)
+checks an unmounted scratch copy with ELKS `fsck -fv /dev/hdb` from a separate
+QEMU boot disk. It requires the known public state, empty lock, private directory
+and state permissions, root ownership, and the exact audited probe hash. It
+then proves refusal on a separate unrecovered boot copy, initializes replacement
+state from the public input `bytes(reversed(range(48)))` with BearSSL, flushes
+and verifies the record before removing the stale lock, and adds a `RECOVERY`
+marker. It is deliberately unsuitable for installing secret material.
+
+Both unmounted filesystem checks pass with exit zero and leave their targets
+unchanged. Recovered scratch boots return the first and second replacement
+vectors in order, with complete state matching the independent reference.
+The kernel, first boot block, hardware boot options, networking configuration
+and probe binary were separately compared byte-for-byte and remain unchanged.
+Only QEMU scratch copies disable networking and select the serial console.
+
+The deliverable **`sshrec.img`** remains at generation zero; all boot tests used
+separate copies. Its SHA-256 is
+`4c9f4b25e6c80d5e6ef6df3f4540cc6fb662a039f2962145a4033cc5d12688f4`.
+Network autostart and the working IRQ 5 NE2000 settings are retained. The owner
+has been asked to copy it to the PicoMEM HDD-image folder without overwriting
+`ssh2.img`, select it as the boot image, and report when ELKS is reachable.
+**Physical recovery boot is pending.** There is no SSH listener or real key.
+
+Evidence: [image verification and identities](evidence/20261105-ppc-recovery-image/result.json),
+[source filesystem check](evidence/20261105-ppc-recovery-image/source-fsck/serial.txt),
+[unrecovered refusal](evidence/20261105-ppc-recovery-image/unrecovered/serial.txt),
+[recovered filesystem check](evidence/20261105-ppc-recovery-image/recovered-fsck/serial.txt),
+[first output](evidence/20261105-ppc-recovery-image/first-boot/serial.txt),
+[restart](evidence/20261105-ppc-recovery-image/restart/serial.txt), and
+[source hashes](evidence/20261105-ppc-recovery-image/sources.json).
+
+Reproduce with a new output directory:
+
+```sh
+python3 experimental/persistent-entropy/prepare_ppc_recovery.py \
+  --image /path/to/offline/ssh2.img \
+  --checker /path/to/hd32-minix14.img --mfs feasibility/build/mfs \
+  --helper feasibility/build/host-seed/seed-record \
+  --out feasibility/test-output/ppc-recovery-new
+```
+
+Never apply the byte-printing probe to a secret state bundle. A production
+installer, non-disclosing target validation, broader storage qualification and
+SSH integration remain open. The public preparation script is a reproducible
+hardware test fixture, not a general-purpose filesystem repair tool.

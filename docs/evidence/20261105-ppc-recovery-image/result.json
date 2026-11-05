@@ -1,0 +1,74 @@
+{
+  "status": "passed",
+  "source_sha256": "13fe346b6ca0a4f877c6c925051e4c433e2a899bcd8522e136a5d2fffd2df508",
+  "source_bytes": 67107840,
+  "checker_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+  "public_test_data_only": true,
+  "ssh_ready": false,
+  "cpu": "486",
+  "disk_cache": "writethrough",
+  "source_fsck": {
+    "outputs": [],
+    "refused": false,
+    "exit_code": 0,
+    "stopped_at": null,
+    "contention_refused": false,
+    "failed_assertion": false,
+    "unmounted_target_unchanged": true
+  },
+  "unrecovered": {
+    "outputs": [],
+    "refused": true,
+    "exit_code": 1,
+    "stopped_at": null,
+    "contention_refused": false,
+    "failed_assertion": false
+  },
+  "recovered_fsck": {
+    "outputs": [],
+    "refused": false,
+    "exit_code": 0,
+    "stopped_at": null,
+    "contention_refused": false,
+    "failed_assertion": false,
+    "unmounted_target_unchanged": true
+  },
+  "first-boot": {
+    "outputs": [
+      "97f6d8d9192ba291fb8c85b03d48da27ac7180e08b9e00ca9ab0a33f53d78210"
+    ],
+    "refused": false,
+    "exit_code": 0,
+    "stopped_at": null,
+    "contention_refused": false,
+    "failed_assertion": false
+  },
+  "restart": {
+    "outputs": [
+      "506b2d4c4aaae35c6f1990e8f4b4bf031345ccebfdb5be6dc71891afa0313256"
+    ],
+    "refused": false,
+    "exit_code": 0,
+    "stopped_at": null,
+    "contention_refused": false,
+    "failed_assertion": false
+  },
+  "output_image": "sshrec.img",
+  "output_sha256": "4c9f4b25e6c80d5e6ef6df3f4540cc6fb662a039f2962145a4033cc5d12688f4",
+  "output_bytes": 67107840,
+  "hardware_generation": 0,
+  "hardware_bootopts_preserved": true,
+  "probe_sha256": "fd1134ac2356102187ede2f1f9d1e818c945424c85ed96d75a0c93f69e40edb2",
+  "expected_first_public_output": "97f6d8d9192ba291fb8c85b03d48da27ac7180e08b9e00ca9ab0a33f53d78210",
+  "expected_second_public_output": "506b2d4c4aaae35c6f1990e8f4b4bf031345ccebfdb5be6dc71891afa0313256",
+  "source_unchanged": true,
+  "checker_unchanged": true,
+  "preserved_files_sha256": {
+    "/linux": "6763b9c6f062cde5cf152722c74e08eaf7474e4b92b31e225bd4959124480d23",
+    "/bootopts": "1769a0a3cf90f8dfed2c396a008ddb697114ca7216853fd2faddaabf22726e97",
+    "/etc/rc.sys": "34153aeb6f2f566b75c2acc2327d5d2b72d0791cfae30b8afe90b6cf10991c52",
+    "/etc/net.cfg": "7cc42408da4eea7b434e293894aa5554fd89a8e1506a7ae7a1b71f5640154724",
+    "/root/rngtest/rngprobe": "fd1134ac2356102187ede2f1f9d1e818c945424c85ed96d75a0c93f69e40edb2"
+  },
+  "boot_block_preserved": true
+}

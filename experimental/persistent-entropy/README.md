@@ -59,3 +59,9 @@ BearSSL initializer and private bundle creator, ten host failure/behavior tests,
 and a five-boot public QEMU recovery lifecycle. It does not install secret
 material on ELKS or connect the adapter to SSH. Public `probe.c` must never
 consume a real secret bundle because it prints generated output.
+
+`prepare_ppc_recovery.py` prepares a separate public-fixture recovery image from
+the owner's known interrupted PPC image. It checks the unmounted filesystem,
+replaces public state offline, and verifies refusal/recovery/reboot in QEMU
+before emitting `sshrec.img`. The original and deliverable are never booted by
+the harness. It is not a secret-state installer or an SSH deployment image.
