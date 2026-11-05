@@ -24,7 +24,9 @@ QEMU test harness, then separately decide whether the first hardware candidate
 requires that source or can support a reviewed standalone state design. An
 emulator-fed source would prove interoperability only for that assisted setup.
 It would not establish standalone hardware security. A QEMU-only adapter now
-exists for development; no provider is selected or implemented for release.
+exists for development. A separate controlled-cable hardware prototype is now
+implemented and tested on the PPC; it is not qualified for release. See the
+[serial entropy checkpoint](SERIAL-ENTROPY.md).
 
 Host keys establish identity; they do not replace session entropy. Never use a
 host key, clock, configuration file, fixed seed or copied image as the sole
@@ -78,8 +80,8 @@ from a passing emulator test.
 
 The first hardware design should use a fresh trusted-host source over a
 dedicated existing device interface. A qualified hardware RNG can later supply
-the same consumer contract. This remains a design target, not an implemented
-provider. On the HP, the known serial port is currently the console; extra
+the same consumer contract. The separate serial prototype implements part of this
+contract; remaining qualification gaps are listed below. On the HP, the known serial port is currently the console; extra
 device nodes do not prove extra hardware. A dedicated link or an explicit
 console handoff, plus a separate SSH client transport, must be established
 before installing a candidate.
@@ -110,10 +112,12 @@ Qualification must cover these failures before hardware SSH deployment:
 - Failure leaves no unintended listener, blocked child or leaked descriptor;
   successful recovery still requires a qualified source.
 
-These are acceptance requirements, not completed tests. Existing QEMU short
-and silent-source tests exercise only part of this contract. Secure standalone
-operation remains a separate milestone with the persistence and rollback
-requirements above.
+These are acceptance requirements. The [serial checkpoint](SERIAL-ENTROPY.md)
+records completed framing, fork, timeout, replay and permission tests. Physical
+USB disconnect/reconnect, host suspend and target reboot remain untested; no
+hardware SSH authentication has been attempted with this adapter. Secure
+standalone operation remains a separate milestone with the persistence and
+rollback requirements above.
 
 ## Exhaustive short-response baseline — 2026-11-05
 

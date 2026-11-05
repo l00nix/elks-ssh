@@ -1,0 +1,12 @@
+{
+  "eprobe": {
+    "sha256": "b265b0b92736ca01e1404e6366a391e5e57622688c7d7521e51c30f73a06eb40",
+    "bytes": 4760,
+    "readback_verified": true
+  },
+  "sshserial": {
+    "sha256": "862d8d6708ce6a003c98948ff019c43ce309e1ea389f2e5c4f8c91eb8f2dfa9a",
+    "bytes": 109496,
+    "readback_verified": true
+  }
+}

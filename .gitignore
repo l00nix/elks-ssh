@@ -32,3 +32,7 @@ id_*
 /dropbear-audit.map
 /dropbear-audit.dis
 /dropbear-audit.json
+/dropbear-serial
+/dropbear-serial.elf
+/dropbear-serial-qemu
+/dropbear-serial-qemu.elf

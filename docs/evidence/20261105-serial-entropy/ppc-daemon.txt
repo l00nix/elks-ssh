@@ -1,0 +1,44 @@
+chmod 600 /root/ssh1105/esession /root/ssh1105/ecounter
+# chmod 600 /dev/ttyS0
+# /root/ssh1105/sshserial -F -r /root/no-key; echo START=$?
+[212] Jan 01 02:41:17 Failed loading /root/no-key
+[212] Jan 01 02:41:17 Early exit: No hostkeys available. 'dropbear -R' may be useful or run dropbearkey.
+START=1
+# /root/ssh1105/sshserial -F -r /root/no-key; echo RETRY=$?
+[213] Jan 01 02:41:25 Early exit: Failure reading dedicated serial entropy
+RETRY=1
+# ps
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4030  12944 /bin/init 
+    6     6    1 root    S   0  1176 13130  66608 -/bin/sh 
+  208    11    1 root    R   0     0  1198   8944 telnetd 
+  209   209   p0 root    S   0  1310 13070  66688 -/bin/sh 
+    9     9    1 root    S   4 12286 24506  82816 ktcp -b -p ne0 
+   11    11    1 root    S   0     0  1230   8944 telnetd 
+   13    13    1 root    S   0     0  7324  25840 ftpd -d -P 49152:49159 
+  214   209   p0 root    R  15    50  2094   8976 ps 
+# netstat
+----- Received ---------  ----- Sent -------------
+TCP Packets         7085  TCP Packets         7266
+TCP Dropped           17  TCP Retransmits        9
+TCP Bad Checksum       0  TCP Retrans Memory     0
+IP Packets         10319  IP Packets         10509
+IP Bad Checksum        0  IP Bad Headers         0
+UDP Packets         3236  UDP Packets            2
+UDP Dropped            0  UDP No Port         3232
+ICMP Packets           0  ICMP Packets        3232
+SLIP Packets           0  SLIP Packets           0
+ETH Packets        32355  ETH Packets        10527
+ARP Reqs Sent          5  ARP Replies Rcvd       5
+ARP Reqs Rcvd      16208  ARP Replies Sent      12
+ARP Cache Adds         5
+
+ No        State    RTT lport        raddress  rport
+-----------------------------------------------------
+  1  ESTABLISHED   62ms  1027         0.0.0.0      2
+  2  ESTABLISHED   62ms    23        10.0.0.8  55686
+  3       LISTEN   62ms    21         0.0.0.0      0
+  4       LISTEN   62ms    23         0.0.0.0      0
+# chmod 644 /dev/ttyS0
+# rm -f /root/ssh1105/ecounter
+# 

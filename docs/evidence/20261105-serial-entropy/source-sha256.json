@@ -1,0 +1,16 @@
+{
+  "experimental/serial-entropy/LICENSE": "c20c083a54285e0b6293ddf3779c8d7617d8f57c9040f3caf0168835ad1f6f74",
+  "experimental/serial-entropy/Makefile": "2393cefd0757e2c7133b6510e8814455b9329407a4d991d5f98eb65f6138dd4b",
+  "experimental/serial-entropy/README.md": "c7126fec83022b977cec5f60df465909e5abb2eb6cb3d471aa3d2bf802e970f3",
+  "experimental/serial-entropy/build-probe.sh": "c83b28057265ffc5d23cdc9c9aa5f6180cd6e5e2df3ca91f08a254026c41427b",
+  "experimental/serial-entropy/build-server.sh": "8d2b69e431dadbe53ddc0132ce7b7752a912c382b954ed712094f949d6d5282b",
+  "experimental/serial-entropy/entropy.c": "ffe402efb2862239da81ae91373584604695aa137422a6359258d3ed759847c8",
+  "experimental/serial-entropy/entropy.h": "5352efb96ef289ab9349da34954d67bfd04f1d76bf2a5d929815770b1ee6115a",
+  "experimental/serial-entropy/hardware_probe.py": "b84273a1ca50e8fb2592f6973e909730c43cea8d53e7f3169bbcd92e4817c8b9",
+  "experimental/serial-entropy/probe.c": "e1cb36168cf72fb97f68411b6dfed35fed49141da9066e3f76ccd9037ee3e9a4",
+  "experimental/serial-entropy/provider.py": "9a423b857645f8dfe3afb04ab47262a8a3dbda3fb71d85201461fa867acf149e",
+  "experimental/serial-entropy/qemu_probe.py": "84e9013efcddbb1fde0bb47fc3bf39ba2e1a44c759a8980f6ac348961a6a2de7",
+  "experimental/serial-entropy/run_matrix.py": "3eee7bda6ea8c2882d16ceee61eab47d2c0a3c3ab6a8b9080c31946f8dcc560b",
+  "experimental/serial-entropy/test_provider.py": "8a59805f99657ea0264c72c0906b9f23a4832b1ff9498c4fdab5fdd80341dc8a",
+  "src/dbrandom.c": "d01ae80c021dadd549159479dad37b0438406918d4e72ce9d89a4346136f2e4d"
+}

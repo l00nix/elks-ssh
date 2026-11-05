@@ -47,18 +47,24 @@ a release candidate.
    rekeying and resource pressure; samples are not peak bounds.
 4. Qualify the production entropy source through an existing ELKS interface,
    including missing/short input, disconnect and recovery behavior.
-5. Continue the authorized HP 200LX tests; arrange PPC use again with the owner
-   after their PicoMEM work and when a hardware SSH candidate is ready. File
-   transfer and key-generation utilities follow the core service.
+5. Continue on the available PPC with its dedicated serial entropy link and
+   Ethernet control. Keep the HP on console until separate networking and its
+   memory cost are resolved. File transfer and key-generation utilities follow
+   the core service.
 
 PPC testing is now authorized, including [Mac and Windows SSH captures](PPC-CAPTURE.md)
 of `ps` and `cat /etc/issue`. Readiness checks found no installed SSH service or
 random device; those screenshots remain pending a hardware-appropriate entropy
 path and candidate. The owner has since made the HP 200LX available on serial;
-see [hardware progress](HP200LX-PROGRESS.md). The PPC is currently left to the
-owner's PicoMEM work.
+see [hardware progress](HP200LX-PROGRESS.md). The PPC was subsequently made available again.
 
 The owner made the PPC available again on 2026-11-05 for the
 [vanilla ELKS smoke test](PPC-VANILLA.md). Both daemons load alone and refuse
 missing entropy; four X25519 RFC vectors pass. Complete hardware sessions and
 the rest of the hardware crypto suite remain unvalidated.
+
+The [serial entropy checkpoint](SERIAL-ENTROPY.md) implements an isolated
+controlled-cable provider. Software fault matrices and PPC daemon startup pass.
+Next: physical USB unplug/reconnect and fresh-session recovery, followed by
+remaining lifecycle qualification, secure key provisioning and a measured PPC
+SSH session. No hardware listener or automatic service is installed.

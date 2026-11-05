@@ -47,8 +47,9 @@ See [the architecture comparison](docs/DESIGN.md).
 The owner has authorized PPC SSH testing and client screenshots. Hardware
 deployment still depends on an appropriate entropy source and a validated
 candidate. Preserve other projects' tests and kernel/firmware. The owner has
-now made the HP 200LX available for serial testing while they finish PicoMEM
-work on the PPC. See [HP hardware progress](docs/HP200LX-PROGRESS.md).
+made both machines available again. Current entropy testing uses the PPC with
+Ethernet control and a dedicated serial cable; the HP remains on its serial
+console with networking stopped. See [HP hardware progress](docs/HP200LX-PROGRESS.md).
 
 ## Build and test
 
@@ -159,3 +160,9 @@ On the [PPC with vanilla ELKS](docs/PPC-VANILLA.md), four X25519 RFC vectors
 pass and both daemon variants load when tested alone, then correctly refuse
 missing secure randomness. Networking autostart is configured; no hardware SSH
 login has been established.
+
+The [dedicated serial entropy prototype](docs/SERIAL-ENTROPY.md) now passes
+70 QEMU probe cases, 12 daemon startup cases and 10 physical PPC probe cases.
+The PPC daemon accepts a fresh seed and reaches host-key loading; relaunch
+without a new bootstrap is refused. Physical unplug/reconnect qualification and
+hardware SSH login remain pending. The ordinary build is unchanged.

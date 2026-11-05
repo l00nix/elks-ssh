@@ -1,0 +1,86 @@
+{
+  "cases": [
+    {
+      "case": "silent",
+      "passed": true,
+      "sequences": [
+        1
+      ],
+      "host_seconds": 10.301
+    },
+    {
+      "case": "short-seed",
+      "passed": true,
+      "sequences": [
+        1
+      ],
+      "host_seconds": 11.309
+    },
+    {
+      "case": "short-crc",
+      "passed": true,
+      "sequences": [
+        1
+      ],
+      "host_seconds": 11.352
+    },
+    {
+      "case": "stale-session",
+      "passed": true,
+      "sequences": [
+        1
+      ],
+      "host_seconds": 1.201
+    },
+    {
+      "case": "stale-counter",
+      "passed": true,
+      "sequences": [
+        1
+      ],
+      "host_seconds": 1.265
+    },
+    {
+      "case": "corrupt",
+      "passed": true,
+      "sequences": [
+        1
+      ],
+      "host_seconds": 1.25
+    },
+    {
+      "case": "replay",
+      "passed": true,
+      "sequences": [
+        1,
+        2
+      ],
+      "host_seconds": 1.345
+    },
+    {
+      "case": "bad-device",
+      "passed": true,
+      "sequences": [],
+      "host_seconds": 0.977
+    },
+    {
+      "case": "healthy",
+      "passed": true,
+      "sequences": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "host_seconds": 2.642
+    },
+    {
+      "case": "busy",
+      "passed": true,
+      "sequences": [],
+      "host_seconds": 1.674
+    }
+  ],
+  "real_hardware": true,
+  "ssh_login": false
+}
