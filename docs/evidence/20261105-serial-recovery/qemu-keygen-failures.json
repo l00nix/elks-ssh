@@ -1,0 +1,215 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "case": "short-0",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 0,
+        "daemon": false,
+        "keygen": true,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "7672e5569d04d04c05f7cc3cbe3a56df18000076102bba08f1f8c7243947a6f6",
+        "real_hardware": false,
+        "failure_created_no_key": true,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-55",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 55,
+        "daemon": false,
+        "keygen": true,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "7672e5569d04d04c05f7cc3cbe3a56df18000076102bba08f1f8c7243947a6f6",
+        "real_hardware": false,
+        "failure_created_no_key": true,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-59",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 59,
+        "daemon": false,
+        "keygen": true,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "7672e5569d04d04c05f7cc3cbe3a56df18000076102bba08f1f8c7243947a6f6",
+        "real_hardware": false,
+        "failure_created_no_key": true,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "stale-session",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "stale-session",
+        "short_bytes": null,
+        "daemon": false,
+        "keygen": true,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "7672e5569d04d04c05f7cc3cbe3a56df18000076102bba08f1f8c7243947a6f6",
+        "real_hardware": false,
+        "failure_created_no_key": true,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "stale-counter",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "stale-counter",
+        "short_bytes": null,
+        "daemon": false,
+        "keygen": true,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "7672e5569d04d04c05f7cc3cbe3a56df18000076102bba08f1f8c7243947a6f6",
+        "real_hardware": false,
+        "failure_created_no_key": true,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "corrupt",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "corrupt",
+        "short_bytes": null,
+        "daemon": false,
+        "keygen": true,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "7672e5569d04d04c05f7cc3cbe3a56df18000076102bba08f1f8c7243947a6f6",
+        "real_hardware": false,
+        "failure_created_no_key": true,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "source-failure",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "source-failure",
+        "short_bytes": null,
+        "daemon": false,
+        "keygen": true,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "7672e5569d04d04c05f7cc3cbe3a56df18000076102bba08f1f8c7243947a6f6",
+        "real_hardware": false,
+        "failure_created_no_key": true,
+        "sequences": [],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "bad-counter",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "bad-counter",
+        "short_bytes": null,
+        "daemon": false,
+        "keygen": true,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "7672e5569d04d04c05f7cc3cbe3a56df18000076102bba08f1f8c7243947a6f6",
+        "real_hardware": false,
+        "failure_created_no_key": true,
+        "sequences": [],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "bad-mode",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "bad-mode",
+        "short_bytes": null,
+        "daemon": false,
+        "keygen": true,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "7672e5569d04d04c05f7cc3cbe3a56df18000076102bba08f1f8c7243947a6f6",
+        "real_hardware": false,
+        "failure_created_no_key": true,
+        "sequences": [],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "busy",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "busy",
+        "short_bytes": null,
+        "daemon": false,
+        "keygen": true,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "7672e5569d04d04c05f7cc3cbe3a56df18000076102bba08f1f8c7243947a6f6",
+        "real_hardware": false,
+        "failure_created_no_key": true,
+        "sequences": [],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "bad-device",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "bad-device",
+        "short_bytes": null,
+        "daemon": false,
+        "keygen": true,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "7672e5569d04d04c05f7cc3cbe3a56df18000076102bba08f1f8c7243947a6f6",
+        "real_hardware": false,
+        "failure_created_no_key": true,
+        "sequences": [],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    }
+  ]
+}

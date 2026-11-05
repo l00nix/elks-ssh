@@ -17,6 +17,9 @@
 #ifndef ELKSSH_ENTROPY_DEVICE
 #define ELKSSH_ENTROPY_DEVICE "/dev/ttyS0"
 #endif
+#ifndef ELKSSH_ENTROPY_BAUD
+#define ELKSSH_ENTROPY_BAUD B1200
+#endif
 #ifndef ELKSSH_ENTROPY_DIR
 #define ELKSSH_ENTROPY_DIR "/root/ssh1105"
 #endif
@@ -24,6 +27,13 @@
 #define COUNTER ELKSSH_ENTROPY_DIR "/ecounter"
 static unsigned char session[16];
 static int ready, poisoned;
+/* Diagnostic builds log only the failed operation, never frame/seed bytes. */
+#ifdef ELKSSH_ENTROPY_DIAGNOSTIC
+static unsigned diagnostic_received;
+#define STAGE(n) stage=(n)
+#else
+#define STAGE(n) ((void)0)
+#endif
 static void wipe(void *p, unsigned n) {
     volatile unsigned char *v = p;
     while (n--) *v++ = 0;
@@ -57,6 +67,9 @@ static int exact(int fd, unsigned char *p, unsigned len, int writing, time_t end
         n = writing ? write(fd,p,len) : read(fd,p,len);
         if (n < 0 && (errno == EINTR || errno == EAGAIN)) continue;
         if (n <= 0) { errno = EIO; return -1; }
+#ifdef ELKSSH_ENTROPY_DIAGNOSTIC
+        if (!writing) diagnostic_received+=n;
+#endif
         p += n; len -= n;
     }
     return 0;
@@ -68,15 +81,21 @@ ssize_t elkssh_serial_getrandom(void *out, size_t size, unsigned int flags) {
     uint32_t seq;
     int fd=-1, file=-1, n, saved=EIO, changed=0;
     time_t end;
+#ifdef ELKSSH_ENTROPY_DIAGNOSTIC
+    unsigned stage=1;
+    diagnostic_received=0;
+#endif
     (void)flags;
     if (poisoned || size != 32) { errno=EIO; return -1; }
     /* Serial O_EXCL serializes cooperating forked consumers. Administrative
      * ownership must also exclude consoles and other nonexclusive openers. */
     fd=open(ELKSSH_ENTROPY_DEVICE,O_RDWR|O_NOCTTY|O_NONBLOCK|O_EXCL);
     if (fd<0) goto fail;
+    STAGE(2);
     if (fstat(fd,&device)<0 || !S_ISCHR(device.st_mode) || device.st_uid!=0
             || (device.st_mode&077)!=0) goto fail;
     if (!ready) {
+        STAGE(3);
         file=open(SESSION,O_RDONLY);
         if (file<0 || !protected_file(file,16) || read(file,session,16)!=16) goto fail;
         close(file); file=-1;
@@ -84,6 +103,7 @@ ssize_t elkssh_serial_getrandom(void *out, size_t size, unsigned int flags) {
         sync();
         ready=1;
     }
+    STAGE(4);
     file=open(COUNTER,O_RDWR);
     if (file<0 || !protected_file(file,20) || read(file,state,20)!=20) goto fail;
     if (memcmp(state,session,16)) goto fail;
@@ -95,14 +115,16 @@ ssize_t elkssh_serial_getrandom(void *out, size_t size, unsigned int flags) {
      * power-loss recovery is promised: every launch needs a fresh host session. */
     if (lseek(file,16,SEEK_SET)!=16 || write(file,state+16,4)!=4) goto fail;
     close(file); file=-1;
+    STAGE(5);
     if (tcgetattr(fd,&previous)<0) goto fail;
     tty=previous;
     tty.c_iflag=0; tty.c_oflag=0; tty.c_lflag=0;
     tty.c_cflag=CS8|CLOCAL|CREAD;
     tty.c_cc[VMIN]=1; tty.c_cc[VTIME]=0;
-    if (cfsetispeed(&tty,B9600)<0 || cfsetospeed(&tty,B9600)<0) goto fail;
+    if (cfsetispeed(&tty,ELKSSH_ENTROPY_BAUD)<0 || cfsetospeed(&tty,ELKSSH_ENTROPY_BAUD)<0) goto fail;
     if (tcsetattr(fd,TCSANOW,&tty)<0) goto fail;
     changed=1;
+    STAGE(6);
     for (n=0;n<8;n++) {
         int count=read(fd,response,sizeof(response));
         if (!count || (count<0 && errno==EAGAIN)) break;
@@ -111,10 +133,16 @@ ssize_t elkssh_serial_getrandom(void *out, size_t size, unsigned int flags) {
     if (n==8) goto fail;
     memcpy(request,"ESQ1",4); memcpy(request+4,state,20);
     end=time(NULL)+10;
-    if (exact(fd,request,sizeof(request),1,end)<0 || exact(fd,response,sizeof(response),0,end)<0) goto fail;
+    STAGE(7);
+    if (exact(fd,request,sizeof(request),1,end)<0) goto fail;
+    STAGE(8);
+    if (exact(fd,response,sizeof(response),0,end)<0) goto fail;
+    STAGE(9);
     if (memcmp(response,"ESR1",4) || memcmp(response+4,state,20)) goto fail;
+    STAGE(10);
     if (checksum(response,56)!=(((uint32_t)response[56]<<24)|((uint32_t)response[57]<<16)|((uint32_t)response[58]<<8)|response[59])) goto fail;
     /* Restore settings before exposing any seed bytes to the caller. */
+    STAGE(11);
     if (tcsetattr(fd,TCSANOW,&previous)<0) goto fail;
     changed=0;
     memcpy(out,response+24,32);
@@ -123,6 +151,9 @@ ssize_t elkssh_serial_getrandom(void *out, size_t size, unsigned int flags) {
     return 32;
 fail:
     if (errno) saved=errno;
+#ifdef ELKSSH_ENTROPY_DIAGNOSTIC
+    fprintf(stderr,"Serial entropy diagnostic: stage %u refused, received %u bytes\n",stage,diagnostic_received);
+#endif
     poisoned=1;
     if (file>=0) close(file);
     if (changed) tcsetattr(fd,TCSANOW,&previous);

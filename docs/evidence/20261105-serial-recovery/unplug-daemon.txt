@@ -1,0 +1,4 @@
+/root/ssh1105/sshserial -F -r /root/no-key; echo CUT=$?
+[227] Jan 01 02:49:17 Early exit: Failure reading dedicated serial entropy
+CUT=1
+# 

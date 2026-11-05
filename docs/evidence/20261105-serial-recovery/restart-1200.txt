@@ -1,0 +1,123 @@
+ls -l /dev/ttyS0; echo RESTART1=$?
+crw-------  1 root     root       4,  64  Sep  6  2026 ttyS0
+RESTART1=0
+# chmod 600 /dev/ttyS0; echo RESTART2=$?
+RESTART2=0
+# chmod 600 /root/ssh1105/esession; echo RESTART3=$?
+RESTART3=0
+# chmod 600 /root/ssh1105/ecounter; echo RESTART4=$?
+RESTART4=0
+# /root/ssh1105/sshdiag -F -r /root/no-key; echo RESTART5=$?
+[351] Jan 01 03:17:02 Failed loading /root/no-key
+[351] Jan 01 03:17:02 Early exit: No hostkeys available. 'dropbear -R' may be useful or run dropbearkey.
+RESTART5=1
+# chmod 600 /root/ssh1105/esession; echo RESTART6=$?
+RESTART6=0
+# chmod 600 /root/ssh1105/ecounter; echo RESTART7=$?
+RESTART7=0
+# /root/ssh1105/sshdiag -F -r /root/no-key; echo RESTART8=$?
+[355] Jan 01 03:17:16 Failed loading /root/no-key
+[355] Jan 01 03:17:16 Early exit: No hostkeys available. 'dropbear -R' may be useful or run dropbearkey.
+RESTART8=1
+# chmod 600 /root/ssh1105/esession; echo RESTART9=$?
+RESTART9=0
+# chmod 600 /root/ssh1105/ecounter; echo RESTART10=$?
+RESTART10=0
+# /root/ssh1105/sshdiag -F -r /root/no-key; echo RESTART11=$?
+[359] Jan 01 03:17:30 Failed loading /root/no-key
+[359] Jan 01 03:17:31 Early exit: No hostkeys available. 'dropbear -R' may be useful or run dropbearkey.
+RESTART11=1
+# chmod 600 /root/ssh1105/esession; echo RESTART12=$?
+RESTART12=0
+# chmod 600 /root/ssh1105/ecounter; echo RESTART13=$?
+RESTART13=0
+# /root/ssh1105/sshdiag -F -r /root/no-key; echo RESTART14=$?
+[363] Jan 01 03:17:45 Failed loading /root/no-key
+[363] Jan 01 03:17:45 Early exit: No hostkeys available. 'dropbear -R' may be useful or run dropbearkey.
+RESTART14=1
+# chmod 600 /root/ssh1105/esession; echo RESTART15=$?
+RESTART15=0
+# chmod 600 /root/ssh1105/ecounter; echo RESTART16=$?
+RESTART16=0
+# /root/ssh1105/sshdiag -F -r /root/no-key; echo RESTART17=$?
+[367] Jan 01 03:17:59 Failed loading /root/no-key
+[367] Jan 01 03:17:59 Early exit: No hostkeys available. 'dropbear -R' may be useful or run dropbearkey.
+RESTART17=1
+# chmod 600 /root/ssh1105/esession; echo RESTART18=$?
+RESTART18=0
+# chmod 600 /root/ssh1105/ecounter; echo RESTART19=$?
+RESTART19=0
+# /root/ssh1105/sshdiag -F -r /root/no-key; echo RESTART20=$?
+[371] Jan 01 03:18:13 Failed loading /root/no-key
+[371] Jan 01 03:18:13 Early exit: No hostkeys available. 'dropbear -R' may be useful or run dropbearkey.
+RESTART20=1
+# chmod 600 /root/ssh1105/esession; echo RESTART21=$?
+RESTART21=0
+# chmod 600 /root/ssh1105/ecounter; echo RESTART22=$?
+RESTART22=0
+# /root/ssh1105/sshdiag -F -r /root/no-key; echo RESTART23=$?
+[375] Jan 01 03:18:27 Failed loading /root/no-key
+[375] Jan 01 03:18:28 Early exit: No hostkeys available. 'dropbear -R' may be useful or run dropbearkey.
+RESTART23=1
+# chmod 600 /root/ssh1105/esession; echo RESTART24=$?
+RESTART24=0
+# chmod 600 /root/ssh1105/ecounter; echo RESTART25=$?
+RESTART25=0
+# /root/ssh1105/sshdiag -F -r /root/no-key; echo RESTART26=$?
+[379] Jan 01 03:18:42 Failed loading /root/no-key
+[379] Jan 01 03:18:42 Early exit: No hostkeys available. 'dropbear -R' may be useful or run dropbearkey.
+RESTART26=1
+# chmod 600 /root/ssh1105/esession; echo RESTART27=$?
+RESTART27=0
+# chmod 600 /root/ssh1105/ecounter; echo RESTART28=$?
+RESTART28=0
+# /root/ssh1105/sshdiag -F -r /root/no-key; echo RESTART29=$?
+[383] Jan 01 03:18:56 Failed loading /root/no-key
+[383] Jan 01 03:18:56 Early exit: No hostkeys available. 'dropbear -R' may be useful or run dropbearkey.
+RESTART29=1
+# chmod 600 /root/ssh1105/esession; echo RESTART30=$?
+RESTART30=0
+# chmod 600 /root/ssh1105/ecounter; echo RESTART31=$?
+RESTART31=0
+# /root/ssh1105/sshdiag -F -r /root/no-key; echo RESTART32=$?
+[387] Jan 01 03:19:10 Failed loading /root/no-key
+[387] Jan 01 03:19:10 Early exit: No hostkeys available. 'dropbear -R' may be useful or run dropbearkey.
+RESTART32=1
+# ps; echo RESTART33=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4030  12944 /bin/init 
+    6     6    1 root    S   0  1176 13130  66608 -/bin/sh 
+  344    11    1 root    R   0     0  1198   8944 telnetd 
+  345   345   p0 root    S   0  2846 11522  66688 -/bin/sh 
+    9     9    1 root    S  11  4654 32138  82816 ktcp -b -p ne0 
+   11    11    1 root    S   0     0  1230   8944 telnetd 
+   13    13    1 root    S   0     0  7324  25840 ftpd -d -P 49152:49159 
+  388   345   p0 root    R  11    50  2094   8976 ps 
+RESTART33=0
+# netstat; echo RESTART34=$?
+----- Received ---------  ----- Sent -------------
+TCP Packets        13581  TCP Packets        13799
+TCP Dropped           33  TCP Retransmits       20
+TCP Bad Checksum       0  TCP Retrans Memory    23
+IP Packets         17618  IP Packets         17856
+IP Bad Checksum        0  IP Bad Headers         0
+UDP Packets         4039  UDP Packets            2
+UDP Dropped            0  UDP No Port         4035
+ICMP Packets           0  ICMP Packets        4035
+SLIP Packets           0  SLIP Packets           0
+ETH Packets        45192  ETH Packets        17884
+ARP Reqs Sent          5  ARP Replies Rcvd       5
+ARP Reqs Rcvd      20294  ARP Replies Sent      22
+ARP Cache Adds         5
+
+ No        State    RTT lport        raddress  rport
+-----------------------------------------------------
+  1  ESTABLISHED   62ms  1032         0.0.0.0      2
+  2  ESTABLISHED   62ms    23        10.0.0.8  56210
+  3       LISTEN   62ms    21         0.0.0.0      0
+  4       LISTEN   62ms    23         0.0.0.0      0
+RESTART34=0
+# rm -f /root/ssh1105/esession /root/ssh1105/ecounter; echo RESTART35=$?
+RESTART35=0
+# chmod 600 /dev/ttyS0; echo RESTART36=$?
+RESTART36=0

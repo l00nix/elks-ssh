@@ -7,6 +7,7 @@ import argparse
 from contextlib import ExitStack
 import fcntl
 import hashlib
+import importlib.util
 import json
 import os
 import pty
@@ -30,7 +31,7 @@ def sha(path):
 
 
 class EntropyProvider(threading.Thread):
-    def __init__(self, path, mode, short_bytes=16):
+    def __init__(self, path, mode, short_bytes=16, framed=None):
         super().__init__(daemon=True)
         self.path, self.mode = path, mode
         self.short_bytes = short_bytes
@@ -38,6 +39,7 @@ class EntropyProvider(threading.Thread):
         self.requests = 0
         self.bytes_sent = 0
         self.error = None
+        self.framed = framed
 
     def run(self):
         try:
@@ -51,13 +53,14 @@ class EntropyProvider(threading.Thread):
                         continue
                     if not chunk: return
                     pending.extend(chunk)
-                    while len(pending) >= 2:
-                        request = bytes(pending[:2]); del pending[:2]
-                        if request != bytes([2,32]):
+                    size = 24 if self.framed else 2
+                    while len(pending) >= size:
+                        request = bytes(pending[:size]); del pending[:size]
+                        if not self.framed and request != bytes([2,32]):
                             raise RuntimeError('Unexpected entropy request framing')
                         self.requests += 1
                         if self.mode == 'silent': continue
-                        fresh = os.urandom(32)
+                        fresh = self.framed.answer(request) if self.framed else os.urandom(32)
                         if self.mode == 'short': fresh = fresh[:self.short_bytes]
                         conn.sendall(fresh)
                         self.bytes_sent += len(fresh)
@@ -68,6 +71,7 @@ class EntropyProvider(threading.Thread):
 def run(args):
     out = args.out.resolve(); out.mkdir(parents=True, exist_ok=True)
     result = {'status':'failed', 'entropy_mode':args.entropy,
+              'entropy_protocol':'serial-framed' if args.serial_entropy else 'qemu-egd',
               'server_sha256':sha(args.server), 'image_sha256':sha(args.image),
               'filesystem':args.filesystem, 'cpu':args.cpu, 'real_hardware':False, 'production_entropy':False,
               'ssh_client':subprocess.run(['ssh','-V'],capture_output=True,text=True).stderr.strip()}
@@ -88,6 +92,15 @@ def run(args):
         shutil.copyfile(args.server,temp/'sshtest');os.chmod(temp/'sshtest',0o700)
         put(temp/'sshtest','/bin/sshtest')
         authdir = '/root' if args.filesystem == 'minix' else '/etc'
+        framed = None
+        if args.serial_entropy:
+            source=Path(__file__).resolve().parents[1]/'experimental/serial-entropy/provider.py'
+            spec=importlib.util.spec_from_file_location('serial_entropy_provider',source)
+            module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+            framed=module.Provider();framed.bootstrap(temp/'entropy-bootstrap')
+            subprocess.run([str(args.mfs),str(disk),'mkdir','/root/ssh1105'],check=True)
+            for name in ['esession','ecounter']:
+                put(temp/'entropy-bootstrap'/name,'/root/ssh1105/'+name)
         # Dropbear's private Ed25519 format: SSH string algorithm, then
         # a 64-byte string containing the fresh seed followed by its public key.
         host = Ed25519PrivateKey.generate()
@@ -126,7 +139,7 @@ def run(args):
                 while not serial.exists() or not entropy.exists():
                     if proc.poll() is not None or time.monotonic()>deadline: raise RuntimeError('QEMU startup failed')
                     time.sleep(.05)
-                provider=EntropyProvider(entropy,args.entropy,args.entropy_bytes);provider.start()
+                provider=EntropyProvider(entropy,args.entropy,args.entropy_bytes,framed);provider.start()
                 with socket.socket(socket.AF_UNIX) as conn:
                     conn.connect(str(serial));conn.settimeout(.2)
                     def receive(pattern,timeout=45):
@@ -150,6 +163,10 @@ def run(args):
                             raise RuntimeError('Command failed: '+text)
                         return data
                     command('uname -a')
+                    if args.serial_entropy:
+                        command('chmod 600 /dev/ttyS1')
+                        command('chmod 700 /root/ssh1105')
+                        command('chmod 600 /root/ssh1105/esession /root/ssh1105/ecounter')
                     if args.entropy!='healthy':
                         refusal=command('sshtest -F -r '+authdir+'/hostkey',expected=1,timeout=60)
                         if b'Failure reading random device' not in refusal:raise RuntimeError('Expected entropy refusal')
@@ -391,10 +408,13 @@ if __name__=='__main__':
     p.add_argument('--screenshot',action='store_true')
     p.add_argument('--connect-timeout',type=int,default=300)
     p.add_argument('--entropy',choices=['healthy','short','silent'],default='healthy')
+    p.add_argument('--serial-entropy',action='store_true',help='Use the isolated framed serial adapter through a private QEMU socket')
     p.add_argument('--entropy-bytes',type=int,choices=range(32),default=16,
                    help='Bytes per short entropy response (0 through 31; default 16)')
     args=p.parse_args()
     if args.filesystem=='minix' and args.mfs is None: p.error('--mfs is required for MINIX')
+    if args.serial_entropy and (args.filesystem!='minix' or args.entropy!='healthy'):
+        p.error('--serial-entropy requires MINIX and healthy input; use the serial probe matrix for fault cases')
     if (args.suite or args.session_suite) and (args.filesystem!='minix' or args.entropy!='healthy'):
         p.error('Suites require --filesystem minix and healthy entropy')
     if args.kex_rejection_suite and args.entropy!='healthy':

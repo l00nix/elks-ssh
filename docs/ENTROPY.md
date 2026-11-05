@@ -1,5 +1,9 @@
 # Secure randomness: unresolved prerequisite
 
+**Deployment requirement:** Ethernet-only operation, with no serial cable.
+The [deployment design](RNG-DEPLOYMENT.md) supersedes serial qualification as
+the critical path. The serial implementation remains a laboratory fixture.
+
 The prepared ELKS tree at `e1469b64c5809c44d5c822eaeebd0e97d5996289`
 has no `getrandom` or `/dev/urandom` implementation found in the inspected
 kernel/libc/application C sources and headers. The tested image cannot open
@@ -35,11 +39,11 @@ test executables; they are not usable service keys.
 
 ## Recommended end-state direction
 
-Keep the SSH implementation independent of the entropy transport. Prefer a
-validated hardware RNG reachable through an existing ELKS device interface for
-operation without a companion computer. A trusted-host source is useful for
-interoperability development and could become an explicitly assisted deployment
-option. Neither implies new kernel or libc APIs.
+Keep the SSH implementation independent of the entropy transport. The finished
+service must work without serial or an unstated extra-hardware requirement.
+Evaluate independent operation after secure provisioning and, if acceptable to
+the owner, an explicit authenticated LAN-assisted mode. A qualified hardware
+RNG can be an optional source. None implies new kernel or libc APIs.
 
 A software-only standalone mode is a separate feasibility milestone, not a
 fallback. It would require securely provisioned state, a reviewed generator,
@@ -76,10 +80,10 @@ source qualification, transport protection, disconnect/recovery behavior and
 replay resistance remain release gates. No standalone security claim follows
 from a passing emulator test.
 
-## Hardware provider acceptance contract
+## Serial laboratory provider acceptance contract
 
-The first hardware design should use a fresh trusted-host source over a
-dedicated existing device interface. A qualified hardware RNG can later supply
+The laboratory hardware design uses a fresh trusted-host source over a
+dedicated existing device interface. A qualified hardware RNG could supply
 the same consumer contract. The separate serial prototype implements part of this
 contract; remaining qualification gaps are listed below. On the HP, the known serial port is currently the console; extra
 device nodes do not prove extra hardware. A dedicated link or an explicit

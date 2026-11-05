@@ -1,0 +1,1331 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "case": "healthy",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "healthy",
+        "short_bytes": null,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "relaunch_without_bootstrap_refused": true,
+        "sequences": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "stale-session",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "stale-session",
+        "short_bytes": null,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "stale-counter",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "stale-counter",
+        "short_bytes": null,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "replay",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "replay",
+        "short_bytes": null,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1,
+          2
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "source-failure",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "source-failure",
+        "short_bytes": null,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "corrupt",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "corrupt",
+        "short_bytes": null,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "busy",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "busy",
+        "short_bytes": null,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "bad-counter",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "bad-counter",
+        "short_bytes": null,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "bad-mode",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "bad-mode",
+        "short_bytes": null,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "bad-device",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "bad-device",
+        "short_bytes": null,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-00",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 0,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-01",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 1,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-02",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 2,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-03",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 3,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-04",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 4,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-05",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 5,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-06",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 6,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-07",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 7,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-08",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 8,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-09",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 9,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-10",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 10,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-11",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 11,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-12",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 12,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-13",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 13,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-14",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 14,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-15",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 15,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-16",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 16,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-17",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 17,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-18",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 18,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-19",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 19,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-20",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 20,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-21",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 21,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-22",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 22,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-23",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 23,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-24",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 24,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-25",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 25,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-26",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 26,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-27",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 27,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-28",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 28,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-29",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 29,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-30",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 30,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-31",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 31,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-32",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 32,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-33",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 33,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-34",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 34,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-35",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 35,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-36",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 36,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-37",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 37,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-38",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 38,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-39",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 39,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-40",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 40,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-41",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 41,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-42",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 42,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-43",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 43,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-44",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 44,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-45",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 45,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-46",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 46,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-47",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 47,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-48",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 48,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-49",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 49,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-50",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 50,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-51",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 51,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-52",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 52,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-53",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 53,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-54",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 54,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-55",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 55,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-56",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 56,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-57",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 57,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-58",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 58,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    },
+    {
+      "case": "short-59",
+      "exit": 0,
+      "result": {
+        "status": "passed",
+        "mode": "short",
+        "short_bytes": 59,
+        "daemon": false,
+        "keygen": false,
+        "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+        "probe_sha256": "27b7fd93028448fea4e92493141b40f135778ed1a4fec1605f1daa2e67a04c31",
+        "real_hardware": false,
+        "sequences": [
+          1
+        ],
+        "provider_errors": [],
+        "original_image_unchanged": true
+      }
+    }
+  ],
+  "real_hardware": false
+}

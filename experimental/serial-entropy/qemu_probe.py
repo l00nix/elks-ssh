@@ -18,10 +18,12 @@ for name in ['image','mfs','probe','out']:p.add_argument('--'+name,type=Path,req
 p.add_argument('--mode',choices=['healthy','short','stale-session','stale-counter','replay','source-failure','corrupt','busy','bad-counter','bad-mode','bad-device'],default='healthy')
 p.add_argument('--short-bytes',type=int,choices=range(60),default=59)
 p.add_argument('--daemon',action='store_true',help='Check daemon entropy startup with deliberately absent host key')
+p.add_argument('--keygen',action='store_true',help='Validate an ephemeral guest-generated key without saving its private bytes')
 a=p.parse_args();a.out.mkdir(parents=True,exist_ok=True)
+if a.daemon and a.keygen:p.error('Choose daemon or keygen, not both')
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 result={'status':'failed','mode':a.mode,'short_bytes':a.short_bytes if a.mode=='short' else None,
-        'daemon':a.daemon,'image_sha256':sha(a.image),'probe_sha256':sha(a.probe),'real_hardware':False}
+        'daemon':a.daemon,'keygen':a.keygen,'image_sha256':sha(a.image),'probe_sha256':sha(a.probe),'real_hardware':False}
 transcript=bytearray();stop=threading.Event();provider=Provider();provider_error=[];sequences=[]
 try:
  with tempfile.TemporaryDirectory(prefix='esh-ep-') as directory:
@@ -81,13 +83,14 @@ try:
       raise RuntimeError('Guest timed out')
      receive(rb'login:');conn.sendall(b'root\r');receive(rb'# ')
      count=0
-     def command(value,expected=0):
+     def command(value,expected=0,timeout=45):
       global count
       count+=1;marker=('CHECK%d='%count).encode()
       conn.sendall((value+'; echo CHECK%d=$?\r'%count).encode())
-      data=receive(rb'\r?\n'+marker+rb'(\d+)\r?\n')
+      data=receive(rb'\r?\n'+marker+rb'(\d+)\r?\n',timeout)
       if int(re.search(marker+rb'(\d+)\r?\n',data)[1])!=expected:raise RuntimeError('Unexpected exit: '+value)
       return data
+     command('chmod 700 /bin/eprobe')
      command('chmod 600 /dev/ttyS1')
      command('chmod 700 /root/ssh1105')
      command('chmod 600 /root/ssh1105/esession')
@@ -96,7 +99,24 @@ try:
      if a.mode=='busy':command('exec 9</dev/ttyS1')
      if a.mode=='bad-counter':command('echo bad > /root/ssh1105/ecounter')
      if a.mode=='bad-mode':command('chmod 644 /root/ssh1105/ecounter')
-     if a.daemon:
+     if a.keygen:
+      data=command('eprobe -t ed25519 -f /root/ssh1105/hk',0 if a.mode=='healthy' else 1,180)
+      if a.mode=='healthy':
+       key_output=data
+       listing=command('ls -l /root/ssh1105/hk')
+       assert b'-rw-------' in listing
+       assert sequences==[1,2,3],sequences
+       data=command('eprobe -t ed25519 -f /root/ssh1105/other',1)
+       assert b'Failure reading dedicated serial entropy' in data
+       command('test ! -f /root/ssh1105/other')
+       result.update(private_mode_600=True,relaunch_without_bootstrap_refused=True)
+      else:
+       assert b'Failure reading dedicated serial entropy' in data
+       command('test ! -f /root/ssh1105/hk')
+       command('test ! -f /root/ssh1105/hk.pub')
+       result['failure_created_no_key']=True
+      command('test ! -f /dev/urandom')
+     elif a.daemon:
       data=command('eprobe -F -r /root/no-key',1)
       if a.mode=='healthy':
        assert b'No hostkeys available' in data,data
@@ -120,6 +140,24 @@ try:
       assert len(sequences)==(0 if a.mode in ['source-failure','busy','bad-counter','bad-mode','bad-device'] else 1),sequences
      command('test '+('' if a.mode in ['busy','bad-device'] else '! ')+'-f /root/ssh1105/esession')
      if provider_error:raise RuntimeError(provider_error[0])
+     if a.keygen and a.mode=='healthy':
+      command('sync')
+      stop.set();thread.join(timeout=2)
+      proc.terminate();proc.wait(timeout=10)
+      # Read only after QEMU exits. The mounted MINIX clean flag remains unset;
+      # -f is used solely for cat on this discarded test image, never mutation.
+      def read_key(path):return subprocess.check_output([str(a.mfs),'-f',str(disk),'cat',path])
+      from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
+      from cryptography.hazmat.primitives import serialization
+      private=read_key('/root/ssh1105/hk')
+      assert len(private)==83 and private[:19]==b'\x00\x00\x00\x0bssh-ed25519\x00\x00\x00\x40'
+      key=Ed25519PrivateKey.from_private_bytes(private[19:51])
+      public=key.public_key()
+      assert public.public_bytes(serialization.Encoding.Raw,serialization.PublicFormat.Raw)==private[51:]
+      public_text=public.public_bytes(serialization.Encoding.OpenSSH,serialization.PublicFormat.OpenSSH)
+      assert public_text in key_output and read_key('/root/ssh1105/hk.pub').startswith(public_text+b' ')
+      del private,key,public
+      result['generated_key_valid']=True
      result['status']='passed'
    finally:
     stop.set()

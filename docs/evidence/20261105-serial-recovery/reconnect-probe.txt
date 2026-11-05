@@ -1,0 +1,9 @@
+chmod 600 /root/ssh1105/esession /root/ssh1105/ecounter
+# chmod 600 /dev/ttyS0
+# /root/ssh1105/eprobe; echo RECOVER=$?
+PASS four seeds across parent and child; no bytes logged
+RECOVER=0
+# /root/ssh1105/eprobe fail; echo RETRY=$?
+PASS refusal, unchanged output, poisoned retry
+RETRY=0
+# 

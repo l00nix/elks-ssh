@@ -1,0 +1,18 @@
+{
+  "physical_usb_disconnected": true,
+  "adapter": "BG02T8E2",
+  "daemon_sha256": "862d8d6708ce6a003c98948ff019c43ce309e1ea389f2e5c4f8c91eb8f2dfa9a",
+  "entropy_refused": true,
+  "daemon_exit": 1,
+  "host_seconds_including_telnet_login": 18.946,
+  "provider_stopped": true,
+  "provider_requests": 0,
+  "mid_response_disconnect": false,
+  "reconnect_test": "pending",
+  "relaunch_refused": true,
+  "no_remaining_daemon": true,
+  "no_ssh_listener": true,
+  "ethernet_control_survived": true,
+  "serial_mode_restored": "0644",
+  "public_bootstrap_removed": true
+}

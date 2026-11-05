@@ -1,0 +1,77 @@
+{
+  "cases": [
+    {
+      "round": 1,
+      "reached_hostkey_loading": true,
+      "exit": 1,
+      "host_seconds": 9.183,
+      "refused_stages": []
+    },
+    {
+      "round": 2,
+      "reached_hostkey_loading": true,
+      "exit": 1,
+      "host_seconds": 9.172,
+      "refused_stages": []
+    },
+    {
+      "round": 3,
+      "reached_hostkey_loading": true,
+      "exit": 1,
+      "host_seconds": 9.2,
+      "refused_stages": []
+    },
+    {
+      "round": 4,
+      "reached_hostkey_loading": true,
+      "exit": 1,
+      "host_seconds": 9.192,
+      "refused_stages": []
+    },
+    {
+      "round": 5,
+      "reached_hostkey_loading": true,
+      "exit": 1,
+      "host_seconds": 9.26,
+      "refused_stages": []
+    },
+    {
+      "round": 6,
+      "reached_hostkey_loading": true,
+      "exit": 1,
+      "host_seconds": 9.232,
+      "refused_stages": []
+    },
+    {
+      "round": 7,
+      "reached_hostkey_loading": true,
+      "exit": 1,
+      "host_seconds": 9.237,
+      "refused_stages": []
+    },
+    {
+      "round": 8,
+      "reached_hostkey_loading": true,
+      "exit": 1,
+      "host_seconds": 9.225,
+      "refused_stages": []
+    },
+    {
+      "round": 9,
+      "reached_hostkey_loading": true,
+      "exit": 1,
+      "host_seconds": 9.152,
+      "refused_stages": []
+    },
+    {
+      "round": 10,
+      "reached_hostkey_loading": true,
+      "exit": 1,
+      "host_seconds": 9.339,
+      "refused_stages": []
+    }
+  ],
+  "all_passed": true,
+  "real_hardware": true,
+  "ssh_login": false
+}

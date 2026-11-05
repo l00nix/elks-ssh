@@ -60,6 +60,9 @@
 #include "crypto_desc.h"
 #include "dbrandom.h"
 #include "gensignkey.h"
+#ifdef __ELKS__
+#include <sys/utsname.h>
+#endif
 
 #if DROPBEAR_ED25519
 #define DEFAULT_KEY_TYPE_NAME "ed25519"
@@ -413,7 +416,15 @@ static void printpubkey(sign_key * key, int keytype, const char * comment, int c
 			username = pw->pw_name;
 		}
 
+#ifdef __ELKS__
+		{
+			struct utsname system_name;
+			strncpy(hostname, uname(&system_name) == 0 ? system_name.nodename : "elks",
+				sizeof(hostname));
+		}
+#else
 		gethostname(hostname, sizeof(hostname));
+#endif
 		hostname[sizeof(hostname) - 1] = '\0';
 
 		printf("%s %s %s@%s\n",
@@ -431,9 +442,14 @@ static void printpubkey(sign_key * key, int keytype, const char * comment, int c
 	buf_free(buf);
 
 	if (pubkey_file) {
+		fflush(pubkey_file);
+#ifdef HAVE_FSYNC
 		if (fsync(fileno(pubkey_file)) != 0) {
 			dropbear_log(LOG_ERR, "fsync of %s failed: %s", filename_pub, strerror(errno));
 		}
+#elif defined(__ELKS__)
+		sync();
+#endif
 		fclose(pubkey_file);
 	}
 	m_free(filename_pub);

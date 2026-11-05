@@ -1,0 +1,3 @@
+./keyserial -t ed25519 -f hk; echo KEYGEN=$?
+Exited: Failure reading dedicated serial entropy
+KEYGEN=1

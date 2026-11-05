@@ -1,0 +1,24 @@
+# MIT. Existing Dropbear key generator with the isolated serial adapter.
+# Reuse ELKS compile/link rules, without linking server or client session code.
+SERIAL_BAUD ?= 1200
+override PROGRAM = dropbear
+override OBJDIR = obj-elks/serial-key-$(if $(filter 1,$(SERIAL_QEMU)),qemu,hardware)-$(SERIAL_BAUD)
+override OUTPUT = $(if $(filter 1,$(SERIAL_QEMU)),dropbearkey-serial-qemu,dropbearkey-serial)
+override PROGRAM_SRCS = dbutil buffer dbhelpers signkey dbrandom queue atomicio \
+    compat fake-rfc2553 ltc_prng crypto_desc curve25519 ed25519 dbmalloc \
+    gensignkey gened25519 dropbearkey
+HEAP_SIZE = 8192
+ifneq ($(filter 1,$(TEST_ENTROPY)),)
+$(error Legacy TEST_ENTROPY cannot be combined with serial entropy)
+endif
+include Makefile.elks
+CPPFLAGS := $(filter-out -DDROPBEAR_SERVER=1,$(CPPFLAGS))
+CPPFLAGS += -DDROPBEAR_SERVER=0 -DDROPBEAR_CLIENT=0 \
+    -DELKSSH_ENTROPY_BAUD=B$(SERIAL_BAUD) -DELKSSH_SERIAL_ENTROPY -DHAVE_GETRANDOM -DGRND_NONBLOCK=1 \
+    -Dgetrandom=elkssh_serial_getrandom -include experimental/serial-entropy/entropy.h
+EXTRA_OBJS += $(OBJDIR)/serial-entropy.o
+$(OUTPUT): $(OBJDIR)/serial-entropy.o
+$(OBJDIR)/serial-entropy.o: experimental/serial-entropy/entropy.c experimental/serial-entropy/entropy.h experimental/serial-entropy/Makefile.keygen
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(CPPFLAGS) \
+	    -DELKSSH_ENTROPY_DEVICE=\"$(if $(filter 1,$(SERIAL_QEMU)),/dev/ttyS1,/dev/ttyS0)\" -c $< -o $@

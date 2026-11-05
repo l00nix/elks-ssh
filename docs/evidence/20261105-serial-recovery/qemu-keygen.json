@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "mode": "healthy",
+  "short_bytes": null,
+  "daemon": false,
+  "keygen": true,
+  "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+  "probe_sha256": "7672e5569d04d04c05f7cc3cbe3a56df18000076102bba08f1f8c7243947a6f6",
+  "real_hardware": false,
+  "private_mode_600": true,
+  "relaunch_without_bootstrap_refused": true,
+  "generated_key_valid": true,
+  "sequences": [
+    1,
+    2,
+    3
+  ],
+  "provider_errors": [],
+  "original_image_unchanged": true
+}

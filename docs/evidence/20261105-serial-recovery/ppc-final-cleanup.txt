@@ -1,0 +1,13 @@
+rm -f /root/ssh1105/esession /root/ssh1105/ecounter
+# chmod 644 /dev/ttyS0
+# ps
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4030  12944 /bin/init 
+    6     6    1 root    S   0  1176 13130  66608 -/bin/sh 
+  480    11    1 root    S   8     0  1182   8944 telnetd 
+  481   481   p0 root    S  10  1176 13204  66688 -/bin/sh 
+    9     9    1 root    S  21  4656 32136  82816 ktcp -b -p ne0 
+   11    11    1 root    S   0     0  1230   8944 telnetd 
+   13    13    1 root    S   0     0  7324  25840 ftpd -d -P 49152:49159 
+  484   481   p0 root    R   0    50  2094   8976 ps 
+# 

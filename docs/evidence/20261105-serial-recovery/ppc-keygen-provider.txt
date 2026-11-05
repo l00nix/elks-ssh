@@ -1,0 +1,2 @@
+READY: fresh session; public bootstrap files written; no seed bytes logged
+STOP: 0 requests; restart requires a new bootstrap pair

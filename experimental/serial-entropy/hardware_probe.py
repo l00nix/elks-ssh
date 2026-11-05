@@ -32,7 +32,7 @@ owners=subprocess.run(['lsof','-t',a.device],capture_output=True,text=True,check
 if set(owners.stdout.split())!={str(os.getpid())}:os.close(fd);raise RuntimeError('Serial has another owner')
 old=termios.tcgetattr(fd);settings=termios.tcgetattr(fd)
 settings[0]=settings[1]=settings[3]=0;settings[2]=termios.CS8|termios.CLOCAL|termios.CREAD
-settings[4]=settings[5]=termios.B9600;settings[6][termios.VMIN]=settings[6][termios.VTIME]=0
+settings[4]=settings[5]=termios.B1200;settings[6][termios.VMIN]=settings[6][termios.VTIME]=0
 termios.tcsetattr(fd,termios.TCSANOW,settings)
 results=[];transcript=bytearray();counter=0
 try:

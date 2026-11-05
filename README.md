@@ -16,13 +16,18 @@ overrides. The normal server refuses startup without secure randomness;
 production entropy, interactive sessions and original 8086/8088 execution
 remain unvalidated. No SSH listener is running on physical machines.
 
+The finished service targets **Ethernet-only machines with no serial cable**.
+Serial entropy is a laboratory fixture. A secure standalone or explicitly
+LAN-assisted randomness design remains unresolved; see the
+[deployment requirements](docs/RNG-DEPLOYMENT.md).
+
 ## Planned suite
 
 | Component | Purpose | Status |
 | --- | --- | --- |
 | SSH daemon | SSH-2 transport, public-key login, shell and remote commands | QEMU public-key login and commands pass; interactive shell pending |
 | SFTP subsystem | Secure file transfers through native ELKS filesystem APIs | Planned |
-| Key utility | Public-key display, fingerprints, eventually key generation | Planned |
+| Key utility | Public-key display, fingerprints and native key generation | Isolated Ed25519 generation passes QEMU; hardware initialization unresolved |
 | SSH/SFTP clients | Outbound connections from ELKS | Later feasibility work |
 
 The existing **Dropbear ELKS port is our starting point**. Its inherited ELKS
@@ -164,5 +169,11 @@ login has been established.
 The [dedicated serial entropy prototype](docs/SERIAL-ENTROPY.md) now passes
 70 QEMU probe cases, 12 daemon startup cases and 10 physical PPC probe cases.
 The PPC daemon accepts a fresh seed and reaches host-key loading; relaunch
-without a new bootstrap is refused. Physical unplug/reconnect qualification and
-hardware SSH login remain pending. The ordinary build is unchanged.
+without a new bootstrap is refused. Subsequent physical disconnect/reconnect
+testing exposed intermittent serial failures; see the follow-up below.
+Hardware SSH login remains pending. The ordinary build is unchanged.
+
+The [serial recovery follow-up](docs/SERIAL-RECOVERY.md) records intermittent
+short responses at 9600 baud and ten successful restarts at 1200 baud. Its
+framed adapter passes the full QEMU SSH suite. This remains lab evidence;
+Ethernet-only deployment is now the priority.

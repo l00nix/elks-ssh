@@ -1,0 +1,7 @@
+chmod 600 /root/ssh1105/esession /root/ssh1105/ecounter
+# chmod 600 /dev/ttyS0
+# /root/ssh1105/sshserial -F -r /root/no-key; echo RECOVER=$?
+[261] Jan 01 02:57:41 Failed loading /root/no-key
+[261] Jan 01 02:57:41 Early exit: No hostkeys available. 'dropbear -R' may be useful or run dropbearkey.
+RECOVER=1
+# 

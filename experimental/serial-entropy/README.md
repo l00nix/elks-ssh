@@ -62,7 +62,7 @@ ELKSSH_ELKS=/path/to/elks sh experimental/serial-entropy/build-server.sh
 
 Outputs under `feasibility/build/serial-entropy` include linked ISA audits.
 Hardware variants use `/dev/ttyS0`; emulator variants use `/dev/ttyS1`, both at
-9600 8N1. State paths are `/root/ssh1105/esession` and `ecounter`.
+1200 8N1. State paths are `/root/ssh1105/esession` and `ecounter`.
 The separate `dropbear-serial` build refuses all entropy failures without
 falling back to a file and disables seed-file writeback. The ordinary server
 retains its existing behavior and is not overwritten.
@@ -104,3 +104,40 @@ bootstrap files into the protected target directory, verify readback, set the
 serial device and state files to mode 600, and launch the explicitly selected
 probe or experimental daemon. Secret seeds travel only over serial. Host/client
 SSH key provisioning is separate and is not performed by these tests.
+
+## Recovery and key utility checkpoint
+
+The original 9600-baud PPC daemon occasionally received only 57–58 of the
+60 response bytes and refused startup. The isolated 1200-baud diagnostic build
+then passed ten consecutive fresh-provider restarts. This changes only the
+application's serial settings; it does not change an ELKS driver or weaken
+framing checks. The slower setting is now the experiment's default. Host and
+target speeds must match. See [recovery evidence](../../docs/SERIAL-RECOVERY.md).
+
+`SERIAL_DIAGNOSTICS=1` in the server Makefile selects a separate diagnostic
+binary. Its failure log contains only an operation number and received-byte
+count: 1 open, 2 device permissions, 3 bootstrap, 4 counter, 5 terminal setup,
+6 drain, 7 request write, 8 response read, 9 identity/frame match, 10 CRC,
+11 terminal restore. No response content or entropy fingerprint is printed.
+
+The existing Dropbear key generator has an isolated build:
+
+```sh
+ELKSSH_ELKS=/path/to/elks sh experimental/serial-entropy/build-key.sh
+```
+
+It requires three fresh entropy responses to generate an Ed25519 key and uses
+the same one-use bootstrap rules. Native generation can keep a test host private
+key on ELKS. Use short names such as `hk` on MINIX so the temporary and `.pub`
+filenames also fit its 14-character limit. ELKS adaptations use `uname` for the
+public comment and whole-filesystem `sync` where `fsync` is unavailable; this
+API cannot report persistence failures, and power-loss durability is unqualified.
+The private key is unencrypted and must remain root-only inside a protected
+directory. The utility does not establish production timing security.
+
+`qemu_probe.py --keygen` generates and validates an ephemeral key inside a
+disposable image. It checks the key's public component independently on the
+host after stopping QEMU, then destroys the image. Fault cases must create no
+key. Private bytes are never retained as evidence. `tests/qemu_ssh.py
+--serial-entropy` exercises this adapter's framing/fork state through the
+existing full SSH test fixture, using only private emulator sockets.

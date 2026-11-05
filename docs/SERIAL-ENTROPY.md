@@ -69,11 +69,12 @@ backend; it does not resolve the [m15 memory/timing issues](M15-DAEMON.md).
 
 ## Remaining qualification
 
-Physical USB disconnect/reconnect needs owner interaction. Prepare a fresh
-public bootstrap, disconnect only the PPC USB serial adapter, verify a bounded
-target failure over Ethernet, then reconnect and recover using an entirely new
-provider/session. A successful test will not by itself prove every possible
-mid-frame interruption; the emulator matrix separately covers all truncations.
+The owner disconnected/reconnected the PPC adapter. Missing-source refusal
+and fresh-session probe recovery passed. Repeated daemon starts exposed short
+responses at 9600 baud; a 1200-baud diagnostic build passed ten restarts. See
+the [recovery follow-up](SERIAL-RECOVERY.md) for the revised candidate and limits.
+This physical test disconnected before a request, not during a response; the
+emulator matrix separately covers all truncations.
 
 Host suspend, target reboot, power-loss/snapshot behavior and full SSH reseeding
 remain open. Deadlines currently use guest wall-clock time and were tested with

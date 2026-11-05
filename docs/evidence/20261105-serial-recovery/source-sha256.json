@@ -1,0 +1,22 @@
+{
+  "experimental/serial-entropy/LICENSE": "c20c083a54285e0b6293ddf3779c8d7617d8f57c9040f3caf0168835ad1f6f74",
+  "experimental/serial-entropy/Makefile": "88b85b62fd13f08385c11c17168c409ecf08856801b2a5602626f9db05883bf6",
+  "experimental/serial-entropy/Makefile.keygen": "4bcb09215ce54f7175b101606a2fe7e947d2043c9df2cebc26558cba50c24a5b",
+  "experimental/serial-entropy/README.md": "fcc8038eff75e27f83d6049ced9c413b9893936fa2259e231bc99113eb87a2e5",
+  "experimental/serial-entropy/build-key.sh": "51f26614becc7f37482bd84c4550d2efbfd3217ba902b0d0064a19d100ca2771",
+  "experimental/serial-entropy/build-probe.sh": "c83b28057265ffc5d23cdc9c9aa5f6180cd6e5e2df3ca91f08a254026c41427b",
+  "experimental/serial-entropy/build-server.sh": "8d2b69e431dadbe53ddc0132ce7b7752a912c382b954ed712094f949d6d5282b",
+  "experimental/serial-entropy/entropy.c": "aed279eb763cc1abe06e01b9d2d89dea0c98c8dd15aba9b917b5f769efdf7503",
+  "experimental/serial-entropy/entropy.h": "5352efb96ef289ab9349da34954d67bfd04f1d76bf2a5d929815770b1ee6115a",
+  "experimental/serial-entropy/hardware_probe.py": "952eb6cd58af668887fc5062b46aef3a5267f156a74f79d249bda90e44bd61e1",
+  "experimental/serial-entropy/hardware_restart.py": "5454e536073030a97f9985f50a4280761fc9cd885736c689e5dda516aba6bbfa",
+  "experimental/serial-entropy/probe.c": "e1cb36168cf72fb97f68411b6dfed35fed49141da9066e3f76ccd9037ee3e9a4",
+  "experimental/serial-entropy/provider.py": "65c9a5dd68c299810b9884ffde9368389852c0af0fa3f2f495a041852a999b51",
+  "experimental/serial-entropy/qemu_probe.py": "00f5e35244cef107384df92c54a5cc8404cb2978bc6a141bd64300caac9e1026",
+  "experimental/serial-entropy/run_matrix.py": "3eee7bda6ea8c2882d16ceee61eab47d2c0a3c3ab6a8b9080c31946f8dcc560b",
+  "experimental/serial-entropy/test_provider.py": "8a59805f99657ea0264c72c0906b9f23a4832b1ff9498c4fdab5fdd80341dc8a",
+  "src/dbrandom.c": "d01ae80c021dadd549159479dad37b0438406918d4e72ce9d89a4346136f2e4d",
+  "src/dropbearkey.c": "5bac155b56661b5fc4821699d97aeb503c41182a04b8c505d637e6f0b5064564",
+  "src/gensignkey.c": "4cf771935f5a1fd7c050a1c100192d330fe10f80acb18376b68912eff67deceb",
+  "tests/qemu_ssh.py": "766891a22dd14d167d4405f351e52698c31c0e00bee9c948fc6285a2da1c00ba"
+}

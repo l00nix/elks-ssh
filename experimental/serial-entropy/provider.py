@@ -59,9 +59,11 @@ class Provider:
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     endpoint = p.add_mutually_exclusive_group(required=True)
-    endpoint.add_argument('--device', help='Dedicated physical serial device, 9600 8N1')
+    endpoint.add_argument('--device', help='Dedicated physical serial device, 1200 8N1')
     endpoint.add_argument('--unix', help='Private emulator serial Unix socket')
     p.add_argument('--bootstrap', type=Path, required=True, help='New local directory for public one-use launch files')
+    p.add_argument('--baud', type=int, choices=[300,1200,2400,9600], default=1200,
+                   help='Physical port speed; must match the target build')
     a = p.parse_args()
     connection = None
     previous = None
@@ -80,7 +82,7 @@ def main():
         settings = termios.tcgetattr(fd)
         settings[0] = settings[1] = settings[3] = 0
         settings[2] = termios.CS8 | termios.CLOCAL | termios.CREAD
-        settings[4] = settings[5] = termios.B9600
+        settings[4] = settings[5] = getattr(termios,'B'+str(a.baud))
         settings[6][termios.VMIN] = settings[6][termios.VTIME] = 0
         termios.tcsetattr(fd, termios.TCSANOW, settings)
         termios.tcflush(fd, termios.TCIOFLUSH)

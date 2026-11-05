@@ -34,6 +34,11 @@ a release candidate.
 
 ## Next development order
 
+The owner clarified that deployment must work on Ethernet-only systems without
+serial. First resolve the [randomness deployment model](RNG-DEPLOYMENT.md);
+the serial fixture is stopped and is no longer the critical path. The following
+crypto, session and platform work remains relevant.
+
 1. Resolve the [experimental m15 integration](M15-DAEMON.md) failures before
    choosing a production backend: combined-probe Ed25519 failure, shell `ENOMEM`,
    and data-dependent arithmetic timing. The code now fits two segments and
@@ -47,10 +52,10 @@ a release candidate.
    rekeying and resource pressure; samples are not peak bounds.
 4. Qualify the production entropy source through an existing ELKS interface,
    including missing/short input, disconnect and recovery behavior.
-5. Continue on the available PPC with its dedicated serial entropy link and
-   Ethernet control. Keep the HP on console until separate networking and its
-   memory cost are resolved. File transfer and key-generation utilities follow
-   the core service.
+5. Resume PPC SSH sessions when the Ethernet-only randomness design permits
+   them. Keep the HP on console until separate networking and its memory cost
+   are resolved. File transfer follows the core service; an isolated native
+   key utility now has QEMU evidence.
 
 PPC testing is now authorized, including [Mac and Windows SSH captures](PPC-CAPTURE.md)
 of `ps` and `cat /etc/issue`. Readiness checks found no installed SSH service or
@@ -65,6 +70,7 @@ the rest of the hardware crypto suite remain unvalidated.
 
 The [serial entropy checkpoint](SERIAL-ENTROPY.md) implements an isolated
 controlled-cable provider. Software fault matrices and PPC daemon startup pass.
-Next: physical USB unplug/reconnect and fresh-session recovery, followed by
-remaining lifecycle qualification, secure key provisioning and a measured PPC
-SSH session. No hardware listener or automatic service is installed.
+The [disconnect/recovery follow-up](SERIAL-RECOVERY.md) records physical tests
+and remaining failures. Native key generation passes QEMU but refused entropy
+on the PPC. Next: an Ethernet-only deployment design and its prerequisites.
+No hardware listener or automatic service is installed.

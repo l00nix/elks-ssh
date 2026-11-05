@@ -46,9 +46,14 @@ static int buf_writefile(buffer * buf, const char * filename, int skip_exist) {
 
 out:
 	if (fd >= 0) {
+#ifdef HAVE_FSYNC
 		if (fsync(fd) != 0) {
 			dropbear_log(LOG_ERR, "fsync of %s failed: %s", filename, strerror(errno));
 		}
+#elif defined(__ELKS__)
+		/* ELKS provides only whole-filesystem sync, without error reporting. */
+		sync();
+#endif
 		m_close(fd);
 	}
 	return ret;

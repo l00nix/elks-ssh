@@ -1,0 +1,28 @@
+{
+  "physical_disconnect_refused": true,
+  "physical_reconnect_probe_passed": true,
+  "daemon_restart_9600": {
+    "initial_diagnostic_passes": 7,
+    "initial_diagnostic_cases": 10,
+    "count_diagnostic_passes": 2,
+    "count_diagnostic_cases": 5,
+    "failed_response_lengths": [
+      57,
+      58,
+      58
+    ]
+  },
+  "daemon_restart_1200": {
+    "passes": 10,
+    "cases": 10
+  },
+  "ppc_keygen": {
+    "exit": 1,
+    "host_received_requests": 0,
+    "private_key_created": false,
+    "cause": "unresolved; source refused before host received a complete request"
+  },
+  "hardware_ssh_login": false,
+  "serial_fixture_stopped": true,
+  "deployment_requires_serial": false
+}

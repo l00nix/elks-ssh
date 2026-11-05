@@ -36,3 +36,12 @@ id_*
 /dropbear-serial.elf
 /dropbear-serial-qemu
 /dropbear-serial-qemu.elf
+
+/dropbearkey-serial
+/dropbearkey-serial.elf
+/dropbearkey-serial-qemu
+/dropbearkey-serial-qemu.elf
+/dropbear-serial-diagnostic
+/dropbear-serial-diagnostic.elf
+/dropbear-serial-diagnostic-qemu
+/dropbear-serial-diagnostic-qemu.elf

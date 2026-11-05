@@ -23,4 +23,9 @@
 - Preserve known-answer tests and run meaningful failure/regression tests.
 - Never present a probe or partial handshake as a usable SSH service.
 - No weak fallback RNG, embedded secret keys, or authentication bypass.
+- The owner clarified on 2026-11-05 that the finished SSH service must work
+  on Ethernet-only computers without a serial connection. Serial entropy is
+  a laboratory fixture, never a required deployment interface. Do not make
+  a companion host or extra RNG hardware a hidden runtime requirement;
+  standalone versus explicitly assisted deployment needs a clear decision.
 - Do not spawn subagents without explicit user authorization.

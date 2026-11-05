@@ -1,0 +1,42 @@
+chmod 600 /root/ssh1105/esession /root/ssh1105/ecounter
+# /root/ssh1105/sshserial -F -r /root/no-key; echo RECOVER=$?
+[249] Jan 01 02:55:14 Early exit: Failure reading dedicated serial entropy
+RECOVER=1
+# /root/ssh1105/sshserial -F -r /root/no-key; echo RETRY=$?
+[250] Jan 01 02:55:22 Early exit: Failure reading dedicated serial entropy
+RETRY=1
+# ps
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4030  12944 /bin/init 
+    6     6    1 root    S   0  1176 13130  66608 -/bin/sh 
+  246    11    1 root    R   0     0  1198   8944 telnetd 
+  247   247   p0 root    S   0  1176 13204  66688 -/bin/sh 
+    9     9    1 root    S   1  4654 32138  82816 ktcp -b -p ne0 
+   11    11    1 root    S   0     0  1230   8944 telnetd 
+   13    13    1 root    S   0     0  7324  25840 ftpd -d -P 49152:49159 
+  251   247   p0 root    R   0    50  2094   8976 ps 
+# netstat
+----- Received ---------  ----- Sent -------------
+TCP Packets         7853  TCP Packets         8011
+TCP Dropped           17  TCP Retransmits        9
+TCP Bad Checksum       0  TCP Retrans Memory     0
+IP Packets         11383  IP Packets         11550
+IP Bad Checksum        0  IP Bad Headers         0
+UDP Packets         3532  UDP Packets            2
+UDP Dropped            0  UDP No Port         3528
+ICMP Packets           0  ICMP Packets        3528
+SLIP Packets           0  SLIP Packets           0
+ETH Packets        35466  ETH Packets        11571
+ARP Reqs Sent          5  ARP Replies Rcvd       5
+ARP Reqs Rcvd      17714  ARP Replies Sent      15
+ARP Cache Adds         5
+
+ No        State    RTT lport        raddress  rport
+-----------------------------------------------------
+  1  ESTABLISHED   62ms  1029         0.0.0.0      2
+  2  ESTABLISHED   62ms    23        10.0.0.8  55845
+  3       LISTEN   62ms    21         0.0.0.0      0
+  4       LISTEN   62ms    23         0.0.0.0      0
+# rm -f /root/ssh1105/ecounter
+# chmod 644 /dev/ttyS0
+# 
