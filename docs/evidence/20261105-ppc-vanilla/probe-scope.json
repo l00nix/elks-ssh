@@ -1,0 +1,5 @@
+{
+  "intentionally_stopped_after": "four RFC public/shared-secret vectors",
+  "reason": "Bounded hardware smoke test; release probe memory for isolated daemon startup check",
+  "full_12_vector_suite_completed": false
+}

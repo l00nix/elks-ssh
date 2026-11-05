@@ -1,0 +1,16 @@
+{
+  "network_autostart_configured": true,
+  "bootopts_readback_verified": true,
+  "backup_readback_verified": true,
+  "reboot_verified": false,
+  "ssh_port22_connect_errno": 61,
+  "normal_daemon_startup": "loads; refuses absent /dev/urandom; exit 1",
+  "m15_daemon_startup": "ENOMEM with concurrent probe and second Telnet session; loads and refuses missing entropy after probe exits",
+  "four_rfc_vectors_passed": true,
+  "full_12_vector_suite_completed": false,
+  "ed25519_run": false,
+  "ssh_handshake_or_login": false,
+  "kernel_or_firmware_modified": false,
+  "qemu_entropy_binary_installed": false,
+  "target_clock": "unset (Jan 01 in target logs); host date 2026-11-05"
+}

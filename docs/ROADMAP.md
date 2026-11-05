@@ -57,3 +57,8 @@ random device; those screenshots remain pending a hardware-appropriate entropy
 path and candidate. The owner has since made the HP 200LX available on serial;
 see [hardware progress](HP200LX-PROGRESS.md). The PPC is currently left to the
 owner's PicoMEM work.
+
+The owner made the PPC available again on 2026-11-05 for the
+[vanilla ELKS smoke test](PPC-VANILLA.md). Both daemons load alone and refuse
+missing entropy; four X25519 RFC vectors pass. Complete hardware sessions and
+the rest of the hardware crypto suite remain unvalidated.

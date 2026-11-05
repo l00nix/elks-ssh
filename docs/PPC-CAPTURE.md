@@ -51,3 +51,10 @@ Keep the Mac and native Windows results separate. Windows Terminal behavior,
 including input, line endings and PTYs, is distinct from protocol negotiation.
 A successful connection to an emulator is useful development evidence but does
 not satisfy these requested PPC screenshots.
+
+## Vanilla PPC check — 2026-11-05
+
+The owner made the PPC available again. [Hardware smoke tests](PPC-VANILLA.md)
+confirm four X25519 vectors and fail-closed daemon startup on vanilla ELKS.
+Networking autostart was configured. No SSH login occurred; the requested
+Mac/Windows SSH captures still require a hardware entropy provider.

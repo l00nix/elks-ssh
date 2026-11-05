@@ -1,0 +1,26 @@
+{
+  "sshnormal": {
+    "source": "feasibility/test-output/hp-signal-layout-20261104/dropbear",
+    "target": "/root/ssh1105/sshnormal",
+    "sha256": "6613bdd3e73c1502d8ee45f0dc18b1cdb1b0a87a58147a528cb008eaa4abdabb",
+    "bytes": 107656
+  },
+  "sshm15": {
+    "source": "feasibility/test-output/m15-daemon-20261104/exec-diagnostic/dropbear-m15",
+    "target": "/root/ssh1105/sshm15",
+    "sha256": "5a255769af7ce1338de1afef75fddd5bafe2241a21fcc14dea35adbe98c61b38",
+    "bytes": 146408
+  },
+  "m15bench": {
+    "source": "feasibility/test-output/m15-daemon-20261104/m15bench",
+    "target": "/root/ssh1105/m15bench",
+    "sha256": "2a0078297993fb9160aea555c6a154df9f97665b8f1eddf2f55982064c23340a",
+    "bytes": 43552
+  },
+  "edbench": {
+    "source": "feasibility/test-output/m15-daemon-20261104/edbench",
+    "target": "/root/ssh1105/edbench",
+    "sha256": "f3125e63e276732375f5fc003732071085b0b6d96f415e411ef038761008694c",
+    "bytes": 19984
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "target": "10.0.0.66",
+  "transport": "telnet",
+  "real_hardware": true,
+  "probe": "m15bench",
+  "ssh_login_test": false,
+  "host_seconds": 438.261,
+  "passed": false,
+  "vectors": {
+    "alice-public": 110,
+    "bob-public": 97,
+    "alice-shared": 89,
+    "bob-shared": 92
+  }
+}

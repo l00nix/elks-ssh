@@ -1,0 +1,15 @@
+ps
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4030  12944 /bin/init 
+    6     6    1 root    S   0  1176 13130  66608 -/bin/sh 
+   32    11    1 root    S   0     0  1190   8944 telnetd 
+   33    33   p0 root    S   0  1176 13192  66688 -/bin/sh 
+    9     9    1 root    S   2  9128 27664  82816 ktcp -b -p ne0 
+   11    11    1 root    S   0     0  1230   8944 telnetd 
+   13    13    1 root    S   0     0  7324  25840 ftpd -d -P 49152:49159 
+   34    33   p0 root    R  71     0  7162  55296 /root/ssh1105/m15bench 
+   53    11    1 root    R   5     0  1198   8944 telnetd 
+   54    54   p1 root    S  15  1176 13204  66688 -/bin/sh 
+   55    54   p1 root    R   6    50  2094   8976 ps 
+# kill -15 34
+# 

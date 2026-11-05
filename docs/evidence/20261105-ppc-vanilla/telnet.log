@@ -1,0 +1,296 @@
+uname -a
+ELKS elks 0.9.2 commit e7a56a43 05 Sep 2026 21:21:43 -0600 ibmpc i8086
+# ps
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4030  12944 /bin/init 
+    6     6    1 root    S   0  1176 13130  66608 -/bin/sh 
+   15    11    1 root    R   2     0  1198   8944 telnetd 
+   16    16   p0 root    S  13  1176 13204  66688 -/bin/sh 
+    9     9    1 root    R   6  4656 32140  82816 ktcp -b -p ne0 
+   11    11    1 root    S   0     0  1230   8944 telnetd 
+   13    13    1 root    S   0     0  7324  25840 ftpd -d -P 49152:49159 
+   18    16   p0 root    R   0    50  2094   8976 ps 
+# free
+free: not found
+# mount
+/dev/hda  (minix) blocks  65535 free  57420 mount /
+# ls -l /dev/urandom /dev/random /bin/timeout /bin/md5sum
+/dev/urandom: No such file or directory 
+# cat /etc/inittab
+id:1:initdefault:
+si::sysinit:/etc/rc.sys
+
+#l1:1:wait:/etc/rc 1
+#ud::once:/bin/printenv
+
+# chmod 644 /bootopts.ssh; mv /bootopts.ssh /bootopts; sync
+# cat /bootopts
+## /bootopts 1023 max
+#TZ=MDT6
+#setting LOCALIP= disables DHCP, can use /etc/hosts names
+#LOCALIP=10.0.2.15
+#GATEWAY=10.0.2.2
+#NETMASK=255.255.255.0
+ne0=5,0x300,,0x92
+#ne0=off
+#wd0=10,0x300,0xCC00,0x80
+#3c0=11,0x330,,0x80
+#le0=9,0x340,,0x80
+#sb=5,0x220,1
+net=ne0
+#comirq=,,7,10
+#umb=0xC000:0x800,0xD000:0x1000
+dmesg=1
+hma=kernel
+#xms=off
+#xms=on
+#xms=int15
+#xmsbuf=0
+#disable=hda,cfa,df0,fd0
+#disable=cfa
+#disable=hda
+#xtide=3 # 0=ATA, 1=XTIDEv1, 2=XTIDEv2 (high speed), 3=XTCF
+#xtide=1	# for PCem
+#disable=hda
+#root=cfa1
+#root=hda1 ro
+#root=df0
+#enable=df0
+#disable=fd0
+#task=16 buf=64 cache=8 file=64 inode=96 heap=44000 # std
+#task=6 buf=8 cache=4 file=20 inode=24 heap=15000 # min
+#sync=30
+#3	# multiuser serial
+#n	# no rc.sys
+#init=/bin/sh
+#kstack
+#strace
+#FTRACE=1
+#debug=1
+#istack
+#console=ttyS0,19200 3
+#MOUSE_PORT=/dev/ttyS1
+#DEBUG_PORT=none
+# chmod 700 /root/ssh1105/sshnormal /root/ssh1105/sshm15 /root/ssh1105/m15bench# hmod 700 /root/ssh1105/sshnormal /root/ssh1105/sshm15 /root/ssh1105/m15bench [0K[79C# mod 700 /root/ssh1105/sshnormal /root/ssh1105/sshm15 /root/ssh1105/m15bench /[0K[79C# od 700 /root/ssh1105/sshnormal /root/ssh1105/sshm15 /root/ssh1105/m15bench /r[0K[79Cchmod 700 /root/ssh1105/sshnormal
+# chmod 700 /root/ssh1105/sshm15
+# chmod 700 /root/ssh1105/m15bench
+# chmod 700 /root/ssh1105/edbench
+# meminfo
+  HEAP   TYPE   SIZE    ADDR    SEG   TYPE     SIZE  CNT  NAME
+  490E   MEM     20   02A640   2A64   BUF      1280    1  
+  492E   TASK 14534
+  8200   INOD  8256
+  A24C   FILE   896
+  A5D8   CACH  8192
+  C5E4   BUFH   128
+  C670   MEM     20   02AB40   2AB4   free      192    0  
+  C690   MEM     20   03AC00   3AC0   DSEG     5808    1  /bin/init 
+  C6B0   MEM     20   02AC00   2AC0   BUF     65536    1  
+  C6D0   MEM     20   018010   1801   CSEG     7136    1  /bin/init 
+  C6F0   TTY     80
+  C74C   TTY     80
+  C7A8   TTY    512
+  C9B4   TTY    512
+  CBC0   free 13376
+  3898   MEM     20   000500   0050   free     1536    0  
+  38B8   MEM     20   019BF0   19BF   DSEG     2432    1  meminfo 
+  38D8   MEM     20   03C2B0   3C2B   DSEG     4864    1  telnetd 
+  38F8   MEM     20   04DA60   4DA6   DSEG    22672    1  -/bin/sh 
+  3918   MEM     20   0532F0   532F   DSEG     4864    1  telnetd 
+  3938   MEM     20   041B40   41B4   CSEG     4080    3  telnetd 
+  3958   MEM     20   058B80   58B8   CSEG    22736    1  ktcp 
+  3978   MEM     20   042EC0   42EC   CSEG    43936    3  -/bin/sh 
+  3998   MEM     20   05E450   5E45   DSEG    12592    1  ftpd 
+  39B8   MEM     20   06CF00   6CF0   DSEG    60080    1  ktcp 
+  39D8   MEM     20   07B9B0   7B9B   DSEG    22752    1  -/bin/sh 
+  39F8   MEM     20   042B30   42B3   free      912    0  
+  3A18   MEM     20   08B3B0   8B3B   free   182352    0  
+  3A38   MEM     20   0545F0   545F   CSEG    13248    1  ftpd 
+  3A58   MEM     20   0579B0   579B   CSEG     3824    1  meminfo 
+  3A78   MEM     20   03D5B0   3D5B   free    17808    0  
+  3A98   MEM     20   061580   6158   DSEG     4864    1  telnetd 
+  3AB8   TTY     80
+  3B14   MEM     20   081290   8129   CSEG    41248    1  /root/ssh1105/m15bench 
+  3B34   MEM     20   063C90   63C9   DSEG    22752    1  -/bin/sh 
+  3B54   MEM     20   069570   6957   DSEG    14048    1  /root/ssh1105/m15bench 
+  3B74   MEM     20   06CC50   6CC5   free      688    0  
+  3B94   MEM     20   062880   6288   free     5136    0  
+  3BB4   free    20
+  3BD4   TTY     80
+  3C30   MEM     20   0588A0   588A   free      736    0  
+  3C50   MEM     20   01A570   1A57   free      208    0  
+  3C70   free    42
+  Heap 34/ 47K used, 13K free
+  Main 372/577K used, 205K free, XMS 0/-30720K used, -30720K free, Total -30143K
+# /root/ssh1105/sshnormal -F; echo NORMAL=$?
+[42] Jan 01 00:15:43 Early exit: Failure reading random device /dev/urandom
+NORMAL=1
+# /root/ssh1105/sshm15 -F; echo M15=$?
+/root/ssh1105/sshm15: not enough memory
+M15=2
+# ps
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4030  12944 /bin/init 
+    6     6    1 root    S   0  1176 13130  66608 -/bin/sh 
+   32    11    1 root    S   0     0  1190   8944 telnetd 
+   33    33   p0 root    S   0  1176 13192  66688 -/bin/sh 
+    9     9    1 root    S   3  9128 27664  82816 ktcp -b -p ne0 
+   11    11    1 root    S   0     0  1230   8944 telnetd 
+   13    13    1 root    S   0     0  7324  25840 ftpd -d -P 49152:49159 
+   34    33   p0 root    R  24     0  7180  55296 /root/ssh1105/m15bench 
+   35    11    1 root    R   3     0  1198   8944 telnetd 
+   36    36   p1 root    S   5  1176 13204  66688 -/bin/sh 
+   44    36   p1 root    R  16    50  2094   8976 ps 
+# ps
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4030  12944 /bin/init 
+    6     6    1 root    S   0  1176 13130  66608 -/bin/sh 
+   32    11    1 root    S   0     0  1190   8944 telnetd 
+   33    33   p0 root    S   0  1176 13192  66688 -/bin/sh 
+    9     9    1 root    S   2  9128 27664  82816 ktcp -b -p ne0 
+   11    11    1 root    S   0     0  1230   8944 telnetd 
+   13    13    1 root    S   0     0  7324  25840 ftpd -d -P 49152:49159 
+   34    33   p0 root    R  66     0  7182  55296 /root/ssh1105/m15bench 
+   45    11    1 root    R   4     0  1198   8944 telnetd 
+   46    46   p1 root    S  16  1176 13204  66688 -/bin/sh 
+   47    46   p1 root    R  11    50  2094   8976 ps 
+# netstat
+----- Received ---------  ----- Sent -------------
+TCP Packets         1628  TCP Packets         1802
+TCP Dropped            6  TCP Retransmits        3
+TCP Bad Checksum       0  TCP Retrans Memory    23
+IP Packets          1807  IP Packets          1984
+IP Bad Checksum        0  IP Bad Headers         0
+UDP Packets          181  UDP Packets            2
+UDP Dropped            0  UDP No Port          177
+ICMP Packets           0  ICMP Packets         177
+SLIP Packets           0  SLIP Packets           0
+ETH Packets         2963  ETH Packets         1991
+ARP Reqs Sent          5  ARP Replies Rcvd       5
+ARP Reqs Rcvd        840  ARP Replies Sent       1
+ARP Cache Adds         5
+
+ No        State    RTT lport        raddress  rport
+-----------------------------------------------------
+  1  ESTABLISHED   62ms  1024         0.0.0.0      2
+  2  ESTABLISHED   62ms    23        10.0.0.8  54368
+  3  ESTABLISHED   62ms    23        10.0.0.8  54345
+  4       LISTEN   62ms    21         0.0.0.0      0
+  5       LISTEN   62ms    23         0.0.0.0      0
+# meminfo -m
+    ADDR    SEG   TYPE      SIZE  CNT  NAME
+   02A640   2A64   BUF      1280    1  
+   02AB40   2AB4   free      192    0  
+   02AC00   2AC0   BUF     65536    1  
+   03AC00   3AC0   DSEG     5808    1  /bin/init 
+   03C2B0   3C2B   DSEG     4864    1  telnetd 
+   03D5B0   3D5B   free    17808    0  
+   041B40   41B4   CSEG     4080    3  telnetd 
+   042B30   42B3   free      912    0  
+   042EC0   42EC   CSEG    43936    3  -/bin/sh 
+   04DA60   4DA6   DSEG    22672    1  -/bin/sh 
+   0532F0   532F   DSEG     4864    1  telnetd 
+   0545F0   545F   CSEG    13248    1  ftpd 
+   0579B0   579B   CSEG     3824    1  meminfo 
+   0588A0   588A   free      736    0  
+   058B80   58B8   CSEG    22736    1  ktcp 
+   05E450   5E45   DSEG    12592    1  ftpd 
+   061580   6158   DSEG     4864    1  telnetd 
+   062880   6288   free     5136    0  
+   063C90   63C9   DSEG    22752    1  -/bin/sh 
+   069570   6957   DSEG    14048    1  /root/ssh1105/m15bench 
+   06CC50   6CC5   free      688    0  
+   06CF00   6CF0   DSEG    60080    1  ktcp 
+   07B9B0   7B9B   DSEG    22752    1  -/bin/sh 
+   081290   8129   CSEG    41248    1  /root/ssh1105/m15bench 
+   08B3B0   8B3B   free   182352    0  
+[Arena 2]
+   018010   1801   CSEG     7136    1  /bin/init 
+   019BF0   19BF   DSEG     2448    1  meminfo 
+   01A580   1A58   free      192    0  
+[Arena 3]
+   000500   0050   free     1536    0  
+  Main 372/577K used, 205K free, XMS 0/-30720K used, -30720K free, Total -30143K
+# ps
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4030  12944 /bin/init 
+    6     6    1 root    S   0  1176 13130  66608 -/bin/sh 
+   32    11    1 root    S   0     0  1190   8944 telnetd 
+   33    33   p0 root    S   0  1176 13192  66688 -/bin/sh 
+    9     9    1 root    S   0  9128 27664  82816 ktcp -b -p ne0 
+   11    11    1 root    S   0     0  1230   8944 telnetd 
+   13    13    1 root    S   0     0  7324  25840 ftpd -d -P 49152:49159 
+   34    33   p0 root    R  81     0  7182  55296 /root/ssh1105/m15bench 
+   50    11    1 root    R   2     0  1198   8944 telnetd 
+   51    51   p1 root    S   6  1176 13204  66688 -/bin/sh 
+   52    51   p1 root    R  24    50  2094   8976 ps 
+# ps
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4030  12944 /bin/init 
+    6     6    1 root    S   0  1176 13130  66608 -/bin/sh 
+   57    11    1 root    R   0     0  1198   8944 telnetd 
+   58    58   p0 root    S   0  1176 13204  66688 -/bin/sh 
+    9     9    1 root    S   2  4656 32136  82816 ktcp -b -p ne0 
+   11    11    1 root    S   0     0  1230   8944 telnetd 
+   13    13    1 root    S   0     0  7324  25840 ftpd -d -P 49152:49159 
+   59    58   p0 root    R  19    50  2094   8976 ps 
+# meminfo -m
+    ADDR    SEG   TYPE      SIZE  CNT  NAME
+   02A640   2A64   BUF      1280    1  
+   02AB40   2AB4   free      192    0  
+   02AC00   2AC0   BUF     65536    1  
+   03AC00   3AC0   DSEG     5808    1  /bin/init 
+   03C2B0   3C2B   DSEG     4864    1  telnetd 
+   03D5B0   3D5B   free    17808    0  
+   041B40   41B4   CSEG     4080    2  telnetd 
+   042B30   42B3   free      912    0  
+   042EC0   42EC   CSEG    43936    2  -/bin/sh 
+   04DA60   4DA6   DSEG    22672    1  -/bin/sh 
+   0532F0   532F   DSEG     4864    1  telnetd 
+   0545F0   545F   CSEG    13248    1  ftpd 
+   0579B0   579B   CSEG     3824    1  meminfo 
+   0588A0   588A   free      736    0  
+   058B80   58B8   CSEG    22736    1  ktcp 
+   05E450   5E45   DSEG    12592    1  ftpd 
+   061580   6158   free    10000    0  
+   063C90   63C9   DSEG    22752    1  -/bin/sh 
+   069570   6957   free    14736    0  
+   06CF00   6CF0   DSEG    60080    1  ktcp 
+   07B9B0   7B9B   free   246352    0  
+[Arena 2]
+   018010   1801   CSEG     7136    1  /bin/init 
+   019BF0   19BF   DSEG     2448    1  meminfo 
+   01A580   1A58   free      192    0  
+[Arena 3]
+   000500   0050   free     1536    0  
+  Main 291/577K used, 286K free, XMS 0/-30720K used, -30720K free, Total -30143K
+# /root/ssh1105/sshm15 -F; echo M15_ALONE=$?
+[61] Jan 01 00:38:37 Early exit: Failure reading random device /dev/urandom
+M15_ALONE=1
+# /root/ssh1105/sshnormal -F; echo NORMAL_ALONE=$?
+[62] Jan 01 00:38:45 Early exit: Failure reading random device /dev/urandom
+NORMAL_ALONE=1
+# netstat
+----- Received ---------  ----- Sent -------------
+TCP Packets         1899  TCP Packets         2070
+TCP Dropped            6  TCP Retransmits        3
+TCP Bad Checksum       0  TCP Retrans Memory     0
+IP Packets          2525  IP Packets          2699
+IP Bad Checksum        0  IP Bad Headers         0
+UDP Packets          628  UDP Packets            2
+UDP Dropped            0  UDP No Port          624
+ICMP Packets           0  ICMP Packets         624
+SLIP Packets           0  SLIP Packets           0
+ETH Packets         6695  ETH Packets         2710
+ARP Reqs Sent          5  ARP Replies Rcvd       5
+ARP Reqs Rcvd       3032  ARP Replies Sent       5
+ARP Cache Adds         5
+
+ No        State    RTT lport        raddress  rport
+-----------------------------------------------------
+  1  ESTABLISHED   62ms  1025         0.0.0.0      2
+  2  ESTABLISHED   62ms    23        10.0.0.8  54525
+  3       LISTEN   62ms    21         0.0.0.0      0
+  4       LISTEN   62ms    23         0.0.0.0      0
+# sync
+# 

@@ -1,0 +1,9 @@
+/root/ssh1105/m15bench; echo PPCPROBE=$?
+X25519 comparative probe: daemon-m15
+ABI int=2 long=4 pointer=2; public vectors only
+PASS alice-public seconds=110
+PASS bob-public seconds=97
+PASS alice-shared seconds=89
+PASS bob-shared seconds=92
+Terminated
+PPCPROBE=143

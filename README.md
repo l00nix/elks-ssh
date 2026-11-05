@@ -154,3 +154,8 @@ The [experimental m15 daemon integration](docs/M15-DAEMON.md) passes X25519
 vectors and SSH public-key authentication, but cannot execute a shell because
 ELKS returns `ENOMEM`. An Ed25519 probe ordering failure and target timing
 security concerns also remain open. This backend has not been promoted.
+
+On the [PPC with vanilla ELKS](docs/PPC-VANILLA.md), four X25519 RFC vectors
+pass and both daemon variants load when tested alone, then correctly refuse
+missing secure randomness. Networking autostart is configured; no hardware SSH
+login has been established.

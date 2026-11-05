@@ -1,0 +1,6 @@
+{
+  "backup": "/root/ssh1105/bootopts.bak",
+  "before_sha256": "e0979659cddc2c04377e75abdc267dde25f7d8ccd3ddb8f2a1abf7b82a30eb7e",
+  "after_sha256": "973e153eac521981cea88c239d44aa99d37e0efde428b1693ad16bf2490cd4ae",
+  "change": "Uncomment net=ne0 only"
+}
