@@ -103,3 +103,28 @@ change. Its native client supports the required algorithms, but support listings
 are not an interoperability pass. The [requested PPC screenshots](PPC-CAPTURE.md)
 remain pending: the physical PPC currently has neither an SSH listener nor a
 random device. Its existing kernel, firmware and other testing were preserved.
+
+## Field-O2 and corrected listener — 2026-11-06
+
+The independently provisioned field-O2 server paired with the corrected
+single-worker listener passes five additional QEMU cases: login, stdin/EOF,
+PTY command output, PTY output with immediate input EOF, and forced rekeying.
+The rekey case returns the complete payload and reports five NEWKEYS exchanges.
+Every case exits zero with strict host verification and no zombie entries.
+Connected and idle listener shutdown and persistent-state consistency pass too.
+
+This is emulator evidence for server SHA-256
+`102c66f748a92dc38d41d7eb85a29072d96c004a9a78cea8bb83d0411050e7e4`
+and listener SHA-256
+`8d700dfead1997f95cac25f48c3e3421cd037efbeb21115f040247e2b4ef8ebd`.
+It is not a physical rekey or interactive-shell qualification.
+
+The PTY commands returned `/dev/ttyp0`, `ps`, the ELKS issue and both markers,
+but the server logged tty-mode, TIOCSCTTY and `/dev/tty` warnings. These tests
+establish command/output behavior only. Interactive input, signals and terminal
+control remain open work; the warnings are retained, not suppressed.
+
+Evidence: [results](evidence/20261106-listener-reap/field-session/result.json),
+[serial and server log](evidence/20261106-listener-reap/field-session/serial.txt),
+[PTY output](evidence/20261106-listener-reap/field-session/command-pty-commands.txt),
+and [rekey diagnostics](evidence/20261106-listener-reap/field-session/ssh-rekey-output.txt).

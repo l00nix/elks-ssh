@@ -77,7 +77,9 @@ The wait-loop candidate passes the expanded QEMU regression: seven command/
 authentication cases, three malformed X25519 inputs, one-worker admission,
 connected and idle shutdown, and persistent-state consistency. The optimized
 field-arithmetic server also passes five login/signature cases with this same
-launcher. Every completed case leaves no zombie process entry.
+launcher. Five additional stdin/PTY/rekey cases also pass with this pair;
+[terminal-control warnings remain open](SESSION-PROGRESS.md). Every completed
+case leaves no zombie process entry.
 
 The new launcher SHA-256 is
 `8d700dfead1997f95cac25f48c3e3421cd037efbeb21115f040247e2b4ef8ebd`.
