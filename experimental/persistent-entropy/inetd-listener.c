@@ -62,15 +62,21 @@ int main(int argc, char **argv)
         timeout.tv_sec = 1; timeout.tv_usec = 0;
         ready = select(listener + 1, &reads, NULL, NULL, &timeout);
         if (ready < 0) {
+            if (stopping) break;
             if (errno == EINTR) continue;
             perror("sshlisten select"); break;
         }
         if (!ready || stopping) continue;
         accepted = accept(listener, NULL, NULL);
         if (accepted < 0) {
+            /* ELKS can expose ERESTARTSYS (512) after the stop signal.
+             * The flag, not a particular interrupted-syscall errno,
+             * determines whether this is an intentional shutdown. */
+            if (stopping) break;
             if (errno != EINTR) perror("sshlisten accept");
             continue;
         }
+        if (stopping) { close(accepted); break; }
         reap(&child);
         if (child) { close(accepted); continue; }
         result = fork();

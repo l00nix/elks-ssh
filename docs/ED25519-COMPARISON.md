@@ -163,7 +163,8 @@ removed, the random-state lock was absent, and the original `/bin/sshtrial`
 listener was restored as PID 207. Startup files and private state were not
 replaced. Inspect fresh PIDs before further maintenance. Stopping the listener
 also logged `sshlisten accept: Error 512`; the subsequent process check confirms
-cleanup. That shutdown logging issue remains to be corrected.
+cleanup. The [shutdown logging fix](LISTENER-SHUTDOWN.md) now passes QEMU
+regression checks; that newer launcher was not used in this physical run.
 
 ![PPC console showing the successful SSH server log](screenshots/ppc-ssh-server.png)
 

@@ -438,6 +438,36 @@ def run(args):
                             result['listener_stop_reaps_worker']=not remaining and closed
                             if not result['listener_stop_reaps_worker']:
                                 raise RuntimeError('Listener stop left a worker or connection')
+                        shutdown_log=command('cat /tmp/sshd.log')
+                        result['listener_stop_clean_log']=not re.search(
+                            rb'sshlisten (?:accept|select):',shutdown_log)
+                        if not result['listener_stop_clean_log']:
+                            raise RuntimeError('Intentional listener stop logged a socket error')
+                        # Also stop an idle listener: no worker/connection is
+                        # needed to wake ELKS accept with ERESTARTSYS.
+                        # Use a separate guest-only port so the idle-stop
+                        # check does not depend on immediate port reuse.
+                        command('sshlisten 23 /bin/sshtest -i -r '+authdir+'/hostkey -D '+authdir+' > /tmp/idle.log 2>&1 &')
+                        time.sleep(2)
+                        command('cat /tmp/idle.log')
+                        state=command('ps').decode('latin1')
+                        idle=[line.split()[0] for line in state.splitlines()
+                              if re.match(r'\s*\d+\s',line) and 'sshlisten 23 ' in line]
+                        if len(idle)!=1: raise RuntimeError('Expected one idle listener')
+                        command('kill '+idle[0])
+                        for _ in range(10):
+                            state=command('ps').decode('latin1')
+                            if not any(re.match(r'\s*\d+\s',line) and
+                                       line.split()[0]==idle[0] for line in state.splitlines()): break
+                            time.sleep(1)
+                        idle_log=command('cat /tmp/idle.log')
+                        result['listener_idle_stop_clean']=bool(
+                            b'sshlisten ready' in idle_log and
+                            not re.search(rb'sshlisten (?:accept|select):',idle_log) and
+                            not any(re.match(r'\s*\d+\s',line) and
+                                    line.split()[0]==idle[0] for line in state.splitlines()))
+                        if not result['listener_idle_stop_clean']:
+                            raise RuntimeError('Idle listener did not stop cleanly')
                     command('echo SHELL_STILL_WORKS')
                     if b'STACK USING' in transcript or b'STACK OVERFLOW' in transcript:
                         raise RuntimeError('Guest stack reservation exceeded')
