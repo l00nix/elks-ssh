@@ -180,3 +180,43 @@ Evidence: [physical result](evidence/20261105-ed25519-comparison/ppc-ssh/ppc-ssh
 [serial maintenance and cleanup](evidence/20261105-ed25519-comparison/ppc-ssh/ppc-ssh-serial.txt),
 [first unsuccessful attempt](evidence/20261105-ed25519-comparison/ppc-first-attempt/ppc-ssh-result.json),
 and [console provenance](evidence/20261105-ed25519-comparison/ppc-ssh-capture/manifest.json).
+
+## Compiler-only field-arithmetic candidate
+
+The separate `edcompact-field-o2` profile compiles only unchanged c25519
+`f25519.c` with `-O2`; other objects retain their existing flags. It inherits
+the explicit 1800-second diagnostic authentication limit. Build it with:
+
+```sh
+ELKSSH_ELKS=/path/to/elks \
+ELKSSH_TRACE_X25519=edcompact-field-o2 \
+sh experimental/persistent-entropy/build-trace.sh
+```
+
+The result is `feasibility/build/persistent-edcompact-field-o2/sshfield`.
+Its SHA-256 is
+`102c66f748a92dc38d41d7eb85a29072d96c004a9a78cea8bb83d0411050e7e4`.
+Compared with the qualified slow profile, exactly one of 82 object files
+changes: `edcompact-f25519.o`. The named profile reproduces the exploratory
+build byte for byte. Vendor arithmetic, point/scalar checks, protocol and
+randomness code are unchanged.
+
+Near code grows from 59,648 to 59,808 bytes; far code remains 64,848 bytes.
+Data/BSS and heap/stack reservations are unchanged. Both server and matched
+public probe pass the linked-code original-8086/no-x87 audit. The probe passes
+all 175 target cases, with every expected case ID present in order. The server
+passes QEMU login, three malformed authorized-key signature rejections, repeat
+login, persistent-state verification and connected/idle listener shutdown.
+This run uses the separately corrected launcher.
+
+This candidate has **not been benchmarked or installed on physical hardware**.
+Emulator timings do not establish an 8086 speedup; the larger code may affect
+placement and performance. The next comparison must measure the public probe
+on the same PPC and then qualify the whole service if the result warrants it.
+The existing physical Mac and Windows trials use the earlier slow profile.
+
+Evidence: [object/profile comparison](evidence/20261105-field-o2/comparison.json),
+[server audit](evidence/20261105-field-o2/server-audit.json),
+[target matrix](evidence/20261105-field-o2/matrix/result.json),
+[matrix output](evidence/20261105-field-o2/matrix/serial.txt), and
+[SSH regression](evidence/20261105-field-o2/ssh/result.json).

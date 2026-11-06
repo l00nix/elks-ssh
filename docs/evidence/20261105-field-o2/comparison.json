@@ -1,0 +1,16 @@
+{
+  "server_sha256": "102c66f748a92dc38d41d7eb85a29072d96c004a9a78cea8bb83d0411050e7e4",
+  "probe_sha256": "38dc4c9d17b341ec46ec3fea3c91b76b9e740a325b7e96ca78d67e10516939d7",
+  "fixtures_sha256": "97b8888555aa4e3caaeb896b626b13c340abb70eb74e924f0f76a62125e7b9f6",
+  "expected_case_count": 175,
+  "actual_case_count": 175,
+  "case_ids_match_in_order": true,
+  "object_comparison": {
+    "object_count": 82,
+    "changed_objects": [
+      "edcompact-f25519.o"
+    ]
+  },
+  "profile_rebuild_identical": true,
+  "hardware_benchmark_performed": false
+}

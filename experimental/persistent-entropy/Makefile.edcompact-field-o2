@@ -1,0 +1,5 @@
+# MIT. Compiler-only field-arithmetic comparison; vendor source is unchanged.
+# Retain the explicit slow-CPU diagnostic authentication limit.
+include experimental/persistent-entropy/Makefile.edcompact-slow
+
+$(OBJDIR)/edcompact-f25519.o: CFLAGS += -O2

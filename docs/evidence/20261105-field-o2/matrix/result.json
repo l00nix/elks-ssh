@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "real_hardware": false,
+  "cpu": "486",
+  "image_sha256": "2302b8604974a0ace258f5a651cf04cad1b36c5b59fdf218f1024b254f18812d",
+  "probe_sha256": "38dc4c9d17b341ec46ec3fea3c91b76b9e740a325b7e96ca78d67e10516939d7",
+  "fixtures_sha256": "97b8888555aa4e3caaeb896b626b13c340abb70eb74e924f0f76a62125e7b9f6",
+  "checks": 175,
+  "accepted": 50,
+  "host_seconds": 575.416,
+  "no_probe_remaining": true,
+  "original_image_unchanged": true
+}

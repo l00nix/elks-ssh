@@ -1,0 +1,212 @@
+Direct console, scan kbd 80x25 emulating ANSI (3 virtual consoles)
+xms: 15232K, off. 64K ext buffers, 8K cache, 15 req hdrs
+eth: ne0 at 300, irq 12 not found
+eth: wd0 at 0x240, irq 2, ram 0xce00 not found
+eth: 3c0 at 330, irq 11 not found
+df: CMOS df0 is 2.88M (5)
+ssd: no XMS
+hda:   31M CHS  63,16,63
+fd0: 2880K CHS  80, 2,36
+cfa:   31M CHS  63,16,63 31752K VER f0/512 xtide=0,0
+cfb: ATA at 1f0/3f6 xtide=0,0 not found (-22)
+hda:(0,63504) no mbr, no partitions
+cfa:(0,63504) no mbr, no partitions
+boot: BIOS drive 80, root device /dev/hda (0300)
+PC/AT class cpu 7, syscaps ff, 638K ram, 16 tasks, 64 files, 96 inodes
+ELKS 0.9.2 (62576 text, 32448 ftext, 10384 data, 8320 bss, 46830 heap)
+Kernel text ffff ftext 330 init 8b8 data b1c end 1b1c top 9f80 529+9+0K free
+FAT: me=f0,csz=2,#f=2,floc=1,fsz=124,rloc=249,#d=512,dloc=281,#s=63,504,ts=0
+FAT: total 31M, fat16 format
+VFS: Mounted root device /dev/hda (0300) msdos filesystem.
+Running /etc/rc.sys script
+Fri Nov  6 03:39:26 2026
+
+ELKS 0.9.2
+
+[0.37 secs] login: root
+# edcheck /edcases; echo EDCHECK=$?
+ED25519 PUBLIC VECTOR PROBE - NO SSH LOGIN
+PASS case=1 op=0 accepted=1 seconds=8
+PASS case=2 op=0 accepted=1 seconds=8
+PASS case=3 op=0 accepted=1 seconds=8
+PASS case=10 op=0 accepted=0 seconds=0
+PASS case=11 op=0 accepted=0 seconds=0
+PASS case=12 op=0 accepted=0 seconds=0
+PASS case=13 op=0 accepted=0 seconds=0
+PASS case=14 op=0 accepted=0 seconds=0
+PASS case=15 op=0 accepted=0 seconds=0
+PASS case=16 op=0 accepted=0 seconds=0
+PASS case=17 op=0 accepted=0 seconds=0
+PASS case=18 op=0 accepted=0 seconds=0
+PASS case=19 op=0 accepted=0 seconds=0
+PASS case=20 op=0 accepted=0 seconds=8
+PASS case=21 op=0 accepted=0 seconds=8
+PASS case=22 op=0 accepted=0 seconds=8
+PASS case=23 op=0 accepted=0 seconds=0
+PASS case=24 op=0 accepted=0 seconds=0
+PASS case=25 op=0 accepted=0 seconds=0
+PASS case=26 op=0 accepted=0 seconds=0
+PASS case=27 op=0 accepted=0 seconds=0
+PASS case=28 op=0 accepted=0 seconds=0
+PASS case=29 op=0 accepted=0 seconds=0
+PASS case=30 op=0 accepted=0 seconds=0
+PASS case=31 op=0 accepted=0 seconds=0
+PASS case=32 op=0 accepted=0 seconds=0
+PASS case=33 op=0 accepted=0 seconds=0
+PASS case=34 op=0 accepted=0 seconds=0
+PASS case=35 op=0 accepted=0 seconds=0
+PASS case=36 op=0 accepted=0 seconds=0
+PASS case=37 op=0 accepted=0 seconds=0
+PASS case=38 op=0 accepted=0 seconds=0
+PASS case=39 op=0 accepted=0 seconds=0
+PASS case=40 op=0 accepted=0 seconds=0
+PASS case=41 op=0 accepted=0 seconds=0
+PASS case=42 op=0 accepted=0 seconds=8
+PASS case=43 op=0 accepted=0 seconds=8
+PASS case=44 op=0 accepted=0 seconds=8
+PASS case=45 op=0 accepted=0 seconds=9
+PASS case=46 op=0 accepted=0 seconds=8
+PASS case=47 op=0 accepted=0 seconds=8
+PASS case=48 op=0 accepted=0 seconds=8
+PASS case=49 op=0 accepted=0 seconds=8
+PASS case=50 op=0 accepted=0 seconds=8
+PASS case=51 op=0 accepted=0 seconds=8
+PASS case=52 op=0 accepted=0 seconds=8
+PASS case=53 op=0 accepted=0 seconds=8
+PASS case=54 op=0 accepted=0 seconds=8
+PASS case=55 op=0 accepted=0 seconds=8
+PASS case=56 op=0 accepted=0 seconds=9
+PASS case=57 op=0 accepted=0 seconds=8
+PASS case=58 op=0 accepted=0 seconds=8
+PASS case=59 op=0 accepted=0 seconds=8
+PASS case=60 op=0 accepted=0 seconds=0
+PASS case=61 op=0 accepted=0 seconds=0
+PASS case=62 op=0 accepted=0 seconds=8
+PASS case=63 op=0 accepted=0 seconds=0
+PASS case=64 op=0 accepted=0 seconds=0
+PASS case=65 op=0 accepted=0 seconds=0
+PASS case=66 op=0 accepted=0 seconds=0
+PASS case=67 op=0 accepted=0 seconds=0
+PASS case=68 op=0 accepted=0 seconds=0
+PASS case=69 op=0 accepted=0 seconds=0
+PASS case=70 op=0 accepted=0 seconds=0
+PASS case=85 op=0 accepted=0 seconds=0
+PASS case=151 op=0 accepted=0 seconds=0
+PASS case=152 op=0 accepted=0 seconds=0
+PASS case=153 op=0 accepted=0 seconds=0
+PASS case=154 op=0 accepted=0 seconds=0
+PASS case=155 op=0 accepted=0 seconds=0
+PASS case=156 op=0 accepted=0 seconds=0
+PASS case=157 op=0 accepted=0 seconds=0
+PASS case=158 op=0 accepted=0 seconds=0
+PASS case=159 op=0 accepted=0 seconds=0
+PASS case=160 op=0 accepted=1 seconds=8
+PASS case=161 op=0 accepted=1 seconds=8
+PASS case=162 op=0 accepted=1 seconds=9
+PASS case=163 op=0 accepted=1 seconds=8
+PASS case=164 op=0 accepted=1 seconds=8
+PASS case=165 op=0 accepted=1 seconds=8
+PASS case=166 op=0 accepted=1 seconds=8
+PASS case=167 op=0 accepted=1 seconds=9
+PASS case=168 op=0 accepted=1 seconds=8
+PASS case=169 op=0 accepted=1 seconds=8
+PASS case=170 op=0 accepted=1 seconds=8
+PASS case=171 op=0 accepted=1 seconds=8
+PASS case=172 op=0 accepted=1 seconds=9
+PASS case=173 op=0 accepted=1 seconds=8
+PASS case=174 op=0 accepted=1 seconds=8
+PASS case=175 op=0 accepted=1 seconds=8
+PASS case=176 op=0 accepted=1 seconds=8
+PASS case=177 op=0 accepted=1 seconds=9
+PASS case=178 op=0 accepted=1 seconds=8
+PASS case=179 op=0 accepted=1 seconds=8
+PASS case=180 op=0 accepted=1 seconds=8
+PASS case=210 op=0 accepted=0 seconds=9
+PASS case=1000 op=1 accepted=1 seconds=3
+PASS case=1001 op=0 accepted=1 seconds=8
+PASS case=1003 op=0 accepted=0 seconds=0
+PASS case=1004 op=0 accepted=0 seconds=0
+PASS case=1006 op=0 accepted=1 seconds=9
+PASS case=1008 op=0 accepted=0 seconds=0
+PASS case=1009 op=0 accepted=0 seconds=0
+PASS case=1011 op=0 accepted=1 seconds=8
+PASS case=1013 op=0 accepted=0 seconds=0
+PASS case=1014 op=0 accepted=0 seconds=0
+PASS case=1016 op=0 accepted=1 seconds=8
+PASS case=1018 op=0 accepted=0 seconds=0
+PASS case=1019 op=0 accepted=0 seconds=0
+PASS case=1021 op=0 accepted=1 seconds=8
+PASS case=1023 op=0 accepted=0 seconds=0
+PASS case=1024 op=0 accepted=0 seconds=0
+PASS case=1026 op=0 accepted=1 seconds=8
+PASS case=1028 op=0 accepted=0 seconds=0
+PASS case=1029 op=0 accepted=0 seconds=0
+PASS case=1031 op=0 accepted=1 seconds=8
+PASS case=1033 op=0 accepted=0 seconds=0
+PASS case=1034 op=0 accepted=0 seconds=0
+PASS case=1036 op=0 accepted=1 seconds=8
+PASS case=1038 op=0 accepted=0 seconds=0
+PASS case=1039 op=0 accepted=0 seconds=0
+PASS case=1040 op=1 accepted=1 seconds=4
+PASS case=1041 op=0 accepted=1 seconds=8
+PASS case=1043 op=0 accepted=0 seconds=0
+PASS case=1044 op=0 accepted=0 seconds=0
+PASS case=1046 op=0 accepted=1 seconds=8
+PASS case=1048 op=0 accepted=0 seconds=0
+PASS case=1049 op=0 accepted=0 seconds=0
+PASS case=1050 op=1 accepted=1 seconds=4
+PASS case=1051 op=0 accepted=1 seconds=8
+PASS case=1053 op=0 accepted=0 seconds=0
+PASS case=1054 op=0 accepted=0 seconds=0
+PASS case=1056 op=0 accepted=1 seconds=8
+PASS case=1058 op=0 accepted=0 seconds=0
+PASS case=1059 op=0 accepted=0 seconds=0
+PASS case=1060 op=1 accepted=1 seconds=4
+PASS case=1061 op=0 accepted=1 seconds=8
+PASS case=1063 op=0 accepted=0 seconds=0
+PASS case=1064 op=0 accepted=0 seconds=0
+PASS case=1066 op=0 accepted=1 seconds=8
+PASS case=1068 op=0 accepted=0 seconds=0
+PASS case=1069 op=0 accepted=0 seconds=0
+PASS case=1071 op=0 accepted=1 seconds=9
+PASS case=1073 op=0 accepted=0 seconds=0
+PASS case=1074 op=0 accepted=0 seconds=0
+PASS case=1076 op=0 accepted=1 seconds=8
+PASS case=1078 op=0 accepted=0 seconds=0
+PASS case=1079 op=0 accepted=0 seconds=0
+PASS case=1081 op=0 accepted=1 seconds=8
+PASS case=1083 op=0 accepted=0 seconds=0
+PASS case=1084 op=0 accepted=0 seconds=0
+PASS case=1086 op=0 accepted=1 seconds=8
+PASS case=1088 op=0 accepted=0 seconds=0
+PASS case=1089 op=0 accepted=0 seconds=0
+PASS case=1091 op=0 accepted=1 seconds=9
+PASS case=1093 op=0 accepted=0 seconds=0
+PASS case=1094 op=0 accepted=0 seconds=0
+PASS case=1096 op=0 accepted=1 seconds=8
+PASS case=1098 op=0 accepted=0 seconds=0
+PASS case=1099 op=0 accepted=0 seconds=0
+PASS case=1100 op=1 accepted=1 seconds=4
+PASS case=1101 op=0 accepted=1 seconds=9
+PASS case=1103 op=0 accepted=0 seconds=0
+PASS case=1104 op=0 accepted=0 seconds=0
+PASS case=2000 op=2 accepted=0 seconds=0
+PASS case=2001 op=2 accepted=0 seconds=0
+PASS case=2002 op=2 accepted=0 seconds=0
+PASS case=2100 op=0 accepted=0 seconds=0
+PASS case=2101 op=0 accepted=0 seconds=0
+PASS case=2102 op=0 accepted=0 seconds=0
+PASS case=2103 op=0 accepted=0 seconds=0
+PASS case=2104 op=0 accepted=0 seconds=0
+PASS case=2105 op=0 accepted=0 seconds=0
+PASS case=2106 op=0 accepted=0 seconds=0
+PASS case=2107 op=0 accepted=0 seconds=0
+RESULT PASS checks=175 failures=0 accepted=50 seconds=575
+EDCHECK=0
+# ps; echo CLEANUP=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   s0 root    S   0  1184 13186  66640 -/bin/sh 
+    9     7   s0 root    R   0    50  2100   8992 ps 
+CLEANUP=0
