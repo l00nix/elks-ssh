@@ -1,0 +1,38 @@
+PPC_WINDOWS_BEGIN
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   0  1060  4860  15952 /bin/login 5V 
+    7     7    1 root    S   2  9098 27692  82784 ktcp -b -p ne0 
+  229    10    1 root    S   0     0  8132  15760 /root/sshlisten 2222 /root/sshslow -i -r hostkey -D /root/sshtrial 
+  233   233      root    R  27  3504 19946 167024 /root/sshslow -i -r hostkey -D /root/sshtrial 
+  234   233      root    S  63   176 14138  66816 sh -c echo PPC_WINDOWS_BEGIN; ps; cat /etc/issue; echo PPC_WINDOWS_DONE; cat /tmp/wi 
+  235   233      root    R   4    50  2092   9056 ps 
+
+ELKS 0.9.2
+
+PPC_WINDOWS_DONE
+sshlisten ready; one concurrent worker
+[232] Jan 01 03:10:53 Child connection from 10.0.0.68:59426
+CRYPTO pid=232 x25519 begin
+CRYPTO pid=232 x25519 end seconds=69
+CRYPTO pid=232 x25519 begin
+CRYPTO pid=232 x25519 end seconds=69
+CRYPTO pid=232 ed25519-sign begin
+CRYPTO pid=232 ed25519-sign end seconds=445
+[232] Jan 01 03:20:40 Exit before auth from <10.0.0.68:59426>: Error writing: Broken pipe 
+[233] Jan 01 03:25:28 Child connection from 10.0.0.68:57829
+CRYPTO pid=233 x25519 begin
+CRYPTO pid=233 x25519 end seconds=72
+CRYPTO pid=233 x25519 begin
+CRYPTO pid=233 x25519 end seconds=71
+CRYPTO pid=233 ed25519-sign begin
+CRYPTO pid=233 ed25519-sign end seconds=458
+CRYPTO pid=233 ed25519-verify begin
+CRYPTO pid=233 ed25519-verify end seconds=1092
+[233] Jan 01 03:53:48 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:IjLb+04eJDR0okFpgMjBhGM+9q4MoZ7OrG9d66P8I5Q from 10.0.0.68:57829
+PROCESS fork begin
+-rw-------  1 root     root           60  Nov  5  2026 TRIAL
+-rw-r--r--  1 root     root          851  Jan  1 01:02 bootopts.bak
+-rwx------  1 root     root        11624  Nov  5  2026 rngcheck
+-rw-------  1 root     root         1024  Jan  1 03:53 state

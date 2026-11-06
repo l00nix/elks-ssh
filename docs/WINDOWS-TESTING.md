@@ -1,7 +1,8 @@
 # Windows 11 native SSH client compatibility
 
-Status on 2026-11-04: **native client preflight completed; ELKS connection
-matrix still pending**. On the Surface Laptop, native PowerShell 5.1 running in
+Status on 2026-11-05: **one native Windows-to-PPC command session passed;
+broader acceptance matrix and result screenshot pending**. During the
+2026-11-04 preflight, native PowerShell 5.1 on the Surface Laptop running in
 Windows Terminal reported:
 
 | Item | Observed value |
@@ -21,9 +22,77 @@ responsive after the owner reported disabling clipboard redirection. That is
 an observed recovery, not a controlled diagnosis of the earlier connection
 stall. No SSH configuration or installed software was changed.
 
-The algorithm matches establish compiled support, not negotiated compatibility.
-Existing successful ELKS connections use macOS OpenSSH 10.3p1 against QEMU.
-The isolated Windows-to-QEMU route and Windows acceptance matrix remain pending.
+Those preflight algorithm matches alone establish compiled support. The
+physical test below now also establishes negotiation and authenticated remote
+commands for this client. The isolated Windows-to-QEMU route and broader
+Windows acceptance matrix remain pending.
+
+## First physical PPC command session — 2026-11-05
+
+Native `C:\Windows\System32\OpenSSH\ssh.exe` on surfacelaptop, reporting
+`OpenSSH_for_Windows_9.5p2, LibreSSL 3.8.2`, connected over Ethernet to
+`10.0.0.66:2222`. It verified the existing pinned Ed25519 host key,
+authenticated with a newly authorized dedicated Windows Ed25519 identity and
+executed `ps` and `cat /etc/issue`. Both command markers returned, the issue
+reported `ELKS 0.9.2`, and the client diagnostic log reports remote exit status
+zero. No legacy algorithm overrides or runtime entropy helper were used.
+
+Negotiated algorithms were `curve25519-sha256`, `ssh-ed25519` and
+`chacha20-poly1305@openssh.com` in both directions. The private Windows key
+stayed on the Surface. Only its public key was transferred for authorization;
+the existing Mac test identity remains authorized too.
+
+| Successful worker operation | PPC seconds |
+| --- | ---: |
+| First X25519 | 72 |
+| Second X25519 | 71 |
+| Ed25519 host signing | 458 |
+| Ed25519 client verification | 1092 |
+
+These stages total **28 minutes 13 seconds** and exclude connection setup and
+commands. The Windows wrapper's exact wall time and native process exit code
+have not yet been read from its completed UI. The Mac locked before capture;
+the public client/command logs were collected automatically afterward.
+The log's separate "Transferred ... in 14.5 seconds" line is not the full
+authentication time. The earlier OS-build preflight has not been re-read in
+this run. This is a feasibility result, not practical login performance or a
+completed Windows terminal/PTY matrix.
+
+The server was the qualified `edcompact-slow` worker, SHA-256
+`a0dbcbbbb8608a7020bdcb6613eb8b19b5e7cda79fd62205a49862f9788182b8`,
+with the original single-worker launcher, SHA-256
+`7cf7004f79fb34d78fcae7672a688428bd7ac2fa6a7416c1d5ccb599ab8ad49c`.
+Its explicit diagnostic authentication limit was 1800 seconds, with a Windows
+watchdog limiting the client to 1860 seconds. The newer listener correction
+and field-optimization candidate were not used in this physical test.
+
+The first Windows attempt reached the host-key reply but failed closed because
+PowerShell passed the literal `$kh` as the known-hosts filename. The actual
+returned fingerprint matched the saved PPC pin. The retry built the option as
+a separate string and checked its resolution using `ssh -G` before connecting:
+
+```powershell
+$khArg = 'UserKnownHostsFile=' + $kh
+& $sshClient -G -F NUL -o $khArg root@10.0.0.66 |
+    Select-String userknownhostsfile
+# The actual connection also uses: -oStrictHostKeyChecking=yes -o $khArg
+```
+
+The server log retains the first attempt's broken-pipe disconnect and the
+subsequent successful authentication. No out-of-memory error was reported.
+The command output shows a 167,024-byte SSH worker and 66,816-byte command
+shell; these are process observations, not a peak-memory bound.
+Serial maintenance is unconfirmed: `ps` shows the earlier maintenance process
+in `/bin/login`, and serial input did not yield a root prompt. The qualified
+temporary listener was retained; original startup files were not changed.
+Post-session process cleanup and native screenshots remain to be inspected
+once access is restored.
+
+Evidence: [result](evidence/20261105-windows-ppc/result.json),
+[client diagnostics](evidence/20261105-windows-ppc/client.txt),
+[commands and server timing log](evidence/20261105-windows-ppc/command.txt),
+[first attempt](evidence/20261105-windows-ppc/first-result.json), and
+[first-attempt diagnostics](evidence/20261105-windows-ppc/first-client.txt).
 
 Test the Windows-provided `ssh.exe` first. A separately installed Win32-OpenSSH
 build is a separate matrix entry. WSL OpenSSH does not validate the native
@@ -77,8 +146,8 @@ public fingerprints and results. No physical PPC/HP 200LX is needed.
 
 | Check | Current Windows status |
 | --- | --- |
-| Default algorithm negotiation and strict pinned host verification | Pending |
-| Ed25519 public-key login, delayed output and repeat login | Pending |
+| Default algorithm negotiation and strict pinned host verification | Pass for the recorded PPC session |
+| Ed25519 public-key login, delayed output and repeat login | One PPC login and delayed output pass; repeat Windows login pending |
 | Full 16,144-byte payload and nonzero remote exit status | Pending |
 | Incorrect host/client key and unsafe server key permissions rejected | Pending |
 | Windows input, redirected stdin/EOF and output line endings | Pending |

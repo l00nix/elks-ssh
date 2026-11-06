@@ -83,5 +83,37 @@
   and private keys/state were not replaced or rolled back. Public probe and
   actual PPC server-console captures are in docs/ED25519-COMPARISON.md.
   Native Mac/Windows UI screenshots remain pending. Windows App's saved
-  ELKSWeb 86Box test connection is surfacelaptop (10.0.0.68); it is waiting
-  at a certificate warning for the owner's direct review. Do not bypass it.
+  ELKSWeb 86Box test connection is surfacelaptop (10.0.0.68); the owner has
+  reviewed and accepted its certificate directly. The owner also explicitly
+  approved creating a separate Windows Ed25519 test identity and authorizing
+  it on this disposable PPC trial. Its public key is now in authkeys alongside
+  the original Mac key; the private key stays on the Surface.
+- Windows command trial passed: the same sshslow and original launcher were
+  started as listener PID 229 (inspect fresh state before acting). First native
+  Windows attempt reached the host-key reply but rejected the literal `$kh`
+  filename passed by PowerShell; its returned fingerprint matches the pinned
+  PPC key. Corrected `-o $khArg` was verified with `ssh -G`. Retry started at
+  2026-11-05 22:30:30 America/Toronto, Windows PID 12588, with a 31-minute
+  watchdog and a public-log collector posting to the Mac. Logs were received
+  at 22:59:14 local time: strict host pin, public-key authentication, ps,
+  ELKS 0.9.2 issue output and remote exit status zero are confirmed. Worker
+  233 took X25519 72+71, signing 458 and verification 1092 seconds. Native
+  wrapper exit code/exact elapsed time and screenshot remain unread because
+  the Mac is locked. The collector has been stopped. Local records are
+  feasibility/test-output/windows-ppc-20261105. The serial shell was replaced
+  by getty before the first attempt, but reopening serial and sending root/CR
+  afterward produced no confirmed shell; ps during SSH showed PID 16 in
+  /bin/login, not a maintenance shell. Do not assume serial control works.
+  Listener 229 was present during SSH; post-exit cleanup is not yet inspected.
+  Original startup is untouched, but the temporary candidate remains in place.
+  The Mac subsequently locked; user was asked to unlock it for Windows capture.
+  Computer Use explicitly refuses com.apple.Terminal for safety reasons. Do
+  not bypass this restriction. A user-launchable Mac-PPC-test.command is ready
+  in the private ppc-trial-20261105 directory; run only when the single PPC
+  worker is free and the intended diagnostic service is confirmed running.
+- Separate follow-up candidates are committed but NOT installed on the PPC:
+  listener shutdown fix SHA 1170dcf7d5b4b004a2bc9991cc85eaaf04a7fa352daa5f8ac3eb75375d0b8bf9
+  passes login and connected/idle stop regressions; edcompact-field-o2 server
+  SHA 102c66f748a92dc38d41d7eb85a29072d96c004a9a78cea8bb83d0411050e7e4
+  changes only one of 82 objects, passes linked original-8086 audit, 175 target
+  vectors and five SSH/signature cases. Hardware performance is unmeasured.

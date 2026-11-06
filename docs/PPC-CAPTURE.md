@@ -8,9 +8,12 @@ physical PPC SSH evidence.
 The first [Mac-to-PPC SSH command test](ED25519-COMPARISON.md) now passes with
 strict host verification and independently provisioned persistent state. It
 returned `ps` and `cat /etc/issue` with exit status zero in 27m34s. Its retained
-image is the actual PPC server console. Native Mac and Windows terminal
-captures remain pending; Windows App is waiting for the owner to review the
-Surface's certificate warning before reconnection.
+image is the actual PPC server console. The [native Windows command session](WINDOWS-TESTING.md)
+also passed after the owner reviewed the Surface certificate. Native Mac and
+Windows terminal captures remain pending: the Mac locked before the Windows
+result could be captured. Computer Use also explicitly refuses access to
+macOS Terminal, so that capture requires a user-operated terminal and screenshot.
+Neither blocker changes the retained SSH command results.
 
 ## Readiness check — 2026-11-04
 

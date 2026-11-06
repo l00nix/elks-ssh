@@ -1,0 +1,6 @@
+{
+    "status":  "failed",
+    "elapsed_seconds":  600.7563308,
+    "reason":  "Literal known-hosts variable passed to ssh",
+    "ssh_exit":  255
+}

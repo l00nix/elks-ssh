@@ -171,8 +171,9 @@ regression checks; that newer launcher was not used in this physical run.
 Actual PPC framebuffer capture of its server log, including shutdown output.
 The PPC clock is unset, so its January 1 log dates are not the test date. This
 image is not a native Mac or Windows terminal screenshot. Those requested UI
-captures remain pending; the Surface reconnect is waiting for the owner to
-review Windows App's certificate warning.
+captures remain pending. The owner reviewed the Surface certificate, and the
+[native Windows command test](WINDOWS-TESTING.md) subsequently passed; the Mac
+locked before its result could be captured.
 
 Evidence: [physical result](evidence/20261105-ed25519-comparison/ppc-ssh/ppc-ssh-result.json),
 [remote command output](evidence/20261105-ed25519-comparison/ppc-ssh/ppc-ssh-command.txt),

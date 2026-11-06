@@ -10,8 +10,8 @@ to bring SSH-2 login and secure file transfer to
 kernel and architecture changes are out of scope.
 
 **Experimental: public-key login and remote commands work in QEMU and have
-completed one physical PPC test with independently provisioned persistent
-random state and no runtime entropy helper.
+completed physical PPC command tests from macOS and native Windows OpenSSH
+with independently provisioned persistent random state and no runtime entropy helper.
 This is not deployment-ready or a release candidate.**
 Modern OpenSSH connects with strict host verification and no legacy algorithm
 overrides. The normal server refuses startup without secure randomness;
@@ -19,9 +19,11 @@ production qualification and full interactive controls remain unvalidated.
 The Mac-to-PPC test ran `ps` and `cat /etc/issue` and exited successfully, but
 took **27 minutes 34 seconds**. That is a feasibility result, not practical
 login performance. It uses an explicit 30-minute diagnostic authentication
-profile and a small single-worker launcher; the original startup is restored
-after testing. Windows connection tests and native client screenshots remain
-pending.
+profile and a small single-worker launcher. The native Windows 9.5p2 client
+also verified the pinned key, authenticated and ran both commands; its log
+reports remote exit status zero. Its cryptographic stages alone took 28 minutes
+13 seconds. The broader Windows matrix and native client screenshots remain
+pending; see [Windows results](docs/WINDOWS-TESTING.md).
 
 The isolated Ed25519 adapter passes 646 host cases, 175 ELKS emulator cases,
 seven physical PPC public checks and 15 combined QEMU session/signature cases.
@@ -43,7 +45,7 @@ see the [deployment requirements](docs/RNG-DEPLOYMENT.md).
 
 | Component | Purpose | Status |
 | --- | --- | --- |
-| SSH daemon | SSH-2 transport, public-key login, shell and remote commands | QEMU suites and one physical PPC command session pass; performance and interactive shell pending |
+| SSH daemon | SSH-2 transport, public-key login, shell and remote commands | QEMU suites and physical PPC command sessions from Mac and Windows pass; performance and interactive shell pending |
 | SFTP subsystem | Secure file transfers through native ELKS filesystem APIs | Planned |
 | Key utility | Public-key display, fingerprints and native key generation | Isolated Ed25519 generation passes QEMU; hardware initialization unresolved |
 | SSH/SFTP clients | Outbound connections from ELKS | Later feasibility work |
@@ -124,10 +126,10 @@ Actual ELXcap capture of the completed probe's saved output on the HP console.
 
 Actual ELXcap console capture; this is a hardware probe, not an SSH login.
 
-The [native Windows client preflight](docs/WINDOWS-TESTING.md) confirms OpenSSH
-9.5p2 and the required algorithm support on the Surface. A Windows-to-ELKS
-connection and the [requested native client screenshots](docs/PPC-CAPTURE.md)
-remain pending.
+The [native Windows client test](docs/WINDOWS-TESTING.md) now confirms a complete
+PPC command session using OpenSSH 9.5p2 on the Surface, with strict host pinning
+and default algorithms. The [requested native client screenshots](docs/PPC-CAPTURE.md)
+remain pending: the Mac locked before the Windows result could be captured.
 
 Earlier checkpoints established [crypto/OS probes](docs/VALIDATION.md),
 [16-bit wire handling](docs/SERVER-PROGRESS.md) and

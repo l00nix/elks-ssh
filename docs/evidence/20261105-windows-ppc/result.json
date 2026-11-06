@@ -1,0 +1,78 @@
+{
+  "status": "command-session-passed",
+  "client": "OpenSSH_for_Windows_9.5p2, LibreSSL 3.8.2",
+  "native_executable": "C:/Windows/System32/OpenSSH/ssh.exe",
+  "terminal": "Windows Terminal, PowerShell 5.1, via Windows App RDP",
+  "host": "surfacelaptop",
+  "target": "10.0.0.66:2222",
+  "server_sha256": "a0dbcbbbb8608a7020bdcb6613eb8b19b5e7cda79fd62205a49862f9788182b8",
+  "listener_sha256": "7cf7004f79fb34d78fcae7672a688428bd7ac2fa6a7416c1d5ccb599ab8ad49c",
+  "checks": {
+    "host_pin_verified": true,
+    "public_key_authenticated": true,
+    "command_markers": true,
+    "ps_output": true,
+    "issue_output": true,
+    "remote_exit_zero": true,
+    "windows_key_confirmed": true,
+    "no_reported_enomem": true
+  },
+  "kex": "curve25519-sha256",
+  "host_key_algorithm": "ssh-ed25519",
+  "cipher_both_directions": "chacha20-poly1305@openssh.com",
+  "legacy_algorithm_overrides": false,
+  "runtime_entropy_helper": false,
+  "server_authentication_limit_seconds": 1800,
+  "windows_watchdog_seconds": 1860,
+  "server_stages": [
+    {
+      "pid": 232,
+      "operation": "x25519",
+      "seconds": 69
+    },
+    {
+      "pid": 232,
+      "operation": "x25519",
+      "seconds": 69
+    },
+    {
+      "pid": 232,
+      "operation": "ed25519-sign",
+      "seconds": 445
+    },
+    {
+      "pid": 233,
+      "operation": "x25519",
+      "seconds": 72
+    },
+    {
+      "pid": 233,
+      "operation": "x25519",
+      "seconds": 71
+    },
+    {
+      "pid": 233,
+      "operation": "ed25519-sign",
+      "seconds": 458
+    },
+    {
+      "pid": 233,
+      "operation": "ed25519-verify",
+      "seconds": 1092
+    }
+  ],
+  "remote_exit_status": 0,
+  "native_process_exit_code": null,
+  "exact_host_elapsed_seconds": null,
+  "native_ui_capture": "pending: Mac locked; user asked to unlock",
+  "serial_maintenance": "Unconfirmed; ps shows PID 16 in /bin/login, not a maintenance shell",
+  "ppc_service": "Qualified temporary listener retained; original startup not edited; post-exit process cleanup not yet inspected",
+  "collected_utc": "2026-11-06T03:59:14.874697+00:00",
+  "files": {
+    "first-client.txt": "64785b46df9015c5a045dd2eea0399b14aec34aec6125a2e8809e5536223febd",
+    "first-result.json": "27c05f88fbebef3adcad04b1a80fd3f23480ff48af7315a96c7ece277c2cbd0e",
+    "client.txt": "4e7b2f578aa2a8cea11393be54b45fb1ef185dc50e11150e99e422106e48849e",
+    "command.txt": "6003975ff23dc4eb8881cb40839da37fb333735352d244c17455b71b9d025c8b",
+    "clientkey.pub": "2203ef362bf4f54ffe10d30a3cef37ee0fd148166e82c5061d540dd83dc6aa74"
+  }
+}
