@@ -1,0 +1,14 @@
+{
+  "captured_utc": "2026-11-06T10:13:14.019047+00:00",
+  "machine": "Amstrad PPC 512 with PicoMEM",
+  "source": "Actual B8000h text framebuffer, live FFA6Eh ROM font; captured via serial maintenance",
+  "render": "80x25, mode 3, page 0; ROM 8x8 glyphs with doubled scanlines",
+  "limits": "Logical console screen, not LCD photo; public cryptography probe, not SSH login",
+  "probe_sha256": "38dc4c9d17b341ec46ec3fea3c91b76b9e740a325b7e96ca78d67e10516939d7",
+  "files": {
+    "bda.bin": "b8ef722bcb191a0ebdb5ee46d99fa784f601bc693aac2eac2749478be9560450",
+    "cells.bin": "9204f78f9e33cae84663febd74bac4b27d92841c9612b2f57882cc1c3b0df739",
+    "ppc-ed25519.png": "268966a625d5bca2d5dbfe32a76572d7497ff8af38494460c7b9b07ebf8cc995",
+    "font.bin": "ddad441c6fd10808a4e94040609cd5471704eb59d18c5fcf6059c028fa8ccae6"
+  }
+}

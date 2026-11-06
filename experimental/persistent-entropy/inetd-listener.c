@@ -58,6 +58,16 @@ int main(int argc, char **argv)
         fd_set reads;
         struct timeval timeout;
         reap(&child);
+        if (child) {
+            /* ELKS select reports a listening socket readable even when
+             * accept would block. Stay out of accept while a worker lives
+             * so its exit is reaped without another incoming connection.
+             * Additional connections wait in the TCP listen queue;
+             * they do not receive an SSH banner or allocate a worker yet. */
+            timeout.tv_sec = 0; timeout.tv_usec = 100000;
+            select(0, NULL, NULL, NULL, &timeout);
+            continue;
+        }
         FD_ZERO(&reads); FD_SET(listener, &reads);
         timeout.tv_sec = 1; timeout.tv_usec = 0;
         ready = select(listener + 1, &reads, NULL, NULL, &timeout);

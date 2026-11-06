@@ -1,0 +1,113 @@
+ps; echo C1=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  2204 12102  66608 -/bin/sh 
+    7     7    1 root    S   1  4472 32318  82784 ktcp -b -p ne0 
+  309    10    1 root    S   0     0  8132  15824 /root/sshqueue 2222 /root/sshfield -i -r hostkey -D /root/sshtrial 
+  242    10    1 root    S   1  4202 10166  66688 -/bin/sh 
+  312    10    1 root    R   8    50  2094   8976 ps 
+C1=0
+# ps; echo C1=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  2204 12102  66608 -/bin/sh 
+    7     7    1 root    S   1  4472 32318  82784 ktcp -b -p ne0 
+  309    10    1 root    S   0     0  8132  15824 /root/sshqueue 2222 /root/sshfield -i -r hostkey -D /root/sshtrial 
+  242    10    1 root    S   0  4234 10134  66688 -/bin/sh 
+  317    10    1 root    R   0    50  2094   8976 ps 
+C1=0
+# ps; echo C2=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  2204 12102  66608 -/bin/sh 
+    7     7    1 root    S   1  4472 32318  82784 ktcp -b -p ne0 
+  309    10    1 root    S   0     0  8132  15824 /root/sshqueue 2222 /root/sshfield -i -r hostkey -D /root/sshtrial 
+  242    10    1 root    S   0  4200 10168  66688 -/bin/sh 
+  319    10    1 root    R   0    50  2094   8976 ps 
+C2=0
+# ps; echo C3=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  2204 12102  66608 -/bin/sh 
+    7     7    1 root    S   3 13474 23316  82784 ktcp -b -p ne0 
+  309    10    1 root    S   0     0  8124  15824 /root/sshqueue 2222 /root/sshfield -i -r hostkey -D /root/sshtrial 
+  242    10    1 root    S   0  4200 10168  66688 -/bin/sh 
+  320   320      root    R  25  4340 19890 167184 /root/sshfield -i -r hostkey -D /root/sshtrial 
+  321    10    1 root    R  27    50  2094   8976 ps 
+C3=0
+# ps; echo C4=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  2204 12102  66608 -/bin/sh 
+    7     7    1 root    R   0 13474 23314  82784 ktcp -b -p ne0 
+  309    10    1 root    S   0     0  8124  15824 /root/sshqueue 2222 /root/sshfield -i -r hostkey -D /root/sshtrial 
+  242    10    1 root    S   0  4200 10168  66688 -/bin/sh 
+  322    10    1 root    R  81    64 21184 167184 /root/sshfield -i -r hostkey -D /root/sshtrial 
+  323    10    1 root    R  16    50  2094   8976 ps 
+C4=0
+# ps; echo C5=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  2204 12102  66608 -/bin/sh 
+    7     7    1 root    S   1 13474 23316  82784 ktcp -b -p ne0 
+  309    10    1 root    S   1     0  8124  15824 /root/sshqueue 2222 /root/sshfield -i -r hostkey -D /root/sshtrial 
+  242    10    1 root    S   1  4200 10168  66688 -/bin/sh 
+  322    10    1 root    R  75    64 21184 167184 /root/sshfield -i -r hostkey -D /root/sshtrial 
+  324    10    1 root    R  23    50  2094   8976 ps 
+C5=0
+# ps; echo C6=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  2204 12102  66608 -/bin/sh 
+    7     7    1 root    S   0 13474 23316  82784 ktcp -b -p ne0 
+  309    10    1 root    R   0     0  8124  15824 /root/sshqueue 2222 /root/sshfield -i -r hostkey -D /root/sshtrial 
+  242    10    1 root    S   3  4200 10168  66688 -/bin/sh 
+  322    10    1 root    R  69   398 20868 167184 /root/sshfield -i -r hostkey -D /root/sshtrial 
+  325    10    1 root    R  11    50  2094   8976 ps 
+C6=0
+# ps; echo C7=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  2204 12102  66608 -/bin/sh 
+    7     7    1 root    S   0 13474 23316  82784 ktcp -b -p ne0 
+  309    10    1 root    S   0     0  8124  15824 /root/sshqueue 2222 /root/sshfield -i -r hostkey -D /root/sshtrial 
+  242    10    1 root    S   2  4200 10168  66688 -/bin/sh 
+  322    10    1 root    R  72   398 20122 167184 /root/sshfield -i -r hostkey -D /root/sshtrial 
+  326    10    1 root    R  22    50  2094   8976 ps 
+C7=0
+# ps; echo C8=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  2204 12102  66608 -/bin/sh 
+    7     7    1 root    S   0 13474 23316  82784 ktcp -b -p ne0 
+  309    10    1 root    S   0     0  8124  15824 /root/sshqueue 2222 /root/sshfield -i -r hostkey -D /root/sshtrial 
+  242    10    1 root    S   3  4232 10136  66688 -/bin/sh 
+  327    10    1 root    R  11    50  2094   8976 ps 
+C8=0
+# ps; echo C9=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  2204 12102  66608 -/bin/sh 
+    7     7    1 root    S   0  4472 32318  82784 ktcp -b -p ne0 
+  309    10    1 root    S   0     0  8132  15824 /root/sshqueue 2222 /root/sshfield -i -r hostkey -D /root/sshtrial 
+  242    10    1 root    S   0  4250 10118  66688 -/bin/sh 
+  329    10    1 root    R   0    50  2094   8976 ps 
+C9=0
+# cat /tmp/fieldssh.log; echo C10=$?
+sshlisten ready; one concurrent worker
+[313] Jan 01 10:11:52 Early exit: Failed socket address: Invalid argument 
+[318] Jan 01 10:12:42 Child connection from 10.0.0.8:63887
+[318] Jan 01 10:12:43 Exit before auth from <10.0.0.8:63887>: Error writing: Broken pipe 
+[320] Jan 01 10:12:57 Child connection from 10.0.0.8:63888
+[320] Jan 01 10:13:01 Exit before auth from <10.0.0.8:63888>: Exited normally
+[322] Jan 01 10:13:23 Early exit: Failed socket address: Invalid argument 
+[328] Jan 01 10:13:36 Child connection from 10.0.0.8:63895
+[328] Jan 01 10:13:37 Exit before auth from <10.0.0.8:63895>: Error writing: Broken pipe 
+C10=0
+# ls -l /root/rngtest; echo C11=$?
+-rw-------  1 root     root           60  Nov  5  2026 TRIAL
+-rw-r--r--  1 root     root          851  Jan  1 01:02 bootopts.bak
+-rwx------  1 root     root        11624  Nov  5  2026 rngcheck
+-rw-------  1 root     root         1024  Jan  1 10:13 state
+C11=0
+# 

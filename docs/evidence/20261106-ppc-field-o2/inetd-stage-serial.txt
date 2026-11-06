@@ -1,0 +1,48 @@
+curl -o /root/sshfield http://10.0.0.8:63838/sshfield; echo C1=$?
+C1=0
+# chmod 700 /root/sshfield; echo C2=$?
+C2=0
+# md5sum /root/sshfield; echo C3=$?
+chmod 700 /root/sshfield; echo C1=$?
+C1=0
+# md5sum /root/sshfield; echo C2=$?
+b222c1e598320ebaf62e39ef2b11bdde  /root/sshfield
+C2=0
+# curl -o /root/sshqueue http://10.0.0.8:63861/sshqueue; echo C3=$?
+C3=0
+# chmod 700 /root/sshqueue; echo C4=$?
+C4=0
+# md5sum /root/sshqueue; echo C5=$?
+95adcf7ee1c5e1deb2ff44be742763cd  /root/sshqueue
+C5=0
+# ps; echo C6=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  2204 12102  66608 -/bin/sh 
+    7     7    1 root    S  12     0 36790  82784 ktcp -b -p ne0 
+  308    10    1 root    R   0    50  2094   8976 ps 
+  242    10    1 root    S   7  3752 10616  66688 -/bin/sh 
+C6=0
+# cd /root/sshtrial; echo C7=$?
+C7=0
+# s=/root/sshfield; echo C8=$?
+C8=0
+# l=/root/sshqueue; echo C9=$?
+C9=0
+# o='-i -r hostkey -D /root/sshtrial'; echo C10=$?
+C10=0
+# $l 2222 $s $o </dev/null >/tmp/fieldssh.log 2>&1 &; echo C11=$?
+C11=0
+# cat /tmp/fieldssh.log; echo C12=$?
+sshlisten ready; one concurrent worker
+C12=0
+# ps; echo C13=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  2204 12102  66608 -/bin/sh 
+    7     7    1 root    S   2  4472 32318  82784 ktcp -b -p ne0 
+  309    10    1 root    S  11     0  8132  15824 /root/sshqueue 2222 /root/sshfield -i -r hostkey -D /root/sshtrial 
+  242    10    1 root    S   7  4202 10166  66688 -/bin/sh 
+  311    10    1 root    R   0    50  2094   8976 ps 
+C13=0
+# 

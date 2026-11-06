@@ -1,0 +1,25 @@
+
+PPC field O2 - public Ed25519 checks
+ED25519 PUBLIC VECTOR PROBE - NO SSH LOGIN
+PASS case=1000 op=1 accepted=1 seconds=252
+PASS case=1001 op=0 accepted=1 seconds=596
+PASS case=1003 op=0 accepted=0 seconds=0
+PASS case=1004 op=0 accepted=0 seconds=0
+PASS case=2000 op=2 accepted=0 seconds=0
+PASS case=2002 op=2 accepted=0 seconds=0
+PASS case=2102 op=0 accepted=0 seconds=0
+RESULT PASS checks=7 failures=0 accepted=2 seconds=849
+
+
+
+
+
+
+
+
+
+
+
+
+
+

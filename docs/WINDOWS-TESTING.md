@@ -84,12 +84,14 @@ The server log retains the first attempt's broken-pipe disconnect and the
 subsequent successful authentication. No out-of-memory error was reported.
 The command output shows a 167,024-byte SSH worker and 66,816-byte command
 shell; these are process observations, not a peak-memory bound.
-Serial maintenance is unconfirmed: `ps` shows the earlier maintenance process
-in `/bin/login`, and serial input did not yield a root prompt. The qualified
-temporary listener was retained; original startup files were not changed.
-Post-session process cleanup remains to be inspected once maintenance access
-is restored. Four Comrade bridge processes were observed holding the serial
-adapter on 2026-11-06; the owner was asked to release them before further use.
+Follow-up on 2026-11-06 confirmed a cleanup defect: the exited worker (PID
+233) remained a zombie while listener 229 was idle. The prior command-name
+check could not see it because ELKS omits zombie command names. After the owner
+released competing serial bridges and restarted getty, serial maintenance
+worked. Stopping listener 229 removed both entries; original startup was not
+changed. See [the listener correction and regression](LISTENER-SHUTDOWN.md).
+The authenticated commands and native exit zero passed, but idle child cleanup
+did not pass for this recorded binary pair.
 
 ![Native Windows SSH command output from the physical PPC](screenshots/windows-ppc-ssh-commands.png)
 

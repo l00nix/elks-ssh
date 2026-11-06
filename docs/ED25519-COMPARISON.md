@@ -211,11 +211,24 @@ passes QEMU login, three malformed authorized-key signature rejections, repeat
 login, persistent-state verification and connected/idle listener shutdown.
 This run uses the separately corrected launcher.
 
-This candidate has **not been benchmarked or installed on physical hardware**.
-Emulator timings do not establish an 8086 speedup; the larger code may affect
-placement and performance. The next comparison must measure the public probe
-on the same PPC and then qualify the whole service if the result warrants it.
-The existing physical Mac and Windows trials use the earlier slow profile.
+The public probe was benchmarked on the same physical PPC on 2026-11-06.
+All seven checks passed. Signing took **252 seconds** (previously 282), and
+verification **596 seconds** (previously 669), about 11% less time for each.
+Total guest-reported probe time was 849 seconds, compared with 951 previously.
+These are individual runs with one-second timing resolution, not repeated
+statistical benchmarks or a complete SSH-login speed measurement. The full
+optimized service is staged with the corrected listener and passes physical
+banner/admission/cleanup checks; it still needs an authenticated hardware session.
+The earlier physical Mac and Windows trials use the original slow profile.
+
+The hardware fixture contains only public test vectors. It never reads the
+SSH host key, client key or private generator state. See the [physical result](evidence/20261106-ppc-field-o2/probe-result.json)
+and actual PPC console capture below.
+
+![PPC optimized public Ed25519 probe](screenshots/ppc-field-o2.png)
+
+Actual PPC text framebuffer rendered with its captured ROM glyphs; this is a
+public cryptographic probe, not an SSH client screenshot. [Capture provenance](evidence/20261106-ppc-field-o2/capture/manifest.json).
 
 Evidence: [object/profile comparison](evidence/20261105-field-o2/comparison.json),
 [server audit](evidence/20261105-field-o2/server-audit.json),

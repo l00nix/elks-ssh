@@ -125,3 +125,33 @@
   Serial ownership check found four Comrade bridges holding BG02T8E2 (PIDs
   74581, 74582, 81339, 84306); owner was asked whether these may be stopped.
   Do not contend for the cable or assume a working maintenance shell.
+
+- Latest checkpoint 2026-11-06 supersedes the pending serial/reaping notes:
+  owner authorized stopping four Comrade bridges; all stopped, adapter free.
+  Owner restarted getty; root login and maintenance commands succeeded.
+  Worker 233 was confirmed zombie. Stopping listener 229 removed both entries.
+  The old name-only QEMU cleanup check missed unnamed zombies; fixed checks
+  reproduce that defect. New wait-loop launcher SHA
+  8d700dfead1997f95cac25f48c3e3421cd037efbeb21115f040247e2b4ef8ebd
+  passes seven QEMU cases, three bad X25519 inputs, admission and stop tests;
+  paired field-O2 server passes five login/signature cases. Extra connections
+  now wait without a banner while the one worker runs; immediate rejection and
+  a network-memory flood bound are not claimed. No kernel/libc changes.
+  A signal-handler alternative failed its second QEMU connection and was
+  discarded without hardware installation.
+  Physical field-O2 public probe passes seven cases: sign 252s, verify 596s,
+  total 849s versus earlier 282/669/951s. About 11% elapsed reduction in single
+  public-probe runs; full hardware SSH timing for this candidate is pending.
+  Actual PPC framebuffer capture is docs/screenshots/ppc-field-o2.png.
+  Both new binaries were staged and checked against local MD5s. PPC listener
+  PID 309 (/root/sshqueue 2222 /root/sshfield -i -r hostkey -D /root/sshtrial)
+  passed three banner/disconnect checks and one queued-client admission check;
+  no worker or zombie remained. A first 15s banner deadline expired; the 90s
+  retry passed. Logs retain early socket-address errors for closed clients.
+  Private state is intact and lock absent; original startup unchanged.
+  Serial shell PID 242 was exec-replaced with getty; login prompt verified,
+  port closed to free RAM. Do not send input while the native Mac test runs.
+  User was asked to launch the existing private Mac-PPC-test.command for the
+  exact field-O2/queue pair and keep its Terminal window for a screenshot.
+  Script deadline is 31 minutes; no full candidate hardware login claimed yet.
+  Do not use or bypass the blocked macOS Terminal computer-control interface.

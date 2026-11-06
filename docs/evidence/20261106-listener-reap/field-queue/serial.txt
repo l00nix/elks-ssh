@@ -1,0 +1,579 @@
+Direct console, scan kbd 80x25 emulating ANSI (3 virtual consoles)
+xms: 15232K, off. 64K ext buffers, 8K cache, 15 req hdrs
+eth: ne0 at 300, irq 12, (ne2k) MAC 52:54:00:12:34:56, flags 0x80
+eth: wd0 at 0x240, irq 2, ram 0xce00 not found
+eth: 3c0 at 330, irq 11 not found
+df: CMOS df0 is 2.88M (5)
+ssd: no XMS
+hda:   31M CHS  63,16,63
+fd0: 2880K CHS  80, 2,36
+cfa:   31M CHS  63,16,63 31752K VER f0/512 xtide=0,0
+cfb: ATA at 1f0/3f6 xtide=0,0 not found (-22)
+hda:(0,63504) no mbr, no partitions
+cfa:(0,63504) no mbr, no partitions
+boot: BIOS drive 80, root device /dev/hda (0300)
+PC/AT class cpu 7, syscaps ff, 638K ram, 16 tasks, 64 files, 96 inodes
+ELKS 0.9.2 (62576 text, 32448 ftext, 10384 data, 8320 bss, 46830 heap)
+Kernel text ffff ftext 330 init 8b8 data b1c end 1b1c top 9f80 529+9+0K free
+VFS: Mounted root device /dev/hda (0300) minix filesystem.
+Running /etc/rc.sys script
+Fri Nov  6 10:05:14 2026
+
+ELKS 0.9.2
+
+[0.27 secs] login: root
+# uname -a; echo STEP1=$?
+ELKS elks 0.9.2 commit e1469b64 20 Oct 2026 14:22:02 +0000 ibmpc i8086
+STEP1=0
+# chmod 700 /root/rngtest; echo STEP2=$?
+STEP2=0
+# ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0; echo STEP3=$?
+ktcp: ip 10.0.2.15, gateway 10.0.2.2, netmask 255.255.255.0
+ktcp: /dev/ne0 mac 52.54.00.12.34.56 mtu 1500
+STEP3=0
+# ls -ld / /root /root/authkeys; echo STEP4=$?
+drwxr-xr-x 12 root     root          224  Nov  4 13:51 
+drwx------  3 root     root          144  Nov  4 13:51 root
+-rw-------  1 root     root           91  Nov  6 10:05 authkeys
+STEP4=0
+# sshlisten 22 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &# shlisten 22 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &;[0K[79C# hlisten 22 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &; [0K[79C# listen 22 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &; e[0K[79C# isten 22 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &; ec[0K[79C# sten 22 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &; ech[0K[79C# ten 22 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &; echo[0K[79C# en 22 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &; echo [0K[79C# n 22 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &; echo S[0K[79C#  22 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &; echo ST[0K[79C# 22 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &; echo STE[0K[79C# 2 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &; echo STEP[0K[79C#  /bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &; echo STEP5[0K[79C# /bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &; echo STEP5=[0K[79C# bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &; echo STEP5=$[0K[79C# in/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &; echo STEP5=$?[0K[79C
+STEP5=0
+# cat /tmp/sshd.log; echo STEP6=$?
+sshlisten ready; one concurrent worker
+STEP6=0
+# ps; echo STEP7=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1410 12960  66640 -/bin/sh 
+   13     7   S0 root    S   0     0  8134  15824 sshlisten 22 /bin/sshtest -i -r /root/hostkey -D /root 
+   11    11   S0 root    S   1  4474 32318  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   18     7   S0 root    R   0    50  2100   8992 ps 
+STEP7=0
+# cat /tmp/sshd.log; echo STEP8=$?
+sshlisten ready; one concurrent worker
+[15] Nov 06 10:05:16 Child connection from 10.0.2.2:63763
+CRYPTO pid=15 x25519 begin
+CRYPTO pid=15 x25519 end seconds=1
+CRYPTO pid=15 x25519 begin
+CRYPTO pid=15 x25519 end seconds=2
+CRYPTO pid=15 ed25519-sign begin
+CRYPTO pid=15 ed25519-sign end seconds=3
+CRYPTO pid=15 ed25519-verify begin
+CRYPTO pid=15 ed25519-verify end seconds=8
+[15] Nov 06 10:05:30 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63763
+PROCESS fork begin
+[15] Nov 06 10:05:33 Exit (root) from <10.0.2.2:63763>: Disconnect received
+STEP8=0
+# cat /tmp/sshd.log; echo STEP9=$?
+sshlisten ready; one concurrent worker
+[15] Nov 06 10:05:16 Child connection from 10.0.2.2:63763
+CRYPTO pid=15 x25519 begin
+CRYPTO pid=15 x25519 end seconds=1
+CRYPTO pid=15 x25519 begin
+CRYPTO pid=15 x25519 end seconds=2
+CRYPTO pid=15 ed25519-sign begin
+CRYPTO pid=15 ed25519-sign end seconds=3
+CRYPTO pid=15 ed25519-verify begin
+CRYPTO pid=15 ed25519-verify end seconds=8
+[15] Nov 06 10:05:30 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63763
+PROCESS fork begin
+[15] Nov 06 10:05:33 Exit (root) from <10.0.2.2:63763>: Disconnect received
+STEP9=0
+# ps; echo STEP10=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1502 12868  66640 -/bin/sh 
+   13     7   S0 root    S   0     0  8134  15824 sshlisten 22 /bin/sshtest -i -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  4474 32318  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   22     7   S0 root    R   0    50  2100   8992 ps 
+STEP10=0
+# cat /tmp/sshd.log; echo STEP11=$?
+sshlisten ready; one concurrent worker
+[15] Nov 06 10:05:16 Child connection from 10.0.2.2:63763
+CRYPTO pid=15 x25519 begin
+CRYPTO pid=15 x25519 end seconds=1
+CRYPTO pid=15 x25519 begin
+CRYPTO pid=15 x25519 end seconds=2
+CRYPTO pid=15 ed25519-sign begin
+CRYPTO pid=15 ed25519-sign end seconds=3
+CRYPTO pid=15 ed25519-verify begin
+CRYPTO pid=15 ed25519-verify end seconds=8
+[15] Nov 06 10:05:30 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63763
+PROCESS fork begin
+[15] Nov 06 10:05:33 Exit (root) from <10.0.2.2:63763>: Disconnect received
+[21] Nov 06 10:05:35 Child connection from 10.0.2.2:63768
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 ed25519-sign begin
+CRYPTO pid=21 ed25519-sign end seconds=4
+CRYPTO pid=21 ed25519-verify begin
+CRYPTO pid=21 ed25519-verify end seconds=8
+[21] Nov 06 10:05:49 Pubkey auth bad signature for 'root' with key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63768
+[21] Nov 06 10:05:49 Exit before auth from <10.0.2.2:63768>: (user 'root', 1 fails): Exited normally
+STEP11=0
+# cat /tmp/sshd.log; echo STEP12=$?
+sshlisten ready; one concurrent worker
+[15] Nov 06 10:05:16 Child connection from 10.0.2.2:63763
+CRYPTO pid=15 x25519 begin
+CRYPTO pid=15 x25519 end seconds=1
+CRYPTO pid=15 x25519 begin
+CRYPTO pid=15 x25519 end seconds=2
+CRYPTO pid=15 ed25519-sign begin
+CRYPTO pid=15 ed25519-sign end seconds=3
+CRYPTO pid=15 ed25519-verify begin
+CRYPTO pid=15 ed25519-verify end seconds=8
+[15] Nov 06 10:05:30 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63763
+PROCESS fork begin
+[15] Nov 06 10:05:33 Exit (root) from <10.0.2.2:63763>: Disconnect received
+[21] Nov 06 10:05:35 Child connection from 10.0.2.2:63768
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 ed25519-sign begin
+CRYPTO pid=21 ed25519-sign end seconds=4
+CRYPTO pid=21 ed25519-verify begin
+CRYPTO pid=21 ed25519-verify end seconds=8
+[21] Nov 06 10:05:49 Pubkey auth bad signature for 'root' with key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63768
+[21] Nov 06 10:05:49 Exit before auth from <10.0.2.2:63768>: (user 'root', 1 fails): Exited normally
+STEP12=0
+# cat /tmp/sshd.log; echo STEP13=$?
+sshlisten ready; one concurrent worker
+[15] Nov 06 10:05:16 Child connection from 10.0.2.2:63763
+CRYPTO pid=15 x25519 begin
+CRYPTO pid=15 x25519 end seconds=1
+CRYPTO pid=15 x25519 begin
+CRYPTO pid=15 x25519 end seconds=2
+CRYPTO pid=15 ed25519-sign begin
+CRYPTO pid=15 ed25519-sign end seconds=3
+CRYPTO pid=15 ed25519-verify begin
+CRYPTO pid=15 ed25519-verify end seconds=8
+[15] Nov 06 10:05:30 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63763
+PROCESS fork begin
+[15] Nov 06 10:05:33 Exit (root) from <10.0.2.2:63763>: Disconnect received
+[21] Nov 06 10:05:35 Child connection from 10.0.2.2:63768
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 ed25519-sign begin
+CRYPTO pid=21 ed25519-sign end seconds=4
+CRYPTO pid=21 ed25519-verify begin
+CRYPTO pid=21 ed25519-verify end seconds=8
+[21] Nov 06 10:05:49 Pubkey auth bad signature for 'root' with key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63768
+[21] Nov 06 10:05:49 Exit before auth from <10.0.2.2:63768>: (user 'root', 1 fails): Exited normally
+STEP13=0
+# ps; echo STEP14=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1628 12742  66640 -/bin/sh 
+   13     7   S0 root    S   0     0  8134  15824 sshlisten 22 /bin/sshtest -i -r /root/hostkey -D /root 
+   11    11   S0 root    S   1  4474 32318  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   27     7   S0 root    R   0    50  2100   8992 ps 
+STEP14=0
+# cat /tmp/sshd.log; echo STEP15=$?
+sshlisten ready; one concurrent worker
+[15] Nov 06 10:05:16 Child connection from 10.0.2.2:63763
+CRYPTO pid=15 x25519 begin
+CRYPTO pid=15 x25519 end seconds=1
+CRYPTO pid=15 x25519 begin
+CRYPTO pid=15 x25519 end seconds=2
+CRYPTO pid=15 ed25519-sign begin
+CRYPTO pid=15 ed25519-sign end seconds=3
+CRYPTO pid=15 ed25519-verify begin
+CRYPTO pid=15 ed25519-verify end seconds=8
+[15] Nov 06 10:05:30 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63763
+PROCESS fork begin
+[15] Nov 06 10:05:33 Exit (root) from <10.0.2.2:63763>: Disconnect received
+[21] Nov 06 10:05:35 Child connection from 10.0.2.2:63768
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 ed25519-sign begin
+CRYPTO pid=21 ed25519-sign end seconds=4
+CRYPTO pid=21 ed25519-verify begin
+CRYPTO pid=21 ed25519-verify end seconds=8
+[21] Nov 06 10:05:49 Pubkey auth bad signature for 'root' with key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63768
+[21] Nov 06 10:05:49 Exit before auth from <10.0.2.2:63768>: (user 'root', 1 fails): Exited normally
+[26] Nov 06 10:05:51 Child connection from 10.0.2.2:63771
+CRYPTO pid=26 x25519 begin
+CRYPTO pid=26 x25519 end seconds=1
+CRYPTO pid=26 x25519 begin
+CRYPTO pid=26 x25519 end seconds=2
+CRYPTO pid=26 ed25519-sign begin
+CRYPTO pid=26 ed25519-sign end seconds=3
+CRYPTO pid=26 ed25519-verify begin
+CRYPTO pid=26 ed25519-verify end seconds=0
+[26] Nov 06 10:05:57 Pubkey auth bad signature for 'root' with key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63771
+[26] Nov 06 10:05:57 Exit before auth from <10.0.2.2:63771>: (user 'root', 1 fails): Exited normally
+STEP15=0
+# cat /tmp/sshd.log; echo STEP16=$?
+sshlisten ready; one concurrent worker
+[15] Nov 06 10:05:16 Child connection from 10.0.2.2:63763
+CRYPTO pid=15 x25519 begin
+CRYPTO pid=15 x25519 end seconds=1
+CRYPTO pid=15 x25519 begin
+CRYPTO pid=15 x25519 end seconds=2
+CRYPTO pid=15 ed25519-sign begin
+CRYPTO pid=15 ed25519-sign end seconds=3
+CRYPTO pid=15 ed25519-verify begin
+CRYPTO pid=15 ed25519-verify end seconds=8
+[15] Nov 06 10:05:30 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63763
+PROCESS fork begin
+[15] Nov 06 10:05:33 Exit (root) from <10.0.2.2:63763>: Disconnect received
+[21] Nov 06 10:05:35 Child connection from 10.0.2.2:63768
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 ed25519-sign begin
+CRYPTO pid=21 ed25519-sign end seconds=4
+CRYPTO pid=21 ed25519-verify begin
+CRYPTO pid=21 ed25519-verify end seconds=8
+[21] Nov 06 10:05:49 Pubkey auth bad signature for 'root' with key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63768
+[21] Nov 06 10:05:49 Exit before auth from <10.0.2.2:63768>: (user 'root', 1 fails): Exited normally
+[26] Nov 06 10:05:51 Child connection from 10.0.2.2:63771
+CRYPTO pid=26 x25519 begin
+CRYPTO pid=26 x25519 end seconds=1
+CRYPTO pid=26 x25519 begin
+CRYPTO pid=26 x25519 end seconds=2
+CRYPTO pid=26 ed25519-sign begin
+CRYPTO pid=26 ed25519-sign end seconds=3
+CRYPTO pid=26 ed25519-verify begin
+CRYPTO pid=26 ed25519-verify end seconds=0
+[26] Nov 06 10:05:57 Pubkey auth bad signature for 'root' with key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63771
+[26] Nov 06 10:05:57 Exit before auth from <10.0.2.2:63771>: (user 'root', 1 fails): Exited normally
+STEP16=0
+# cat /tmp/sshd.log; echo STEP17=$?
+sshlisten ready; one concurrent worker
+[15] Nov 06 10:05:16 Child connection from 10.0.2.2:63763
+CRYPTO pid=15 x25519 begin
+CRYPTO pid=15 x25519 end seconds=1
+CRYPTO pid=15 x25519 begin
+CRYPTO pid=15 x25519 end seconds=2
+CRYPTO pid=15 ed25519-sign begin
+CRYPTO pid=15 ed25519-sign end seconds=3
+CRYPTO pid=15 ed25519-verify begin
+CRYPTO pid=15 ed25519-verify end seconds=8
+[15] Nov 06 10:05:30 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63763
+PROCESS fork begin
+[15] Nov 06 10:05:33 Exit (root) from <10.0.2.2:63763>: Disconnect received
+[21] Nov 06 10:05:35 Child connection from 10.0.2.2:63768
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 ed25519-sign begin
+CRYPTO pid=21 ed25519-sign end seconds=4
+CRYPTO pid=21 ed25519-verify begin
+CRYPTO pid=21 ed25519-verify end seconds=8
+[21] Nov 06 10:05:49 Pubkey auth bad signature for 'root' with key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63768
+[21] Nov 06 10:05:49 Exit before auth from <10.0.2.2:63768>: (user 'root', 1 fails): Exited normally
+[26] Nov 06 10:05:51 Child connection from 10.0.2.2:63771
+CRYPTO pid=26 x25519 begin
+CRYPTO pid=26 x25519 end seconds=1
+CRYPTO pid=26 x25519 begin
+CRYPTO pid=26 x25519 end seconds=2
+CRYPTO pid=26 ed25519-sign begin
+CRYPTO pid=26 ed25519-sign end seconds=3
+CRYPTO pid=26 ed25519-verify begin
+CRYPTO pid=26 ed25519-verify end seconds=0
+[26] Nov 06 10:05:57 Pubkey auth bad signature for 'root' with key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63771
+[26] Nov 06 10:05:57 Exit before auth from <10.0.2.2:63771>: (user 'root', 1 fails): Exited normally
+STEP17=0
+# ps; echo STEP18=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1774 12596  66640 -/bin/sh 
+   13     7   S0 root    S   0     0  8134  15824 sshlisten 22 /bin/sshtest -i -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  4474 32318  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   32     7   S0 root    R   0    50  2100   8992 ps 
+STEP18=0
+# cat /tmp/sshd.log; echo STEP19=$?
+sshlisten ready; one concurrent worker
+[15] Nov 06 10:05:16 Child connection from 10.0.2.2:63763
+CRYPTO pid=15 x25519 begin
+CRYPTO pid=15 x25519 end seconds=1
+CRYPTO pid=15 x25519 begin
+CRYPTO pid=15 x25519 end seconds=2
+CRYPTO pid=15 ed25519-sign begin
+CRYPTO pid=15 ed25519-sign end seconds=3
+CRYPTO pid=15 ed25519-verify begin
+CRYPTO pid=15 ed25519-verify end seconds=8
+[15] Nov 06 10:05:30 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63763
+PROCESS fork begin
+[15] Nov 06 10:05:33 Exit (root) from <10.0.2.2:63763>: Disconnect received
+[21] Nov 06 10:05:35 Child connection from 10.0.2.2:63768
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 ed25519-sign begin
+CRYPTO pid=21 ed25519-sign end seconds=4
+CRYPTO pid=21 ed25519-verify begin
+CRYPTO pid=21 ed25519-verify end seconds=8
+[21] Nov 06 10:05:49 Pubkey auth bad signature for 'root' with key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63768
+[21] Nov 06 10:05:49 Exit before auth from <10.0.2.2:63768>: (user 'root', 1 fails): Exited normally
+[26] Nov 06 10:05:51 Child connection from 10.0.2.2:63771
+CRYPTO pid=26 x25519 begin
+CRYPTO pid=26 x25519 end seconds=1
+CRYPTO pid=26 x25519 begin
+CRYPTO pid=26 x25519 end seconds=2
+CRYPTO pid=26 ed25519-sign begin
+CRYPTO pid=26 ed25519-sign end seconds=3
+CRYPTO pid=26 ed25519-verify begin
+CRYPTO pid=26 ed25519-verify end seconds=0
+[26] Nov 06 10:05:57 Pubkey auth bad signature for 'root' with key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63771
+[26] Nov 06 10:05:57 Exit before auth from <10.0.2.2:63771>: (user 'root', 1 fails): Exited normally
+[31] Nov 06 10:05:59 Child connection from 10.0.2.2:63773
+CRYPTO pid=31 x25519 begin
+CRYPTO pid=31 x25519 end seconds=2
+CRYPTO pid=31 x25519 begin
+CRYPTO pid=31 x25519 end seconds=1
+CRYPTO pid=31 ed25519-sign begin
+CRYPTO pid=31 ed25519-sign end seconds=3
+[31] Nov 06 10:06:05 Pubkey auth bad signature for 'root' with key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63773
+[31] Nov 06 10:06:06 Exit before auth from <10.0.2.2:63773>: (user 'root', 1 fails): Exited normally
+STEP19=0
+# cat /tmp/sshd.log; echo STEP20=$?
+sshlisten ready; one concurrent worker
+[15] Nov 06 10:05:16 Child connection from 10.0.2.2:63763
+CRYPTO pid=15 x25519 begin
+CRYPTO pid=15 x25519 end seconds=1
+CRYPTO pid=15 x25519 begin
+CRYPTO pid=15 x25519 end seconds=2
+CRYPTO pid=15 ed25519-sign begin
+CRYPTO pid=15 ed25519-sign end seconds=3
+CRYPTO pid=15 ed25519-verify begin
+CRYPTO pid=15 ed25519-verify end seconds=8
+[15] Nov 06 10:05:30 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63763
+PROCESS fork begin
+[15] Nov 06 10:05:33 Exit (root) from <10.0.2.2:63763>: Disconnect received
+[21] Nov 06 10:05:35 Child connection from 10.0.2.2:63768
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 ed25519-sign begin
+CRYPTO pid=21 ed25519-sign end seconds=4
+CRYPTO pid=21 ed25519-verify begin
+CRYPTO pid=21 ed25519-verify end seconds=8
+[21] Nov 06 10:05:49 Pubkey auth bad signature for 'root' with key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63768
+[21] Nov 06 10:05:49 Exit before auth from <10.0.2.2:63768>: (user 'root', 1 fails): Exited normally
+[26] Nov 06 10:05:51 Child connection from 10.0.2.2:63771
+CRYPTO pid=26 x25519 begin
+CRYPTO pid=26 x25519 end seconds=1
+CRYPTO pid=26 x25519 begin
+CRYPTO pid=26 x25519 end seconds=2
+CRYPTO pid=26 ed25519-sign begin
+CRYPTO pid=26 ed25519-sign end seconds=3
+CRYPTO pid=26 ed25519-verify begin
+CRYPTO pid=26 ed25519-verify end seconds=0
+[26] Nov 06 10:05:57 Pubkey auth bad signature for 'root' with key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63771
+[26] Nov 06 10:05:57 Exit before auth from <10.0.2.2:63771>: (user 'root', 1 fails): Exited normally
+[31] Nov 06 10:05:59 Child connection from 10.0.2.2:63773
+CRYPTO pid=31 x25519 begin
+CRYPTO pid=31 x25519 end seconds=2
+CRYPTO pid=31 x25519 begin
+CRYPTO pid=31 x25519 end seconds=1
+CRYPTO pid=31 ed25519-sign begin
+CRYPTO pid=31 ed25519-sign end seconds=3
+[31] Nov 06 10:06:05 Pubkey auth bad signature for 'root' with key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63773
+[31] Nov 06 10:06:06 Exit before auth from <10.0.2.2:63773>: (user 'root', 1 fails): Exited normally
+STEP20=0
+# ps; echo STEP21=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1888 12482  66640 -/bin/sh 
+   13     7   S0 root    S   0     0  8134  15824 sshlisten 22 /bin/sshtest -i -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  4474 32318  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   38     7   S0 root    R   0    50  2100   8992 ps 
+STEP21=0
+# cat /tmp/sshd.log; echo STEP22=$?
+sshlisten ready; one concurrent worker
+[15] Nov 06 10:05:16 Child connection from 10.0.2.2:63763
+CRYPTO pid=15 x25519 begin
+CRYPTO pid=15 x25519 end seconds=1
+CRYPTO pid=15 x25519 begin
+CRYPTO pid=15 x25519 end seconds=2
+CRYPTO pid=15 ed25519-sign begin
+CRYPTO pid=15 ed25519-sign end seconds=3
+CRYPTO pid=15 ed25519-verify begin
+CRYPTO pid=15 ed25519-verify end seconds=8
+[15] Nov 06 10:05:30 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63763
+PROCESS fork begin
+[15] Nov 06 10:05:33 Exit (root) from <10.0.2.2:63763>: Disconnect received
+[21] Nov 06 10:05:35 Child connection from 10.0.2.2:63768
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 ed25519-sign begin
+CRYPTO pid=21 ed25519-sign end seconds=4
+CRYPTO pid=21 ed25519-verify begin
+CRYPTO pid=21 ed25519-verify end seconds=8
+[21] Nov 06 10:05:49 Pubkey auth bad signature for 'root' with key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63768
+[21] Nov 06 10:05:49 Exit before auth from <10.0.2.2:63768>: (user 'root', 1 fails): Exited normally
+[26] Nov 06 10:05:51 Child connection from 10.0.2.2:63771
+CRYPTO pid=26 x25519 begin
+CRYPTO pid=26 x25519 end seconds=1
+CRYPTO pid=26 x25519 begin
+CRYPTO pid=26 x25519 end seconds=2
+CRYPTO pid=26 ed25519-sign begin
+CRYPTO pid=26 ed25519-sign end seconds=3
+CRYPTO pid=26 ed25519-verify begin
+CRYPTO pid=26 ed25519-verify end seconds=0
+[26] Nov 06 10:05:57 Pubkey auth bad signature for 'root' with key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63771
+[26] Nov 06 10:05:57 Exit before auth from <10.0.2.2:63771>: (user 'root', 1 fails): Exited normally
+[31] Nov 06 10:05:59 Child connection from 10.0.2.2:63773
+CRYPTO pid=31 x25519 begin
+CRYPTO pid=31 x25519 end seconds=2
+CRYPTO pid=31 x25519 begin
+CRYPTO pid=31 x25519 end seconds=1
+CRYPTO pid=31 ed25519-sign begin
+CRYPTO pid=31 ed25519-sign end seconds=3
+[31] Nov 06 10:06:05 Pubkey auth bad signature for 'root' with key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63773
+[31] Nov 06 10:06:06 Exit before auth from <10.0.2.2:63773>: (user 'root', 1 fails): Exited normally
+[35] Nov 06 10:06:07 Child connection from 10.0.2.2:63774
+CRYPTO pid=35 x25519 begin
+CRYPTO pid=35 x25519 end seconds=2
+CRYPTO pid=35 x25519 begin
+CRYPTO pid=35 x25519 end seconds=1
+CRYPTO pid=35 ed25519-sign begin
+CRYPTO pid=35 ed25519-sign end seconds=3
+CRYPTO pid=35 ed25519-verify begin
+CRYPTO pid=35 ed25519-verify end seconds=9
+[35] Nov 06 10:06:22 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63774
+PROCESS fork begin
+[35] Nov 06 10:06:24 Exit (root) from <10.0.2.2:63774>: Disconnect received
+STEP22=0
+# ps; echo STEP23=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1926 12444  66640 -/bin/sh 
+   13     7   S0 root    S   0     0  8126  15824 sshlisten 22 /bin/sshtest -i -r /root/hostkey -D /root 
+   11    11   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   40    40      root    S  18  4352 19856 167200 /bin/sshtest -i -r /root/hostkey -D /root 
+   41     7   S0 root    R   0    50  2100   8992 ps 
+STEP23=0
+# kill 13; echo STEP24=$?
+STEP24=0
+# ps; echo STEP25=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1926 12444  66640 -/bin/sh 
+   13     7   S0 root    S   0     0  8126  15824 sshlisten 22 /bin/sshtest -i -r /root/hostkey -D /root 
+   11    11   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   40     0      root    Z  18
+   43     7   S0 root    R   0    50  2100   8992 ps 
+STEP25=0
+# ps; echo STEP26=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1926 12444  66640 -/bin/sh 
+   11    11   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   44     7   S0 root    R   0    50  2100   8992 ps 
+STEP26=0
+[1] 13 Exit 0                 sshlisten 22 /bin/sshtest -i -r /root/hostkey ...
+# cat /tmp/sshd.log; echo STEP27=$?
+sshlisten ready; one concurrent worker
+[15] Nov 06 10:05:16 Child connection from 10.0.2.2:63763
+CRYPTO pid=15 x25519 begin
+CRYPTO pid=15 x25519 end seconds=1
+CRYPTO pid=15 x25519 begin
+CRYPTO pid=15 x25519 end seconds=2
+CRYPTO pid=15 ed25519-sign begin
+CRYPTO pid=15 ed25519-sign end seconds=3
+CRYPTO pid=15 ed25519-verify begin
+CRYPTO pid=15 ed25519-verify end seconds=8
+[15] Nov 06 10:05:30 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63763
+PROCESS fork begin
+[15] Nov 06 10:05:33 Exit (root) from <10.0.2.2:63763>: Disconnect received
+[21] Nov 06 10:05:35 Child connection from 10.0.2.2:63768
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 ed25519-sign begin
+CRYPTO pid=21 ed25519-sign end seconds=4
+CRYPTO pid=21 ed25519-verify begin
+CRYPTO pid=21 ed25519-verify end seconds=8
+[21] Nov 06 10:05:49 Pubkey auth bad signature for 'root' with key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63768
+[21] Nov 06 10:05:49 Exit before auth from <10.0.2.2:63768>: (user 'root', 1 fails): Exited normally
+[26] Nov 06 10:05:51 Child connection from 10.0.2.2:63771
+CRYPTO pid=26 x25519 begin
+CRYPTO pid=26 x25519 end seconds=1
+CRYPTO pid=26 x25519 begin
+CRYPTO pid=26 x25519 end seconds=2
+CRYPTO pid=26 ed25519-sign begin
+CRYPTO pid=26 ed25519-sign end seconds=3
+CRYPTO pid=26 ed25519-verify begin
+CRYPTO pid=26 ed25519-verify end seconds=0
+[26] Nov 06 10:05:57 Pubkey auth bad signature for 'root' with key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63771
+[26] Nov 06 10:05:57 Exit before auth from <10.0.2.2:63771>: (user 'root', 1 fails): Exited normally
+[31] Nov 06 10:05:59 Child connection from 10.0.2.2:63773
+CRYPTO pid=31 x25519 begin
+CRYPTO pid=31 x25519 end seconds=2
+CRYPTO pid=31 x25519 begin
+CRYPTO pid=31 x25519 end seconds=1
+CRYPTO pid=31 ed25519-sign begin
+CRYPTO pid=31 ed25519-sign end seconds=3
+[31] Nov 06 10:06:05 Pubkey auth bad signature for 'root' with key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63773
+[31] Nov 06 10:06:06 Exit before auth from <10.0.2.2:63773>: (user 'root', 1 fails): Exited normally
+[35] Nov 06 10:06:07 Child connection from 10.0.2.2:63774
+CRYPTO pid=35 x25519 begin
+CRYPTO pid=35 x25519 end seconds=2
+CRYPTO pid=35 x25519 begin
+CRYPTO pid=35 x25519 end seconds=1
+CRYPTO pid=35 ed25519-sign begin
+CRYPTO pid=35 ed25519-sign end seconds=3
+CRYPTO pid=35 ed25519-verify begin
+CRYPTO pid=35 ed25519-verify end seconds=9
+[35] Nov 06 10:06:22 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:Kod6dMd02XUrK9HutFFKqzAdlraAhiaejkFKPyNbzKg from 10.0.2.2:63774
+PROCESS fork begin
+[35] Nov 06 10:06:24 Exit (root) from <10.0.2.2:63774>: Disconnect received
+[40] Nov 06 10:06:26 Child connection from 10.0.2.2:63779
+[40] Nov 06 10:06:26 Exit before auth from <10.0.2.2:63779>: Terminated by signal
+STEP27=0
+# sshlisten 23 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &# shlisten 23 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &;[0K[79C# hlisten 23 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; [0K[79C# listen 23 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; e[0K[79C# isten 23 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; ec[0K[79C# sten 23 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; ech[0K[79C# ten 23 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; echo[0K[79C# en 23 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; echo [0K[79C# n 23 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; echo S[0K[79C#  23 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; echo ST[0K[79C# 23 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; echo STE[0K[79C# 3 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; echo STEP[0K[79C#  /bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; echo STEP2[0K[79C# /bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; echo STEP28[0K[79C# bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; echo STEP28=[0K[79C# in/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; echo STEP28=$[0K[79C# n/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; echo STEP28=$?[0K[79C
+STEP28=0
+# cat /tmp/idle.log; echo STEP29=$?
+sshlisten ready; one concurrent worker
+STEP29=0
+# ps; echo STEP30=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   1  2524 11846  66640 -/bin/sh 
+   11    11   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   46     7   S0 root    S   1     0  8134  15824 sshlisten 23 /bin/sshtest -i -r /root/hostkey -D /root 
+   48     7   S0 root    R   0    50  2100   8992 ps 
+STEP30=0
+# kill 46; echo STEP31=$?
+STEP31=0
+# ps; echo STEP32=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   1  2432 11938  66640 -/bin/sh 
+   11    11   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   50     7   S0 root    R   0    50  2100   8992 ps 
+STEP32=0
+[1] 46 Exit 0                 sshlisten 23 /bin/sshtest -i -r /root/hostkey ...
+# cat /tmp/idle.log; echo STEP33=$?
+sshlisten ready; one concurrent worker
+STEP33=0
+# echo SHELL_STILL_WORKS; echo STEP34=$?
+SHELL_STILL_WORKS
+STEP34=0

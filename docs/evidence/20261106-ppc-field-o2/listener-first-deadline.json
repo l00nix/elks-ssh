@@ -1,0 +1,7 @@
+{
+  "status": "failed",
+  "hardware": "Amstrad PPC 512",
+  "ssh_login": false,
+  "checks": [],
+  "before_ps": "ps; echo C1=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4020  12944 /bin/init \r\n   10    10    1 root    S   0  2204 12102  66608 -/bin/sh \r\n    7     7    1 root    S   1  4472 32318  82784 ktcp -b -p ne0 \r\n  309    10    1 root    S   0     0  8132  15824 /root/sshqueue 2222 /root/sshfield -i -r hostkey -D /root/sshtrial \r\n  242    10    1 root    S   1  4202 10166  66688 -/bin/sh \r\n  312    10    1 root    R   8    50  2094   8976 ps \r\nC1=0\r\n# "
+}

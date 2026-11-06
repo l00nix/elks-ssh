@@ -15,7 +15,8 @@
     "issue_output": true,
     "remote_exit_zero": true,
     "windows_key_confirmed": true,
-    "no_reported_enomem": true
+    "no_reported_enomem": true,
+    "post_session_reaping_passed": false
   },
   "kex": "curve25519-sha256",
   "host_key_algorithm": "ssh-ed25519",
@@ -65,8 +66,8 @@
   "native_process_exit_code": 0,
   "exact_host_elapsed_seconds": 1729.6360903,
   "native_ui_capture": "captured 2026-11-06: completed Windows Terminal session through Windows App",
-  "serial_maintenance": "Unconfirmed; ps shows PID 16 in /bin/login, not a maintenance shell",
-  "ppc_service": "Qualified temporary listener retained; original startup not edited; post-exit process cleanup not yet inspected",
+  "serial_maintenance": "Recovered 2026-11-06 after owner-authorized stop of four competing Comrade bridges and console restart of getty; root prompt and commands verified.",
+  "ppc_service": "Original temporary listener 229 stopped after inspection; worker 233 had remained a zombie until listener shutdown. Both absent afterward; startup unchanged.",
   "collected_utc": "2026-11-06T03:59:14.874697+00:00",
   "files": {
     "first-client.txt": "64785b46df9015c5a045dd2eea0399b14aec34aec6125a2e8809e5536223febd",

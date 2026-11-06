@@ -233,9 +233,9 @@ def run(args):
                                     state = command('ps').decode('latin1')
                                     active = [line for line in state.splitlines()
                                               if re.match(r'\s*\d+\s',line) and 'sshtest ' in line]
-                                    if len(active) == 1: break
+                                    if len(active) == 1 and not re.search(r'\sZ\s+\d+(?:\s|$)',state): break
                                     time.sleep(1)
-                                if len(active) != 1:
+                                if len(active) != 1 or re.search(r'\sZ\s+\d+(?:\s|$)',state):
                                     raise RuntimeError('KEX rejection child was not reaped: '+label)
                                 rejection['connection_child_reaped'] = True
                                 result['kex_rejections'][label] = rejection
@@ -246,23 +246,34 @@ def run(args):
                              'root@127.0.0.1','echo ELKSSH_LOGIN_OK; ps; sleep 5']
                         if args.suite:
                             # Hold one unauthenticated connection. The second
-                            # must close without a banner, preserving the slot.
+                            # must receive no banner, preserving the worker slot.
+                            # The ELKS single-worker launcher may queue it in
+                            # the TCP backlog until the first worker exits.
                             with socket.create_connection(('127.0.0.1',port),timeout=10) as held:
                                 held.settimeout(20)
                                 banner=held.recv(512)
                                 if not banner.startswith(b'SSH-2.0-'): raise RuntimeError('Held connection has no SSH banner')
                                 with socket.create_connection(('127.0.0.1',port),timeout=10) as excess:
-                                    excess.settimeout(10)
+                                    excess.settimeout(2 if args.inetd_launcher else 10)
+                                    queued=False
                                     try: reply=excess.recv(512)
                                     except ConnectionResetError: reply=b''
-                                    result['preauth_limit']=reply==b''
-                                    if reply: raise RuntimeError('Unauthenticated slot released prematurely')
+                                    except socket.timeout:
+                                        if not args.inetd_launcher: raise
+                                        queued=True; reply=b''
+                                    state=command('ps').decode('latin1')
+                                    workers=[line for line in state.splitlines() if
+                                             re.match(r'\s*\d+\s',line) and 'sshtest ' in line]
+                                    result['preauth_limit']=reply==b'' and len(workers)==2
+                                    result['excess_connection']='queued without banner' if queued else 'closed'
+                                    if not result['preauth_limit']:
+                                        raise RuntimeError('Unauthenticated worker limit failed')
                             for _ in range(10):
                                 state=command('ps').decode('latin1')
                                 active=[line for line in state.splitlines() if re.match(r'\s*\d+\s',line) and 'sshtest ' in line]
-                                if len(active)==1: break
+                                if len(active)==1 and not re.search(r'\sZ\s+\d+(?:\s|$)',state): break
                                 time.sleep(1)
-                            if len(active)!=1: raise RuntimeError('Held connection child was not reaped')
+                            if len(active)!=1 or re.search(r'\sZ\s+\d+(?:\s|$)',state): raise RuntimeError('Held connection child was not reaped')
                         snapshots=[]
                         cases={}
                         def attempt_case(name, argv, expected_exit=0, expected_output=None, rejection=None,
@@ -330,9 +341,15 @@ def run(args):
                             for _ in range(5):
                                 state=command('ps').decode('latin1')
                                 server_rows=[line for line in state.splitlines() if re.match(r'\s*\d+\s',line) and 'sshtest ' in line]
-                                if len(server_rows)==1: break
+                                # ELKS omits a zombie's command name, so counting
+                                # only sshtest rows silently misses unreaped children.
+                                zombies=[line.split()[0] for line in state.splitlines()
+                                         if re.match(r'\s*\d+\s',line) and
+                                         re.search(r'\sZ\s+\d+(?:\s|$)',line)]
+                                if len(server_rows)==1 and not zombies: break
                                 time.sleep(1)
-                            case['connection_child_reaped']=len(server_rows)==1
+                            case['zombie_pids_after_session']=zombies
+                            case['connection_child_reaped']=len(server_rows)==1 and not zombies
                             case['passed'] &= case['connection_child_reaped']
                             command('cat /tmp/sshd.log')
                             return case

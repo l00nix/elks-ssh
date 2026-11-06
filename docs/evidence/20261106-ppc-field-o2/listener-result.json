@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "hardware": "Amstrad PPC 512",
+  "ssh_login": false,
+  "checks": [
+    {
+      "attempt": 1,
+      "banner": "SSH-2.0-dropbear_2025.89",
+      "after_ps": "ps; echo C2=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4020  12944 /bin/init \r\n   10    10    1 root    S   0  2204 12102  66608 -/bin/sh \r\n    7     7    1 root    S   1  4472 32318  82784 ktcp -b -p ne0 \r\n  309    10    1 root    S   0     0  8132  15824 /root/sshqueue 2222 /root/sshfield -i -r hostkey -D /root/sshtrial \r\n  242    10    1 root    S   0  4200 10168  66688 -/bin/sh \r\n  319    10    1 root    R   0    50  2094   8976 ps \r\nC2=0\r\n",
+      "no_zombies": true
+    },
+    {
+      "attempt": 2,
+      "banner": "SSH-2.0-dropbear_2025.89",
+      "excess": "queued without banner",
+      "one_live_worker": true,
+      "after_ps": "ps; echo C8=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4020  12944 /bin/init \r\n   10    10    1 root    S   0  2204 12102  66608 -/bin/sh \r\n    7     7    1 root    S   0 13474 23316  82784 ktcp -b -p ne0 \r\n  309    10    1 root    S   0     0  8124  15824 /root/sshqueue 2222 /root/sshfield -i -r hostkey -D /root/sshtrial \r\n  242    10    1 root    S   3  4232 10136  66688 -/bin/sh \r\n  327    10    1 root    R  11    50  2094   8976 ps \r\nC8=0\r\n# ",
+      "no_zombies": true
+    },
+    {
+      "attempt": 3,
+      "banner": "SSH-2.0-dropbear_2025.89",
+      "after_ps": "ps; echo C9=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4020  12944 /bin/init \r\n   10    10    1 root    S   0  2204 12102  66608 -/bin/sh \r\n    7     7    1 root    S   0  4472 32318  82784 ktcp -b -p ne0 \r\n  309    10    1 root    S   0     0  8132  15824 /root/sshqueue 2222 /root/sshfield -i -r hostkey -D /root/sshtrial \r\n  242    10    1 root    S   0  4250 10118  66688 -/bin/sh \r\n  329    10    1 root    R   0    50  2094   8976 ps \r\nC9=0\r\n# ",
+      "no_zombies": true
+    }
+  ],
+  "before_ps": "ps; echo C1=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4020  12944 /bin/init \r\n   10    10    1 root    S   0  2204 12102  66608 -/bin/sh \r\n    7     7    1 root    S   1  4472 32318  82784 ktcp -b -p ne0 \r\n  309    10    1 root    S   0     0  8132  15824 /root/sshqueue 2222 /root/sshfield -i -r hostkey -D /root/sshtrial \r\n  242    10    1 root    S   0  4234 10134  66688 -/bin/sh \r\n  317    10    1 root    R   0    50  2094   8976 ps \r\nC1=0\r\n# ",
+  "server_log": "cat /tmp/fieldssh.log; echo C10=$?\r\r\nsshlisten ready; one concurrent worker\r\n[313] Jan 01 10:11:52 Early exit: Failed socket address: Invalid argument \r\n[318] Jan 01 10:12:42 Child connection from 10.0.0.8:63887\r\n[318] Jan 01 10:12:43 Exit before auth from <10.0.0.8:63887>: Error writing: Broken pipe \r\n[320] Jan 01 10:12:57 Child connection from 10.0.0.8:63888\r\n[320] Jan 01 10:13:01 Exit before auth from <10.0.0.8:63888>: Exited normally\r\n[322] Jan 01 10:13:23 Early exit: Failed socket address: Invalid argument \r\n[328] Jan 01 10:13:36 Child connection from 10.0.0.8:63895\r\n[328] Jan 01 10:13:37 Exit before auth from <10.0.0.8:63895>: Error writing: Broken pipe \r\nC10=0\r\n# ",
+  "state_metadata": "ls -l /root/rngtest; echo C11=$?\r\r\n-rw-------  1 root     root           60  Nov  5  2026 TRIAL\r\n-rw-r--r--  1 root     root          851  Jan  1 01:02 bootopts.bak\r\n-rwx------  1 root     root        11624  Nov  5  2026 rngcheck\r\n-rw-------  1 root     root         1024  Jan  1 10:13 state\r\nC11=0\r\n# ",
+  "server_sha256": "102c66f748a92dc38d41d7eb85a29072d96c004a9a78cea8bb83d0411050e7e4",
+  "listener_sha256": "8d700dfead1997f95cac25f48c3e3421cd037efbeb21115f040247e2b4ef8ebd"
+}

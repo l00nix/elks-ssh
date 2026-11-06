@@ -1,0 +1,870 @@
+Direct console, scan kbd 80x25 emulating ANSI (3 virtual consoles)
+xms: 15232K, off. 64K ext buffers, 8K cache, 15 req hdrs
+eth: ne0 at 300, irq 12, (ne2k) MAC 52:54:00:12:34:56, flags 0x80
+eth: wd0 at 0x240, irq 2, ram 0xce00 not found
+eth: 3c0 at 330, irq 11 not found
+df: CMOS df0 is 2.88M (5)
+ssd: no XMS
+hda:   31M CHS  63,16,63
+fd0: 2880K CHS  80, 2,36
+cfa:   31M CHS  63,16,63 31752K VER f0/512 xtide=0,0
+cfb: ATA at 1f0/3f6 xtide=0,0 not found (-22)
+hda:(0,63504) no mbr, no partitions
+cfa:(0,63504) no mbr, no partitions
+boot: BIOS drive 80, root device /dev/hda (0300)
+PC/AT class cpu 7, syscaps ff, 638K ram, 16 tasks, 64 files, 96 inodes
+ELKS 0.9.2 (62576 text, 32448 ftext, 10384 data, 8320 bss, 46830 heap)
+Kernel text ffff ftext 330 init 8b8 data b1c end 1b1c top 9f80 529+9+0K free
+VFS: Mounted root device /dev/hda (0300) minix filesystem.
+Running /etc/rc.sys script
+Fri Nov  6 10:02:11 2026
+
+ELKS 0.9.2
+
+[0.26 secs] login: root
+# uname -a; echo STEP1=$?
+ELKS elks 0.9.2 commit e1469b64 20 Oct 2026 14:22:02 +0000 ibmpc i8086
+STEP1=0
+# chmod 700 /root/rngtest; echo STEP2=$?
+STEP2=0
+# ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0; echo STEP3=$?
+ktcp: ip 10.0.2.15, gateway 10.0.2.2, netmask 255.255.255.0
+ktcp: /dev/ne0 mac 52.54.00.12.34.56 mtu 1500
+STEP3=0
+# ls -ld / /root /root/authkeys; echo STEP4=$?
+drwxr-xr-x 12 root     root          224  Nov  4 13:51 
+drwx------  3 root     root          144  Nov  4 13:51 root
+-rw-------  1 root     root           91  Nov  6 10:02 authkeys
+STEP4=0
+# sshlisten 22 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &# shlisten 22 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &;[0K[79C# hlisten 22 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &; [0K[79C# listen 22 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &; e[0K[79C# isten 22 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &; ec[0K[79C# sten 22 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &; ech[0K[79C# ten 22 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &; echo[0K[79C# en 22 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &; echo [0K[79C# n 22 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &; echo S[0K[79C#  22 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &; echo ST[0K[79C# 22 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &; echo STE[0K[79C# 2 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &; echo STEP[0K[79C#  /bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &; echo STEP5[0K[79C# /bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &; echo STEP5=[0K[79C# bin/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &; echo STEP5=$[0K[79C# in/sshtest -i -r /root/hostkey -D /root > /tmp/sshd.log 2>&1 &; echo STEP5=$?[0K[79C
+STEP5=0
+# cat /tmp/sshd.log; echo STEP6=$?
+sshlisten ready; one concurrent worker
+STEP6=0
+# cat /tmp/sshd.log; echo STEP7=$?
+sshlisten ready; one concurrent worker
+STEP7=0
+# cat /tmp/sshd.log; echo STEP8=$?
+sshlisten ready; one concurrent worker
+[16] Nov 06 10:02:13 Child connection from 10.0.2.2:63733
+CRYPTO pid=16 x25519 begin
+CRYPTO pid=16 x25519 end seconds=1
+CRYPTO pid=16 x25519 begin
+CRYPTO pid=16 x25519 end seconds=1
+[16] Nov 06 10:02:15 Exit before auth from <10.0.2.2:63733>: Bad curve25519
+STEP8=0
+# ps; echo STEP9=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   1  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   2  1464 12906  66640 -/bin/sh 
+   13     7   S0 root    S   0     0  8126  15824 sshlisten 22 /bin/sshtest -i -r /root/hostkey -D /root 
+   11    11   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   16     0      root    Z  48
+   18     7   S0 root    R   0    50  2100   8992 ps 
+STEP9=0
+# ps; echo STEP10=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   1  1464 12906  66640 -/bin/sh 
+   13     7   S0 root    S   0     0  8134  15824 sshlisten 22 /bin/sshtest -i -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   19     7   S0 root    R   0    50  2100   8992 ps 
+STEP10=0
+# cat /tmp/sshd.log; echo STEP11=$?
+sshlisten ready; one concurrent worker
+[16] Nov 06 10:02:13 Child connection from 10.0.2.2:63733
+CRYPTO pid=16 x25519 begin
+CRYPTO pid=16 x25519 end seconds=1
+CRYPTO pid=16 x25519 begin
+CRYPTO pid=16 x25519 end seconds=1
+[16] Nov 06 10:02:15 Exit before auth from <10.0.2.2:63733>: Bad curve25519
+STEP11=0
+# cat /tmp/sshd.log; echo STEP12=$?
+sshlisten ready; one concurrent worker
+[16] Nov 06 10:02:13 Child connection from 10.0.2.2:63733
+CRYPTO pid=16 x25519 begin
+CRYPTO pid=16 x25519 end seconds=1
+CRYPTO pid=16 x25519 begin
+CRYPTO pid=16 x25519 end seconds=1
+[16] Nov 06 10:02:15 Exit before auth from <10.0.2.2:63733>: Bad curve25519
+[21] Nov 06 10:02:17 Child connection from 10.0.2.2:63734
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+[21] Nov 06 10:02:19 Exit before auth from <10.0.2.2:63734>: Bad curve25519
+STEP12=0
+# ps; echo STEP13=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   1  1598 12772  66640 -/bin/sh 
+   13     7   S0 root    S   0     0  8126  15824 sshlisten 22 /bin/sshtest -i -r /root/hostkey -D /root 
+   11    11   S0 root    S   1 13422 23370  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   21     0      root    Z  58
+   23     7   S0 root    R   0    50  2100   8992 ps 
+STEP13=0
+# ps; echo STEP14=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1574 12796  66640 -/bin/sh 
+   13     7   S0 root    S   0     0  8134  15824 sshlisten 22 /bin/sshtest -i -r /root/hostkey -D /root 
+   11    11   S0 root    S   0 13422 23370  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   24     7   S0 root    R   0    50  2100   8992 ps 
+STEP14=0
+# cat /tmp/sshd.log; echo STEP15=$?
+sshlisten ready; one concurrent worker
+[16] Nov 06 10:02:13 Child connection from 10.0.2.2:63733
+CRYPTO pid=16 x25519 begin
+CRYPTO pid=16 x25519 end seconds=1
+CRYPTO pid=16 x25519 begin
+CRYPTO pid=16 x25519 end seconds=1
+[16] Nov 06 10:02:15 Exit before auth from <10.0.2.2:63733>: Bad curve25519
+[21] Nov 06 10:02:17 Child connection from 10.0.2.2:63734
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+[21] Nov 06 10:02:19 Exit before auth from <10.0.2.2:63734>: Bad curve25519
+STEP15=0
+# cat /tmp/sshd.log; echo STEP16=$?
+sshlisten ready; one concurrent worker
+[16] Nov 06 10:02:13 Child connection from 10.0.2.2:63733
+CRYPTO pid=16 x25519 begin
+CRYPTO pid=16 x25519 end seconds=1
+CRYPTO pid=16 x25519 begin
+CRYPTO pid=16 x25519 end seconds=1
+[16] Nov 06 10:02:15 Exit before auth from <10.0.2.2:63733>: Bad curve25519
+[21] Nov 06 10:02:17 Child connection from 10.0.2.2:63734
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+[21] Nov 06 10:02:19 Exit before auth from <10.0.2.2:63734>: Bad curve25519
+[26] Nov 06 10:02:21 Child connection from 10.0.2.2:63735
+CRYPTO pid=26 x25519 begin
+CRYPTO pid=26 x25519 end seconds=1
+[26] Nov 06 10:02:22 Exit before auth from <10.0.2.2:63735>: Bad curve25519
+STEP16=0
+# ps; echo STEP17=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1748 12622  66640 -/bin/sh 
+   13     7   S0 root    S   0     0  8126  15824 sshlisten 22 /bin/sshtest -i -r /root/hostkey -D /root 
+   11    11   S0 root    S   0 13422 23370  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   26     0      root    Z   0
+   28     7   S0 root    R   0    50  2100   8992 ps 
+STEP17=0
+# ps; echo STEP18=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   1  1724 12646  66640 -/bin/sh 
+   13     7   S0 root    S   0     0  8134  15824 sshlisten 22 /bin/sshtest -i -r /root/hostkey -D /root 
+   11    11   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   29     7   S0 root    R   0    50  2100   8992 ps 
+STEP18=0
+# ps; echo STEP19=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   1  1726 12644  66640 -/bin/sh 
+   13     7   S0 root    S   0     0  8126  15824 sshlisten 22 /bin/sshtest -i -r /root/hostkey -D /root 
+   11    11   S0 root    S   0 17954 18838  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   30    30      root    R  18  4352 19856 167040 /bin/sshtest -i -r /root/hostkey -D /root 
+   31     7   S0 root    R   0    50  2100   8992 ps 
+STEP19=0
+# tcp: activity before accept, dropping packet
+ps; echo STEP20=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   1  1728 12642  66640 -/bin/sh 
+   13     7   S0 root    S   0     0  8126  15824 sshlisten 22 /bin/sshtest -i -r /root/hostkey -D /root 
+   11    11   S0 root    S   0 17954 18838  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   30     0      root    Z  18
+   32     7   S0 root    R   3    50  2100   8992 ps 
+STEP20=0
+# ps; echo STEP21=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1728 12642  66640 -/bin/sh 
+   13     7   S0 root    S   0     0  8134  15824 sshlisten 22 /bin/sshtest -i -r /root/hostkey -D /root 
+   11    11   S0 root    S   0 13422 23370  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   34     7   S0 root    R   0    50  2100   8992 ps 
+STEP21=0
+# ps; echo STEP22=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1728 12642  66640 -/bin/sh 
+   13     7   S0 root    S   0     0  8126  15824 sshlisten 22 /bin/sshtest -i -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  4474 32318  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   35     0      root    Z  75
+   38     7   S0 root    R   0    50  2100   8992 ps 
+STEP22=0
+# ps; echo STEP23=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1728 12642  66640 -/bin/sh 
+   13     7   S0 root    S   0     0  8134  15824 sshlisten 22 /bin/sshtest -i -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  4474 32318  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   39     7   S0 root    R   0    50  2100   8992 ps 
+STEP23=0
+# cat /tmp/sshd.log; echo STEP24=$?
+sshlisten ready; one concurrent worker
+[16] Nov 06 10:02:13 Child connection from 10.0.2.2:63733
+CRYPTO pid=16 x25519 begin
+CRYPTO pid=16 x25519 end seconds=1
+CRYPTO pid=16 x25519 begin
+CRYPTO pid=16 x25519 end seconds=1
+[16] Nov 06 10:02:15 Exit before auth from <10.0.2.2:63733>: Bad curve25519
+[21] Nov 06 10:02:17 Child connection from 10.0.2.2:63734
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+[21] Nov 06 10:02:19 Exit before auth from <10.0.2.2:63734>: Bad curve25519
+[26] Nov 06 10:02:21 Child connection from 10.0.2.2:63735
+CRYPTO pid=26 x25519 begin
+CRYPTO pid=26 x25519 end seconds=1
+[26] Nov 06 10:02:22 Exit before auth from <10.0.2.2:63735>: Bad curve25519
+[30] Nov 06 10:02:24 Child connection from 10.0.2.2:63736
+[30] Nov 06 10:02:26 Exit before auth from <10.0.2.2:63736>: Exited normally
+[33] Nov 06 10:02:27 Child connection from 10.0.2.2:63737
+[33] Nov 06 10:02:27 Exit before auth from <10.0.2.2:63737>: Error writing: Broken pipe 
+[35] Nov 06 10:02:28 Child connection from 10.0.2.2:63739
+CRYPTO pid=35 x25519 begin
+CRYPTO pid=35 x25519 end seconds=2
+CRYPTO pid=35 x25519 begin
+CRYPTO pid=35 x25519 end seconds=2
+CRYPTO pid=35 ed25519-sign begin
+CRYPTO pid=35 ed25519-sign end seconds=20
+CRYPTO pid=35 ed25519-verify begin
+CRYPTO pid=35 ed25519-verify end seconds=40
+[35] Nov 06 10:03:35 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:nZZeokKVf4mbf2rWkBTj4NQxKsdVosiSVPbIdXcpWRI from 10.0.2.2:63739
+PROCESS fork begin
+[35] Nov 06 10:03:38 Exit (root) from <10.0.2.2:63739>: Disconnect received
+STEP24=0
+# ps; echo STEP25=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1804 12566  66640 -/bin/sh 
+   13     7   S0 root    S   0     0  8134  15824 sshlisten 22 /bin/sshtest -i -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  4474 32318  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   42     7   S0 root    R   0    50  2100   8992 ps 
+STEP25=0
+# cat /tmp/sshd.log; echo STEP26=$?
+sshlisten ready; one concurrent worker
+[16] Nov 06 10:02:13 Child connection from 10.0.2.2:63733
+CRYPTO pid=16 x25519 begin
+CRYPTO pid=16 x25519 end seconds=1
+CRYPTO pid=16 x25519 begin
+CRYPTO pid=16 x25519 end seconds=1
+[16] Nov 06 10:02:15 Exit before auth from <10.0.2.2:63733>: Bad curve25519
+[21] Nov 06 10:02:17 Child connection from 10.0.2.2:63734
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+[21] Nov 06 10:02:19 Exit before auth from <10.0.2.2:63734>: Bad curve25519
+[26] Nov 06 10:02:21 Child connection from 10.0.2.2:63735
+CRYPTO pid=26 x25519 begin
+CRYPTO pid=26 x25519 end seconds=1
+[26] Nov 06 10:02:22 Exit before auth from <10.0.2.2:63735>: Bad curve25519
+[30] Nov 06 10:02:24 Child connection from 10.0.2.2:63736
+[30] Nov 06 10:02:26 Exit before auth from <10.0.2.2:63736>: Exited normally
+[33] Nov 06 10:02:27 Child connection from 10.0.2.2:63737
+[33] Nov 06 10:02:27 Exit before auth from <10.0.2.2:63737>: Error writing: Broken pipe 
+[35] Nov 06 10:02:28 Child connection from 10.0.2.2:63739
+CRYPTO pid=35 x25519 begin
+CRYPTO pid=35 x25519 end seconds=2
+CRYPTO pid=35 x25519 begin
+CRYPTO pid=35 x25519 end seconds=2
+CRYPTO pid=35 ed25519-sign begin
+CRYPTO pid=35 ed25519-sign end seconds=20
+CRYPTO pid=35 ed25519-verify begin
+CRYPTO pid=35 ed25519-verify end seconds=40
+[35] Nov 06 10:03:35 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:nZZeokKVf4mbf2rWkBTj4NQxKsdVosiSVPbIdXcpWRI from 10.0.2.2:63739
+PROCESS fork begin
+[35] Nov 06 10:03:38 Exit (root) from <10.0.2.2:63739>: Disconnect received
+[41] Nov 06 10:03:40 Child connection from 10.0.2.2:63749
+CRYPTO pid=41 x25519 begin
+CRYPTO pid=41 x25519 end seconds=3
+CRYPTO pid=41 x25519 begin
+CRYPTO pid=41 x25519 end seconds=2
+CRYPTO pid=41 ed25519-sign begin
+CRYPTO pid=41 ed25519-sign end seconds=21
+[41] Nov 06 10:04:07 Exit before auth from <10.0.2.2:63749>: (user 'root', 0 fails): Exited normally
+STEP26=0
+# ps; echo STEP27=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  1880 12490  66640 -/bin/sh 
+   13     7   S0 root    S   0     0  8134  15824 sshlisten 22 /bin/sshtest -i -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  4474 32318  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   45     7   S0 root    R   0    50  2100   8992 ps 
+STEP27=0
+# cat /tmp/sshd.log; echo STEP28=$?
+sshlisten ready; one concurrent worker
+[16] Nov 06 10:02:13 Child connection from 10.0.2.2:63733
+CRYPTO pid=16 x25519 begin
+CRYPTO pid=16 x25519 end seconds=1
+CRYPTO pid=16 x25519 begin
+CRYPTO pid=16 x25519 end seconds=1
+[16] Nov 06 10:02:15 Exit before auth from <10.0.2.2:63733>: Bad curve25519
+[21] Nov 06 10:02:17 Child connection from 10.0.2.2:63734
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+[21] Nov 06 10:02:19 Exit before auth from <10.0.2.2:63734>: Bad curve25519
+[26] Nov 06 10:02:21 Child connection from 10.0.2.2:63735
+CRYPTO pid=26 x25519 begin
+CRYPTO pid=26 x25519 end seconds=1
+[26] Nov 06 10:02:22 Exit before auth from <10.0.2.2:63735>: Bad curve25519
+[30] Nov 06 10:02:24 Child connection from 10.0.2.2:63736
+[30] Nov 06 10:02:26 Exit before auth from <10.0.2.2:63736>: Exited normally
+[33] Nov 06 10:02:27 Child connection from 10.0.2.2:63737
+[33] Nov 06 10:02:27 Exit before auth from <10.0.2.2:63737>: Error writing: Broken pipe 
+[35] Nov 06 10:02:28 Child connection from 10.0.2.2:63739
+CRYPTO pid=35 x25519 begin
+CRYPTO pid=35 x25519 end seconds=2
+CRYPTO pid=35 x25519 begin
+CRYPTO pid=35 x25519 end seconds=2
+CRYPTO pid=35 ed25519-sign begin
+CRYPTO pid=35 ed25519-sign end seconds=20
+CRYPTO pid=35 ed25519-verify begin
+CRYPTO pid=35 ed25519-verify end seconds=40
+[35] Nov 06 10:03:35 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:nZZeokKVf4mbf2rWkBTj4NQxKsdVosiSVPbIdXcpWRI from 10.0.2.2:63739
+PROCESS fork begin
+[35] Nov 06 10:03:38 Exit (root) from <10.0.2.2:63739>: Disconnect received
+[41] Nov 06 10:03:40 Child connection from 10.0.2.2:63749
+CRYPTO pid=41 x25519 begin
+CRYPTO pid=41 x25519 end seconds=3
+CRYPTO pid=41 x25519 begin
+CRYPTO pid=41 x25519 end seconds=2
+CRYPTO pid=41 ed25519-sign begin
+CRYPTO pid=41 ed25519-sign end seconds=21
+[41] Nov 06 10:04:07 Exit before auth from <10.0.2.2:63749>: (user 'root', 0 fails): Exited normally
+[44] Nov 06 10:04:08 Child connection from 10.0.2.2:63753
+CRYPTO pid=44 x25519 begin
+CRYPTO pid=44 x25519 end seconds=2
+CRYPTO pid=44 x25519 begin
+CRYPTO pid=44 x25519 end seconds=2
+CRYPTO pid=44 ed25519-sign begin
+CRYPTO pid=44 ed25519-sign end seconds=20
+[44] Nov 06 10:04:34 Exit before auth from <10.0.2.2:63753>: Error writing: Broken pipe 
+STEP28=0
+# chmod 777 /root; echo STEP29=$?
+STEP29=0
+# ps; echo STEP30=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2092 12278  66640 -/bin/sh 
+   13     7   S0 root    S   0     0  8134  15824 sshlisten 22 /bin/sshtest -i -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  4474 32318  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   49     7   S0 root    R   0    50  2100   8992 ps 
+STEP30=0
+# cat /tmp/sshd.log; echo STEP31=$?
+sshlisten ready; one concurrent worker
+[16] Nov 06 10:02:13 Child connection from 10.0.2.2:63733
+CRYPTO pid=16 x25519 begin
+CRYPTO pid=16 x25519 end seconds=1
+CRYPTO pid=16 x25519 begin
+CRYPTO pid=16 x25519 end seconds=1
+[16] Nov 06 10:02:15 Exit before auth from <10.0.2.2:63733>: Bad curve25519
+[21] Nov 06 10:02:17 Child connection from 10.0.2.2:63734
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+[21] Nov 06 10:02:19 Exit before auth from <10.0.2.2:63734>: Bad curve25519
+[26] Nov 06 10:02:21 Child connection from 10.0.2.2:63735
+CRYPTO pid=26 x25519 begin
+CRYPTO pid=26 x25519 end seconds=1
+[26] Nov 06 10:02:22 Exit before auth from <10.0.2.2:63735>: Bad curve25519
+[30] Nov 06 10:02:24 Child connection from 10.0.2.2:63736
+[30] Nov 06 10:02:26 Exit before auth from <10.0.2.2:63736>: Exited normally
+[33] Nov 06 10:02:27 Child connection from 10.0.2.2:63737
+[33] Nov 06 10:02:27 Exit before auth from <10.0.2.2:63737>: Error writing: Broken pipe 
+[35] Nov 06 10:02:28 Child connection from 10.0.2.2:63739
+CRYPTO pid=35 x25519 begin
+CRYPTO pid=35 x25519 end seconds=2
+CRYPTO pid=35 x25519 begin
+CRYPTO pid=35 x25519 end seconds=2
+CRYPTO pid=35 ed25519-sign begin
+CRYPTO pid=35 ed25519-sign end seconds=20
+CRYPTO pid=35 ed25519-verify begin
+CRYPTO pid=35 ed25519-verify end seconds=40
+[35] Nov 06 10:03:35 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:nZZeokKVf4mbf2rWkBTj4NQxKsdVosiSVPbIdXcpWRI from 10.0.2.2:63739
+PROCESS fork begin
+[35] Nov 06 10:03:38 Exit (root) from <10.0.2.2:63739>: Disconnect received
+[41] Nov 06 10:03:40 Child connection from 10.0.2.2:63749
+CRYPTO pid=41 x25519 begin
+CRYPTO pid=41 x25519 end seconds=3
+CRYPTO pid=41 x25519 begin
+CRYPTO pid=41 x25519 end seconds=2
+CRYPTO pid=41 ed25519-sign begin
+CRYPTO pid=41 ed25519-sign end seconds=21
+[41] Nov 06 10:04:07 Exit before auth from <10.0.2.2:63749>: (user 'root', 0 fails): Exited normally
+[44] Nov 06 10:04:08 Child connection from 10.0.2.2:63753
+CRYPTO pid=44 x25519 begin
+CRYPTO pid=44 x25519 end seconds=2
+CRYPTO pid=44 x25519 begin
+CRYPTO pid=44 x25519 end seconds=2
+CRYPTO pid=44 ed25519-sign begin
+CRYPTO pid=44 ed25519-sign end seconds=20
+[44] Nov 06 10:04:34 Exit before auth from <10.0.2.2:63753>: Error writing: Broken pipe 
+[48] Nov 06 10:04:37 Child connection from 10.0.2.2:63758
+CRYPTO pid=48 x25519 begin
+CRYPTO pid=48 x25519 end seconds=2
+CRYPTO pid=48 x25519 begin
+CRYPTO pid=48 x25519 end seconds=2
+CRYPTO pid=48 ed25519-sign begin
+CRYPTO pid=48 ed25519-sign end seconds=21
+[48] Nov 06 10:05:03 /root must be owned by user or root, and not writable by group or others
+[48] Nov 06 10:05:03 Exit before auth from <10.0.2.2:63758>: (user 'root', 0 fails): Exited normally
+STEP31=0
+# chmod 700 /root; echo STEP32=$?
+STEP32=0
+# chmod 666 /root/authkeys; echo STEP33=$?
+STEP33=0
+# ps; echo STEP34=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2322 12048  66640 -/bin/sh 
+   13     7   S0 root    S   0     0  8134  15824 sshlisten 22 /bin/sshtest -i -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  4474 32318  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   54     7   S0 root    R   0    50  2100   8992 ps 
+STEP34=0
+# cat /tmp/sshd.log; echo STEP35=$?
+sshlisten ready; one concurrent worker
+[16] Nov 06 10:02:13 Child connection from 10.0.2.2:63733
+CRYPTO pid=16 x25519 begin
+CRYPTO pid=16 x25519 end seconds=1
+CRYPTO pid=16 x25519 begin
+CRYPTO pid=16 x25519 end seconds=1
+[16] Nov 06 10:02:15 Exit before auth from <10.0.2.2:63733>: Bad curve25519
+[21] Nov 06 10:02:17 Child connection from 10.0.2.2:63734
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+[21] Nov 06 10:02:19 Exit before auth from <10.0.2.2:63734>: Bad curve25519
+[26] Nov 06 10:02:21 Child connection from 10.0.2.2:63735
+CRYPTO pid=26 x25519 begin
+CRYPTO pid=26 x25519 end seconds=1
+[26] Nov 06 10:02:22 Exit before auth from <10.0.2.2:63735>: Bad curve25519
+[30] Nov 06 10:02:24 Child connection from 10.0.2.2:63736
+[30] Nov 06 10:02:26 Exit before auth from <10.0.2.2:63736>: Exited normally
+[33] Nov 06 10:02:27 Child connection from 10.0.2.2:63737
+[33] Nov 06 10:02:27 Exit before auth from <10.0.2.2:63737>: Error writing: Broken pipe 
+[35] Nov 06 10:02:28 Child connection from 10.0.2.2:63739
+CRYPTO pid=35 x25519 begin
+CRYPTO pid=35 x25519 end seconds=2
+CRYPTO pid=35 x25519 begin
+CRYPTO pid=35 x25519 end seconds=2
+CRYPTO pid=35 ed25519-sign begin
+CRYPTO pid=35 ed25519-sign end seconds=20
+CRYPTO pid=35 ed25519-verify begin
+CRYPTO pid=35 ed25519-verify end seconds=40
+[35] Nov 06 10:03:35 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:nZZeokKVf4mbf2rWkBTj4NQxKsdVosiSVPbIdXcpWRI from 10.0.2.2:63739
+PROCESS fork begin
+[35] Nov 06 10:03:38 Exit (root) from <10.0.2.2:63739>: Disconnect received
+[41] Nov 06 10:03:40 Child connection from 10.0.2.2:63749
+CRYPTO pid=41 x25519 begin
+CRYPTO pid=41 x25519 end seconds=3
+CRYPTO pid=41 x25519 begin
+CRYPTO pid=41 x25519 end seconds=2
+CRYPTO pid=41 ed25519-sign begin
+CRYPTO pid=41 ed25519-sign end seconds=21
+[41] Nov 06 10:04:07 Exit before auth from <10.0.2.2:63749>: (user 'root', 0 fails): Exited normally
+[44] Nov 06 10:04:08 Child connection from 10.0.2.2:63753
+CRYPTO pid=44 x25519 begin
+CRYPTO pid=44 x25519 end seconds=2
+CRYPTO pid=44 x25519 begin
+CRYPTO pid=44 x25519 end seconds=2
+CRYPTO pid=44 ed25519-sign begin
+CRYPTO pid=44 ed25519-sign end seconds=20
+[44] Nov 06 10:04:34 Exit before auth from <10.0.2.2:63753>: Error writing: Broken pipe 
+[48] Nov 06 10:04:37 Child connection from 10.0.2.2:63758
+CRYPTO pid=48 x25519 begin
+CRYPTO pid=48 x25519 end seconds=2
+CRYPTO pid=48 x25519 begin
+CRYPTO pid=48 x25519 end seconds=2
+CRYPTO pid=48 ed25519-sign begin
+CRYPTO pid=48 ed25519-sign end seconds=21
+[48] Nov 06 10:05:03 /root must be owned by user or root, and not writable by group or others
+[48] Nov 06 10:05:03 Exit before auth from <10.0.2.2:63758>: (user 'root', 0 fails): Exited normally
+[53] Nov 06 10:05:05 Child connection from 10.0.2.2:63760
+CRYPTO pid=53 x25519 begin
+CRYPTO pid=53 x25519 end seconds=2
+CRYPTO pid=53 x25519 begin
+CRYPTO pid=53 x25519 end seconds=2
+CRYPTO pid=53 ed25519-sign begin
+CRYPTO pid=53 ed25519-sign end seconds=22
+[53] Nov 06 10:05:32 Unsafe authorized-key file: /root/authkeys
+[53] Nov 06 10:05:32 Exit before auth from <10.0.2.2:63760>: (user 'root', 0 fails): Exited normally
+STEP35=0
+# chmod 600 /root/authkeys; echo STEP36=$?
+STEP36=0
+# ps; echo STEP37=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2354 12016  66640 -/bin/sh 
+   13     7   S0 root    S   0     0  8134  15824 sshlisten 22 /bin/sshtest -i -r /root/hostkey -D /root 
+   11    11   S0 root    S   1  4474 32318  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   61     7   S0 root    R   0    50  2100   8992 ps 
+STEP37=0
+# cat /tmp/sshd.log; echo STEP38=$?
+sshlisten ready; one concurrent worker
+[16] Nov 06 10:02:13 Child connection from 10.0.2.2:63733
+CRYPTO pid=16 x25519 begin
+CRYPTO pid=16 x25519 end seconds=1
+CRYPTO pid=16 x25519 begin
+CRYPTO pid=16 x25519 end seconds=1
+[16] Nov 06 10:02:15 Exit before auth from <10.0.2.2:63733>: Bad curve25519
+[21] Nov 06 10:02:17 Child connection from 10.0.2.2:63734
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+[21] Nov 06 10:02:19 Exit before auth from <10.0.2.2:63734>: Bad curve25519
+[26] Nov 06 10:02:21 Child connection from 10.0.2.2:63735
+CRYPTO pid=26 x25519 begin
+CRYPTO pid=26 x25519 end seconds=1
+[26] Nov 06 10:02:22 Exit before auth from <10.0.2.2:63735>: Bad curve25519
+[30] Nov 06 10:02:24 Child connection from 10.0.2.2:63736
+[30] Nov 06 10:02:26 Exit before auth from <10.0.2.2:63736>: Exited normally
+[33] Nov 06 10:02:27 Child connection from 10.0.2.2:63737
+[33] Nov 06 10:02:27 Exit before auth from <10.0.2.2:63737>: Error writing: Broken pipe 
+[35] Nov 06 10:02:28 Child connection from 10.0.2.2:63739
+CRYPTO pid=35 x25519 begin
+CRYPTO pid=35 x25519 end seconds=2
+CRYPTO pid=35 x25519 begin
+CRYPTO pid=35 x25519 end seconds=2
+CRYPTO pid=35 ed25519-sign begin
+CRYPTO pid=35 ed25519-sign end seconds=20
+CRYPTO pid=35 ed25519-verify begin
+CRYPTO pid=35 ed25519-verify end seconds=40
+[35] Nov 06 10:03:35 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:nZZeokKVf4mbf2rWkBTj4NQxKsdVosiSVPbIdXcpWRI from 10.0.2.2:63739
+PROCESS fork begin
+[35] Nov 06 10:03:38 Exit (root) from <10.0.2.2:63739>: Disconnect received
+[41] Nov 06 10:03:40 Child connection from 10.0.2.2:63749
+CRYPTO pid=41 x25519 begin
+CRYPTO pid=41 x25519 end seconds=3
+CRYPTO pid=41 x25519 begin
+CRYPTO pid=41 x25519 end seconds=2
+CRYPTO pid=41 ed25519-sign begin
+CRYPTO pid=41 ed25519-sign end seconds=21
+[41] Nov 06 10:04:07 Exit before auth from <10.0.2.2:63749>: (user 'root', 0 fails): Exited normally
+[44] Nov 06 10:04:08 Child connection from 10.0.2.2:63753
+CRYPTO pid=44 x25519 begin
+CRYPTO pid=44 x25519 end seconds=2
+CRYPTO pid=44 x25519 begin
+CRYPTO pid=44 x25519 end seconds=2
+CRYPTO pid=44 ed25519-sign begin
+CRYPTO pid=44 ed25519-sign end seconds=20
+[44] Nov 06 10:04:34 Exit before auth from <10.0.2.2:63753>: Error writing: Broken pipe 
+[48] Nov 06 10:04:37 Child connection from 10.0.2.2:63758
+CRYPTO pid=48 x25519 begin
+CRYPTO pid=48 x25519 end seconds=2
+CRYPTO pid=48 x25519 begin
+CRYPTO pid=48 x25519 end seconds=2
+CRYPTO pid=48 ed25519-sign begin
+CRYPTO pid=48 ed25519-sign end seconds=21
+[48] Nov 06 10:05:03 /root must be owned by user or root, and not writable by group or others
+[48] Nov 06 10:05:03 Exit before auth from <10.0.2.2:63758>: (user 'root', 0 fails): Exited normally
+[53] Nov 06 10:05:05 Child connection from 10.0.2.2:63760
+CRYPTO pid=53 x25519 begin
+CRYPTO pid=53 x25519 end seconds=2
+CRYPTO pid=53 x25519 begin
+CRYPTO pid=53 x25519 end seconds=2
+CRYPTO pid=53 ed25519-sign begin
+CRYPTO pid=53 ed25519-sign end seconds=22
+[53] Nov 06 10:05:32 Unsafe authorized-key file: /root/authkeys
+[53] Nov 06 10:05:32 Exit before auth from <10.0.2.2:63760>: (user 'root', 0 fails): Exited normally
+[57] Nov 06 10:05:35 Child connection from 10.0.2.2:63769
+CRYPTO pid=57 x25519 begin
+CRYPTO pid=57 x25519 end seconds=3
+CRYPTO pid=57 x25519 begin
+CRYPTO pid=57 x25519 end seconds=2
+CRYPTO pid=57 ed25519-sign begin
+CRYPTO pid=57 ed25519-sign end seconds=21
+CRYPTO pid=57 ed25519-verify begin
+CRYPTO pid=57 ed25519-verify end seconds=42
+[57] Nov 06 10:06:46 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:nZZeokKVf4mbf2rWkBTj4NQxKsdVosiSVPbIdXcpWRI from 10.0.2.2:63769
+PROCESS fork begin
+[57] Nov 06 10:07:23 Exit (root) from <10.0.2.2:63769>: Disconnect received
+STEP38=0
+# ps; echo STEP39=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2392 11978  66640 -/bin/sh 
+   13     7   S0 root    S   0     0  8134  15824 sshlisten 22 /bin/sshtest -i -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  4474 32318  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   65     7   S0 root    R   0    50  2100   8992 ps 
+STEP39=0
+# cat /tmp/sshd.log; echo STEP40=$?
+sshlisten ready; one concurrent worker
+[16] Nov 06 10:02:13 Child connection from 10.0.2.2:63733
+CRYPTO pid=16 x25519 begin
+CRYPTO pid=16 x25519 end seconds=1
+CRYPTO pid=16 x25519 begin
+CRYPTO pid=16 x25519 end seconds=1
+[16] Nov 06 10:02:15 Exit before auth from <10.0.2.2:63733>: Bad curve25519
+[21] Nov 06 10:02:17 Child connection from 10.0.2.2:63734
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+[21] Nov 06 10:02:19 Exit before auth from <10.0.2.2:63734>: Bad curve25519
+[26] Nov 06 10:02:21 Child connection from 10.0.2.2:63735
+CRYPTO pid=26 x25519 begin
+CRYPTO pid=26 x25519 end seconds=1
+[26] Nov 06 10:02:22 Exit before auth from <10.0.2.2:63735>: Bad curve25519
+[30] Nov 06 10:02:24 Child connection from 10.0.2.2:63736
+[30] Nov 06 10:02:26 Exit before auth from <10.0.2.2:63736>: Exited normally
+[33] Nov 06 10:02:27 Child connection from 10.0.2.2:63737
+[33] Nov 06 10:02:27 Exit before auth from <10.0.2.2:63737>: Error writing: Broken pipe 
+[35] Nov 06 10:02:28 Child connection from 10.0.2.2:63739
+CRYPTO pid=35 x25519 begin
+CRYPTO pid=35 x25519 end seconds=2
+CRYPTO pid=35 x25519 begin
+CRYPTO pid=35 x25519 end seconds=2
+CRYPTO pid=35 ed25519-sign begin
+CRYPTO pid=35 ed25519-sign end seconds=20
+CRYPTO pid=35 ed25519-verify begin
+CRYPTO pid=35 ed25519-verify end seconds=40
+[35] Nov 06 10:03:35 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:nZZeokKVf4mbf2rWkBTj4NQxKsdVosiSVPbIdXcpWRI from 10.0.2.2:63739
+PROCESS fork begin
+[35] Nov 06 10:03:38 Exit (root) from <10.0.2.2:63739>: Disconnect received
+[41] Nov 06 10:03:40 Child connection from 10.0.2.2:63749
+CRYPTO pid=41 x25519 begin
+CRYPTO pid=41 x25519 end seconds=3
+CRYPTO pid=41 x25519 begin
+CRYPTO pid=41 x25519 end seconds=2
+CRYPTO pid=41 ed25519-sign begin
+CRYPTO pid=41 ed25519-sign end seconds=21
+[41] Nov 06 10:04:07 Exit before auth from <10.0.2.2:63749>: (user 'root', 0 fails): Exited normally
+[44] Nov 06 10:04:08 Child connection from 10.0.2.2:63753
+CRYPTO pid=44 x25519 begin
+CRYPTO pid=44 x25519 end seconds=2
+CRYPTO pid=44 x25519 begin
+CRYPTO pid=44 x25519 end seconds=2
+CRYPTO pid=44 ed25519-sign begin
+CRYPTO pid=44 ed25519-sign end seconds=20
+[44] Nov 06 10:04:34 Exit before auth from <10.0.2.2:63753>: Error writing: Broken pipe 
+[48] Nov 06 10:04:37 Child connection from 10.0.2.2:63758
+CRYPTO pid=48 x25519 begin
+CRYPTO pid=48 x25519 end seconds=2
+CRYPTO pid=48 x25519 begin
+CRYPTO pid=48 x25519 end seconds=2
+CRYPTO pid=48 ed25519-sign begin
+CRYPTO pid=48 ed25519-sign end seconds=21
+[48] Nov 06 10:05:03 /root must be owned by user or root, and not writable by group or others
+[48] Nov 06 10:05:03 Exit before auth from <10.0.2.2:63758>: (user 'root', 0 fails): Exited normally
+[53] Nov 06 10:05:05 Child connection from 10.0.2.2:63760
+CRYPTO pid=53 x25519 begin
+CRYPTO pid=53 x25519 end seconds=2
+CRYPTO pid=53 x25519 begin
+CRYPTO pid=53 x25519 end seconds=2
+CRYPTO pid=53 ed25519-sign begin
+CRYPTO pid=53 ed25519-sign end seconds=22
+[53] Nov 06 10:05:32 Unsafe authorized-key file: /root/authkeys
+[53] Nov 06 10:05:32 Exit before auth from <10.0.2.2:63760>: (user 'root', 0 fails): Exited normally
+[57] Nov 06 10:05:35 Child connection from 10.0.2.2:63769
+CRYPTO pid=57 x25519 begin
+CRYPTO pid=57 x25519 end seconds=3
+CRYPTO pid=57 x25519 begin
+CRYPTO pid=57 x25519 end seconds=2
+CRYPTO pid=57 ed25519-sign begin
+CRYPTO pid=57 ed25519-sign end seconds=21
+CRYPTO pid=57 ed25519-verify begin
+CRYPTO pid=57 ed25519-verify end seconds=42
+[57] Nov 06 10:06:46 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:nZZeokKVf4mbf2rWkBTj4NQxKsdVosiSVPbIdXcpWRI from 10.0.2.2:63769
+PROCESS fork begin
+[57] Nov 06 10:07:23 Exit (root) from <10.0.2.2:63769>: Disconnect received
+[63] Nov 06 10:07:26 Child connection from 10.0.2.2:63788
+CRYPTO pid=63 x25519 begin
+CRYPTO pid=63 x25519 end seconds=2
+CRYPTO pid=63 x25519 begin
+CRYPTO pid=63 x25519 end seconds=2
+CRYPTO pid=63 ed25519-sign begin
+CRYPTO pid=63 ed25519-sign end seconds=21
+CRYPTO pid=63 ed25519-verify begin
+CRYPTO pid=63 ed25519-verify end seconds=42
+[63] Nov 06 10:08:36 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:nZZeokKVf4mbf2rWkBTj4NQxKsdVosiSVPbIdXcpWRI from 10.0.2.2:63788
+PROCESS fork begin
+[63] Nov 06 10:08:37 Exit (root) from <10.0.2.2:63788>: Disconnect received
+STEP40=0
+# ps; echo STEP41=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   0  2430 11940  66640 -/bin/sh 
+   13     7   S0 root    S   0     0  8126  15824 sshlisten 22 /bin/sshtest -i -r /root/hostkey -D /root 
+   11    11   S0 root    S   0  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   67    67      root    S   0  4352 19856 167040 /bin/sshtest -i -r /root/hostkey -D /root 
+   68     7   S0 root    R   0    50  2100   8992 ps 
+STEP41=0
+# kill 13; echo STEP42=$?
+STEP42=0
+# ps; echo STEP43=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   1  2430 11940  66640 -/bin/sh 
+   13     7   S0 root    S   0     0  8126  15824 sshlisten 22 /bin/sshtest -i -r /root/hostkey -D /root 
+   11    11   S0 root    S   2  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   67     0      root    Z  33
+   70     7   S0 root    R   0    50  2100   8992 ps 
+STEP43=0
+# ps; echo STEP44=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   1  2430 11940  66640 -/bin/sh 
+   11    11   S0 root    S   2  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   71     7   S0 root    R   0    50  2100   8992 ps 
+STEP44=0
+[1] 13 Exit 0                 sshlisten 22 /bin/sshtest -i -r /root/hostkey ...
+# cat /tmp/sshd.log; echo STEP45=$?
+sshlisten ready; one concurrent worker
+[16] Nov 06 10:02:13 Child connection from 10.0.2.2:63733
+CRYPTO pid=16 x25519 begin
+CRYPTO pid=16 x25519 end seconds=1
+CRYPTO pid=16 x25519 begin
+CRYPTO pid=16 x25519 end seconds=1
+[16] Nov 06 10:02:15 Exit before auth from <10.0.2.2:63733>: Bad curve25519
+[21] Nov 06 10:02:17 Child connection from 10.0.2.2:63734
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+CRYPTO pid=21 x25519 begin
+CRYPTO pid=21 x25519 end seconds=1
+[21] Nov 06 10:02:19 Exit before auth from <10.0.2.2:63734>: Bad curve25519
+[26] Nov 06 10:02:21 Child connection from 10.0.2.2:63735
+CRYPTO pid=26 x25519 begin
+CRYPTO pid=26 x25519 end seconds=1
+[26] Nov 06 10:02:22 Exit before auth from <10.0.2.2:63735>: Bad curve25519
+[30] Nov 06 10:02:24 Child connection from 10.0.2.2:63736
+[30] Nov 06 10:02:26 Exit before auth from <10.0.2.2:63736>: Exited normally
+[33] Nov 06 10:02:27 Child connection from 10.0.2.2:63737
+[33] Nov 06 10:02:27 Exit before auth from <10.0.2.2:63737>: Error writing: Broken pipe 
+[35] Nov 06 10:02:28 Child connection from 10.0.2.2:63739
+CRYPTO pid=35 x25519 begin
+CRYPTO pid=35 x25519 end seconds=2
+CRYPTO pid=35 x25519 begin
+CRYPTO pid=35 x25519 end seconds=2
+CRYPTO pid=35 ed25519-sign begin
+CRYPTO pid=35 ed25519-sign end seconds=20
+CRYPTO pid=35 ed25519-verify begin
+CRYPTO pid=35 ed25519-verify end seconds=40
+[35] Nov 06 10:03:35 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:nZZeokKVf4mbf2rWkBTj4NQxKsdVosiSVPbIdXcpWRI from 10.0.2.2:63739
+PROCESS fork begin
+[35] Nov 06 10:03:38 Exit (root) from <10.0.2.2:63739>: Disconnect received
+[41] Nov 06 10:03:40 Child connection from 10.0.2.2:63749
+CRYPTO pid=41 x25519 begin
+CRYPTO pid=41 x25519 end seconds=3
+CRYPTO pid=41 x25519 begin
+CRYPTO pid=41 x25519 end seconds=2
+CRYPTO pid=41 ed25519-sign begin
+CRYPTO pid=41 ed25519-sign end seconds=21
+[41] Nov 06 10:04:07 Exit before auth from <10.0.2.2:63749>: (user 'root', 0 fails): Exited normally
+[44] Nov 06 10:04:08 Child connection from 10.0.2.2:63753
+CRYPTO pid=44 x25519 begin
+CRYPTO pid=44 x25519 end seconds=2
+CRYPTO pid=44 x25519 begin
+CRYPTO pid=44 x25519 end seconds=2
+CRYPTO pid=44 ed25519-sign begin
+CRYPTO pid=44 ed25519-sign end seconds=20
+[44] Nov 06 10:04:34 Exit before auth from <10.0.2.2:63753>: Error writing: Broken pipe 
+[48] Nov 06 10:04:37 Child connection from 10.0.2.2:63758
+CRYPTO pid=48 x25519 begin
+CRYPTO pid=48 x25519 end seconds=2
+CRYPTO pid=48 x25519 begin
+CRYPTO pid=48 x25519 end seconds=2
+CRYPTO pid=48 ed25519-sign begin
+CRYPTO pid=48 ed25519-sign end seconds=21
+[48] Nov 06 10:05:03 /root must be owned by user or root, and not writable by group or others
+[48] Nov 06 10:05:03 Exit before auth from <10.0.2.2:63758>: (user 'root', 0 fails): Exited normally
+[53] Nov 06 10:05:05 Child connection from 10.0.2.2:63760
+CRYPTO pid=53 x25519 begin
+CRYPTO pid=53 x25519 end seconds=2
+CRYPTO pid=53 x25519 begin
+CRYPTO pid=53 x25519 end seconds=2
+CRYPTO pid=53 ed25519-sign begin
+CRYPTO pid=53 ed25519-sign end seconds=22
+[53] Nov 06 10:05:32 Unsafe authorized-key file: /root/authkeys
+[53] Nov 06 10:05:32 Exit before auth from <10.0.2.2:63760>: (user 'root', 0 fails): Exited normally
+[57] Nov 06 10:05:35 Child connection from 10.0.2.2:63769
+CRYPTO pid=57 x25519 begin
+CRYPTO pid=57 x25519 end seconds=3
+CRYPTO pid=57 x25519 begin
+CRYPTO pid=57 x25519 end seconds=2
+CRYPTO pid=57 ed25519-sign begin
+CRYPTO pid=57 ed25519-sign end seconds=21
+CRYPTO pid=57 ed25519-verify begin
+CRYPTO pid=57 ed25519-verify end seconds=42
+[57] Nov 06 10:06:46 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:nZZeokKVf4mbf2rWkBTj4NQxKsdVosiSVPbIdXcpWRI from 10.0.2.2:63769
+PROCESS fork begin
+[57] Nov 06 10:07:23 Exit (root) from <10.0.2.2:63769>: Disconnect received
+[63] Nov 06 10:07:26 Child connection from 10.0.2.2:63788
+CRYPTO pid=63 x25519 begin
+CRYPTO pid=63 x25519 end seconds=2
+CRYPTO pid=63 x25519 begin
+CRYPTO pid=63 x25519 end seconds=2
+CRYPTO pid=63 ed25519-sign begin
+CRYPTO pid=63 ed25519-sign end seconds=21
+CRYPTO pid=63 ed25519-verify begin
+CRYPTO pid=63 ed25519-verify end seconds=42
+[63] Nov 06 10:08:36 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:nZZeokKVf4mbf2rWkBTj4NQxKsdVosiSVPbIdXcpWRI from 10.0.2.2:63788
+PROCESS fork begin
+[63] Nov 06 10:08:37 Exit (root) from <10.0.2.2:63788>: Disconnect received
+[67] Nov 06 10:08:38 Child connection from 10.0.2.2:63796
+[67] Nov 06 10:08:38 Exit before auth from <10.0.2.2:63796>: Terminated by signal
+STEP45=0
+# sshlisten 23 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &# shlisten 23 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &;[0K[79C# hlisten 23 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; [0K[79C# listen 23 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; e[0K[79C# isten 23 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; ec[0K[79C# sten 23 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; ech[0K[79C# ten 23 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; echo[0K[79C# en 23 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; echo [0K[79C# n 23 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; echo S[0K[79C#  23 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; echo ST[0K[79C# 23 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; echo STE[0K[79C# 3 /bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; echo STEP[0K[79C#  /bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; echo STEP4[0K[79C# /bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; echo STEP46[0K[79C# bin/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; echo STEP46=[0K[79C# in/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; echo STEP46=$[0K[79C# n/sshtest -i -r /root/hostkey -D /root > /tmp/idle.log 2>&1 &; echo STEP46=$?[0K[79C
+STEP46=0
+# cat /tmp/idle.log; echo STEP47=$?
+sshlisten ready; one concurrent worker
+STEP47=0
+# ps; echo STEP48=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   1  3028 11342  66640 -/bin/sh 
+   11    11   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   73     7   S0 root    S   1     0  8134  15824 sshlisten 23 /bin/sshtest -i -r /root/hostkey -D /root 
+   75     7   S0 root    R   0    50  2100   8992 ps 
+STEP48=0
+# kill 73; echo STEP49=$?
+STEP49=0
+[1] 73 Exit 0                 sshlisten 23 /bin/sshtest -i -r /root/hostkey ...
+# ps; echo STEP50=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4016  12944 /bin/init 3 
+    6     6    1 root    S   0     0  1978   5984 /bin/getty /dev/tty1 
+    7     7   S0 root    S   1  3964 10406  66640 -/bin/sh 
+   11    11   S0 root    S   1  8948 27844  82960 ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0 
+   77     7   S0 root    R   0    50  2100   8992 ps 
+STEP50=0
+# cat /tmp/idle.log; echo STEP51=$?
+sshlisten ready; one concurrent worker
+STEP51=0
+# echo SHELL_STILL_WORKS; echo STEP52=$?
+SHELL_STILL_WORKS
+STEP52=0

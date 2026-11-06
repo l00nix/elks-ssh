@@ -1,0 +1,20 @@
+ps; echo C1=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  2204 12102  66608 -/bin/sh 
+    7     7    1 root    S   2  4472 32318  82784 ktcp -b -p ne0 
+  309    10    1 root    S   0     0  8132  15824 /root/sshqueue 2222 /root/sshfield -i -r hostkey -D /root/sshtrial 
+  242    10    1 root    S   1  4200 10168  66688 -/bin/sh 
+  314    10    1 root    R   5    50  2094   8976 ps 
+C1=0
+# cat /tmp/fieldssh.log; echo C2=$?
+sshlisten ready; one concurrent worker
+[313] Jan 01 10:11:52 Early exit: Failed socket address: Invalid argument 
+C2=0
+# ls -l /root/rngtest; echo C3=$?
+-rw-------  1 root     root           60  Nov  5  2026 TRIAL
+-rw-r--r--  1 root     root          851  Jan  1 01:02 bootopts.bak
+-rwx------  1 root     root        11624  Nov  5  2026 rngcheck
+-rw-------  1 root     root         1024  Jan  1 10:11 state
+C3=0
+# 

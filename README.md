@@ -26,6 +26,12 @@ reports remote exit status zero. Its cryptographic stages alone took 28 minutes
 The Windows screenshots are captured; the broader Windows matrix and native
 Mac capture remain pending. See [Windows results](docs/WINDOWS-TESTING.md).
 
+A compiler-only candidate reduced physical PPC public-probe signing and
+verification times by about 11% (252 and 596 seconds). Full SSH timing for
+that candidate remains pending. A separate user-space listener correction
+passes the [expanded cleanup regression](docs/LISTENER-SHUTDOWN.md), which now
+checks unnamed zombie entries that the earlier test missed.
+
 The isolated Ed25519 adapter passes 646 host cases, 175 ELKS emulator cases,
 seven physical PPC public checks and 15 combined QEMU session/signature cases.
 The full PPC service takes longer than the small probe: signing 439 seconds
