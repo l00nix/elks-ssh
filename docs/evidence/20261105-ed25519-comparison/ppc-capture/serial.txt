@@ -1,38 +1,39 @@
-cd /root/edc1105; echo C1=$?
+cd /root/edc1105; echo C1=$?
+
 C1=0
-# echo -e '\033[2J\033[H' >/dev/tty1; echo C2=$?
+# echo -e '\033[2J\033[H' >/dev/tty1; echo C2=$?
+
 C2=0
-# echo Amstrad PPC 512 - public Ed25519 checks >/dev/tty1; echo C3=$?
+# echo Amstrad PPC 512 - public Ed25519 checks >/dev/tty1; echo C3=$?
+
 C3=0
-# cat /tmp/edquick.log >/dev/tty1; echo C4=$?
+# cat /tmp/edquick.log >/dev/tty1; echo C4=$?
+
 C4=0
-# dd if=/dev/kmem of=bda.bin bs=16 skip=64 count=16; echo C5=$?
+# dd if=/dev/kmem of=bda.bin bs=16 skip=64 count=16; echo C5=$?
+
 16+0 records in
 16+0 records out
 256 bytes (0+ KiB) copied
 C5=0
-# uuencode bda.bin bda.bin; echo C6=$?
-begin 644 bda.bin
-M^ ,       !X P       &U" . "0 (@   D "0 X% -'!L!X%#@4 T<X%#@
-M4.!0X%#@4.!0X%#@4.!0X% #    (0H       -0   0    #@          
-M        !P8 U ,I,       A&@"    -!(  0  %!04% $! 0$> #X     
-M    ZCYD&@"!        $                                       
-M                                                            
-?                                            
- 
-end
+# uuencode bda.bin bda.bin; echo C6=$?
+
+[Raw BIOS data-area transfer omitted; validated display metadata retained in manifest]
 C6=0
-# dd if=/dev/kmem of=cells.bin bs=16 skip=47104 count=250; echo C7=$?
+# dd if=/dev/kmem of=cells.bin bs=16 skip=47104 count=250; echo C7=$?
+
 250+0 records in
 250+0 records out
 4000 bytes (3+ KiB) copied
 C7=0
-# dd if=/dev/kmem of=font.bin bs=2 skip=523575 count=512; echo C8=$?
+# dd if=/dev/kmem of=font.bin bs=2 skip=523575 count=512; echo C8=$?
+
 512+0 records in
 512+0 records out
 1024 bytes (1 KiB) copied
 C8=0
-# uuencode cells.bin cells.bin; echo C9=$?
+# uuencode cells.bin cells.bin; echo C9=$?
+
 begin 644 cells.bin
 M( <@!R '( <@!R '( <@!R '( <@!R '( <@!R '( <@!R '( <@!R '( <@
 M!R '( <@!R '( <@!R '( <@!R '( <@!R '( <@!R '( <@!R '( <@!R '
@@ -126,44 +127,46 @@ H( <@!R '( <@!R '( <@!R '( <@!R '( <@!R '( <@!R '( <@!P<@
  
 end
 C9=0
-# cd /root/edc1105; echo C1=$?
+# cd /root/edc1105; echo C1=$?
+
 C1=0
-# echo -e '\033[2J\033[H' >/dev/tty1; echo C2=$?
+# echo -e '\033[2J\033[H' >/dev/tty1; echo C2=$?
+
 C2=0
-# echo Amstrad PPC 512 - public Ed25519 checks >/dev/tty1; echo C3=$?
+# echo Amstrad PPC 512 - public Ed25519 checks >/dev/tty1; echo C3=$?
+
 C3=0
-# cat /tmp/edquick.log >/dev/tty1; echo C4=$?
+# cat /tmp/edquick.log >/dev/tty1; echo C4=$?
+
 C4=0
-# dd if=/dev/kmem of=bda.bin bs=16 skip=64 count=16; echo C5=$?
+# dd if=/dev/kmem of=bda.bin bs=16 skip=64 count=16; echo C5=$?
+
 16+0 records in
 16+0 records out
 256 bytes (0+ KiB) copied
 C5=0
-# uuencode bda.bin bda.bin; echo C6=$?
-begin 644 bda.bin
-M^ ,       !X P       &U" . "0 (@   D "0 X% -'!L!X%#@4 T<X%#@
-M4.!0X%#@4.!0X%#@4.!0X% #    (0H       -0   0    #@          
-M        !P8 U ,I,       =7$"    -!(  0  %!04% $! 0$> #X     
-M    ZCYD&@"!        $                                       
-M                                                            
-?                                            
- 
-end
+# uuencode bda.bin bda.bin; echo C6=$?
+
+[Raw BIOS data-area transfer omitted; validated display metadata retained in manifest]
 C6=0
-# md5sum bda.bin; echo C7=$?
+# md5sum bda.bin; echo C7=$?
+
 b93143910cbf5b57aac5b545ba6a8194  bda.bin
 C7=0
-# dd if=/dev/kmem of=cells.bin bs=16 skip=47104 count=250; echo C8=$?
+# dd if=/dev/kmem of=cells.bin bs=16 skip=47104 count=250; echo C8=$?
+
 250+0 records in
 250+0 records out
 4000 bytes (3+ KiB) copied
 C8=0
-# dd if=/dev/kmem of=font.bin bs=2 skip=523575 count=512; echo C9=$?
+# dd if=/dev/kmem of=font.bin bs=2 skip=523575 count=512; echo C9=$?
+
 512+0 records in
 512+0 records out
 1024 bytes (1 KiB) copied
 C9=0
-# uuencode cells.bin cells.bin; echo C10=$?
+# uuencode cells.bin cells.bin; echo C10=$?
+
 begin 644 cells.bin
 M( <@!R '( <@!R '( <@!R '( <@!R '( <@!R '( <@!R '( <@!R '( <@
 M!R '( <@!R '( <@!R '( <@!R '( <@!R '( <@!R '( <@!R '( <@!R '
@@ -257,10 +260,12 @@ H( <@!R '( <@!R '( <@!R '( <@!R '( <@!R '( <@!R '( <@!P<@
  
 end
 C10=0
-# md5sum cells.bin; echo C11=$?
+# md5sum cells.bin; echo C11=$?
+
 ca5e2f1f4b73f152dbb6a2d1b0300f49  cells.bin
 C11=0
-# uuencode font.bin font.bin; echo C12=$?
+# uuencode font.bin font.bin; echo C12=$?
+
 begin 644 font.bin
 M          !^PZ6!I9G#?G[_V__;Y_]^ &S^_GPX$   $#A\_GPX$  X.-;^
 MUA X ! X?/[6$#@  !@\/!@  /__Y\/#Y___ #QF0D)F/ #_PYF]O9G#_P\'
@@ -288,7 +293,8 @@ B#@ 8&!@ &!@8 ' 8& X8&'  ,DP         &#QFP\/_  P8
  
 end
 C12=0
-# md5sum font.bin; echo C13=$?
+# md5sum font.bin; echo C13=$?
+
 de0ea77c688a2158f191b2a57d56a303  font.bin
 C13=0
 # 

@@ -70,3 +70,18 @@
   confirmation; this is not secure erasure. Client access files are retained.
   The existing public PPC fixture is at recovery generation three after
   the non-disclosing checker test. Do not confuse public and private states.
+- Latest physical checkpoint: the isolated edcompact-slow worker
+  SHA a0dbcbbbb8608a7020bdcb6613eb8b19b5e7cda79fd62205a49862f9788182b8
+  and existing single-worker launcher completed one Mac-to-PPC SSH session:
+  strict pin, public-key authentication, ps and cat /etc/issue, exit zero.
+  Runtime was 1654.23 host seconds; stage times were X25519 69+69, signing
+  439 and verification 1048 seconds. AUTH_TIMEOUT=1800 is an explicit slow
+  diagnostic profile, not the normal default or a hard intra-crypto deadline.
+  The serial shell was replaced by getty during this attempt to reduce memory
+  use, then restored. Test processes were removed, lock absent, original
+  /bin/sshtrial restored as PID 207. Check fresh state before acting. Startup
+  and private keys/state were not replaced or rolled back. Public probe and
+  actual PPC server-console captures are in docs/ED25519-COMPARISON.md.
+  Native Mac/Windows UI screenshots remain pending. Windows App's saved
+  ELKSWeb 86Box test connection is surfacelaptop (10.0.0.68); it is waiting
+  at a certificate warning for the owner's direct review. Do not bypass it.

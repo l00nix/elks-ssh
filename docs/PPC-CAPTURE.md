@@ -5,6 +5,13 @@ to the physical PPC over SSH and executing `ps` and `cat /etc/issue`.
 These captures are pending; QEMU or Telnet output must not be presented as
 physical PPC SSH evidence.
 
+The first [Mac-to-PPC SSH command test](ED25519-COMPARISON.md) now passes with
+strict host verification and independently provisioned persistent state. It
+returned `ps` and `cat /etc/issue` with exit status zero in 27m34s. Its retained
+image is the actual PPC server console. Native Mac and Windows terminal
+captures remain pending; Windows App is waiting for the owner to review the
+Surface's certificate warning before reconnection.
+
 ## Readiness check — 2026-11-04
 
 The physical PPC answered through its existing Telnet service. Read-only checks

@@ -6,7 +6,11 @@ entropy helper. A PPC-shaped image also starts networking and SSH automatically
 and runs `ps` and `cat /etc/issue` over a pinned-key connection in QEMU.
 The owner booted the fresh physical test image. Its first connection accepted
 TCP but returned no command output before the client was stopped at **7m24s**;
-**PPC SSH validation remains incomplete**.
+That initial attempt was incomplete. A later
+[slow-CPU diagnostic profile](ED25519-COMPARISON.md) has now completed one
+physical PPC command session in 27m34s with strict host verification and
+public-key authentication. Performance and repeated hardware qualification
+remain open.
 This is not a production release or a storage/security qualification claim.
 
 ## Physical recovery and non-disclosing checker

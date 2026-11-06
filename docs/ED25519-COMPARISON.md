@@ -122,3 +122,60 @@ Evidence: [host matrix](evidence/20261105-ed25519-comparison/host-check.txt),
 [signature rejection](evidence/20261105-ed25519-comparison/signature-qemu/result.json),
 [physical result](evidence/20261105-ed25519-comparison/ppc-probe-result.json),
 and [capture provenance](evidence/20261105-ed25519-comparison/ppc-capture/manifest.json).
+
+## First complete physical SSH command session
+
+macOS OpenSSH 10.3p1 connected to the PPC over Ethernet on port 2222, verified
+the existing pinned host key, authenticated with the dedicated client key and
+executed `ps` and `cat /etc/issue`. Both command markers were returned, the issue
+reported `ELKS 0.9.2`, and SSH exited with status zero. No legacy algorithm
+override, runtime entropy helper or private-state rollback was used.
+
+| Measured operation | Seconds |
+| --- | ---: |
+| First X25519 | 69 |
+| Second X25519 | 69 |
+| Ed25519 host signing | 439 |
+| Ed25519 client verification | 1048 |
+| Whole client attempt, host elapsed | 1654.23 |
+
+This is **27 minutes 34 seconds** for one connection. These whole-service
+measurements supersede estimates from the smaller public probe. Practical
+performance, repeated hardware sessions, older-CPU timings and timing-security
+qualification remain open. No general 8086/8088 performance guarantee follows
+from the linked-instruction audit or this PPC result.
+
+Before connecting, the maintenance shell was replaced with `/bin/getty`,
+retaining serial recovery while reducing its reported process allocation from
+66,688 to 6,048 bytes. The successful SSH command output shows the 167,024-byte
+worker, 66,768-byte command shell and 9,056-byte `ps` process. No `ENOMEM` was
+reported in this attempt. This is not a peak memory bound or a comparison that
+isolates the effect of the maintenance shell.
+
+The first attempt failed before receiving the banner with a socket timeout;
+its cause remains unresolved. The successful retry omitted a separate client
+`ConnectTimeout` but retained the 31-minute outer test limit and the server's
+explicit 1800-second diagnostic authentication setting. This sequence does not
+prove that the client option caused the first failure.
+
+Afterward, serial maintenance login was restored, the test worker/listener were
+removed, the random-state lock was absent, and the original `/bin/sshtrial`
+listener was restored as PID 207. Startup files and private state were not
+replaced. Inspect fresh PIDs before further maintenance. Stopping the listener
+also logged `sshlisten accept: Error 512`; the subsequent process check confirms
+cleanup. That shutdown logging issue remains to be corrected.
+
+![PPC console showing the successful SSH server log](screenshots/ppc-ssh-server.png)
+
+Actual PPC framebuffer capture of its server log, including shutdown output.
+The PPC clock is unset, so its January 1 log dates are not the test date. This
+image is not a native Mac or Windows terminal screenshot. Those requested UI
+captures remain pending; the Surface reconnect is waiting for the owner to
+review Windows App's certificate warning.
+
+Evidence: [physical result](evidence/20261105-ed25519-comparison/ppc-ssh/ppc-ssh-result.json),
+[remote command output](evidence/20261105-ed25519-comparison/ppc-ssh/ppc-ssh-command.txt),
+[Mac client diagnostics](evidence/20261105-ed25519-comparison/ppc-ssh/ppc-ssh-client.txt),
+[serial maintenance and cleanup](evidence/20261105-ed25519-comparison/ppc-ssh/ppc-ssh-serial.txt),
+[first unsuccessful attempt](evidence/20261105-ed25519-comparison/ppc-first-attempt/ppc-ssh-result.json),
+and [console provenance](evidence/20261105-ed25519-comparison/ppc-ssh-capture/manifest.json).

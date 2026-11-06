@@ -82,7 +82,16 @@ size 122,704 bytes. The server reserves 16 KiB heap and 8 KiB stack. These sampl
 are not whole-session peak or worst-case stack bounds. The forced-rekey command
 took about 182 host seconds; that is not an 8086 performance estimate.
 
-## Remaining work
+## Later physical checkpoint — 2026-11-05
+
+The [isolated Ed25519 comparison](ED25519-COMPARISON.md) now includes one
+successful Mac-to-PPC SSH command session using independent persistent state,
+strict host verification and public-key authentication. It took 27m34s and is
+not practical service performance. Native Mac/Windows captures remain pending;
+the Surface reconnect is waiting for the owner's certificate review. This
+supersedes the earlier hardware-readiness assessment below.
+
+## Remaining work at the earlier session checkpoint
 
 Interactive controls, abrupt disconnects, resource pressure, long sessions,
 Windows negotiation/login, the linked daemon's 8086 audit and actual original

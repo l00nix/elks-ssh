@@ -1,0 +1,25 @@
+
+PPC Ethernet SSH test - actual server log
+sshlisten ready; one concurrent worker
+[198] Jan 01 02:24:04 Child connection from 10.0.0.8:60629
+CRYPTO pid=198 x25519 begin
+CRYPTO pid=198 x25519 end seconds=69
+CRYPTO pid=198 x25519 begin
+CRYPTO pid=198 x25519 end seconds=69
+CRYPTO pid=198 ed25519-sign begin
+CRYPTO pid=198 ed25519-sign end seconds=439
+CRYPTO pid=198 ed25519-verify begin
+CRYPTO pid=198 ed25519-verify end seconds=1048
+[198] Jan 01 02:51:15 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA2
+56:OH5dyrSzRCEPa6alhhD22Evcskkv4Ig4CNcQrqTRC+w from 10.0.0.8:60629
+PROCESS fork begin
+[198] Jan 01 02:51:25 Exit (root) from <10.0.0.8:60629>: Disconnect received
+sshlisten accept: Error 512
+
+
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+{
+  "captured_utc": "2026-11-06T02:58:48.550647+00:00",
+  "machine": "Amstrad PPC 512 with PicoMEM",
+  "source": "Actual B8000h text framebuffer, live FFA6Eh ROM font; captured via serial maintenance",
+  "render": "80x25, mode 3, page 0; ROM 8x8 glyphs with doubled scanlines",
+  "limits": "Logical console screen, not LCD photo; Server-side log of successful physical SSH test; not a native Mac or Windows client screenshot",
+  "server_sha256": "a0dbcbbbb8608a7020bdcb6613eb8b19b5e7cda79fd62205a49862f9788182b8",
+  "video_mode": 3,
+  "columns": 80,
+  "active_page": 0,
+  "files": {
+    "ppc-ssh-server.png": "60a6b490074622cccf5dc57b808b240e2f80de7788c9e5a6a1459a1dd7c5a043",
+    "cells.bin": "dbf37f37e4d443954dcb59393c88405313a8d4964a4de048eaf913eb227394e9",
+    "font.bin": "ddad441c6fd10808a4e94040609cd5471704eb59d18c5fcf6059c028fa8ccae6"
+  },
+  "privacy": "Raw BIOS data area omitted; only display metadata retained. Screen and ROM font are unchanged."
+}

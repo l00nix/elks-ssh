@@ -9,24 +9,26 @@ to bring SSH-2 login and secure file transfer to
 8088** instruction set. The project builds on existing ELKS user-space APIs;
 kernel and architecture changes are out of scope.
 
-**Experimental: public-key login and remote commands work in QEMU with
-freshly provisioned persistent random state and no runtime entropy helper.
+**Experimental: public-key login and remote commands work in QEMU and have
+completed one physical PPC test with independently provisioned persistent
+random state and no runtime entropy helper.
 This is not deployment-ready or a release candidate.**
 Modern OpenSSH connects with strict host verification and no legacy algorithm
 overrides. The normal server refuses startup without secure randomness;
-production qualification, full interactive controls and physical SSH execution
-remain unvalidated. The private PPC image boots and accepts TCP, but its first
-SSH attempt returned no command output before being stopped after 7m24s.
-Serial diagnostics identify slow X25519 computation. A faster experimental
-worker with a small listener now passes the QEMU session suite, avoiding the
-ordinary forked variant's shell-allocation failure. See the
-[PPC diagnostics and memory comparison](docs/PPC-SSH-DIAGNOSTICS.md).
-On the PPC, the faster worker completes both X25519 operations in 93 seconds
-each. A separate Ed25519 adapter now passes 646 host cases, 175 ELKS emulator
-cases and seven physical PPC checks. Physical signing takes 282 seconds and
-verification 669 seconds. The combined slow-CPU diagnostic profile passes
-15 QEMU session/signature cases; physical SSH login remains under test.
-See the [Ed25519 comparison and actual PPC capture](docs/ED25519-COMPARISON.md).
+production qualification and full interactive controls remain unvalidated.
+The Mac-to-PPC test ran `ps` and `cat /etc/issue` and exited successfully, but
+took **27 minutes 34 seconds**. That is a feasibility result, not practical
+login performance. It uses an explicit 30-minute diagnostic authentication
+profile and a small single-worker launcher; the original startup is restored
+after testing. Windows connection tests and native client screenshots remain
+pending.
+
+The isolated Ed25519 adapter passes 646 host cases, 175 ELKS emulator cases,
+seven physical PPC public checks and 15 combined QEMU session/signature cases.
+The full PPC service takes longer than the small probe: signing 439 seconds
+and verification 1048 seconds. See the
+[Ed25519 comparison and actual PPC captures](docs/ED25519-COMPARISON.md), and
+the earlier [process-memory diagnostics](docs/PPC-SSH-DIAGNOSTICS.md).
 
 The finished service targets **Ethernet-only machines with no serial cable**.
 It must operate independently after one-time secure provisioning, with no
@@ -34,14 +36,14 @@ companion host or LAN helper. Serial entropy is a laboratory fixture. The
 standalone experiment now passes [11 QEMU SSH/session cases](docs/PERSISTENT-SSH.md)
 and three source-failure cases. The [persistent-state experiment](docs/PERSISTENT-STATE.md)
 also passes public-data PPC interruption and recovery power-cycle checks.
-Broader storage/security qualification and physical SSH testing remain open;
+Broader storage/security qualification and repeated hardware testing remain open;
 see the [deployment requirements](docs/RNG-DEPLOYMENT.md).
 
 ## Planned suite
 
 | Component | Purpose | Status |
 | --- | --- | --- |
-| SSH daemon | SSH-2 transport, public-key login, shell and remote commands | QEMU public-key login and commands pass; interactive shell pending |
+| SSH daemon | SSH-2 transport, public-key login, shell and remote commands | QEMU suites and one physical PPC command session pass; performance and interactive shell pending |
 | SFTP subsystem | Secure file transfers through native ELKS filesystem APIs | Planned |
 | Key utility | Public-key display, fingerprints and native key generation | Isolated Ed25519 generation passes QEMU; hardware initialization unresolved |
 | SSH/SFTP clients | Outbound connections from ELKS | Later feasibility work |
@@ -124,15 +126,16 @@ Actual ELXcap console capture; this is a hardware probe, not an SSH login.
 
 The [native Windows client preflight](docs/WINDOWS-TESTING.md) confirms OpenSSH
 9.5p2 and the required algorithm support on the Surface. A Windows-to-ELKS
-connection and the [requested physical PPC screenshots](docs/PPC-CAPTURE.md)
+connection and the [requested native client screenshots](docs/PPC-CAPTURE.md)
 remain pending.
 
 Earlier checkpoints established [crypto/OS probes](docs/VALIDATION.md),
 [16-bit wire handling](docs/SERVER-PROGRESS.md) and
 [SSH transport](docs/SOCKET-PROGRESS.md). Both standalone probes pass the static
 8086 instruction audit. The normal daemon now also passes the static audit
-for its recorded binary hash; actual original 8086/8088 execution and full
-hardware SSH operation remain unverified. See [the HP checkpoint](docs/HP200LX-PROGRESS.md).
+for its recorded binary hash; actual original Intel 8086/8088 execution remains
+unverified. The separate slow diagnostic profile has now completed a PPC command
+session. See also [the HP checkpoint](docs/HP200LX-PROGRESS.md).
 
 ![ELKS SSH transport test reaching the filesystem permission check](docs/screenshots/qemu-ssh-transport.png)
 
@@ -181,8 +184,9 @@ security concerns also remain open. This backend has not been promoted.
 
 On the [PPC with vanilla ELKS](docs/PPC-VANILLA.md), four X25519 RFC vectors
 pass and both daemon variants load when tested alone, then correctly refuse
-missing secure randomness. Networking autostart is configured; no hardware SSH
-login has been established.
+missing secure randomness. Networking autostart was configured in that earlier
+checkpoint. The later independently provisioned diagnostic profile now has one
+successful hardware SSH command session, as described above.
 
 The [dedicated serial entropy prototype](docs/SERIAL-ENTROPY.md) now passes
 70 QEMU probe cases, 12 daemon startup cases and 10 physical PPC probe cases.

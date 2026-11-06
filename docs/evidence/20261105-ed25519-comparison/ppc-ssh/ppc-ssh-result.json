@@ -1,0 +1,267 @@
+{
+  "status": "passed",
+  "hardware": "Amstrad PPC 512 with PicoMEM",
+  "server_sha256": "a0dbcbbbb8608a7020bdcb6613eb8b19b5e7cda79fd62205a49862f9788182b8",
+  "runtime_entropy_helper": false,
+  "auth_timeout_seconds": 1800,
+  "host_key_policy": "existing dedicated strict pin",
+  "client_deadline": "31-minute outer harness; no separate OpenSSH ConnectTimeout",
+  "snapshots": [
+    {
+      "host_seconds": 0.0,
+      "stages": [],
+      "client_exit": null
+    },
+    {
+      "host_seconds": 60.05,
+      "stages": [],
+      "client_exit": null
+    },
+    {
+      "host_seconds": 120.05,
+      "stages": [],
+      "client_exit": null
+    },
+    {
+      "host_seconds": 180.14,
+      "stages": [],
+      "client_exit": null
+    },
+    {
+      "host_seconds": 240.01,
+      "stages": [],
+      "client_exit": null
+    },
+    {
+      "host_seconds": 300.15,
+      "stages": [],
+      "client_exit": null
+    },
+    {
+      "host_seconds": 360.02,
+      "stages": [],
+      "client_exit": null
+    },
+    {
+      "host_seconds": 420.12,
+      "stages": [],
+      "client_exit": null
+    },
+    {
+      "host_seconds": 480.01,
+      "stages": [],
+      "client_exit": null
+    },
+    {
+      "host_seconds": 540.05,
+      "stages": [],
+      "client_exit": null
+    },
+    {
+      "host_seconds": 600.19,
+      "stages": [
+        "debug1: SSH2_MSG_KEX_ECDH_REPLY received",
+        "debug1: Host '[10.0.0.66]:2222' is known and matches the ED25519 host key.",
+        "debug1: SSH2_MSG_NEWKEYS received",
+        "debug1: SSH2_MSG_SERVICE_ACCEPT received"
+      ],
+      "client_exit": null
+    },
+    {
+      "host_seconds": 660.12,
+      "stages": [
+        "debug1: SSH2_MSG_KEX_ECDH_REPLY received",
+        "debug1: Host '[10.0.0.66]:2222' is known and matches the ED25519 host key.",
+        "debug1: SSH2_MSG_NEWKEYS received",
+        "debug1: SSH2_MSG_SERVICE_ACCEPT received"
+      ],
+      "client_exit": null
+    },
+    {
+      "host_seconds": 720.03,
+      "stages": [
+        "debug1: SSH2_MSG_KEX_ECDH_REPLY received",
+        "debug1: Host '[10.0.0.66]:2222' is known and matches the ED25519 host key.",
+        "debug1: SSH2_MSG_NEWKEYS received",
+        "debug1: SSH2_MSG_SERVICE_ACCEPT received"
+      ],
+      "client_exit": null
+    },
+    {
+      "host_seconds": 780.14,
+      "stages": [
+        "debug1: SSH2_MSG_KEX_ECDH_REPLY received",
+        "debug1: Host '[10.0.0.66]:2222' is known and matches the ED25519 host key.",
+        "debug1: SSH2_MSG_NEWKEYS received",
+        "debug1: SSH2_MSG_SERVICE_ACCEPT received"
+      ],
+      "client_exit": null
+    },
+    {
+      "host_seconds": 840.11,
+      "stages": [
+        "debug1: SSH2_MSG_KEX_ECDH_REPLY received",
+        "debug1: Host '[10.0.0.66]:2222' is known and matches the ED25519 host key.",
+        "debug1: SSH2_MSG_NEWKEYS received",
+        "debug1: SSH2_MSG_SERVICE_ACCEPT received"
+      ],
+      "client_exit": null
+    },
+    {
+      "host_seconds": 900.12,
+      "stages": [
+        "debug1: SSH2_MSG_KEX_ECDH_REPLY received",
+        "debug1: Host '[10.0.0.66]:2222' is known and matches the ED25519 host key.",
+        "debug1: SSH2_MSG_NEWKEYS received",
+        "debug1: SSH2_MSG_SERVICE_ACCEPT received"
+      ],
+      "client_exit": null
+    },
+    {
+      "host_seconds": 960.2,
+      "stages": [
+        "debug1: SSH2_MSG_KEX_ECDH_REPLY received",
+        "debug1: Host '[10.0.0.66]:2222' is known and matches the ED25519 host key.",
+        "debug1: SSH2_MSG_NEWKEYS received",
+        "debug1: SSH2_MSG_SERVICE_ACCEPT received"
+      ],
+      "client_exit": null
+    },
+    {
+      "host_seconds": 1020.07,
+      "stages": [
+        "debug1: SSH2_MSG_KEX_ECDH_REPLY received",
+        "debug1: Host '[10.0.0.66]:2222' is known and matches the ED25519 host key.",
+        "debug1: SSH2_MSG_NEWKEYS received",
+        "debug1: SSH2_MSG_SERVICE_ACCEPT received"
+      ],
+      "client_exit": null
+    },
+    {
+      "host_seconds": 1080.17,
+      "stages": [
+        "debug1: SSH2_MSG_KEX_ECDH_REPLY received",
+        "debug1: Host '[10.0.0.66]:2222' is known and matches the ED25519 host key.",
+        "debug1: SSH2_MSG_NEWKEYS received",
+        "debug1: SSH2_MSG_SERVICE_ACCEPT received"
+      ],
+      "client_exit": null
+    },
+    {
+      "host_seconds": 1140.05,
+      "stages": [
+        "debug1: SSH2_MSG_KEX_ECDH_REPLY received",
+        "debug1: Host '[10.0.0.66]:2222' is known and matches the ED25519 host key.",
+        "debug1: SSH2_MSG_NEWKEYS received",
+        "debug1: SSH2_MSG_SERVICE_ACCEPT received"
+      ],
+      "client_exit": null
+    },
+    {
+      "host_seconds": 1200.14,
+      "stages": [
+        "debug1: SSH2_MSG_KEX_ECDH_REPLY received",
+        "debug1: Host '[10.0.0.66]:2222' is known and matches the ED25519 host key.",
+        "debug1: SSH2_MSG_NEWKEYS received",
+        "debug1: SSH2_MSG_SERVICE_ACCEPT received"
+      ],
+      "client_exit": null
+    },
+    {
+      "host_seconds": 1260.03,
+      "stages": [
+        "debug1: SSH2_MSG_KEX_ECDH_REPLY received",
+        "debug1: Host '[10.0.0.66]:2222' is known and matches the ED25519 host key.",
+        "debug1: SSH2_MSG_NEWKEYS received",
+        "debug1: SSH2_MSG_SERVICE_ACCEPT received"
+      ],
+      "client_exit": null
+    },
+    {
+      "host_seconds": 1320.02,
+      "stages": [
+        "debug1: SSH2_MSG_KEX_ECDH_REPLY received",
+        "debug1: Host '[10.0.0.66]:2222' is known and matches the ED25519 host key.",
+        "debug1: SSH2_MSG_NEWKEYS received",
+        "debug1: SSH2_MSG_SERVICE_ACCEPT received"
+      ],
+      "client_exit": null
+    },
+    {
+      "host_seconds": 1380.09,
+      "stages": [
+        "debug1: SSH2_MSG_KEX_ECDH_REPLY received",
+        "debug1: Host '[10.0.0.66]:2222' is known and matches the ED25519 host key.",
+        "debug1: SSH2_MSG_NEWKEYS received",
+        "debug1: SSH2_MSG_SERVICE_ACCEPT received"
+      ],
+      "client_exit": null
+    },
+    {
+      "host_seconds": 1440.17,
+      "stages": [
+        "debug1: SSH2_MSG_KEX_ECDH_REPLY received",
+        "debug1: Host '[10.0.0.66]:2222' is known and matches the ED25519 host key.",
+        "debug1: SSH2_MSG_NEWKEYS received",
+        "debug1: SSH2_MSG_SERVICE_ACCEPT received"
+      ],
+      "client_exit": null
+    },
+    {
+      "host_seconds": 1500.16,
+      "stages": [
+        "debug1: SSH2_MSG_KEX_ECDH_REPLY received",
+        "debug1: Host '[10.0.0.66]:2222' is known and matches the ED25519 host key.",
+        "debug1: SSH2_MSG_NEWKEYS received",
+        "debug1: SSH2_MSG_SERVICE_ACCEPT received"
+      ],
+      "client_exit": null
+    },
+    {
+      "host_seconds": 1560.03,
+      "stages": [
+        "debug1: SSH2_MSG_KEX_ECDH_REPLY received",
+        "debug1: Host '[10.0.0.66]:2222' is known and matches the ED25519 host key.",
+        "debug1: SSH2_MSG_NEWKEYS received",
+        "debug1: SSH2_MSG_SERVICE_ACCEPT received"
+      ],
+      "client_exit": null
+    },
+    {
+      "host_seconds": 1620.14,
+      "stages": [
+        "debug1: SSH2_MSG_KEX_ECDH_REPLY received",
+        "debug1: Host '[10.0.0.66]:2222' is known and matches the ED25519 host key.",
+        "debug1: SSH2_MSG_NEWKEYS received",
+        "debug1: SSH2_MSG_SERVICE_ACCEPT received"
+      ],
+      "client_exit": null
+    },
+    {
+      "host_seconds": 1654.23,
+      "stages": [
+        "debug1: SSH2_MSG_KEX_ECDH_REPLY received",
+        "debug1: Host '[10.0.0.66]:2222' is known and matches the ED25519 host key.",
+        "debug1: SSH2_MSG_NEWKEYS received",
+        "debug1: SSH2_MSG_SERVICE_ACCEPT received",
+        "Authenticated to 10.0.0.66 ([10.0.0.66]:2222) using \"publickey\".",
+        "debug1: Sending command: echo PPC_SSH_BEGIN; ps; cat /etc/issue; echo PPC_SSH_DONE",
+        "debug1: Exit status 0"
+      ],
+      "client_exit": 0
+    }
+  ],
+  "pretest_ps": "ps; echo C11=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4020  12944 /bin/init \r\n   10    10    1 root    S   0  1176 13130  66608 -/bin/sh \r\n   16    10    1 root    S  14  2162 12206  66688 -/bin/sh \r\n    7     7    1 root    S   3  4472 32318  82784 ktcp -b -p ne0 \r\n  195    10    1 root    S  11     0  8132  15760 /root/sshlisten 2222 /root/sshslow -i -r hostkey -D /root/sshtrial \r\n  197    10    1 root    R   0    50  2094   8976 ps \r\nC11=0\r\n# ",
+  "maintenance_shell_replaced_with_getty": true,
+  "operator_stopped_client": false,
+  "ssh_exit": 0,
+  "host_elapsed_seconds": 1654.23,
+  "host_key_verified": true,
+  "authenticated": true,
+  "commands_passed": true,
+  "maintenance_login_restored": true,
+  "server_log": "cat /tmp/edcssh.log; echo C12=$?\r\r\nsshlisten ready; one concurrent worker\r\n[198] Jan 01 02:24:04 Child connection from 10.0.0.8:60629\r\nCRYPTO pid=198 x25519 begin\r\nCRYPTO pid=198 x25519 end seconds=69\r\nCRYPTO pid=198 x25519 begin\r\nCRYPTO pid=198 x25519 end seconds=69\r\nCRYPTO pid=198 ed25519-sign begin\r\nCRYPTO pid=198 ed25519-sign end seconds=439\r\nCRYPTO pid=198 ed25519-verify begin\r\nCRYPTO pid=198 ed25519-verify end seconds=1048\r\n[198] Jan 01 02:51:15 Pubkey auth succeeded for 'root' with ssh-ed25519 key SHA256:OH5dyrSzRCEPa6alhhD22Evcskkv4Ig4CNcQrqTRC+w from 10.0.0.8:60629\r\nPROCESS fork begin\r\n[198] Jan 01 02:51:25 Exit (root) from <10.0.0.8:60629>: Disconnect received\r\nC12=0\r\n# ",
+  "lock_absent_after_test": true,
+  "original_listener_restored": true,
+  "final_ps": " ps; echo C21=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4020  12944 /bin/init \r\n   10    10    1 root    S   0  1176 13130  66608 -/bin/sh \r\n   16    10    1 root    S   2  1492 12876  66688 -/bin/sh \r\n    7     7    1 root    S   1  4472 32318  82784 ktcp -b -p ne0 \r\n  207    10    1 root    S  38   404 23918 130432 /bin/sshtrial -F -p 2222 -r hostkey -D /root/sshtrial \r\n  209    10    1 root    R   0    50  2094   8976 ps \r\nC21=0\r\n# "
+}

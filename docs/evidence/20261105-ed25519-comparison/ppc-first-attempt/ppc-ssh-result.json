@@ -1,0 +1,33 @@
+{
+  "status": "failed",
+  "hardware": "Amstrad PPC 512 with PicoMEM",
+  "server_sha256": "a0dbcbbbb8608a7020bdcb6613eb8b19b5e7cda79fd62205a49862f9788182b8",
+  "runtime_entropy_helper": false,
+  "auth_timeout_seconds": 1800,
+  "host_key_policy": "existing dedicated strict pin",
+  "snapshots": [
+    {
+      "host_seconds": 0.0,
+      "stages": [],
+      "client_exit": null
+    },
+    {
+      "host_seconds": 18.12,
+      "stages": [],
+      "client_exit": 255
+    }
+  ],
+  "pretest_ps": "ps; echo C21=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4020  12944 /bin/init \r\n   10    10    1 root    S   0  1176 13130  66608 -/bin/sh \r\n   16    10    1 root    S  16  6828  7540  66688 -/bin/sh \r\n    7     7    1 root    S   2  4472 32318  82784 ktcp -b -p ne0 \r\n  176    10    1 root    S  14     0  8132  15760 /root/sshlisten 2222 /root/sshslow -i -r hostkey -D /root/sshtrial \r\n  178    10    1 root    R   0    50  2094   8976 ps \r\nC21=0\r\n",
+  "maintenance_shell_replaced_with_getty": true,
+  "operator_stopped_client": false,
+  "ssh_exit": 255,
+  "host_elapsed_seconds": 18.12,
+  "host_key_verified": false,
+  "authenticated": false,
+  "commands_passed": false,
+  "maintenance_login_restored": true,
+  "server_log": "cat /tmp/edcssh.log; echo C22=$?\r\r\nsshlisten ready; one concurrent worker\r\nC22=0\r\n# ",
+  "lock_absent_after_test": true,
+  "original_listener_restored": true,
+  "final_ps": "ps; echo C31=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4020  12944 /bin/init \r\n   10    10    1 root    S   0  1176 13130  66608 -/bin/sh \r\n   16    10    1 root    S   0  1492 12876  66688 -/bin/sh \r\n    7     7    1 root    S   0  4472 32318  82784 ktcp -b -p ne0 \r\n  185    10    1 root    S  79   404 23918 130432 /bin/sshtrial -F -p 2222 -r hostkey -D /root/sshtrial \r\n  187    10    1 root    R  22    50  2094   8976 ps \r\nC31=0\r\n# "
+}
