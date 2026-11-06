@@ -12,6 +12,9 @@
     "listener-serial.txt": "b5cc99c63361298ac9034965eb89415ffaf452fccffde8ed654edc0b0146d640",
     "probe-result.json": "954c703d18daaee6d318261a005b20e4631ff0346f97bc5ba181b1fb2ac464bf",
     "probe-serial.txt": "833d1990876d7eefd2533e37227f7cfc891ff2a45e41eb03b86009b9451ea4be",
-    "ready-serial.txt": "6d554d019ad0450e409ec231232492ca765c570ab3ccb3c289d6b801ca2ed51d"
+    "ready-serial.txt": "6d554d019ad0450e409ec231232492ca765c570ab3ccb3c289d6b801ca2ed51d",
+    "mac/mac-result.json": "b16ac511f53dca333b62c6bf39dc037820bb785c4cc3f3c601b7f1780691eea9",
+    "mac/mac-client.txt": "cbbee072d0c0efa00a132626150af3045cea34b44ecf2229e12e05a423347eeb",
+    "mac/mac-command.txt": "2a9eddec137d32b54f230dc2d97a1c57e64cc1647b6e31dd8dd6f8a752306c49"
   }
 }

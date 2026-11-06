@@ -217,9 +217,8 @@ verification **596 seconds** (previously 669), about 11% less time for each.
 Total guest-reported probe time was 849 seconds, compared with 951 previously.
 These are individual runs with one-second timing resolution, not repeated
 statistical benchmarks or a complete SSH-login speed measurement. The full
-optimized service is staged with the corrected listener and passes physical
-banner/admission/cleanup checks; it still needs an authenticated hardware session.
-The earlier physical Mac and Windows trials use the original slow profile.
+optimized service subsequently completed the native Mac command test described
+below. The earlier physical Mac and Windows trials use the original slow profile.
 
 The hardware fixture contains only public test vectors. It never reads the
 SSH host key, client key or private generator state. See the [physical result](evidence/20261106-ppc-field-o2/probe-result.json)
@@ -235,3 +234,32 @@ Evidence: [object/profile comparison](evidence/20261105-field-o2/comparison.json
 [target matrix](evidence/20261105-field-o2/matrix/result.json),
 [matrix output](evidence/20261105-field-o2/matrix/serial.txt), and
 [SSH regression](evidence/20261105-field-o2/ssh/result.json).
+
+## Native Mac command test of field-O2 — 2026-11-06
+
+The owner launched the prepared test in macOS Terminal. Native OpenSSH 10.3p1
+verified the existing pinned Ed25519 host key, authenticated with the dedicated
+public key, returned `ps` and `cat /etc/issue` (`ELKS 0.9.2`), and exited zero.
+Both command markers were present. No legacy algorithm overrides or runtime
+entropy helper were used. The 31-minute outer deadline was not reached.
+
+Whole-client elapsed time was **1574.80 seconds (26m14.8s)**, versus 1654.23
+seconds for the earlier Mac slow-profile run: 79.43 seconds, or about 4.8%,
+less time. These are individual hardware sessions, not a controlled repeated
+benchmark; the smaller public probe's 11% improvement should not be applied
+to complete SSH login. Performance remains impractical for routine use.
+
+This run pairs server SHA-256
+`102c66f748a92dc38d41d7eb85a29072d96c004a9a78cea8bb83d0411050e7e4`
+with listener
+`8d700dfead1997f95cac25f48c3e3421cd037efbeb21115f040247e2b4ef8ebd`.
+The command output shows worker 333, command shell 334 and listener 309.
+The serial login appears as `/bin/login 5V`; three Comrade bridge processes
+had reopened the adapter and were stopped. Post-session cleanup inspection
+is pending restoration of the unresponsive serial login. No cleanup pass is
+inferred from SSH exit zero. The actual Mac Terminal screenshot still requires
+user capture because the computer-control tool blocks that application.
+
+Evidence: [native result](evidence/20261106-ppc-field-o2/mac/mac-result.json),
+[SSH command output](evidence/20261106-ppc-field-o2/mac/mac-command.txt), and
+[sanitized native diagnostics](evidence/20261106-ppc-field-o2/mac/mac-client.txt).

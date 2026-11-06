@@ -155,3 +155,21 @@
   exact field-O2/queue pair and keep its Terminal window for a screenshot.
   Script deadline is 31 minutes; no full candidate hardware login claimed yet.
   Do not use or bypass the blocked macOS Terminal computer-control interface.
+
+- Latest Mac checkpoint 2026-11-06: owner launched native Terminal test at
+  05:39:12 America/Toronto. It passed strict pin, public-key authentication,
+  ps and ELKS 0.9.2 issue output, native exit 0 in 1574.80 seconds, no timeout.
+  Exact field-O2/queue pair above; listener 309 and worker 333 shown in command
+  output. Saved public evidence is docs/evidence/20261106-ppc-field-o2/mac;
+  private original logs are ~/.local/share/elks-ssh/ppc-trial-20261105/
+  mac-capture-20261106-053912. Never read secret keys/state.
+  Three Comrade processes had reopened serial at 05:36 (87361,87362,87493).
+  Same bridge command/adapter, stopped under prior owner authorization; lsof
+  then empty. SSH ps shows serial PID 242 /bin/login 5V. A CR yielded no serial
+  prompt; no further input or worker cleanup attempted. Owner was asked to run
+  kill 242 and /bin/getty /dev/ttyS0 9600 &. Post-session worker reaping and
+  state-lock checks remain pending; do not infer them from SSH exit zero.
+  Local prepared inspect_mac.py and capture_mac_server.py can run after login
+  is restored; check adapter ownership first. Native Mac screenshot requires
+  user upload because the tool blocks Terminal. The user was told to keep the
+  completed original window open. Temporary PPC service and startup unchanged.

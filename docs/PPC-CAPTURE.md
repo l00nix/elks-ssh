@@ -17,6 +17,12 @@ explicitly refuses access to macOS Terminal, so the remaining Mac capture
 requires a user-operated terminal and screenshot. That restriction does not
 change the retained Mac SSH command result.
 
+On 2026-11-06, the owner launched a new native Mac Terminal test of the field-O2
+server and corrected listener. Strict host pinning, public-key authentication,
+`ps`, `cat /etc/issue` and native exit zero passed in **1574.80 seconds**.
+The original Terminal window was left open for user capture; the computer-control
+restriction remains. [Result and diagnostics](ED25519-COMPARISON.md#native-mac-command-test-of-field-o2--2026-11-06).
+
 ## Readiness check — 2026-11-04
 
 The physical PPC answered through its existing Telnet service. Read-only checks

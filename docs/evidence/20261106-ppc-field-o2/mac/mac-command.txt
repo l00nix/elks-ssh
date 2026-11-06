@@ -1,0 +1,14 @@
+PPC_MAC_BEGIN
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  2204 12102  66608 -/bin/sh 
+  335   333      root    R   5    50  2094   9056 ps 
+    7     7    1 root    S   1  8944 27846  82784 ktcp -b -p ne0 
+  309    10    1 root    S   0     0  8124  15824 /root/sshqueue 2222 /root/sshfield -i -r hostkey -D /root/sshtrial 
+  242    10    1 root    S   0  1060  4860  15952 /bin/login 5V 
+  333   333      root    R  61  3494 19956 167184 /root/sshfield -i -r hostkey -D /root/sshtrial 
+  334   333      root    S  27   176 14166  66768 sh -c echo PPC_MAC_BEGIN; ps; cat /etc/issue; echo PPC_MAC_DONE 
+
+ELKS 0.9.2
+
+PPC_MAC_DONE

@@ -27,8 +27,10 @@ The Windows screenshots are captured; the broader Windows matrix and native
 Mac capture remain pending. See [Windows results](docs/WINDOWS-TESTING.md).
 
 A compiler-only candidate reduced physical PPC public-probe signing and
-verification times by about 11% (252 and 596 seconds). Full SSH timing for
-that candidate remains pending. A separate user-space listener correction
+verification times by about 11% (252 and 596 seconds). Its native Mac SSH
+command session completed in **26 minutes 14.8 seconds**, exit zero: about
+4.8% less elapsed time than the earlier Mac run, based on one run each.
+A separate user-space listener correction
 passes the [expanded cleanup regression](docs/LISTENER-SHUTDOWN.md), which now
 checks unnamed zombie entries that the earlier test missed.
 

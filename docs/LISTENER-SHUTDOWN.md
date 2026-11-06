@@ -98,8 +98,11 @@ error was reported. See [physical results](evidence/20261106-ppc-field-o2/listen
 
 The PPC now runs the optimized worker with this launcher temporarily on port
 2222. Startup files and private keys/state were not replaced or rolled back.
-The native Mac full-login test is prepared and awaits user launch because
-Computer Use explicitly blocks access to macOS Terminal.
+The owner-launched native Mac full-login test subsequently passed in 1574.80
+seconds with exit zero and both requested commands. Its post-session cleanup
+inspection is pending restoration of serial login after Comrade bridges
+reopened the adapter; command success alone does not establish reaping.
+See the [physical command result](ED25519-COMPARISON.md#native-mac-command-test-of-field-o2--2026-11-06).
 
 Evidence: [reproduction with prior launcher](evidence/20261106-listener-reap/before/result.json),
 [expanded regression](evidence/20261106-listener-reap/queue-after/result.json),
