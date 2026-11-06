@@ -13,8 +13,21 @@
   "tcp_established": true,
   "runtime_entropy_helper": false,
   "user_observed_server_processes": 2,
-  "server_log": "requested from physical console; pending",
+  "server_log": "Owner-supplied console photo: PID 9 Not backgrounding; PID 11 Child connection from 10.0.0.8:59008; no further log lines displayed.",
   "no_second_connection_started": true,
   "server_sha256": "f4f1c03f0c0cc824dc1d5f088e11240d1e176506dd0d5bb00fb56c63cd21bfee",
-  "interpretation": "Bounded attempt stopped by operator; not a successful handshake/login or demonstrated server timeout. Suspected crypto performance issue is unconfirmed."
+  "interpretation": "Bounded attempt stopped by operator; not a successful handshake/login or demonstrated server timeout. Suspected crypto performance issue is unconfirmed.",
+  "console_observations": {
+    "source": "ppc-console.jpg",
+    "listener_pid": 9,
+    "listener_state": "S",
+    "listener_cpu_display": 0,
+    "connection_pid": 11,
+    "connection_state": "R",
+    "connection_cpu_display": 93,
+    "process_size_display_each": 130416,
+    "ktcp_present": true,
+    "out_of_memory_error_displayed": false,
+    "interpretation": "Child remains CPU-active in this sample; exact operation and progress unknown. No authenticated command session demonstrated."
+  }
 }

@@ -113,7 +113,16 @@ The original crypto implementation's earlier slow hardware results suggest a
 performance issue, but the PPC log is needed before attributing the failure.
 No second connection was started and no timeout or algorithm policy was relaxed.
 
-The console log and process list have been requested. The Mac's initial private
+The owner's subsequent [physical console photo](evidence/20261105-persistent-ssh/hardware-first-attempt/ppc-console.jpg)
+shows listener PID 9 sleeping and connection PID 11 runnable at 93% CPU.
+Both display a process size of 130,416 bytes; shared code means these values
+must not simply be added as private memory. The log shows the child connection
+from the Mac, without authentication success or an out-of-memory message.
+This is a console photograph, not evidence of a successful SSH session.
+A temporary serial maintenance login has been requested for direct diagnostics;
+it is not an entropy provider or an SSH transport requirement.
+
+The Mac's initial private
 image copy was deleted after the owner's boot confirmation; this is not secure
 erasure. Dedicated client access files remain. Do not restore the booted image
 from an earlier copy. The original public images remain unchanged.

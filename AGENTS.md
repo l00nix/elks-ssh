@@ -37,7 +37,11 @@
   `~/.local/share/elks-ssh/ppc-trial-20261105/sshtrial.img`; the owner reports
   it booted. The first TCP/SSH attempt was stopped after 7m24s without command
   output; login and host verification completion are not established. The
-  console log and process list have been requested. No second attempt was made.
+  owner's console photo shows PID 9 sleeping and child PID 11 runnable at 93%
+  CPU, with no auth success/error logged. No second attempt was made.
+  Requested `/bin/getty /dev/ttyS0 9600 &` for temporary serial maintenance on
+  BG02T8E2; waiting for the owner. Inspect fresh PIDs before cleanup. Serial is
+  control only, never entropy or a secret-state/key transfer path.
   It starts experimental SSH on TCP 2222 and disables Telnet/FTP.
   Use that directory's `connect.sh` and pinned host key for this trial. Never
   print/fetch secret state or keys through plaintext control, publish the image,
