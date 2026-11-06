@@ -1,5 +1,9 @@
 # PPC crypto and process diagnostics — 2026-11-05
 
+Later work: the [Ed25519 comparison](ED25519-COMPARISON.md) integrates a separate
+checked adapter into the diagnostic server and records the successful physical
+PPC public probe. The chronology below describes the earlier binaries.
+
 The physical PPC's stalled SSH worker was spending time in its first X25519
 calculation. A separate diagnostic build reached that operation within ten
 seconds and had not finished it at the 180-second observation limit. This

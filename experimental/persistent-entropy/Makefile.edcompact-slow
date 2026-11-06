@@ -1,0 +1,9 @@
+# MIT. Explicit original-CPU diagnostic profile, not the normal service.
+# Public PPC signing took 282 seconds, before two 93-second key exchanges
+# and signature verification: the ordinary 300-second limit is insufficient.
+# Give a single experimental worker up to 30 minutes to authenticate.
+# Common-session checks this between operations, not inside crypto loops;
+# this is not a hard CPU deadline and is unsuitable for an exposed service.
+include experimental/persistent-entropy/Makefile.edcompact
+CPPFLAGS += -DAUTH_TIMEOUT=1800
+$(PROGRAM_OBJS): experimental/persistent-entropy/Makefile.edcompact-slow

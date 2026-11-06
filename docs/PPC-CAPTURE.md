@@ -57,4 +57,8 @@ not satisfy these requested PPC screenshots.
 The owner made the PPC available again. [Hardware smoke tests](PPC-VANILLA.md)
 confirm four X25519 vectors and fail-closed daemon startup on vanilla ELKS.
 Networking autostart was configured. No SSH login occurred; the requested
-Mac/Windows SSH captures still require a hardware entropy provider.
+Mac/Windows SSH captures were blocked at that checkpoint. Subsequent
+[persistent-state qualification](PERSISTENT-STATE.md) and private offline
+provisioning removed the runtime-helper requirement. The current work is
+qualifying slow-CPU cryptography and the complete hardware session; see the
+[Ed25519 comparison](ED25519-COMPARISON.md).

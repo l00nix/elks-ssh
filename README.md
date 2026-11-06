@@ -22,8 +22,11 @@ worker with a small listener now passes the QEMU session suite, avoiding the
 ordinary forked variant's shell-allocation failure. See the
 [PPC diagnostics and memory comparison](docs/PPC-SSH-DIAGNOSTICS.md).
 On the PPC, the faster worker completes both X25519 operations in 93 seconds
-each but is still signing at the five-minute observation limit; physical login
-has not succeeded. The original listener is restored after the comparison.
+each. A separate Ed25519 adapter now passes 646 host cases, 175 ELKS emulator
+cases and seven physical PPC checks. Physical signing takes 282 seconds and
+verification 669 seconds. The combined slow-CPU diagnostic profile passes
+15 QEMU session/signature cases; physical SSH login remains under test.
+See the [Ed25519 comparison and actual PPC capture](docs/ED25519-COMPARISON.md).
 
 The finished service targets **Ethernet-only machines with no serial cable**.
 It must operate independently after one-time secure provisioning, with no

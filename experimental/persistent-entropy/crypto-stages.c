@@ -8,6 +8,9 @@
 #include "includes.h"
 #include "dbutil.h"
 #include "curve25519.h"
+#ifdef ELKSSH_TRACE_EDCOMPACT
+#include "experimental/edcompact/adapter.h"
+#endif
 #ifdef ELKSSH_TRACE_M15
 void elkssh_m15_scalarmult(unsigned char *, const unsigned char *, const unsigned char *);
 #endif
@@ -44,7 +47,13 @@ void elkssh_trace_sign(const unsigned char *m, unsigned long mlen,
                       const unsigned char *sk, const unsigned char *pk)
 {
     time_t started = begin("ed25519-sign");
+#ifdef ELKSSH_TRACE_EDCOMPACT
+    if (elkssh_edcompact_sign(s, pk, sk, m, mlen) != 0)
+        dropbear_exit("Experimental Ed25519 input refused");
+    *slen = 64;
+#else
     dropbear_ed25519_sign(m, mlen, s, slen, sk, pk);
+#endif
     end("ed25519-sign", started);
 }
 
@@ -54,7 +63,11 @@ int elkssh_trace_verify(const unsigned char *m, unsigned long mlen,
 {
     int result;
     time_t started = begin("ed25519-verify");
+#ifdef ELKSSH_TRACE_EDCOMPACT
+    result = elkssh_edcompact_verify(s, slen, pk, m, mlen);
+#else
     result = dropbear_ed25519_verify(m, mlen, s, slen, pk);
+#endif
     end("ed25519-verify", started);
     return result;
 }

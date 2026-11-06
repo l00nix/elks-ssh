@@ -1,0 +1,110 @@
+{
+  "hardware": "Amstrad PPC 512",
+  "public_fixtures_only": true,
+  "ssh_login": false,
+  "probe_sha256": "ee732382a2af101df95a6cbee0ecfa8be9d85372e2d825c5d3e9bf73d6d37784",
+  "status": "passed",
+  "snapshots": [
+    {
+      "host_seconds": 5.35,
+      "lines": []
+    },
+    {
+      "host_seconds": 63.42,
+      "lines": []
+    },
+    {
+      "host_seconds": 123.44,
+      "lines": []
+    },
+    {
+      "host_seconds": 183.43,
+      "lines": []
+    },
+    {
+      "host_seconds": 243.38,
+      "lines": []
+    },
+    {
+      "host_seconds": 303.65,
+      "lines": [
+        "PASS case=1000 op=1 accepted=1 seconds=282"
+      ]
+    },
+    {
+      "host_seconds": 363.42,
+      "lines": [
+        "PASS case=1000 op=1 accepted=1 seconds=282"
+      ]
+    },
+    {
+      "host_seconds": 423.58,
+      "lines": [
+        "PASS case=1000 op=1 accepted=1 seconds=282"
+      ]
+    },
+    {
+      "host_seconds": 483.52,
+      "lines": [
+        "PASS case=1000 op=1 accepted=1 seconds=282"
+      ]
+    },
+    {
+      "host_seconds": 543.42,
+      "lines": [
+        "PASS case=1000 op=1 accepted=1 seconds=282"
+      ]
+    },
+    {
+      "host_seconds": 603.47,
+      "lines": [
+        "PASS case=1000 op=1 accepted=1 seconds=282"
+      ]
+    },
+    {
+      "host_seconds": 663.46,
+      "lines": [
+        "PASS case=1000 op=1 accepted=1 seconds=282"
+      ]
+    },
+    {
+      "host_seconds": 723.52,
+      "lines": [
+        "PASS case=1000 op=1 accepted=1 seconds=282"
+      ]
+    },
+    {
+      "host_seconds": 783.57,
+      "lines": [
+        "PASS case=1000 op=1 accepted=1 seconds=282"
+      ]
+    },
+    {
+      "host_seconds": 843.4,
+      "lines": [
+        "PASS case=1000 op=1 accepted=1 seconds=282"
+      ]
+    },
+    {
+      "host_seconds": 903.45,
+      "lines": [
+        "PASS case=1000 op=1 accepted=1 seconds=282"
+      ]
+    },
+    {
+      "host_seconds": 962.06,
+      "lines": [
+        "PASS case=1000 op=1 accepted=1 seconds=282",
+        "PASS case=1001 op=0 accepted=1 seconds=669",
+        "PASS case=1003 op=0 accepted=0 seconds=0",
+        "PASS case=1004 op=0 accepted=0 seconds=0",
+        "PASS case=2000 op=2 accepted=0 seconds=0",
+        "PASS case=2002 op=2 accepted=0 seconds=0",
+        "PASS case=2102 op=0 accepted=0 seconds=0",
+        "RESULT PASS checks=7 failures=0 accepted=2 seconds=951"
+      ]
+    }
+  ],
+  "no_probe_remaining": true,
+  "output": "cat /tmp/edquick.log; echo C42=$?\r\r\nED25519 PUBLIC VECTOR PROBE - NO SSH LOGIN\r\nPASS case=1000 op=1 accepted=1 seconds=282\r\nPASS case=1001 op=0 accepted=1 seconds=669\r\nPASS case=1003 op=0 accepted=0 seconds=0\r\nPASS case=1004 op=0 accepted=0 seconds=0\r\nPASS case=2000 op=2 accepted=0 seconds=0\r\nPASS case=2002 op=2 accepted=0 seconds=0\r\nPASS case=2102 op=0 accepted=0 seconds=0\r\nRESULT PASS checks=7 failures=0 accepted=2 seconds=951\r\nC42=0\r\n"
+}

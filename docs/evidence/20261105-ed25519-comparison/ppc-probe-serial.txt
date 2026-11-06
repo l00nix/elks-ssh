@@ -1,0 +1,304 @@
+mkdir -p /root/edc1105; echo C1=$?
+
+C1=0
+# cd /root/edc1105; echo C2=$?
+
+C2=0
+# curl -o edcheck http://10.0.0.8:60290/edcheck; echo C3=$?
+
+C3=0
+# chmod 700 edcheck; echo C4=$?
+
+C4=0
+# md5sum edcheck; echo C5=$?
+
+ee84a7aa2573e0ff5d25c5e7c70a5409  edcheck
+C5=0
+# curl -o edquick http://10.0.0.8:60290/edquick; echo C6=$?
+
+C6=0
+# chmod 700 edquick; echo C7=$?
+
+C7=0
+# md5sum edquick; echo C8=$?
+
+4b623b30ccd840e5f3e0e33ffda53720  edquick
+C8=0
+# ./edcheck edquick >/tmp/edquick.log 2>&1 &; echo C9=$?
+
+C9=0
+# cat /tmp/edquick.log; echo C10=$?
+
+ED25519 PUBLIC VECTOR PROBE - NO SSH LOGIN
+C10=0
+# ps; echo C11=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   5  5056  9312  66688 -/bin/sh 
+    7     7    1 root    S   2  4472 32318  82784 ktcp -b -p ne0 
+   99    10    1 root    S   0   404 23918 130432 /bin/sshtrial -F -p 2222 -r hostkey -D /root/sshtrial 
+  112    10    1 root    R  61  1060 10642  36432 ./edcheck edquick 
+  114    10    1 root    R  23    50  2094   8976 ps 
+C11=0
+# cat /tmp/edquick.log; echo C12=$?
+
+ED25519 PUBLIC VECTOR PROBE - NO SSH LOGIN
+C12=0
+# ps; echo C13=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   0  5060  9308  66688 -/bin/sh 
+    7     7    1 root    S   0  4472 32318  82784 ktcp -b -p ne0 
+   99    10    1 root    S   0   404 23918 130432 /bin/sshtrial -F -p 2222 -r hostkey -D /root/sshtrial 
+  112    10    1 root    R  75  1060  9982  36432 ./edcheck edquick 
+  116    10    1 root    R  17    50  2094   8976 ps 
+C13=0
+# cat /tmp/edquick.log; echo C14=$?
+
+ED25519 PUBLIC VECTOR PROBE - NO SSH LOGIN
+C14=0
+# ps; echo C15=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   0  5060  9308  66688 -/bin/sh 
+    7     7    1 root    S   1  4472 32318  82784 ktcp -b -p ne0 
+   99    10    1 root    S   0   404 23918 130432 /bin/sshtrial -F -p 2222 -r hostkey -D /root/sshtrial 
+  112    10    1 root    R  75  1060 10022  36432 ./edcheck edquick 
+  118    10    1 root    R  17    50  2094   8976 ps 
+C15=0
+# cat /tmp/edquick.log; echo C16=$?
+
+ED25519 PUBLIC VECTOR PROBE - NO SSH LOGIN
+C16=0
+# ps; echo C17=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   0  5098  9270  66688 -/bin/sh 
+    7     7    1 root    S   1  4472 32318  82784 ktcp -b -p ne0 
+   99    10    1 root    S   0   404 23918 130432 /bin/sshtrial -F -p 2222 -r hostkey -D /root/sshtrial 
+  112    10    1 root    R  75  1060 10000  36432 ./edcheck edquick 
+  120    10    1 root    R  17    50  2094   8976 ps 
+C17=0
+# cat /tmp/edquick.log; echo C18=$?
+
+ED25519 PUBLIC VECTOR PROBE - NO SSH LOGIN
+C18=0
+# ps; echo C19=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   0  5082  9286  66688 -/bin/sh 
+    7     7    1 root    S   1  4472 32318  82784 ktcp -b -p ne0 
+   99    10    1 root    S   0   404 23918 130432 /bin/sshtrial -F -p 2222 -r hostkey -D /root/sshtrial 
+  112    10    1 root    R  74  1060 10052  36432 ./edcheck edquick 
+  122    10    1 root    R  17    50  2094   8976 ps 
+C19=0
+# cat /tmp/edquick.log; echo C20=$?
+
+ED25519 PUBLIC VECTOR PROBE - NO SSH LOGIN
+PASS case=1000 op=1 accepted=1 seconds=282
+C20=0
+# ps; echo C21=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   0  5136  9232  66688 -/bin/sh 
+    7     7    1 root    S   0  4472 32318  82784 ktcp -b -p ne0 
+   99    10    1 root    S   0   404 23918 130432 /bin/sshtrial -F -p 2222 -r hostkey -D /root/sshtrial 
+  112    10    1 root    R  75  1060  9848  36432 ./edcheck edquick 
+  124    10    1 root    R  16    50  2094   8976 ps 
+C21=0
+# cat /tmp/edquick.log; echo C22=$?
+
+ED25519 PUBLIC VECTOR PROBE - NO SSH LOGIN
+PASS case=1000 op=1 accepted=1 seconds=282
+C22=0
+# ps; echo C23=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   0  5082  9286  66688 -/bin/sh 
+    7     7    1 root    S   1  4472 32318  82784 ktcp -b -p ne0 
+   99    10    1 root    S   0   404 23918 130432 /bin/sshtrial -F -p 2222 -r hostkey -D /root/sshtrial 
+  112    10    1 root    R  74  1060  9912  36432 ./edcheck edquick 
+  126    10    1 root    R  16    50  2094   8976 ps 
+C23=0
+# cat /tmp/edquick.log; echo C24=$?
+
+ED25519 PUBLIC VECTOR PROBE - NO SSH LOGIN
+PASS case=1000 op=1 accepted=1 seconds=282
+C24=0
+# ps; echo C25=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   0  5082  9286  66688 -/bin/sh 
+    7     7    1 root    S   1  4472 32318  82784 ktcp -b -p ne0 
+   99    10    1 root    S   0   404 23918 130432 /bin/sshtrial -F -p 2222 -r hostkey -D /root/sshtrial 
+  112    10    1 root    R  74  1060  9906  36432 ./edcheck edquick 
+  128    10    1 root    R  16    50  2094   8976 ps 
+C25=0
+# cat /tmp/edquick.log; echo C26=$?
+
+ED25519 PUBLIC VECTOR PROBE - NO SSH LOGIN
+PASS case=1000 op=1 accepted=1 seconds=282
+C26=0
+# ps; echo C27=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   0  5082  9286  66688 -/bin/sh 
+    7     7    1 root    S   0  4472 32318  82784 ktcp -b -p ne0 
+   99    10    1 root    S   0   404 23918 130432 /bin/sshtrial -F -p 2222 -r hostkey -D /root/sshtrial 
+  112    10    1 root    R  75  1060  9866  36432 ./edcheck edquick 
+  130    10    1 root    R  16    50  2094   8976 ps 
+C27=0
+# cat /tmp/edquick.log; echo C28=$?
+
+ED25519 PUBLIC VECTOR PROBE - NO SSH LOGIN
+PASS case=1000 op=1 accepted=1 seconds=282
+C28=0
+# ps; echo C29=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   0  5082  9286  66688 -/bin/sh 
+    7     7    1 root    R   1  4472 32316  82784 ktcp -b -p ne0 
+   99    10    1 root    S   0   404 23918 130432 /bin/sshtrial -F -p 2222 -r hostkey -D /root/sshtrial 
+  112    10    1 root    R  75  1060 10328  36432 ./edcheck edquick 
+  132    10    1 root    R  16    50  2094   8976 ps 
+C29=0
+# cat /tmp/edquick.log; echo C30=$?
+
+ED25519 PUBLIC VECTOR PROBE - NO SSH LOGIN
+PASS case=1000 op=1 accepted=1 seconds=282
+C30=0
+# ps; echo C31=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   0  5082  9286  66688 -/bin/sh 
+    7     7    1 root    S   1  4472 32318  82784 ktcp -b -p ne0 
+   99    10    1 root    S   0   404 23918 130432 /bin/sshtrial -F -p 2222 -r hostkey -D /root/sshtrial 
+  112    10    1 root    R  74  1060 10370  36432 ./edcheck edquick 
+  134    10    1 root    R  17    50  2094   8976 ps 
+C31=0
+# cat /tmp/edquick.log; echo C32=$?
+
+ED25519 PUBLIC VECTOR PROBE - NO SSH LOGIN
+PASS case=1000 op=1 accepted=1 seconds=282
+C32=0
+# ps; echo C33=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   0  5082  9286  66688 -/bin/sh 
+    7     7    1 root    S   1  4472 32318  82784 ktcp -b -p ne0 
+   99    10    1 root    S   0   404 23918 130432 /bin/sshtrial -F -p 2222 -r hostkey -D /root/sshtrial 
+  112    10    1 root    R  74  1060 10122  36432 ./edcheck edquick 
+  136    10    1 root    R  17    50  2094   8976 ps 
+C33=0
+# cat /tmp/edquick.log; echo C34=$?
+
+ED25519 PUBLIC VECTOR PROBE - NO SSH LOGIN
+PASS case=1000 op=1 accepted=1 seconds=282
+C34=0
+# ps; echo C35=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   0  5082  9286  66688 -/bin/sh 
+    7     7    1 root    S   1  4472 32318  82784 ktcp -b -p ne0 
+   99    10    1 root    S   0   404 23918 130432 /bin/sshtrial -F -p 2222 -r hostkey -D /root/sshtrial 
+  112    10    1 root    R  75  1060 10134  36432 ./edcheck edquick 
+  138    10    1 root    R  16    50  2094   8976 ps 
+C35=0
+# cat /tmp/edquick.log; echo C36=$?
+
+ED25519 PUBLIC VECTOR PROBE - NO SSH LOGIN
+PASS case=1000 op=1 accepted=1 seconds=282
+C36=0
+# ps; echo C37=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   0  5082  9286  66688 -/bin/sh 
+    7     7    1 root    S   0  4472 32318  82784 ktcp -b -p ne0 
+   99    10    1 root    S   0   404 23918 130432 /bin/sshtrial -F -p 2222 -r hostkey -D /root/sshtrial 
+  112    10    1 root    R  75  1060 10088  36432 ./edcheck edquick 
+  140    10    1 root    R  16    50  2094   8976 ps 
+C37=0
+# cat /tmp/edquick.log; echo C38=$?
+
+ED25519 PUBLIC VECTOR PROBE - NO SSH LOGIN
+PASS case=1000 op=1 accepted=1 seconds=282
+C38=0
+# ps; echo C39=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   0  5082  9286  66688 -/bin/sh 
+    7     7    1 root    S   1  4472 32318  82784 ktcp -b -p ne0 
+   99    10    1 root    S   0   404 23918 130432 /bin/sshtrial -F -p 2222 -r hostkey -D /root/sshtrial 
+  112    10    1 root    R  73  1060 10128  36432 ./edcheck edquick 
+  142    10    1 root    R  19    50  2094   8976 ps 
+C39=0
+# cat /tmp/edquick.log; echo C40=$?
+
+ED25519 PUBLIC VECTOR PROBE - NO SSH LOGIN
+PASS case=1000 op=1 accepted=1 seconds=282
+C40=0
+# ps; echo C41=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   0  5082  9286  66688 -/bin/sh 
+    7     7    1 root    S   0  4472 32318  82784 ktcp -b -p ne0 
+   99    10    1 root    S   0   404 23918 130432 /bin/sshtrial -F -p 2222 -r hostkey -D /root/sshtrial 
+  112    10    1 root    R  74  1060 10384  36432 ./edcheck edquick 
+  144    10    1 root    R  18    50  2094   8976 ps 
+C41=0
+# cat /tmp/edquick.log; echo C42=$?
+
+ED25519 PUBLIC VECTOR PROBE - NO SSH LOGIN
+PASS case=1000 op=1 accepted=1 seconds=282
+PASS case=1001 op=0 accepted=1 seconds=669
+PASS case=1003 op=0 accepted=0 seconds=0
+PASS case=1004 op=0 accepted=0 seconds=0
+PASS case=2000 op=2 accepted=0 seconds=0
+PASS case=2002 op=2 accepted=0 seconds=0
+PASS case=2102 op=0 accepted=0 seconds=0
+RESULT PASS checks=7 failures=0 accepted=2 seconds=951
+C42=0
+[2] 112 Exit 0                ./edcheck edquick >/tmp/edquick.log 2>&1
+# ps; echo C43=$?
+
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   1  6110  8258  66688 -/bin/sh 
+    7     7    1 root    S   1  4472 32318  82784 ktcp -b -p ne0 
+   99    10    1 root    S   0   404 23918 130432 /bin/sshtrial -F -p 2222 -r hostkey -D /root/sshtrial 
+  146    10    1 root    R   0    50  2094   8976 ps 
+C43=0
+# 

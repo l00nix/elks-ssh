@@ -24,6 +24,7 @@ import time
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 from kex_rejection import reject_public_point
+from signature_agent import InvalidSignatureAgent
 
 
 def sha(path):
@@ -341,6 +342,26 @@ def run(args):
                         first=attempt_case('login',ssh,expected_output='ELKSSH_LOGIN_OK\nELKSSH_DONE\n')
                         result.update({key:first[key] for key in ['ssh_exit','host_key_verified','newkeys_received','encrypted_auth_service']})
                         result['publickey_login']=first['passed']
+                        if args.signature_rejection_suite and first['passed']:
+                            # Use the authorized fixture key, but corrupt its
+                            # signature after signing. Require evidence that
+                            # server-side verification actually rejected it.
+                            (temp/'clientpub').write_bytes(clientpub+b'\n')
+                            for mutation in ('tampered-R','S-plus-L','short'):
+                                before=command('cat /tmp/sshd.log').count(b'Pubkey auth bad signature')
+                                agent_path=temp/'bad-agent.sock'
+                                badsig=[('-oIdentityAgent='+str(agent_path)) if a=='-oIdentityAgent=none' else a for a in ssh]
+                                badsig[badsig.index('-i')+1]=str(temp/'clientpub')
+                                with InvalidSignatureAgent(agent_path,client,mutation) as agent:
+                                    case=attempt_case('signature-'+mutation,badsig,expected_exit=255,
+                                                      rejection='Permission denied (publickey)')
+                                after=command('cat /tmp/sshd.log').count(b'Pubkey auth bad signature')
+                                case['agent_signatures']=agent.signatures
+                                case['agent_error']=agent.error
+                                case['server_bad_signature']=after>before
+                                case['passed'] &= agent.signatures>0 and agent.error is None and after>before
+                            attempt_case('after-bad-signatures',ssh,
+                                         expected_output='ELKSSH_LOGIN_OK\nELKSSH_DONE\n')
                         if args.suite and first['passed']:
                             wrong=Ed25519PrivateKey.generate()
                             (temp/'wrongkey').write_bytes(wrong.private_bytes(serialization.Encoding.PEM,serialization.PrivateFormat.OpenSSH,serialization.NoEncryption()))
@@ -496,6 +517,7 @@ if __name__=='__main__':
     p.add_argument('--suite',action='store_true',help='Also test rejected keys/permissions, host mismatch and repeated login')
     p.add_argument('--session-suite',action='store_true',help='Also test stdin EOF, PTY commands and forced rekeying')
     p.add_argument('--kex-rejection-suite',action='store_true',help='Reject public low-order and short X25519 inputs before login')
+    p.add_argument('--signature-rejection-suite',action='store_true',help='Reject malformed signatures made with the authorized disposable key')
     p.add_argument('--screenshot',action='store_true')
     p.add_argument('--connect-timeout',type=int,default=300)
     p.add_argument('--no-memory-sampling',action='store_true',help='Do not launch ps during SSH cases; compare failures without monitor memory pressure')
@@ -512,11 +534,11 @@ if __name__=='__main__':
     if args.filesystem=='minix' and args.mfs is None: p.error('--mfs is required for MINIX')
     if args.persistent_entropy and (args.serial_entropy or args.filesystem!='minix' or args.entropy!='healthy' or args.seed_helper is None):
         p.error('--persistent-entropy requires MINIX, healthy mode, --seed-helper and no serial adapter')
-    if args.persistent_fault!='none' and (not args.persistent_entropy or args.suite or args.session_suite or args.kex_rejection_suite or args.screenshot):
+    if args.persistent_fault!='none' and (not args.persistent_entropy or args.suite or args.session_suite or args.kex_rejection_suite or args.signature_rejection_suite or args.screenshot):
         p.error('--persistent-fault requires standalone persistent-source testing without suites/screenshots')
     if args.serial_entropy and (args.filesystem!='minix' or args.entropy!='healthy'):
         p.error('--serial-entropy requires MINIX and healthy input; use the serial probe matrix for fault cases')
-    if (args.suite or args.session_suite) and (args.filesystem!='minix' or args.entropy!='healthy'):
+    if (args.suite or args.session_suite or args.signature_rejection_suite) and (args.filesystem!='minix' or args.entropy!='healthy'):
         p.error('Suites require --filesystem minix and healthy entropy')
     if args.kex_rejection_suite and args.entropy!='healthy':
         p.error('KEX rejection suite requires healthy test entropy')

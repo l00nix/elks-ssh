@@ -1,0 +1,23 @@
+# MIT. Isolated persistent/m15/Ed25519 comparison; no normal build changes.
+include experimental/persistent-entropy/Makefile.trace-m15
+
+# All X25519 and Ed25519 call sites in this variant use the isolated adapters.
+PROGRAM_SRCS := $(filter-out curve25519,$(PROGRAM_SRCS))
+LTC_SRCS := $(filter-out hashes/sha2/sha512,$(LTC_SRCS))
+$(OBJDIR)/crypto_desc.o: CFLAGS += -include experimental/edcompact/omit-unused-ltc-sha512.h
+$(OBJDIR)/crypto_desc.o: experimental/edcompact/omit-unused-ltc-sha512.h
+$(OBJDIR)/crypto-stages.o: CPPFLAGS += -DELKSSH_TRACE_EDCOMPACT
+$(OBJDIR)/crypto-stages.o: experimental/persistent-entropy/Makefile.edcompact experimental/edcompact/adapter.h
+EDROOT = feasibility/vendor/c25519
+EDOBJS = $(addprefix $(OBJDIR)/edcompact-,edsign.o ed25519.o f25519.o fprime.o sha512.o adapter.o point-checks.o)
+EXTRA_OBJS += $(EDOBJS)
+$(OUTPUT): $(EDOBJS)
+$(OBJDIR)/edcompact-%.o: $(EDROOT)/%.c $(wildcard $(EDROOT)/*.h) experimental/edcompact/field-placement.h
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -I$(EDROOT) -include experimental/edcompact/field-placement.h -fstack-usage -c $< -o $@
+$(OBJDIR)/edcompact-adapter.o: experimental/edcompact/adapter.c experimental/edcompact/adapter.h
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -I$(EDROOT) -DELKSSH_EDCOMPACT_EXPERIMENT -c $< -o $@
+$(OBJDIR)/edcompact-point-checks.o: experimental/edcompact/point-checks.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c $< -o $@

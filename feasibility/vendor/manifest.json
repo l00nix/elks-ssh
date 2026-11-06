@@ -55,5 +55,44 @@
       "sha256": "e92bb42d050f8b8adcf6c9109870592e25f645040e7d1583becc6ef91d9975c3",
       "function": "test_HMAC_DRBG"
     }
+  },
+  "c25519": {
+    "release": "2017-10-05",
+    "url": "https://www.dlbeer.co.nz/downloads/c25519-2017-10-05.zip",
+    "archive_sha256": "788e3bf7e69e6c7c950f1e49ab3f83e0474317dce03c84d009b82c408d62b5f1",
+    "scope": "Unchanged Ed25519 and dependencies; isolated experimental backend only",
+    "files": {
+      "edsign.c": "38a21f8d2c26b62da98db4de530e445101b6f901722109125840f7e990487049",
+      "ed25519.c": "164b9a7eb5b04522cae102a0b8db692fe0b19797822bcb2bc1b6eb63e6f00204",
+      "fprime.h": "e4306ccc95092f9430fd70a6d08475219e12ac6bb41a67d9d04dd6ddbd64b04f",
+      "f25519.c": "968956e915964b8cfea21b59ddc87f97ca6ddcefed143660aa65506f21af03fd",
+      "README": "41233406d98abc0a75a45e30644ef8913261b8cd30440c48acedd018a5fff5ea",
+      "sha512.h": "57ef889c37351cc33c449b1b8a7271761f06a459da223dc6e7249434436b4671",
+      "edsign.h": "7a1ebbab6dae7d844c09111b35128a2cc7d5318515ca6ef6dc9fbc4f6099cccb",
+      "fprime.c": "5ac28f7b85d017f796708d8f2ea47e7fea90908553cb1f3baec68456cbd4238e",
+      "f25519.h": "0ff8911c528d3552c06cda41665e9f0774b6eafd95d5f783f74083a668febeb9",
+      "ed25519.h": "efc2b580a97a5428d61551ba2442d3fe12f0a94814e616367f8b6616ad3f90b3",
+      "sha512.c": "2b2158d06eeb56bfee0c020b5465dc19e20ce5beeebd6318286a81d657e110b9"
+    }
+  },
+  "libsodium-ref10": {
+    "release": "1.0.18",
+    "repository": "https://github.com/jedisct1/libsodium",
+    "source_git_blob": "ec6d86f5ec5243cc01a951ba2f13cccc574009a5",
+    "scope": "Retained reference; only extracted point encoding checks compiled",
+    "files": {
+      "LICENSE": "dea1855c9809f3faf22aa4a1fba20ec8af5a5587f23115012e5b98279cedc4af",
+      "ed25519_ref10.c": "40291bba865beab9817381460cda1d977a106c11cf4c393f854e25979d84bfc7"
+    }
+  },
+  "wycheproof": {
+    "repository": "https://github.com/C2SP/wycheproof",
+    "source_path": "testvectors_v1/ed25519_test.json",
+    "source_git_blob": "3f991dd56496129e3a99b6b486408ef8f3df6945",
+    "scope": "Public Ed25519 verification test corpus",
+    "files": {
+      "ed25519_test.json": "ea80ffebac085e21cb9d3e903e7fa2b448d96702da5b31f061d0b83b430b74b3",
+      "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    }
   }
 }

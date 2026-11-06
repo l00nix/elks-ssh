@@ -28,6 +28,21 @@ Their paths, pinned upstream commits or release archives and SHA-256 hashes are 
   copied from l00nix/ELKSWeb commit `399c79b6ef34806f2ed65bfcc976452ee687d5a8`
   on 2026-11-04, GPL-2.0; license in `feasibility/tools/COPYING`.
   These are build-analysis programs, not linked into the probe executable.
+- **c25519, 2017-10-05**: Daniel Beer's public-domain Ed25519 implementation,
+  field arithmetic and SHA-512 from the [official archive](https://www.dlbeer.co.nz/downloads/c25519-2017-10-05.zip).
+  Source headers retain the author's public-domain notices. Unmodified files
+  are used only by the isolated `edcompact` experiment, with separate input and
+  length checks; this is not a selected production backend.
+- **libsodium 1.0.18**: the retained original `ed25519_ref10.c` and ISC license
+  come from [jedisct1/libsodium](https://github.com/jedisct1/libsodium/tree/1.0.18).
+  Only its canonical-encoding and small-order byte checks are extracted into
+  `experimental/edcompact/point-checks.c`, with the license retained. The
+  alignment and compile-time assertion macros are removed; the arithmetic and
+  constants are unchanged. The rest of libsodium is not linked.
+- **Wycheproof**: the public Ed25519 verification corpus from
+  [C2SP/wycheproof](https://github.com/C2SP/wycheproof), with its Apache-2.0
+  license, is pinned by Git blob identity and file SHA-256 in the manifest.
+  Test data is not installed as SSH credentials or linked into a service.
 
 The shim headers under `feasibility/tests/shim/` select upstream crypto features for a
 standalone feasibility test. They are not a substitute for a complete Dropbear

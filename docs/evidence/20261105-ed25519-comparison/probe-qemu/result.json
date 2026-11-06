@@ -1,0 +1,10 @@
+{
+  "status": "failed",
+  "real_hardware": false,
+  "cpu": "486",
+  "image_sha256": "2302b8604974a0ace258f5a651cf04cad1b36c5b59fdf218f1024b254f18812d",
+  "probe_sha256": "32ac33043955d8508a60c22bf459eb1f0c08f6b02068b6416711a7f4240a69ae",
+  "fixtures_sha256": "97b8888555aa4e3caaeb896b626b13c340abb70eb74e924f0f76a62125e7b9f6",
+  "error": "Probe failed",
+  "original_image_unchanged": true
+}

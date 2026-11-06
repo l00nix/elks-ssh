@@ -7,6 +7,8 @@ TOPDIR=$(CDPATH= cd -- "$ELKSSH_ELKS" && pwd); export TOPDIR
 case ${ELKSSH_TRACE_X25519:-baseline} in
     baseline) variant=trace; program=sshtrace; link_extra= ;;
     m15) variant=trace-m15; program=sshfast; link_extra= ;;
+    edcompact) variant=edcompact; program=sshedc; link_extra= ;;
+    edcompact-slow) variant=edcompact-slow; program=sshslow; link_extra= ;;
     *) echo 'Unsupported diagnostic X25519 backend' >&2; exit 2 ;;
 esac
 out=${ELKSSH_TRACE_OUT:-"$root/feasibility/build/persistent-$variant"}
