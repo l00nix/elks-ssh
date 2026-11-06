@@ -1,5 +1,24 @@
 > ⚠️ I’m developing this project with AI assistance out of personal interest. It may not fully align with the ELKS maintainer team’s architectural or development guidelines. Please use it at your own discretion. ⚠️
 
+> **Proof of concept — “will it work?” on retro hardware.** This is a hobby and
+> learning effort to demonstrate modern SSH on ELKS, not a production-ready or
+> everyday remote-access service. Successful PPC command tests took **26 minutes
+> 14.8 seconds from macOS** and **28 minutes 49.6 seconds from Windows**. These
+> are complete connection-and-command times, dominated by authentication, using
+> different experimental builds; they are not a Mac-versus-Windows benchmark.
+> This demonstrates that it works, but the current implementation is impractical
+> for routine access on the tested PPC. Faster machines may perform better;
+> no recommended minimum CPU has yet been established by hardware measurements.
+>
+> For convenient everyday access to an **isolated retro lab**, Telnet may be the
+> more practical choice, with SSH kept as an optional experiment. Telnet provides
+> the same basic remote-terminal function, but **does not provide SSH's encryption,
+> integrity protection or authenticated server identity**: credentials and session
+> contents are exposed. That is an explicit convenience-versus-security trade-off,
+> not equivalent security. Use dedicated credentials, avoid sensitive data and
+> Internet exposure. This documentation does not automatically enable Telnet or
+> fall back to it when SSH fails. SSH remains experimental, not a release candidate.
+
 # ELKS SSH
 
 An experimental continuation of [ghaerr/ssh-daemon-elks](https://github.com/ghaerr/ssh-daemon-elks),
@@ -16,15 +35,43 @@ This is not deployment-ready or a release candidate.**
 Modern OpenSSH connects with strict host verification and no legacy algorithm
 overrides. The normal server refuses startup without secure randomness;
 production qualification and full interactive controls remain unvalidated.
-The Mac-to-PPC test ran `ps` and `cat /etc/issue` and exited successfully, but
-took **27 minutes 34 seconds**. That is a feasibility result, not practical
-login performance. It uses an explicit 30-minute diagnostic authentication
-profile and a small single-worker launcher. The native Windows 9.5p2 client
-also verified the pinned key, authenticated and ran both commands; its log
-reports remote exit status zero. Its cryptographic stages alone took 28 minutes
-13 seconds; total native client time was **28 minutes 49.6 seconds**, exit zero.
-The Windows screenshots are captured; the broader Windows matrix and native
-Mac capture remain pending. See [Windows results](docs/WINDOWS-TESTING.md).
+Both native clients verified the pinned host key, authenticated, ran `ps` and
+`cat /etc/issue`, and exited zero. Tests use an explicit 30-minute diagnostic
+authentication profile and a small single-worker launcher. The broader Windows
+matrix and full interactive qualification remain open.
+
+## Successful physical PPC command tests
+
+| Client / test | Whole-session elapsed time | Retained evidence |
+| --- | --- | --- |
+| macOS OpenSSH 10.3p1, field-O2 candidate | **26m 14.8s** | [Result](docs/evidence/20261106-ppc-field-o2/mac/mac-result.json), [command output](docs/evidence/20261106-ppc-field-o2/mac/mac-command.txt); native Terminal screenshot pending |
+| Windows OpenSSH 9.5p2 on Surface Laptop, earlier slow profile | **28m 49.6s** | [Native screenshots and result](docs/WINDOWS-TESTING.md) |
+| Earlier Mac session, slow profile | **27m 34.23s** | [Result and PPC console capture](docs/ED25519-COMPARISON.md) |
+
+**Windows → PPC: actual native Windows Terminal capture**
+
+![Native Windows OpenSSH returning ps and ELKS 0.9.2 from the PPC](docs/screenshots/windows-ppc-ssh-commands.png)
+
+Captured through Windows App from the completed original session. Both command
+markers and ELKS 0.9.2 are visible. The server log beneath them includes an
+initial unsuccessful attempt before the successful retry.
+[Native exit-zero and timing screenshot](docs/screenshots/windows-ppc-ssh-exit.png).
+
+**Mac → PPC: PPC-side capture from the earlier successful 27m34.23s test**
+
+![Actual PPC console showing authentication from the Mac and session disconnect](docs/screenshots/ppc-ssh-server.png)
+
+Actual PPC text framebuffer rendered with its captured ROM font, showing the
+server log for the earlier Mac session. **This is not a Mac Terminal screenshot
+and does not depict the newer 26m14.8s run.** Its shutdown error is retained;
+[listener cleanup corrections and limitations](docs/LISTENER-SHUTDOWN.md) are
+tracked separately. The native Mac Terminal capture is still pending user upload
+because the computer-control tool blocks access to that application.
+
+The Windows session exposed an unreaped worker in the earlier listener. The
+newer listener passes QEMU and physical banner/disconnect cleanup checks, but
+post-session cleanup of the latest Mac login still awaits serial maintenance.
+Successful commands do not establish complete service reliability.
 
 A compiler-only candidate reduced physical PPC public-probe signing and
 verification times by about 11% (252 and 596 seconds). Its native Mac SSH
@@ -135,17 +182,8 @@ Actual ELXcap capture of the completed probe's saved output on the HP console.
 
 Actual ELXcap console capture; this is a hardware probe, not an SSH login.
 
-The [native Windows client test](docs/WINDOWS-TESTING.md) now confirms a complete
-PPC command session using OpenSSH 9.5p2 on the Surface, with strict host pinning
-and default algorithms. The completed native session is shown below; the
-[Mac client capture](docs/PPC-CAPTURE.md) remains pending.
-
-![Native Windows OpenSSH returning ps and ELKS 0.9.2 from the PPC](docs/screenshots/windows-ppc-ssh-commands.png)
-
-Actual Windows Terminal pixels captured through Windows App on 2026-11-06,
-showing the previous evening’s completed SSH session. The log below the
-command output includes the earlier failed attempt, followed by the successful
-retry. [Final exit and timing screenshot](docs/screenshots/windows-ppc-ssh-exit.png).
+The physical client captures and exact timings are shown above. See the
+[Windows test record](docs/WINDOWS-TESTING.md) and [Mac capture status](docs/PPC-CAPTURE.md).
 
 Earlier checkpoints established [crypto/OS probes](docs/VALIDATION.md),
 [16-bit wire handling](docs/SERVER-PROGRESS.md) and
@@ -203,15 +241,16 @@ security concerns also remain open. This backend has not been promoted.
 On the [PPC with vanilla ELKS](docs/PPC-VANILLA.md), four X25519 RFC vectors
 pass and both daemon variants load when tested alone, then correctly refuse
 missing secure randomness. Networking autostart was configured in that earlier
-checkpoint. The later independently provisioned diagnostic profile now has one
-successful hardware SSH command session, as described above.
+checkpoint. The later independently provisioned diagnostic profile now has successful
+hardware SSH command sessions, as described above.
 
 The [dedicated serial entropy prototype](docs/SERIAL-ENTROPY.md) now passes
 70 QEMU probe cases, 12 daemon startup cases and 10 physical PPC probe cases.
 The PPC daemon accepts a fresh seed and reaches host-key loading; relaunch
 without a new bootstrap is refused. Subsequent physical disconnect/reconnect
 testing exposed intermittent serial failures; see the follow-up below.
-Hardware SSH login remains pending. The ordinary build is unchanged.
+Hardware SSH login was not established with that serial fixture. The later
+independent-state tests above succeeded. The ordinary build is unchanged.
 
 The [serial recovery follow-up](docs/SERIAL-RECOVERY.md) records intermittent
 short responses at 9600 baud and ten successful restarts at 1200 baud. Its
