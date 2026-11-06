@@ -4,7 +4,9 @@ The separate `dropbear-persistent` server passes **11 OpenSSH session cases in
 QEMU using freshly provisioned persistent state**, without a serial or LAN
 entropy helper. A PPC-shaped image also starts networking and SSH automatically
 and runs `ps` and `cat /etc/issue` over a pinned-key connection in QEMU.
-The fresh physical test image is prepared but **PPC SSH validation is pending**.
+The owner booted the fresh physical test image. Its first connection accepted
+TCP but returned no command output before the client was stopped at **7m24s**;
+**PPC SSH validation remains incomplete**.
 This is not a production release or a storage/security qualification claim.
 
 ## Physical recovery and non-disclosing checker
@@ -94,15 +96,28 @@ from exposing the new secrets and reduces competing memory use.
 
 The hardware `sshtrial.img` has never been booted by QEMU. An unmounted
 read-only filesystem check passes and leaves its bytes unchanged. The private
-image and client key remain outside the repository; only the image is to be
-copied to PicoMEM. The Mac retains a pre-pinned host key and dedicated client
-key. Once physical boot is confirmed, retire the Mac's initial image copy so it
-cannot restore old generator state. Never clone this image to another device.
+image and client key were prepared outside the repository; only the image was
+to be copied to PicoMEM. The Mac retains a pre-pinned host key and dedicated
+client key. The initial Mac image has now been retired, as recorded below.
+Never clone this image to another device.
 The original public `ssh2.img` and `sshrec.img` remain available unchanged.
 
-The owner has been asked to transfer and boot this distinct image. The running
-public PPC fixture was only given the non-disclosing checker; no private state
-was installed or SSH listener started through its Telnet/FTP connection.
+The owner reports this distinct image booted. A single Mac connection to
+`10.0.0.66:2222` established TCP with strict pinned-host checking configured,
+but produced no stdout/stderr before the client was stopped after 7m24s.
+The owner observed two `sshtrial` processes, consistent with a listener and
+connection child; roles and cleanup still need console verification. Completion
+of host-key verification, authentication and command execution was not observed.
+This was an operator-stopped attempt, not a demonstrated server timeout.
+The original crypto implementation's earlier slow hardware results suggest a
+performance issue, but the PPC log is needed before attributing the failure.
+No second connection was started and no timeout or algorithm policy was relaxed.
+
+The console log and process list have been requested. The Mac's initial private
+image copy was deleted after the owner's boot confirmation; this is not secure
+erasure. Dedicated client access files remain. Do not restore the booted image
+from an earlier copy. The original public images remain unchanged.
+See the [first physical attempt record](evidence/20261105-persistent-ssh/hardware-first-attempt/result.json).
 
 ## Remaining release gates
 

@@ -15,7 +15,9 @@ This is not deployment-ready or a release candidate.**
 Modern OpenSSH connects with strict host verification and no legacy algorithm
 overrides. The normal server refuses startup without secure randomness;
 production qualification, full interactive controls and physical SSH execution
-remain unvalidated. A separate private PPC test image is prepared.
+remain unvalidated. The private PPC image boots and accepts TCP, but its first
+SSH attempt returned no command output before being stopped after 7m24s;
+console diagnostics are pending. See the [physical attempt record](docs/PERSISTENT-SSH.md).
 
 The finished service targets **Ethernet-only machines with no serial cable**.
 It must operate independently after one-time secure provisioning, with no

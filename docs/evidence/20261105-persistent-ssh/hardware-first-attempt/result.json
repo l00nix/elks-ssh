@@ -1,0 +1,20 @@
+{
+  "status": "stopped_without_command_output",
+  "target": "physical PPC",
+  "ip": "10.0.0.66",
+  "port": 2222,
+  "client": "OpenSSH_10.3p1, LibreSSL 3.3.6",
+  "elapsed_at_client_stop": "07:24",
+  "strict_pinned_host_checking_configured": true,
+  "host_key_verification_completed": "not observed",
+  "command": "ps; cat /etc/issue",
+  "stdout_bytes": 0,
+  "stderr_bytes": 0,
+  "tcp_established": true,
+  "runtime_entropy_helper": false,
+  "user_observed_server_processes": 2,
+  "server_log": "requested from physical console; pending",
+  "no_second_connection_started": true,
+  "server_sha256": "f4f1c03f0c0cc824dc1d5f088e11240d1e176506dd0d5bb00fb56c63cd21bfee",
+  "interpretation": "Bounded attempt stopped by operator; not a successful handshake/login or demonstrated server timeout. Suspected crypto performance issue is unconfirmed."
+}
