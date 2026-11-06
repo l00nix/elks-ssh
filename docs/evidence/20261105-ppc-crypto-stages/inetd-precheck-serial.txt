@@ -1,0 +1,57 @@
+ps; echo C1=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   0  2388 11980  66688 -/bin/sh 
+    7     7    1 root    S   2  4472 32318  82784 ktcp -b -p ne0 
+   54    10    1 root    S   0   404 23918 130432 /bin/sshtrial -F -p 2222 -r hostkey -D /root/sshtrial 
+   57    10    1 root    R   0    50  2094   8976 ps 
+C1=0
+# meminfo; echo C2=$?
+  HEAP   TYPE   SIZE    ADDR    SEG   TYPE     SIZE  CNT  NAME
+  490E   MEM     20   02A640   2A64   BUF      1280    1  
+  492E   TASK 14534
+  8200   INOD  8256
+  A24C   FILE   896
+  A5D8   CACH  8192
+  C5E4   BUFH   128
+  C670   MEM     20   02AB40   2AB4   free      192    0  
+  C690   MEM     20   03AC00   3AC0   DSEG     5808    1  /bin/init 
+  C6B0   MEM     20   02AC00   2AC0   BUF     65536    1  
+  C6D0   MEM     20   018010   1801   CSEG     7136    1  /bin/init 
+  C6F0   TTY     80
+  C74C   TTY     80
+  C7A8   TTY   1024
+  CBB4   free 13388
+  3898   MEM     20   000500   0050   free     1536    0  
+  38B8   MEM     20   019BF0   19BF   DSEG     2432    1  meminfo 
+  38D8   MEM     20   03C2B0   3C2B   DSEG    22752    1  -/bin/sh 
+  38F8   MEM     20   0AFC20   AFC2   DSEG    22672    1  -/bin/sh 
+  3918   MEM     20   0B54B0   B54B   free    10064    0  
+  3938   MEM     20   05CA40   5CA4   CSEG     3824    1  meminfo 
+  3958   MEM     20   057160   5716   free    22752    0  
+  3978   MEM     20   08BCA0   8BCA   free   103392    0  
+  3998   MEM     20   05E700   5E70   CSEG    22736    1  ktcp 
+  39B8   MEM     20   063FD0   63FD   free    60048    0  
+  39D8   MEM     20   072A60   72A6   DSEG    60048    1  ktcp 
+  39F8   MEM     20   0814F0   814F   DSEG    42928    1  /bin/sshtrial 
+  3A18   MEM     20   05D930   5D93   free     3536    0  
+  3A38   MEM     20   01A570   1A57   free      208    0  
+  3A58   free   172
+  3B10   MEM     20   0A5080   A508   CSEG    43936    2  -/bin/sh 
+  3B30   MEM     20   041B90   41B9   CSEG    87504    1  /bin/sshtrial 
+  3B50   TTY     80
+  3BAC   free   238
+  Heap 33/ 47K used, 13K free
+  Main 379/576K used, 197K free, XMS 0/-30720K used, -30720K free, Total -30144K
+C2=0
+# ls -l /root/rngtest; echo C3=$?
+-rw-------  1 root     root           60  Nov  5  2026 TRIAL
+-rw-r--r--  1 root     root          851  Jan  1  1980 bootopts.bak
+-rwx------  1 root     root        11624  Nov  5  2026 rngcheck
+-rw-------  1 root     root         1024  Jan  1 00:33 state
+C3=0
+# df; echo C4=$?
+Filesystem    1K-blocks     Free     Used    %  FUsed%  Mounted on
+/dev/hda          65535    57166     8369  13%     2%   /
+C4=0

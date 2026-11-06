@@ -1,0 +1,15 @@
+curl -o /root/sshfast http://10.0.0.8:59745/sshfast; echo C1=$?
+C1=0
+# chmod 700 /root/sshfast; echo C2=$?
+C2=0
+# md5sum /root/sshfast; echo C3=$?
+curl -o /root/sshlisten http://10.0.0.8:59785/sshlisten; echo C1=$?
+C1=0
+# chmod 700 /root/sshlisten; echo C2=$?
+C2=0
+# md5sum /root/sshlisten; echo C3=$?
+cada1a96a5a485749b30d917a7e25338  /root/sshlisten
+C3=0
+# cat /tmp/fast.md5; echo C4=$?
+C4=0
+# 

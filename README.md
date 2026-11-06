@@ -16,8 +16,14 @@ Modern OpenSSH connects with strict host verification and no legacy algorithm
 overrides. The normal server refuses startup without secure randomness;
 production qualification, full interactive controls and physical SSH execution
 remain unvalidated. The private PPC image boots and accepts TCP, but its first
-SSH attempt returned no command output before being stopped after 7m24s;
-console diagnostics are pending. See the [physical attempt record](docs/PERSISTENT-SSH.md).
+SSH attempt returned no command output before being stopped after 7m24s.
+Serial diagnostics identify slow X25519 computation. A faster experimental
+worker with a small listener now passes the QEMU session suite, avoiding the
+ordinary forked variant's shell-allocation failure. See the
+[PPC diagnostics and memory comparison](docs/PPC-SSH-DIAGNOSTICS.md).
+On the PPC, the faster worker completes both X25519 operations in 93 seconds
+each but is still signing at the five-minute observation limit; physical login
+has not succeeded. The original listener is restored after the comparison.
 
 The finished service targets **Ethernet-only machines with no serial cable**.
 It must operate independently after one-time secure provisioning, with no

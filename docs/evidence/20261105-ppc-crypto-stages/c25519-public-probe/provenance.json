@@ -1,0 +1,29 @@
+{
+  "purpose": "Isolated public RFC8032 performance probe only; not an SSH backend",
+  "upstream": "https://www.dlbeer.co.nz/oss/c25519.html",
+  "archive": "https://www.dlbeer.co.nz/downloads/c25519-2017-10-05.zip",
+  "archive_sha256": "788e3bf7e69e6c7c950f1e49ab3f83e0474317dce03c84d009b82c408d62b5f1",
+  "probe_sha256": "9573e4cc8e81554ce29ab49ccf97900d1cc64cbbe7cc99ba1e9beab6d9748a52",
+  "sources": {
+    "edsign.c": "38a21f8d2c26b62da98db4de530e445101b6f901722109125840f7e990487049",
+    "morph25519.c": "1fb2b11a40bb0585a9179079a62211789d8c9e5f5269a9ffdfe67492f69d4857",
+    "ed25519.c": "164b9a7eb5b04522cae102a0b8db692fe0b19797822bcb2bc1b6eb63e6f00204",
+    "fprime.h": "e4306ccc95092f9430fd70a6d08475219e12ac6bb41a67d9d04dd6ddbd64b04f",
+    "f25519.c": "968956e915964b8cfea21b59ddc87f97ca6ddcefed143660aa65506f21af03fd",
+    "c25519.h": "406db12122ae10de366bb62c662e949fcfc8e1a6c25b28e58534ca5ce727efb0",
+    "sha512.h": "57ef889c37351cc33c449b1b8a7271761f06a459da223dc6e7249434436b4671",
+    "morph25519.h": "83891472e348e63157c2af38863561cdf95215164141171e352354b256e9744c",
+    "edsign.h": "7a1ebbab6dae7d844c09111b35128a2cc7d5318515ca6ef6dc9fbc4f6099cccb",
+    "fprime.c": "5ac28f7b85d017f796708d8f2ea47e7fea90908553cb1f3baec68456cbd4238e",
+    "f25519.h": "0ff8911c528d3552c06cda41665e9f0774b6eafd95d5f783f74083a668febeb9",
+    "ed25519.h": "efc2b580a97a5428d61551ba2442d3fe12f0a94814e616367f8b6616ad3f90b3",
+    "c25519.c": "2f97e32da0cc0cf2de97cc54849ccd86a9160fab69a4952f2f0bc0e7117885f0",
+    "sha512.c": "2b2158d06eeb56bfee0c020b5465dc19e20ce5beeebd6318286a81d657e110b9"
+  },
+  "limitations": [
+    "Four cases, one public empty-message fixture only",
+    "No strict RFC8032 S < L check in upstream verifier",
+    "No hardware or timing-security qualification",
+    "Never linked into SSH server"
+  ]
+}

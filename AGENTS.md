@@ -38,10 +38,30 @@
   it booted. The first TCP/SSH attempt was stopped after 7m24s without command
   output; login and host verification completion are not established. The
   owner's console photo shows PID 9 sleeping and child PID 11 runnable at 93%
-  CPU, with no auth success/error logged. No second attempt was made.
-  Requested `/bin/getty /dev/ttyS0 9600 &` for temporary serial maintenance on
-  BG02T8E2; waiting for the owner. Inspect fresh PIDs before cleanup. Serial is
-  control only, never entropy or a secret-state/key transfer path.
+  CPU, with no auth success/error logged at that initial checkpoint.
+  Temporary serial login is now active on BG02T8E2 at 9600 baud. Root shell
+  is at /root/sshtrial; commands must be short/paced to avoid input loss from
+  line-editor redraw. Local control helper is under the ignored
+  feasibility/test-output/ppc-independent-20261105/serial_control.py.
+  Abandoned child 11 was force-stopped after SIGTERM did not stop it. A separate
+  audited/QEMU-tested baseline diagnostic binary /root/sshtrace identified the
+  first X25519 calculation as unfinished at its 180-second test limit. Test
+  child 40 and diagnostic listener 36 were stopped; original /bin/sshtrial was
+  restored afterward, state lock absent. Inspect fresh PIDs before
+  further actions. Serial is control only, never entropy or private-key/state
+  transfer. The ordinary forked persistent m15 variant fails shell fork with
+  ENOMEM in QEMU. The same worker (SHA 67e67ec54461a9aca467eedbd5503eebcd8a872ee3eb3aa568102db68bf77752)
+  with the small single-worker launcher passes eleven QEMU session cases,
+  malformed KEX rejection, persistent-state checks and stop/reap testing. A
+  temporary hardware comparison of that exact pair completed: both X25519
+  operations took 93 seconds; Ed25519 signing remained unfinished at the
+  305-second observation. Client was operator-stopped at 308.8 seconds, not a
+  demonstrated server timeout. Listener 79 and worker 82 were removed; original
+  /bin/sshtrial restored as PID 99, lock absent. Inspect fresh PIDs before acting.
+  The comparison binaries remain staged under /root but are not running. No
+  hardware SSH login has succeeded. Preserve original startup. An independent
+  c25519 Ed25519 public-vector probe passes host/QEMU tests but is not an SSH
+  backend and has unreviewed strict-input and timing requirements.
   It starts experimental SSH on TCP 2222 and disables Telnet/FTP.
   Use that directory's `connect.sh` and pinned host key for this trial. Never
   print/fetch secret state or keys through plaintext control, publish the image,

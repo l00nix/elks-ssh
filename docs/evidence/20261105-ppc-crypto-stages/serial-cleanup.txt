@@ -1,0 +1,11 @@
+kill 11; ps; echo CLEAN_DONE
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   11    11      root    R  95  9246 12922 130416 /bin/sshtrial -F -p 2222 -r /root/sshtrial/hostkey -D /root/sshtrial 
+    9     9    1 root    S   0   436 23886 130416 /bin/sshtrial -F -p 2222 -r /root/sshtrial/hostkey -D /root/sshtrial 
+   16    10    1 root    S   2  1176 13180  66688 -/bin/sh 
+    7     7    1 root    S   0  4472 32318  82784 ktcp -b -p ne0 
+   22    10    1 root    R   0    50  2094   8976 ps 
+CLEAN_DONE
+# 

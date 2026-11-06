@@ -1,0 +1,40 @@
+ps; echo C1=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   33    10    1 root    R   0    50  2094   8976 ps 
+    9     9    1 root    S   0   436 23886 130416 /bin/sshtrial -F -p 2222 -r /root/sshtrial/hostkey -D /root/sshtrial 
+   16    10    1 root    S   0  1730 12638  66688 -/bin/sh 
+    7     7    1 root    S   1  4472 32318  82784 ktcp -b -p ne0 
+C1=0
+# kill 9; echo C2=$?
+C2=0
+# ps; echo C3=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   35    10    1 root    R   3    50  2094   8976 ps 
+   16    10    1 root    S   8  1440 12928  66688 -/bin/sh 
+    7     7    1 root    S   1     0 36790  82784 ktcp -b -p ne0 
+C3=0
+# cd /root/sshtrial; echo C1=$?
+C1=0
+# opts='-F -p 2222 -r hostkey -D /root/sshtrial'; echo C2=$?
+C2=0
+# /root/sshtrace $opts </dev/null >/tmp/sshtrace.log 2>&1 &; echo C3=$?
+C3=0
+# ps; echo C4=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   36    10    1 root    R  89    64 21188 130928 /root/sshtrace -F -p 2222 -r hostkey -D /root/sshtrial 
+   16    10    1 root    S   1  1930 12438  66688 -/bin/sh 
+    7     7    1 root    R   0     0 36788  82784 ktcp -b -p ne0 
+   37    10    1 root    R   9    50  2094   8976 ps 
+C4=0
+# cat /tmp/sshtrace.log; echo C5=$?
+C5=0
+# cat /tmp/sshtrace.log; echo C1=$?
+[36] Jan 01 00:29:49 Not backgrounding
+C1=0
+# 

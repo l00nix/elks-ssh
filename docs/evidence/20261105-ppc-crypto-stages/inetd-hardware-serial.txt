@@ -1,0 +1,140 @@
+cat /tmp/fast.log; echo C1=$?
+sshlisten ready; one concurrent worker
+C1=0
+# ps; echo C2=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   4  3592 10776  66688 -/bin/sh 
+    7     7    1 root    R   4  8944 27826  82784 ktcp -b -p ne0 
+   79    10    1 root    S   0     0  8132  15760 /root/sshlisten 2222 /root/sshfast -i -r hostkey -D /root/sshtrial 
+   82    10    1 root    R  79    64 21184 169664 /root/sshfast -i -r hostkey -D /root/sshtrial 
+   84    10    1 root    R   9    50  2094   8976 ps 
+C2=0
+# cat /tmp/fast.log; echo C3=$?
+sshlisten ready; one concurrent worker
+[82] Jan 01 01:05:07 Child connection from 10.0.0.8:59800
+CRYPTO pid=82 x25519 begin
+C3=0
+# ps; echo C4=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   1  3626 10742  66688 -/bin/sh 
+    7     7    1 root    S   0  8944 27846  82784 ktcp -b -p ne0 
+   79    10    1 root    S   0     0  8132  15760 /root/sshlisten 2222 /root/sshfast -i -r hostkey -D /root/sshtrial 
+   82    82      root    R  70  9208 13054 169664 /root/sshfast -i -r hostkey -D /root/sshtrial 
+   86    10    1 root    R  19    50  2094   8976 ps 
+C4=0
+# cat /tmp/fast.log; echo C5=$?
+sshlisten ready; one concurrent worker
+[82] Jan 01 01:05:07 Child connection from 10.0.0.8:59800
+CRYPTO pid=82 x25519 begin
+C5=0
+# ps; echo C6=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   1  3660 10708  66688 -/bin/sh 
+    7     7    1 root    S   0  8944 27846  82784 ktcp -b -p ne0 
+   79    10    1 root    S   0     0  8132  15760 /root/sshlisten 2222 /root/sshfast -i -r hostkey -D /root/sshtrial 
+   82    82      root    R  71  9208 13032 169664 /root/sshfast -i -r hostkey -D /root/sshtrial 
+   88    10    1 root    R  20    50  2094   8976 ps 
+C6=0
+# cat /tmp/fast.log; echo C7=$?
+sshlisten ready; one concurrent worker
+[82] Jan 01 01:05:07 Child connection from 10.0.0.8:59800
+CRYPTO pid=82 x25519 begin
+CRYPTO pid=82 x25519 end seconds=93
+CRYPTO pid=82 x25519 begin
+C7=0
+# ps; echo C8=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   1  3694 10674  66688 -/bin/sh 
+    7     7    1 root    S   0  8944 27846  82784 ktcp -b -p ne0 
+   79    10    1 root    S   0     0  8132  15760 /root/sshlisten 2222 /root/sshfast -i -r hostkey -D /root/sshtrial 
+   82    82      root    R  69  9208 13030 169664 /root/sshfast -i -r hostkey -D /root/sshtrial 
+   90    10    1 root    R  18    50  2094   8976 ps 
+C8=0
+# cat /tmp/fast.log; echo C9=$?
+sshlisten ready; one concurrent worker
+[82] Jan 01 01:05:07 Child connection from 10.0.0.8:59800
+CRYPTO pid=82 x25519 begin
+CRYPTO pid=82 x25519 end seconds=93
+CRYPTO pid=82 x25519 begin
+CRYPTO pid=82 x25519 end seconds=93
+CRYPTO pid=82 ed25519-sign begin
+C9=0
+# ps; echo C10=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   2  3728 10640  66688 -/bin/sh 
+    7     7    1 root    S   0  8944 27846  82784 ktcp -b -p ne0 
+   79    10    1 root    S   0     0  8132  15760 /root/sshlisten 2222 /root/sshfast -i -r hostkey -D /root/sshtrial 
+   82    82      root    R  69  6024 14430 169664 /root/sshfast -i -r hostkey -D /root/sshtrial 
+   92    10    1 root    R  18    50  2094   8976 ps 
+C10=0
+# cat /tmp/fast.log; echo C11=$?
+sshlisten ready; one concurrent worker
+[82] Jan 01 01:05:07 Child connection from 10.0.0.8:59800
+CRYPTO pid=82 x25519 begin
+CRYPTO pid=82 x25519 end seconds=93
+CRYPTO pid=82 x25519 begin
+CRYPTO pid=82 x25519 end seconds=93
+CRYPTO pid=82 ed25519-sign begin
+C11=0
+# ps; echo C12=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   3  3764 10604  66688 -/bin/sh 
+    7     7    1 root    R   0  8944 27844  82784 ktcp -b -p ne0 
+   79    10    1 root    S   0     0  8132  15760 /root/sshlisten 2222 /root/sshfast -i -r hostkey -D /root/sshtrial 
+   82    82      root    R  80  6024 14372 169664 /root/sshfast -i -r hostkey -D /root/sshtrial 
+   94    10    1 root    R   5    50  2094   8976 ps 
+C12=0
+# ps; echo C13=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   2  3764 10604  66688 -/bin/sh 
+    7     7    1 root    S   2  8944 27846  82784 ktcp -b -p ne0 
+   79    10    1 root    S   0     0  8132  15760 /root/sshlisten 2222 /root/sshfast -i -r hostkey -D /root/sshtrial 
+   82    82      root    R  68  6024 14512 169664 /root/sshfast -i -r hostkey -D /root/sshtrial 
+   95    10    1 root    R  23    50  2094   8976 ps 
+C13=0
+# kill 79; echo C14=$?
+C14=0
+# ps; echo C15=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   1  3890 10478  66688 -/bin/sh 
+    7     7    1 root    S   1  4472 32318  82784 ktcp -b -p ne0 
+   97    10    1 root    R   0    50  2094   8976 ps 
+C15=0
+[1] 79 Exit 0                 ${l} 2222 ${s} ${o} </dev/null >/tmp/fast.log ...
+# ls -l /root/rngtest; echo C16=$?
+-rw-------  1 root     root           60  Nov  5  2026 TRIAL
+-rw-r--r--  1 root     root          851  Jan  1 01:02 bootopts.bak
+-rwx------  1 root     root        11624  Nov  5  2026 rngcheck
+-rw-------  1 root     root         1024  Jan  1 01:05 state
+C16=0
+# /bin/sshtrial $opts </dev/null >/tmp/sshtrial.log 2>&1 &; echo C17=$?
+C17=0
+# cat /tmp/sshtrial.log; echo C18=$?
+[99] Jan 01 01:10:08 Not backgrounding
+C18=0
+# ps; echo C19=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   0  4902  9466  66688 -/bin/sh 
+    7     7    1 root    S   2  4472 32318  82784 ktcp -b -p ne0 
+   99    10    1 root    S  93   404 23918 130432 /bin/sshtrial -F -p 2222 -r hostkey -D /root/sshtrial 
+  101    10    1 root    R   0    50  2094   8976 ps 
+C19=0
+# 

@@ -1,0 +1,3 @@
+ELKSSH_STDIN
+second line
+INPUT_EOF_OK

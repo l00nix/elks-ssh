@@ -1,0 +1,12 @@
+# MIT. Diagnostic-only overlay. No key, scalar, message or RNG bytes logged.
+include experimental/persistent-entropy/Makefile
+
+TRACE_MAKEFILE = experimental/persistent-entropy/Makefile.trace
+$(OBJDIR)/kex-x25519.o: CPPFLAGS += -Ddropbear_curve25519_scalarmult=elkssh_trace_x25519
+$(OBJDIR)/ed25519.o: CPPFLAGS += -Ddropbear_ed25519_sign=elkssh_trace_sign -Ddropbear_ed25519_verify=elkssh_trace_verify
+$(OBJDIR)/kex-x25519.o $(OBJDIR)/ed25519.o: $(TRACE_MAKEFILE)
+EXTRA_OBJS += $(OBJDIR)/crypto-stages.o
+$(OUTPUT): $(OBJDIR)/crypto-stages.o
+$(OBJDIR)/crypto-stages.o: experimental/persistent-entropy/crypto-stages.c $(HEADERS) $(TRACE_MAKEFILE)
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(CPPFLAGS) -DELKSSH_STAGE_DIAGNOSTICS -c $< -o $@

@@ -1,0 +1,46 @@
+cat /tmp/fast.md5; echo C1=$?
+870b5c040d27702d4d584a34f7621179  /root/sshfast
+C1=0
+# ps; echo C2=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   0  3144 11224  66688 -/bin/sh 
+    7     7    1 root    S   3  4472 32318  82784 ktcp -b -p ne0 
+   54    10    1 root    S   0   404 23918 130432 /bin/sshtrial -F -p 2222 -r hostkey -D /root/sshtrial 
+   76    10    1 root    R   0    50  2094   8976 ps 
+C2=0
+# kill 54; echo C3=$?
+C3=0
+[1] 54 Exit 0                 /bin/sshtrial ${opts} </dev/null >/tmp/sshtria...
+# ps; echo C4=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   7  4162 10206  66688 -/bin/sh 
+    7     7    1 root    S   2     0 36790  82784 ktcp -b -p ne0 
+   78    10    1 root    R   0    50  2094   8976 ps 
+C4=0
+# cd /root/sshtrial; echo C5=$?
+C5=0
+# s=/root/sshfast; echo C6=$?
+C6=0
+# l=/root/sshlisten; echo C7=$?
+C7=0
+# o='-i -r hostkey -D /root/sshtrial'; echo C8=$?
+C8=0
+# $l 2222 $s $o </dev/null >/tmp/fast.log 2>&1 &; echo C9=$?
+C9=0
+# cat /tmp/fast.log; echo C10=$?
+sshlisten ready; one concurrent worker
+C10=0
+# ps; echo C11=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   9  3594 10774  66688 -/bin/sh 
+    7     7    1 root    S   2  4472 32318  82784 ktcp -b -p ne0 
+   79    10    1 root    S   3     0  8132  15760 /root/sshlisten 2222 /root/sshfast -i -r hostkey -D /root/sshtrial 
+   81    10    1 root    R   2    50  2094   8976 ps 
+C11=0
+# 

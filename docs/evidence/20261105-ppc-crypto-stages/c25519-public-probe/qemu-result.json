@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "cpu": "486",
+  "image_sha256": "2302b8604974a0ace258f5a651cf04cad1b36c5b59fdf218f1024b254f18812d",
+  "real_hardware": false,
+  "production_crypto_selected": false,
+  "cases": {
+    "edbench": {
+      "passed": true,
+      "checks": 4,
+      "host_seconds": 15.1,
+      "vector_seconds": {
+        "sign-rfc8032": 2,
+        "verify-rfc8032": 7,
+        "reject-tampered": 6,
+        "reject-short": 0
+      }
+    }
+  },
+  "edbench_sha256": "9573e4cc8e81554ce29ab49ccf97900d1cc64cbbe7cc99ba1e9beab6d9748a52",
+  "original_image_unchanged": true
+}

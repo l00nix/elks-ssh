@@ -1,5 +1,10 @@
 # Experimental m15 daemon integration — 2026-11-04
 
+Later checkpoint: the [persistent-state diagnostic comparison](PPC-SSH-DIAGNOSTICS.md)
+uses a small listener with Dropbear's existing inetd mode and passes all eleven
+QEMU session cases. The earlier binaries and failures below remain historical
+evidence; they are not the newly tested combination.
+
 **Not a hardware candidate.** BearSSL m15 now links into an isolated Dropbear
 server using the existing ELKS toolchain and medium-model linker script. The
 normal daemon is unchanged. This experiment authenticates an OpenSSH client,

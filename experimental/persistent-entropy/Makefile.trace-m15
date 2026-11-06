@@ -1,0 +1,28 @@
+# MIT. Isolated comparison: persistent source + existing m15 X25519 adapter.
+# Ed25519, protocol checks, timeouts and authentication remain unchanged.
+include experimental/persistent-entropy/Makefile.trace
+
+M15_ROOT = feasibility/vendor/bearssl
+M15_FLAGS = -I$(M15_ROOT)/inc -I$(M15_ROOT)/src -DBR_NO_ARITH_SHIFT=1 \
+            -DBR_SLOW_MUL15=0 -DBR_CT_MUL15=0
+M15_OBJS = $(OBJDIR)/m15-adapter.o $(OBJDIR)/m15-curve.o $(OBJDIR)/m15-ccopy.o $(OBJDIR)/process-stages.o
+$(OBJDIR)/dbutil.o: CPPFLAGS += -Dfork=elkssh_trace_fork -Dpipe=elkssh_trace_pipe -Dexecv=elkssh_trace_execv
+$(OBJDIR)/dbutil.o: experimental/persistent-entropy/Makefile.trace-m15
+$(OBJDIR)/crypto-stages.o: CPPFLAGS += -DELKSSH_TRACE_M15
+$(OBJDIR)/crypto-stages.o: experimental/persistent-entropy/Makefile.trace-m15
+$(OBJDIR)/br-sha2small.o: CFLAGS += -include experimental/persistent-entropy/sha256-placement.h
+$(OBJDIR)/br-sha2small.o: experimental/persistent-entropy/sha256-placement.h
+EXTRA_OBJS += $(M15_OBJS)
+$(OUTPUT): $(M15_OBJS)
+$(OBJDIR)/process-stages.o: experimental/persistent-entropy/process-stages.c $(HEADERS)
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJDIR)/m15-adapter.o: feasibility/src/m15-adapter.c $(HEADERS)
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(M15_FLAGS) -DELKSSH_M15_EXPERIMENT -c $< -o $@
+$(OBJDIR)/m15-curve.o: $(M15_ROOT)/src/ec/ec_c25519_m15.c feasibility/src/m15-placement.h
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(M15_FLAGS) -include feasibility/src/m15-placement.h -fwrapv -fstack-usage -c $< -o $@
+$(OBJDIR)/m15-ccopy.o: $(M15_ROOT)/src/codec/ccopy.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(M15_FLAGS) -c $< -o $@

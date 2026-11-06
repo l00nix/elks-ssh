@@ -93,6 +93,12 @@ def run(args):
         (temp/'bootopts').write_bytes(opts); put(temp/'bootopts','/bootopts')
         shutil.copyfile(args.server,temp/'sshtest');os.chmod(temp/'sshtest',0o700)
         put(temp/'sshtest','/bin/sshtest')
+        if args.inetd_launcher:
+            shutil.copyfile(args.inetd_launcher,temp/'sshlisten')
+            os.chmod(temp/'sshlisten',0o700)
+            put(temp/'sshlisten','/bin/sshlisten')
+            result['inetd_launcher_sha256']=sha(args.inetd_launcher)
+            result['connection_model']='single-worker inetd experiment'
         authdir = '/root' if args.filesystem == 'minix' else '/etc'
         framed = None
         initial_persistent_state = None
@@ -206,7 +212,8 @@ def run(args):
                     else:
                         command('ktcp -b -p ne0 10.0.2.15 10.0.2.2 255.255.255.0')
                         command('ls -ld / /root '+authdir+'/authkeys')
-                        command('sshtest -F -r '+authdir+'/hostkey -D '+authdir+' > /tmp/sshd.log 2>&1 &')
+                        service=('sshlisten 22 /bin/sshtest -i' if args.inetd_launcher else 'sshtest -F')
+                        command(service+' -r '+authdir+'/hostkey -D '+authdir+' > /tmp/sshd.log 2>&1 &')
                         # The private host-forward only listens on loopback. Probe
                         # once with the actual authenticated client after startup.
                         time.sleep(2)
@@ -284,8 +291,9 @@ def run(args):
                                         if time.monotonic()-start>600:
                                             timed_out=True
                                             break
-                                        snapshots.append({'case':name,'host_elapsed_seconds':round(time.monotonic()-start,3),
-                                                          'ps':command('ps').decode('latin1')})
+                                        if not args.no_memory_sampling:
+                                            snapshots.append({'case':name,'host_elapsed_seconds':round(time.monotonic()-start,3),
+                                                              'ps':command('ps').decode('latin1')})
                                         time.sleep(2)
                                 finally:
                                     if attempt.poll() is None: attempt.kill();attempt.wait()
@@ -366,16 +374,49 @@ def run(args):
                             rekey[-1]='cat /root/payload; echo REKEY_DONE'
                             attempt_case('rekey-output',rekey,expected_output=payload+'REKEY_DONE\n',require_rekey=True)
                         result['suite_passed']=all(case['passed'] for case in cases.values()) and result.get('preauth_limit',True)
+                        result['memory_sampling_enabled']=not args.no_memory_sampling
                         rows=[]
                         for sample in snapshots:
                             for line in sample['ps'].splitlines():
-                                if re.match(r'\s*\d+\s',line) and 'sshtest ' in line:
-                                    fields=line.split('sshtest ',1)[0].split()
-                                    rows.append(tuple(map(int,fields[-3:])))
+                                if re.match(r'\s*\d+\s',line):
+                                    worker=re.search(r'\s(\d+)\s+(\d+)\s+(\d+)\s+(?:/bin/)?sshtest ',line)
+                                    if worker: rows.append(tuple(map(int,worker.groups())))
                         if rows:
                             result['sampled_memory']={'samples':len(snapshots),'max_heap_brk_bytes':max(r[0] for r in rows),
                                 'min_sp_minus_brk_bytes':min(r[1] for r in rows),'process_size_bytes':sorted(set(r[2] for r in rows)),
                                 'peak_bound':False}
+                    if args.listener_stop_test:
+                        if not args.inetd_launcher or failure_mode:
+                            raise RuntimeError('Listener stop test requires a healthy inetd launcher')
+                        with socket.create_connection(('127.0.0.1',port),timeout=10) as held:
+                            held.settimeout(20)
+                            if not held.recv(512).startswith(b'SSH-2.0-'):
+                                raise RuntimeError('Stop-test worker has no SSH banner')
+                            state=command('ps').decode('latin1')
+                            parents=[line.split()[0] for line in state.splitlines()
+                                     if re.match(r'\s*\d+\s',line) and 'sshlisten 22 ' in line]
+                            if len(parents)!=1: raise RuntimeError('Expected one listener to stop')
+                            stopping_ids={line.split()[0] for line in state.splitlines()
+                                          if re.match(r'\s*\d+\s',line) and 'sshtest ' in line}
+                            command('kill '+parents[0])
+                            for _ in range(10):
+                                state=command('ps').decode('latin1')
+                                remaining=[line for line in state.splitlines()
+                                           if re.match(r'\s*\d+\s',line) and line.split()[0] in stopping_ids]
+                                if not remaining: break
+                                time.sleep(1)
+                            # Drain an already queued KEXINIT before checking EOF.
+                            closed=False
+                            deadline=time.monotonic()+20
+                            while time.monotonic()<deadline:
+                                held.settimeout(max(.1,deadline-time.monotonic()))
+                                try:
+                                    if not held.recv(4096): closed=True; break
+                                except ConnectionResetError: closed=True; break
+                                except socket.timeout: break
+                            result['listener_stop_reaps_worker']=not remaining and closed
+                            if not result['listener_stop_reaps_worker']:
+                                raise RuntimeError('Listener stop left a worker or connection')
                     command('echo SHELL_STILL_WORKS')
                     if b'STACK USING' in transcript or b'STACK OVERFLOW' in transcript:
                         raise RuntimeError('Guest stack reservation exceeded')
@@ -426,7 +467,7 @@ def run(args):
                     valid=saved.returncode==0 and saved.stdout==initial_persistent_state
                 elif saved.returncode==0 and len(saved.stdout)==1024:
                     generation=int.from_bytes(saved.stdout[8:12],'big')
-                    if 2<=generation<=1024:
+                    if (1 if args.inetd_launcher else 2)<=generation<=1024:
                         source=Path(__file__).resolve().parents[1]/'experimental/persistent-entropy/fixture.py'
                         spec=importlib.util.spec_from_file_location('private_state_reference',source)
                         reference=importlib.util.module_from_spec(spec);spec.loader.exec_module(reference)
@@ -457,6 +498,9 @@ if __name__=='__main__':
     p.add_argument('--kex-rejection-suite',action='store_true',help='Reject public low-order and short X25519 inputs before login')
     p.add_argument('--screenshot',action='store_true')
     p.add_argument('--connect-timeout',type=int,default=300)
+    p.add_argument('--no-memory-sampling',action='store_true',help='Do not launch ps during SSH cases; compare failures without monitor memory pressure')
+    p.add_argument('--inetd-launcher',type=lambda s:Path(s).resolve(),help='Isolated single-worker launcher for Dropbear -i memory comparison')
+    p.add_argument('--listener-stop-test',action='store_true',help='Stop the experimental listener with a connected pre-auth worker and verify cleanup')
     p.add_argument('--entropy',choices=['healthy','short','silent'],default='healthy')
     p.add_argument('--serial-entropy',action='store_true',help='Use the isolated framed serial adapter through a private QEMU socket')
     p.add_argument('--persistent-entropy',action='store_true',help='Use fresh offline-provisioned state without a runtime entropy helper')

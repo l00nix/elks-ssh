@@ -1,0 +1,104 @@
+cat /tmp/sshtrace.log; echo C1=$?
+[36] Jan 01 00:29:49 Not backgrounding
+[40] Jan 01 00:30:27 Child connection from 10.0.0.8:59364
+CRYPTO pid=40 x25519 begin
+C1=0
+# ps; echo C2=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   36    10    1 root    S   2   404 23918 130928 /root/sshtrace -F -p 2222 -r hostkey -D /root/sshtrial 
+   16    10    1 root    S   3  1844 12524  66688 -/bin/sh 
+    7     7    1 root    S   0  8944 27846  82784 ktcp -b -p ne0 
+   40    40      root    R  78  9214 13074 130928 /root/sshtrace -F -p 2222 -r hostkey -D /root/sshtrial 
+   42    10    1 root    R  10    50  2094   8976 ps 
+C2=0
+# cat /tmp/sshtrace.log; echo C3=$?
+[36] Jan 01 00:29:49 Not backgrounding
+[40] Jan 01 00:30:27 Child connection from 10.0.0.8:59364
+CRYPTO pid=40 x25519 begin
+C3=0
+# ps; echo C4=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   36    10    1 root    S   0   404 23918 130928 /root/sshtrace -F -p 2222 -r hostkey -D /root/sshtrial 
+   16    10    1 root    S   3  1898 12470  66688 -/bin/sh 
+    7     7    1 root    R   1  8944 27844  82784 ktcp -b -p ne0 
+   40    40      root    R  79  9214 13326 130928 /root/sshtrace -F -p 2222 -r hostkey -D /root/sshtrial 
+   44    10    1 root    R  10    50  2094   8976 ps 
+C4=0
+# cat /tmp/sshtrace.log; echo C5=$?
+[36] Jan 01 00:29:49 Not backgrounding
+[40] Jan 01 00:30:27 Child connection from 10.0.0.8:59364
+CRYPTO pid=40 x25519 begin
+C5=0
+# ps; echo C6=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   36    10    1 root    S   0   404 23918 130928 /root/sshtrace -F -p 2222 -r hostkey -D /root/sshtrial 
+   16    10    1 root    S   4  1974 12394  66688 -/bin/sh 
+    7     7    1 root    R   1  8944 27844  82784 ktcp -b -p ne0 
+   40    40      root    R  79  9214 13074 130928 /root/sshtrace -F -p 2222 -r hostkey -D /root/sshtrial 
+   46    10    1 root    R  10    50  2094   8976 ps 
+C6=0
+# cat /tmp/sshtrace.log; echo C7=$?
+[36] Jan 01 00:29:49 Not backgrounding
+[40] Jan 01 00:30:27 Child connection from 10.0.0.8:59364
+CRYPTO pid=40 x25519 begin
+C7=0
+# ps; echo C8=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   36    10    1 root    S   0   404 23918 130928 /root/sshtrace -F -p 2222 -r hostkey -D /root/sshtrial 
+   16    10    1 root    S   3  2012 12356  66688 -/bin/sh 
+    7     7    1 root    S   1  8944 27846  82784 ktcp -b -p ne0 
+   40    40      root    R  79  9214 13002 130928 /root/sshtrace -F -p 2222 -r hostkey -D /root/sshtrial 
+   48    10    1 root    R  10    50  2094   8976 ps 
+C8=0
+# ps; echo C9=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   36    10    1 root    S   0   404 23918 130928 /root/sshtrace -F -p 2222 -r hostkey -D /root/sshtrial 
+   16    10    1 root    S   3  2012 12356  66688 -/bin/sh 
+    7     7    1 root    S   2  8944 27846  82784 ktcp -b -p ne0 
+   40    40      root    R  66  9214 13072 130928 /root/sshtrace -F -p 2222 -r hostkey -D /root/sshtrial 
+   49    10    1 root    R   8    50  2094   8976 ps 
+C9=0
+# kill -9 40; echo C10=$?
+C10=0
+# kill 36; echo C11=$?
+C11=0
+# ps; echo C12=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   2  2130 12238  66688 -/bin/sh 
+    7     7    1 root    S   1     0 36790  82784 ktcp -b -p ne0 
+   52    10    1 root    R   0    50  2094   8976 ps 
+C12=0
+[1] 36 Exit 0                 /root/sshtrace ${opts} </dev/null >/tmp/sshtra...
+# ls -l /root/rngtest; echo C13=$?
+-rw-------  1 root     root           60  Nov  5  2026 TRIAL
+-rw-r--r--  1 root     root          851  Jan  1  1980 bootopts.bak
+-rwx------  1 root     root        11624  Nov  5  2026 rngcheck
+-rw-------  1 root     root         1024  Jan  1 00:30 state
+C13=0
+# /bin/sshtrial $opts </dev/null >/tmp/sshtrial.log 2>&1 &; echo C14=$?
+C14=0
+# cat /tmp/sshtrial.log; echo C15=$?
+[54] Jan 01 00:33:43 Not backgrounding
+C15=0
+# ps; echo C16=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   2  2388 11980  66688 -/bin/sh 
+    7     7    1 root    S   1  4472 32318  82784 ktcp -b -p ne0 
+   54    10    1 root    S  76   404 23918 130432 /bin/sshtrial -F -p 2222 -r hostkey -D /root/sshtrial 
+   56    10    1 root    R   0    50  2094   8976 ps 
+C16=0
+# 

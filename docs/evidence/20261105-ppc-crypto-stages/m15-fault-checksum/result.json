@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "entropy_mode": "healthy",
+  "entropy_protocol": "persistent-state",
+  "server_sha256": "e7e6ad89551f1d90d1e6637d445c88118a55580eaecafa07289365dba5fe10c1",
+  "image_sha256": "736ded194bfa5f2667f0fa537d36947fd904b9bc24a7d1ccb6a5b1a645f1c65f",
+  "filesystem": "minix",
+  "cpu": "486",
+  "real_hardware": false,
+  "production_entropy": false,
+  "ssh_client": "OpenSSH_10.3p1, LibreSSL 3.3.6",
+  "persistent_fault": "checksum",
+  "entropy_failure_closed": true,
+  "entropy_failure_no_server_process": true,
+  "runtime_entropy_helper": false,
+  "persistent_state_check_passed": true,
+  "original_image_unchanged": true
+}

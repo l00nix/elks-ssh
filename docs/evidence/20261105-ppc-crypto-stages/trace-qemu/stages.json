@@ -1,0 +1,45 @@
+{
+  "stage_sequence_passed": true,
+  "stages": [
+    {
+      "stage": "x25519",
+      "event": "begin",
+      "seconds": null
+    },
+    {
+      "stage": "x25519",
+      "event": "end",
+      "seconds": 7
+    },
+    {
+      "stage": "x25519",
+      "event": "begin",
+      "seconds": null
+    },
+    {
+      "stage": "x25519",
+      "event": "end",
+      "seconds": 7
+    },
+    {
+      "stage": "ed25519-sign",
+      "event": "begin",
+      "seconds": null
+    },
+    {
+      "stage": "ed25519-sign",
+      "event": "end",
+      "seconds": 12
+    },
+    {
+      "stage": "ed25519-verify",
+      "event": "begin",
+      "seconds": null
+    },
+    {
+      "stage": "ed25519-verify",
+      "event": "end",
+      "seconds": 23
+    }
+  ]
+}

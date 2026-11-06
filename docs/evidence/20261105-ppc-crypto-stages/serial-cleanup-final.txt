@@ -1,0 +1,26 @@
+ps; echo PRE_STOP_DONE
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   11    11      root    R 100  9246 12922 130416 /bin/sshtrial -F -p 2222 -r /root/sshtrial/hostkey -D /root/sshtrial 
+    9     9    1 root    S   0   436 23886 130416 /bin/sshtrial -F -p 2222 -r /root/sshtrial/hostkey -D /root/sshtrial 
+   16    10    1 root    S   1  1176 13192  66688 -/bin/sh 
+    7     7    1 root    S   0  4472 32318  82784 ktcp -b -p ne0 
+   23    10    1 root    R  16    50  2094   8976 ps 
+PRE_STOP_DONE
+# kill -9 11; ps; cat /tmp/sshtrial.log; ls -l /root/rngtest; echo STOP_DONE
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   25    10    1 root    R   0    50  2094   8976 ps 
+    9     9    1 root    S   0   436 23886 130416 /bin/sshtrial -F -p 2222 -r /root/sshtrial/hostkey -D /root/sshtrial 
+   16    10    1 root    S   1  1404 12928  66688 -/bin/sh 
+    7     7    1 root    S   0  4472 32318  82784 ktcp -b -p ne0 
+[9] Jan 01 00:01:25 Not backgrounding
+[11] Jan 01 00:05:06 Child connection from 10.0.0.8:59008
+-rw-------  1 root     root           60  Nov  5  2026 TRIAL
+-rw-r--r--  1 root     root          851  Jan  1  1980 bootopts.bak
+-rwx------  1 root     root        11624  Nov  5  2026 rngcheck
+-rw-------  1 root     root         1024  Jan  1 00:05 state
+STOP_DONE
+# 

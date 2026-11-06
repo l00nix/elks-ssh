@@ -1,0 +1,14 @@
+ps; echo C1=$?
+  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND
+    1     0      root    S   0  1060  4020  12944 /bin/init 
+   10    10    1 root    S   0  1176 13130  66608 -/bin/sh 
+   16    10    1 root    S   0  3120 11248  66688 -/bin/sh 
+    7     7    1 root    S   2  4472 32318  82784 ktcp -b -p ne0 
+   54    10    1 root    S   0   404 23918 130432 /bin/sshtrial -F -p 2222 -r hostkey -D /root/sshtrial 
+   73    10    1 root    R   0    50  2094   8976 ps 
+C1=0
+[2] 66 Exit 0                 md5sum /root/sshfast >/tmp/fast.md5 2>&1
+# cat /tmp/fast.md5; echo C2=$?
+870b5c040d27702d4d584a34f7621179  /root/sshfast
+C2=0
+# 

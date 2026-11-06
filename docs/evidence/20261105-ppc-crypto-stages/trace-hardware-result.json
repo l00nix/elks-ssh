@@ -1,0 +1,40 @@
+{
+  "hardware": true,
+  "limit_seconds": 180,
+  "runtime_entropy_helper": false,
+  "snapshots": [
+    {
+      "elapsed_seconds": 10.14,
+      "stages": [
+        "CRYPTO pid=40 x25519 begin"
+      ],
+      "client_exit": null
+    },
+    {
+      "elapsed_seconds": 60.13,
+      "stages": [
+        "CRYPTO pid=40 x25519 begin"
+      ],
+      "client_exit": null
+    },
+    {
+      "elapsed_seconds": 120.21,
+      "stages": [
+        "CRYPTO pid=40 x25519 begin"
+      ],
+      "client_exit": null
+    },
+    {
+      "elapsed_seconds": 180.03,
+      "stages": [
+        "CRYPTO pid=40 x25519 begin"
+      ],
+      "client_exit": null
+    }
+  ],
+  "operator_stopped_client": true,
+  "ssh_exit": -15,
+  "elapsed_seconds": 183.42,
+  "original_listener_restored": true,
+  "final_ps": "ps; echo C16=$?\r\r\n  PID   GRP  TTY USER STAT CPU  HEAP  FREE   SIZE COMMAND\r\n    1     0      root    S   0  1060  4020  12944 /bin/init \r\n   10    10    1 root    S   0  1176 13130  66608 -/bin/sh \r\n   16    10    1 root    S   2  2388 11980  66688 -/bin/sh \r\n    7     7    1 root    S   1  4472 32318  82784 ktcp -b -p ne0 \r\n   54    10    1 root    S  76   404 23918 130432 /bin/sshtrial -F -p 2222 -r hostkey -D /root/sshtrial \r\n   56    10    1 root    R   0    50  2094   8976 ps \r\nC16=0\r\n# "
+}

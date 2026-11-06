@@ -105,13 +105,14 @@ The original public `ssh2.img` and `sshrec.img` remain available unchanged.
 The owner reports this distinct image booted. A single Mac connection to
 `10.0.0.66:2222` established TCP with strict pinned-host checking configured,
 but produced no stdout/stderr before the client was stopped after 7m24s.
-The owner observed two `sshtrial` processes, consistent with a listener and
-connection child; roles and cleanup still need console verification. Completion
+The owner observed two `sshtrial` processes, subsequently confirmed by serial
+diagnostics as a listener and connection child. Completion
 of host-key verification, authentication and command execution was not observed.
 This was an operator-stopped attempt, not a demonstrated server timeout.
-The original crypto implementation's earlier slow hardware results suggest a
-performance issue, but the PPC log is needed before attributing the failure.
-No second connection was started and no timeout or algorithm policy was relaxed.
+The follow-up diagnostic build identifies its first X25519 operation as still
+unfinished at 180 seconds. That separate attempt and the QEMU memory comparison
+are documented in [PPC diagnostics](PPC-SSH-DIAGNOSTICS.md). No timeout or
+authentication policy was relaxed.
 
 The owner's subsequent [physical console photo](evidence/20261105-persistent-ssh/hardware-first-attempt/ppc-console.jpg)
 shows listener PID 9 sleeping and connection PID 11 runnable at 93% CPU.
@@ -119,8 +120,9 @@ Both display a process size of 130,416 bytes; shared code means these values
 must not simply be added as private memory. The log shows the child connection
 from the Mac, without authentication success or an out-of-memory message.
 This is a console photograph, not evidence of a successful SSH session.
-A temporary serial maintenance login has been requested for direct diagnostics;
-it is not an entropy provider or an SSH transport requirement.
+A temporary serial maintenance login is active for direct diagnostics;
+it is not an entropy provider or an SSH transport requirement. The abandoned
+worker was stopped and the original listener restored after the baseline trace.
 
 The Mac's initial private
 image copy was deleted after the owner's boot confirmation; this is not secure

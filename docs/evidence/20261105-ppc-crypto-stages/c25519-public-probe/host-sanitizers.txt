@@ -1,0 +1,6 @@
+Ed25519 public RFC 8032 probe; no key generation
+PASS sign-rfc8032 seconds=0
+PASS verify-rfc8032 seconds=0
+PASS reject-tampered seconds=0
+PASS reject-short seconds=0
+RESULT PASS checks=4 failures=0 seconds=0
