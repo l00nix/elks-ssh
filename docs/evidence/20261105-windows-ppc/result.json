@@ -62,9 +62,9 @@
     }
   ],
   "remote_exit_status": 0,
-  "native_process_exit_code": null,
-  "exact_host_elapsed_seconds": null,
-  "native_ui_capture": "pending: Mac locked; user asked to unlock",
+  "native_process_exit_code": 0,
+  "exact_host_elapsed_seconds": 1729.6360903,
+  "native_ui_capture": "captured 2026-11-06: completed Windows Terminal session through Windows App",
   "serial_maintenance": "Unconfirmed; ps shows PID 16 in /bin/login, not a maintenance shell",
   "ppc_service": "Qualified temporary listener retained; original startup not edited; post-exit process cleanup not yet inspected",
   "collected_utc": "2026-11-06T03:59:14.874697+00:00",
@@ -74,5 +74,18 @@
     "client.txt": "4e7b2f578aa2a8cea11393be54b45fb1ef185dc50e11150e99e422106e48849e",
     "command.txt": "6003975ff23dc4eb8881cb40839da37fb333735352d244c17455b71b9d025c8b",
     "clientkey.pub": "2203ef362bf4f54ffe10d30a3cef37ee0fd148166e82c5061d540dd83dc6aa74"
+  },
+  "capture_observed_utc": "2026-11-06T09:46:01.487Z",
+  "screenshots": {
+    "windows-ppc-ssh-commands.png": {
+      "sha256": "45955c34355b036be8ffa63aac13c2cb5827114b9b4f11b8d73966cd55d77939",
+      "bytes": 325140,
+      "source": "Unmodified Windows App screenshot of native Windows Terminal; completed original session scrollback, not replayed logs"
+    },
+    "windows-ppc-ssh-exit.png": {
+      "sha256": "573964558ba5276914201c9a086e03dc6adeb14f1e6f0ba9cc6a13524c58043b",
+      "bytes": 327655,
+      "source": "Unmodified Windows App screenshot of native Windows Terminal; completed original session scrollback, not replayed logs"
+    }
   }
 }

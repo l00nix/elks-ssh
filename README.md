@@ -22,8 +22,9 @@ login performance. It uses an explicit 30-minute diagnostic authentication
 profile and a small single-worker launcher. The native Windows 9.5p2 client
 also verified the pinned key, authenticated and ran both commands; its log
 reports remote exit status zero. Its cryptographic stages alone took 28 minutes
-13 seconds. The broader Windows matrix and native client screenshots remain
-pending; see [Windows results](docs/WINDOWS-TESTING.md).
+13 seconds; total native client time was **28 minutes 49.6 seconds**, exit zero.
+The Windows screenshots are captured; the broader Windows matrix and native
+Mac capture remain pending. See [Windows results](docs/WINDOWS-TESTING.md).
 
 The isolated Ed25519 adapter passes 646 host cases, 175 ELKS emulator cases,
 seven physical PPC public checks and 15 combined QEMU session/signature cases.
@@ -128,8 +129,15 @@ Actual ELXcap console capture; this is a hardware probe, not an SSH login.
 
 The [native Windows client test](docs/WINDOWS-TESTING.md) now confirms a complete
 PPC command session using OpenSSH 9.5p2 on the Surface, with strict host pinning
-and default algorithms. The [requested native client screenshots](docs/PPC-CAPTURE.md)
-remain pending: the Mac locked before the Windows result could be captured.
+and default algorithms. The completed native session is shown below; the
+[Mac client capture](docs/PPC-CAPTURE.md) remains pending.
+
+![Native Windows OpenSSH returning ps and ELKS 0.9.2 from the PPC](docs/screenshots/windows-ppc-ssh-commands.png)
+
+Actual Windows Terminal pixels captured through Windows App on 2026-11-06,
+showing the previous evening’s completed SSH session. The log below the
+command output includes the earlier failed attempt, followed by the successful
+retry. [Final exit and timing screenshot](docs/screenshots/windows-ppc-ssh-exit.png).
 
 Earlier checkpoints established [crypto/OS probes](docs/VALIDATION.md),
 [16-bit wire handling](docs/SERVER-PROGRESS.md) and

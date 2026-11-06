@@ -170,10 +170,11 @@ regression checks; that newer launcher was not used in this physical run.
 
 Actual PPC framebuffer capture of its server log, including shutdown output.
 The PPC clock is unset, so its January 1 log dates are not the test date. This
-image is not a native Mac or Windows terminal screenshot. Those requested UI
-captures remain pending. The owner reviewed the Surface certificate, and the
-[native Windows command test](WINDOWS-TESTING.md) subsequently passed; the Mac
-locked before its result could be captured.
+image is not a native Mac or Windows terminal screenshot. The
+[native Windows command test and screenshots](WINDOWS-TESTING.md) subsequently
+passed and were captured, with native exit zero and 28m49.6s total time. The
+Mac terminal capture still requires user operation because Computer Use
+explicitly refuses access to macOS Terminal.
 
 Evidence: [physical result](evidence/20261105-ed25519-comparison/ppc-ssh/ppc-ssh-result.json),
 [remote command output](evidence/20261105-ed25519-comparison/ppc-ssh/ppc-ssh-command.txt),

@@ -2,18 +2,20 @@
 
 The owner requested screenshots from macOS and the Surface Laptop connecting
 to the physical PPC over SSH and executing `ps` and `cat /etc/issue`.
-These captures are pending; QEMU or Telnet output must not be presented as
-physical PPC SSH evidence.
+The native Windows capture is complete; the native Mac capture is pending.
+QEMU or Telnet output must not be presented as physical PPC SSH evidence.
 
 The first [Mac-to-PPC SSH command test](ED25519-COMPARISON.md) now passes with
 strict host verification and independently provisioned persistent state. It
 returned `ps` and `cat /etc/issue` with exit status zero in 27m34s. Its retained
 image is the actual PPC server console. The [native Windows command session](WINDOWS-TESTING.md)
-also passed after the owner reviewed the Surface certificate. Native Mac and
-Windows terminal captures remain pending: the Mac locked before the Windows
-result could be captured. Computer Use also explicitly refuses access to
-macOS Terminal, so that capture requires a user-operated terminal and screenshot.
-Neither blocker changes the retained SSH command results.
+also passed after the owner reviewed the Surface certificate. Its completed
+Windows Terminal session was captured on 2026-11-06, confirming native exit
+code zero and 1729.6360903 seconds total time. See the [command screenshot](screenshots/windows-ppc-ssh-commands.png)
+and [exit screenshot](screenshots/windows-ppc-ssh-exit.png). Computer Use
+explicitly refuses access to macOS Terminal, so the remaining Mac capture
+requires a user-operated terminal and screenshot. That restriction does not
+change the retained Mac SSH command result.
 
 ## Readiness check — 2026-11-04
 

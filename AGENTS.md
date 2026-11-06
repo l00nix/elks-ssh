@@ -117,3 +117,11 @@
   SHA 102c66f748a92dc38d41d7eb85a29072d96c004a9a78cea8bb83d0411050e7e4
   changes only one of 82 objects, passes linked original-8086 audit, 175 target
   vectors and five SSH/signature cases. Hardware performance is unmeasured.
+
+- Windows UI capture completed 2026-11-06 after owner unlocked Mac: native exit
+  code 0, exact elapsed 1729.6360903 seconds. Actual original-session scrollback
+  PNGs are docs/screenshots/windows-ppc-ssh-{commands,exit}.png with hashes in
+  docs/evidence/20261105-windows-ppc/result.json. No retry was run for capture.
+  Serial ownership check found four Comrade bridges holding BG02T8E2 (PIDs
+  74581, 74582, 81339, 84306); owner was asked whether these may be stopped.
+  Do not contend for the cable or assume a working maintenance shell.

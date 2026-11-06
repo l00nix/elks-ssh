@@ -1,7 +1,7 @@
 # Windows 11 native SSH client compatibility
 
-Status on 2026-11-05: **one native Windows-to-PPC command session passed;
-broader acceptance matrix and result screenshot pending**. During the
+Status on 2026-11-06: **one native Windows-to-PPC command session passed,
+with native result screenshots captured; broader acceptance matrix pending**. During the
 2026-11-04 preflight, native PowerShell 5.1 on the Surface Laptop running in
 Windows Terminal reported:
 
@@ -50,9 +50,11 @@ the existing Mac test identity remains authorized too.
 | Ed25519 client verification | 1092 |
 
 These stages total **28 minutes 13 seconds** and exclude connection setup and
-commands. The Windows wrapper's exact wall time and native process exit code
-have not yet been read from its completed UI. The Mac locked before capture;
-the public client/command logs were collected automatically afterward.
+commands. The completed native Windows UI was captured after unlocking the Mac
+on 2026-11-06: **1729.6360903 seconds (28m49.6s), native process exit code 0**.
+The screenshots show the original session scrollback, without rerunning SSH or
+replaying saved logs. The public client/command logs had already been collected
+automatically when the test finished.
 The log's separate "Transferred ... in 14.5 seconds" line is not the full
 authentication time. The earlier OS-build preflight has not been re-read in
 this run. This is a feasibility result, not practical login performance or a
@@ -85,8 +87,18 @@ shell; these are process observations, not a peak-memory bound.
 Serial maintenance is unconfirmed: `ps` shows the earlier maintenance process
 in `/bin/login`, and serial input did not yield a root prompt. The qualified
 temporary listener was retained; original startup files were not changed.
-Post-session process cleanup and native screenshots remain to be inspected
-once access is restored.
+Post-session process cleanup remains to be inspected once maintenance access
+is restored. Four Comrade bridge processes were observed holding the serial
+adapter on 2026-11-06; the owner was asked to release them before further use.
+
+![Native Windows SSH command output from the physical PPC](screenshots/windows-ppc-ssh-commands.png)
+
+![Native Windows SSH successful exit and total elapsed time](screenshots/windows-ppc-ssh-exit.png)
+
+These are unmodified Windows App captures of Windows Terminal. The lower
+server log retains the failed first attempt (PID 232) as well as the successful
+retry (PID 233); the earlier broken pipe is not the outcome of the retry.
+Screenshot hashes and provenance are in the result record below.
 
 Evidence: [result](evidence/20261105-windows-ppc/result.json),
 [client diagnostics](evidence/20261105-windows-ppc/client.txt),
