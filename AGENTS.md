@@ -173,3 +173,10 @@
   is restored; check adapter ownership first. Native Mac screenshot requires
   user upload because the tool blocks Terminal. The user was told to keep the
   completed original window open. Temporary PPC service and startup unchanged.
+
+- Owner supplied the original native Mac Terminal screenshot as image001.png.
+  It is now docs/screenshots/mac-ppc-ssh-commands.png with provenance in
+  docs/evidence/20261106-ppc-field-o2/mac/screenshot.json. Native Mac capture
+  is complete; post-session cleanup still awaits getty restoration. Owner
+  clarified hardware: Amstrad PPC512, 640K memory via PicoMem 2 emulation.
+  README headline: Modern SSH demonstrated on ELKS retro hardware.

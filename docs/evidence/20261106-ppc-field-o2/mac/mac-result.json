@@ -4,7 +4,7 @@
   "timed_out": false,
   "expected_server_sha256": "102c66f748a92dc38d41d7eb85a29072d96c004a9a78cea8bb83d0411050e7e4",
   "expected_listener_sha256": "8d700dfead1997f95cac25f48c3e3421cd037efbeb21115f040247e2b4ef8ebd",
-  "hardware": "Amstrad PPC 512 with PicoMEM",
+  "hardware": "Amstrad PPC512 (PPC) with 640K memory utilizing PicoMem 2 memory emulation",
   "client": "macOS native /usr/bin/ssh",
   "client_version": "OpenSSH_10.3p1, LibreSSL 3.3.6",
   "terminal": "User-launched macOS Terminal",
@@ -14,8 +14,11 @@
   "ps_output": true,
   "issue_output": true,
   "runtime_entropy_helper": false,
-  "native_screenshot": "pending user capture; macOS Terminal blocked by computer-control tool",
+  "native_screenshot": "../../../screenshots/mac-ppc-ssh-commands.png",
   "status": "passed",
   "post_session_cleanup": "pending: Comrade bridges reopened serial; login unresponsive after they were stopped",
-  "started_local": "2026-11-06T05:39:12-05:00"
+  "started_local": "2026-11-06T05:39:12-05:00",
+  "native_screenshot_sha256": "e549fed3d2e181505dc0d9c3bccd76a0e993271487700dba9eb1aa63fa3edb52",
+  "native_screenshot_source": "Owner-supplied original macOS Terminal screenshot",
+  "hardware_configuration_source": "Owner clarification accompanying screenshot"
 }

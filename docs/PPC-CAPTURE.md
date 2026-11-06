@@ -2,7 +2,7 @@
 
 The owner requested screenshots from macOS and the Surface Laptop connecting
 to the physical PPC over SSH and executing `ps` and `cat /etc/issue`.
-The native Windows capture is complete; the native Mac capture is pending.
+Both native Windows and Mac captures are complete.
 QEMU or Telnet output must not be presented as physical PPC SSH evidence.
 
 The first [Mac-to-PPC SSH command test](ED25519-COMPARISON.md) now passes with
@@ -12,16 +12,21 @@ image is the actual PPC server console. The [native Windows command session](WIN
 also passed after the owner reviewed the Surface certificate. Its completed
 Windows Terminal session was captured on 2026-11-06, confirming native exit
 code zero and 1729.6360903 seconds total time. See the [command screenshot](screenshots/windows-ppc-ssh-commands.png)
-and [exit screenshot](screenshots/windows-ppc-ssh-exit.png). Computer Use
-explicitly refuses access to macOS Terminal, so the remaining Mac capture
-requires a user-operated terminal and screenshot. That restriction does not
-change the retained Mac SSH command result.
+and [exit screenshot](screenshots/windows-ppc-ssh-exit.png). The owner supplied
+the Mac Terminal screenshot directly; the computer-control tool was not used
+to access the blocked Terminal application.
 
 On 2026-11-06, the owner launched a new native Mac Terminal test of the field-O2
 server and corrected listener. Strict host pinning, public-key authentication,
 `ps`, `cat /etc/issue` and native exit zero passed in **1574.80 seconds**.
-The original Terminal window was left open for user capture; the computer-control
-restriction remains. [Result and diagnostics](ED25519-COMPARISON.md#native-mac-command-test-of-field-o2--2026-11-06).
+The owner supplied the unmodified screenshot below. Its command output and
+1574.80-second elapsed time match the saved client records. The owner also
+confirmed the test machine is an Amstrad PPC512 with 640K memory utilizing
+the memory emulation of a PicoMem 2.
+
+![Native Mac Terminal showing the successful PPC command test](screenshots/mac-ppc-ssh-commands.png)
+
+[Capture provenance](evidence/20261106-ppc-field-o2/mac/screenshot.json). [Result and diagnostics](ED25519-COMPARISON.md#native-mac-command-test-of-field-o2--2026-11-06).
 
 ## Readiness check — 2026-11-04
 

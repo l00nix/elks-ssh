@@ -173,8 +173,8 @@ The PPC clock is unset, so its January 1 log dates are not the test date. This
 image is not a native Mac or Windows terminal screenshot. The
 [native Windows command test and screenshots](WINDOWS-TESTING.md) subsequently
 passed and were captured, with native exit zero and 28m49.6s total time. The
-Mac terminal capture still requires user operation because Computer Use
-explicitly refuses access to macOS Terminal.
+owner subsequently supplied a [native Mac Terminal capture](PPC-CAPTURE.md)
+from the field-O2 test described below.
 
 Evidence: [physical result](evidence/20261105-ed25519-comparison/ppc-ssh/ppc-ssh-result.json),
 [remote command output](evidence/20261105-ed25519-comparison/ppc-ssh/ppc-ssh-command.txt),
@@ -257,8 +257,9 @@ The command output shows worker 333, command shell 334 and listener 309.
 The serial login appears as `/bin/login 5V`; three Comrade bridge processes
 had reopened the adapter and were stopped. Post-session cleanup inspection
 is pending restoration of the unresponsive serial login. No cleanup pass is
-inferred from SSH exit zero. The actual Mac Terminal screenshot still requires
-user capture because the computer-control tool blocks that application.
+inferred from SSH exit zero. The owner supplied the [actual Mac Terminal screenshot](screenshots/mac-ppc-ssh-commands.png),
+which matches the recorded command output, exit zero and 1574.80-second duration.
+[Capture provenance](evidence/20261106-ppc-field-o2/mac/screenshot.json).
 
 Evidence: [native result](evidence/20261106-ppc-field-o2/mac/mac-result.json),
 [SSH command output](evidence/20261106-ppc-field-o2/mac/mac-command.txt), and

@@ -1,9 +1,11 @@
 > ⚠️ I’m developing this project with AI assistance out of personal interest. It may not fully align with the ELKS maintainer team’s architectural or development guidelines. Please use it at your own discretion. ⚠️
 
-> **Proof of concept — “will it work?” on retro hardware.** This is a hobby and
+> **Modern SSH demonstrated on ELKS retro hardware.** This is a hobby and
 > learning effort to demonstrate modern SSH on ELKS, not a production-ready or
-> everyday remote-access service. Successful PPC command tests took **26 minutes
-> 14.8 seconds from macOS** and **28 minutes 49.6 seconds from Windows**. These
+> everyday remote-access service. The test machine is an **Amstrad PPC512 (PPC)
+> running with 640K of memory utilizing the memory emulation of a PicoMem 2**.
+> Successful command tests took **26 minutes 14.8 seconds from macOS** and
+> **28 minutes 49.6 seconds from Windows**. These
 > are complete connection-and-command times, dominated by authentication, using
 > different experimental builds; they are not a Mac-versus-Windows benchmark.
 > This demonstrates that it works, but the current implementation is impractical
@@ -44,7 +46,7 @@ matrix and full interactive qualification remain open.
 
 | Client / test | Whole-session elapsed time | Retained evidence |
 | --- | --- | --- |
-| macOS OpenSSH 10.3p1, field-O2 candidate | **26m 14.8s** | [Result](docs/evidence/20261106-ppc-field-o2/mac/mac-result.json), [command output](docs/evidence/20261106-ppc-field-o2/mac/mac-command.txt); native Terminal screenshot pending |
+| macOS OpenSSH 10.3p1, field-O2 candidate | **26m 14.8s** | [Result](docs/evidence/20261106-ppc-field-o2/mac/mac-result.json), [command output](docs/evidence/20261106-ppc-field-o2/mac/mac-command.txt); [native Terminal screenshot](docs/screenshots/mac-ppc-ssh-commands.png) |
 | Windows OpenSSH 9.5p2 on Surface Laptop, earlier slow profile | **28m 49.6s** | [Native screenshots and result](docs/WINDOWS-TESTING.md) |
 | Earlier Mac session, slow profile | **27m 34.23s** | [Result and PPC console capture](docs/ED25519-COMPARISON.md) |
 
@@ -57,16 +59,16 @@ markers and ELKS 0.9.2 are visible. The server log beneath them includes an
 initial unsuccessful attempt before the successful retry.
 [Native exit-zero and timing screenshot](docs/screenshots/windows-ppc-ssh-exit.png).
 
-**Mac → PPC: PPC-side capture from the earlier successful 27m34.23s test**
+**Mac → PPC: actual native macOS Terminal capture**
 
-![Actual PPC console showing authentication from the Mac and session disconnect](docs/screenshots/ppc-ssh-server.png)
+![Native macOS OpenSSH returning ps and ELKS 0.9.2 from the PPC, with exit zero in 1574.80 seconds](docs/screenshots/mac-ppc-ssh-commands.png)
 
-Actual PPC text framebuffer rendered with its captured ROM font, showing the
-server log for the earlier Mac session. **This is not a Mac Terminal screenshot
-and does not depict the newer 26m14.8s run.** Its shutdown error is retained;
-[listener cleanup corrections and limitations](docs/LISTENER-SHUTDOWN.md) are
-tracked separately. The native Mac Terminal capture is still pending user upload
-because the computer-control tool blocks access to that application.
+Original screenshot supplied by the owner from the completed field-O2 test.
+It shows OpenSSH 10.3p1, both command markers, `ps`, ELKS 0.9.2, native exit
+zero, **1574.80 seconds**, and no deadline timeout. The visible output matches
+our retained command transcript. [Capture provenance](docs/evidence/20261106-ppc-field-o2/mac/screenshot.json).
+The earlier 27m34.23s Mac run has a separate
+[PPC-side server-console capture](docs/screenshots/ppc-ssh-server.png).
 
 The Windows session exposed an unreaped worker in the earlier listener. The
 newer listener passes QEMU and physical banner/disconnect cleanup checks, but

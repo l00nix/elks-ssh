@@ -1,0 +1,18 @@
+{
+  "source": "Owner-supplied image001.png attachment showing the original native macOS Terminal test",
+  "image": "../../../screenshots/mac-ppc-ssh-commands.png",
+  "sha256": "e549fed3d2e181505dc0d9c3bccd76a0e993271487700dba9eb1aa63fa3edb52",
+  "modified": false,
+  "matched_result": "mac-result.json",
+  "visible_checks": [
+    "OpenSSH_10.3p1, LibreSSL 3.3.6",
+    "PPC_MAC_BEGIN",
+    "ps process list including listener 309 and worker 333",
+    "ELKS 0.9.2",
+    "PPC_MAC_DONE",
+    "SSH exit: 0",
+    "Elapsed: 1574.80 seconds",
+    "Deadline reached: False"
+  ],
+  "limits": "Client screenshot does not establish post-session server cleanup; serial inspection remains pending."
+}
